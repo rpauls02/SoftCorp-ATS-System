@@ -6,8 +6,7 @@ Following a provided Initial Statement of Requirements, we've been able to perfo
 Using the work completed in the first stages, and some further, we've been able to develop this application
 
 ## Contributors
-Mohammed Abdullah
-Robert Pauls
+Mohammed Abdullah | Robert Pauls
 
 ## Contribution 
 M. Abdullah -
