@@ -7,9 +7,9 @@ import java.util.Properties;
 
 public class DBConnection {
 
-    private Connection con;
+    private static Connection con;
 
-    public Connection getConnection() {
+    public static Connection getConnection() {
         try {
             /*Class.forName("com.mysql.jdbc.Driver");*/
             Properties connectionProps = new Properties();
