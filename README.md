@@ -11,7 +11,11 @@ Mohammed Abdullah
 
 Robert Pauls
 
+Mustafa Nadeem
+
 ## Contribution 
 M. Abdullah -
+
+Mustafa - My contribution consisted of System Design, Testing/QA and so far in the programming side, I've built the logic for password encryption
 
 Robert - My contribution consisted of the System Design and Development/Programming phases
