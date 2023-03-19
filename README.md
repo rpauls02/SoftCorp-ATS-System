@@ -6,15 +6,10 @@ Following a provided Initial Statement of Requirements, we've been able to perfo
 
 Using the work completed in the first stages, and some further, we've been able to develop this application
 
-## Contributors
-Mohammed Abdullah
-
-Robert Pauls
-
-Mustafa Nadeem
 
 ## Contribution 
-M. Abdullah -
+
+M. Abdullah - My contribution consisited of System Design, programming and testing.
 
 Mustafa - My contribution consisted of System Design, Testing/QA and so far in the programming side, I've built the logic for password encryption
 
