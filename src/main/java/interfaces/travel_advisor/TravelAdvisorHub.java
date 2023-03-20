@@ -229,7 +229,7 @@ public class TravelAdvisorHub extends javax.swing.JFrame {
                 .addComponent(infoLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
-        logoLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/smallLogo.png"))); // NOI18N
+        logoLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("data/smallLogo.png"))); // NOI18N
         logoLabel.setText(" ");
 
         javax.swing.GroupLayout TravelAdvisorHomePanelLayout = new javax.swing.GroupLayout(TravelAdvisorHomePanel);
@@ -284,7 +284,7 @@ public class TravelAdvisorHub extends javax.swing.JFrame {
 
     private void refundTicketButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_refundTicketButtonActionPerformed
         dispose();
-        new TicketRefunds().setVisible(true);
+        new Interface.TravelAdvisor.TicketRefunds().setVisible(true);
     }//GEN-LAST:event_refundTicketButtonActionPerformed
 
     private void logoutButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_logoutButtonActionPerformed
@@ -297,12 +297,12 @@ public class TravelAdvisorHub extends javax.swing.JFrame {
 
     private void viewIndSalesButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_viewIndSalesButtonActionPerformed
         dispose();
-        new IndividualSalesReport().setVisible(true);
+        new Interface.TravelAdvisor.IndividualSalesReport().setVisible(true);
     }//GEN-LAST:event_viewIndSalesButtonActionPerformed
 
     private void sellTicketPageButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sellTicketPageButtonActionPerformed
         dispose();
-        new TicketSales().setVisible(true);
+        new Interface.TravelAdvisor.TicketSales().setVisible(true);
     }//GEN-LAST:event_sellTicketPageButtonActionPerformed
 
     /**

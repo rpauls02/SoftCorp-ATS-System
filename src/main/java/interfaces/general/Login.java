@@ -84,7 +84,6 @@ public class Login extends javax.swing.JFrame {
 
         ImageIcon logo = new ImageIcon("data/bigLogo.png");
         logoLabel.setIcon(logo);
-        this.add(logoLabel);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);

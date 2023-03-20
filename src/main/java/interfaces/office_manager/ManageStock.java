@@ -4,6 +4,8 @@
  */
 package interfaces.office_manager;
 
+import javax.swing.*;
+
 /**
  *
  * @author Abdullah
@@ -254,7 +256,7 @@ public class ManageStock extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        logoLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Interface/smallLogo.png"))); // NOI18N
+        logoLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("data/smallLogo.png"))); // NOI1
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);

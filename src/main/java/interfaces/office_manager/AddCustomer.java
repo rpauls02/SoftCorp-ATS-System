@@ -4,6 +4,8 @@
  */
 package interfaces.office_manager;
 
+import interfaces.general.Login;
+
 /**
  *
  * @author Abdullah
@@ -16,8 +18,6 @@ public class AddCustomer extends javax.swing.JFrame {
     public AddCustomer() {
         initComponents();
     }
-    
-
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -166,8 +166,6 @@ public class AddCustomer extends javax.swing.JFrame {
         addCustomerPanel.setBackground(new java.awt.Color(153, 204, 255));
         addCustomerPanel.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
-        customerIDLabel.setText("Customer ID");
-
         forenameLabel.setText("Forename(s)");
 
         surnameLabel.setText("Surname");
@@ -301,11 +299,13 @@ public class AddCustomer extends javax.swing.JFrame {
     }//GEN-LAST:event_homeButtonActionPerformed
 
     private void viewCustomerRecordsButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_viewCustomerRecordsButtonActionPerformed
-        // TODO add your handling code here:
+        dispose();
+        new CustomerRecords().setVisible(true);
     }//GEN-LAST:event_viewCustomerRecordsButtonActionPerformed
 
     private void logoutButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_logoutButtonActionPerformed
-        // TODO add your handling code here:
+        dispose();
+        new Login().setVisible(true);
     }//GEN-LAST:event_logoutButtonActionPerformed
 
     private void viewAlertsButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_viewAlertsButtonActionPerformed

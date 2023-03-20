@@ -170,7 +170,7 @@ public class TicketRefunds extends javax.swing.JFrame {
                 .addGap(36, 36, 36))
         );
 
-        logoLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Interface/smallLogo.png"))); // NOI18N
+        logoLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("data/smallLogo.png"))); // NOI18N
 
         pageTitlePanel.setBackground(new java.awt.Color(153, 204, 255));
         pageTitlePanel.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
@@ -224,7 +224,7 @@ public class TicketRefunds extends javax.swing.JFrame {
 
     private void homeButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_homeButtonActionPerformed
         dispose();
-        new TravelAdvisorHub().setVisible(true);
+        new Interface.TravelAdvisor.TravelAdvisorHub().setVisible(true);
     }//GEN-LAST:event_homeButtonActionPerformed
 
     private void logoutButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_logoutButtonActionPerformed
@@ -237,12 +237,12 @@ public class TicketRefunds extends javax.swing.JFrame {
 
     private void sellTicketPageButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sellTicketPageButtonActionPerformed
         dispose();
-        new TicketSales().setVisible(true);
+        new Interface.TravelAdvisor.TicketSales().setVisible(true);
     }//GEN-LAST:event_sellTicketPageButtonActionPerformed
 
     private void viewIndSalesButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_viewIndSalesButtonActionPerformed
         dispose();
-        new IndividualSalesReport().setVisible(true);
+        new Interface.TravelAdvisor.IndividualSalesReport().setVisible(true);
     }//GEN-LAST:event_viewIndSalesButtonActionPerformed
 
     /**

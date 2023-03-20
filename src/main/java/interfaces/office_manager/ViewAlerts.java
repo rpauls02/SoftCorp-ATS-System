@@ -138,7 +138,7 @@ public class ViewAlerts extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        logoLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Interface/smallLogo.png"))); // NOI18N
+        logoLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("data/smallLogo.png"))); // NOI18N
 
         pageTitlePanel.setBackground(new java.awt.Color(153, 204, 255));
         pageTitlePanel.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
