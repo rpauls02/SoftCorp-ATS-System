@@ -3,7 +3,9 @@ package interfaces.general;/*
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 
+
 import SQL.DBConnection;
+import interfaces.travel_advisor.*;
 
 import javax.swing.*;
 import java.awt.*;
@@ -159,7 +161,7 @@ public class Login extends javax.swing.JFrame {
                     @Override
                     public void actionPerformed(ActionEvent actionEvent) {
                         dispose();
-                        //TravelAdvisorHome travelAdvisorHub = new TravelAdvisorHome();
+                        TravelAdvisorHub travelAdvisorHub = new TravelAdvisorHub();
                     }
                 });
             } else {

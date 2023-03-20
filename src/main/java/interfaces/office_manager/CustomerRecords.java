@@ -4,6 +4,14 @@
  */
 package interfaces.office_manager;
 
+import SQL.DBConnection;
+
+import javax.swing.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.sql.*;
+import java.util.Arrays;
+
 /**
  *
  * @author Abdullah
@@ -49,8 +57,8 @@ public class CustomerRecords extends javax.swing.JFrame {
         viewTicketsButton = new javax.swing.JButton();
         addButton = new javax.swing.JButton();
         editCustomerRecordButton = new javax.swing.JButton();
-        deleteButton = new javax.swing.JButton();
-        addCustomerButton = new javax.swing.JButton();
+        deleteCustomerRecordButton = new javax.swing.JButton();
+        addCustomerRecordButton = new javax.swing.JButton();
         logoLabel = new javax.swing.JLabel();
 
         jPanel1.setBackground(new java.awt.Color(153, 204, 255));
@@ -269,7 +277,7 @@ public class CustomerRecords extends javax.swing.JFrame {
         addButton.setText("Add");
         addButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                addButtonActionPerformed(evt);
+                addCustomerRecordButtonActionPerformed(evt);
             }
         });
 
@@ -280,14 +288,14 @@ public class CustomerRecords extends javax.swing.JFrame {
             }
         });
 
-        deleteButton.setText("Delete");
-        deleteButton.addActionListener(new java.awt.event.ActionListener() {
+        deleteCustomerRecordButton.setText("Delete");
+        deleteCustomerRecordButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                deleteButtonActionPerformed(evt);
+                deleteCustomerRecordButtonActionPerformed(evt);
             }
         });
 
-        addCustomerButton.setText("Add Customer");
+        addCustomerRecordButton.setText("Add Customer");
 
         javax.swing.GroupLayout customerRecordsButtonPanelLayout = new javax.swing.GroupLayout(customerRecordsButtonPanel);
         customerRecordsButtonPanel.setLayout(customerRecordsButtonPanelLayout);
@@ -295,7 +303,7 @@ public class CustomerRecords extends javax.swing.JFrame {
             customerRecordsButtonPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(customerRecordsButtonPanelLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(addCustomerButton)
+                .addComponent(addCustomerRecordButton)
                 .addGap(18, 18, 18)
                 .addComponent(findCustomerButton)
                 .addGap(18, 18, 18)
@@ -305,7 +313,7 @@ public class CustomerRecords extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addComponent(editCustomerRecordButton)
                 .addGap(18, 18, 18)
-                .addComponent(deleteButton)
+                .addComponent(deleteCustomerRecordButton)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         customerRecordsButtonPanelLayout.setVerticalGroup(
@@ -317,8 +325,8 @@ public class CustomerRecords extends javax.swing.JFrame {
                     .addComponent(viewTicketsButton)
                     .addComponent(addButton)
                     .addComponent(editCustomerRecordButton)
-                    .addComponent(deleteButton)
-                    .addComponent(addCustomerButton))
+                    .addComponent(deleteCustomerRecordButton)
+                    .addComponent(addCustomerRecordButton))
                 .addContainerGap(14, Short.MAX_VALUE))
         );
 
@@ -391,16 +399,35 @@ public class CustomerRecords extends javax.swing.JFrame {
 
     }//GEN-LAST:event_findButtonActionPerformed
 
-    private void addButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addButtonActionPerformed
+    private void addCustomerRecordButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addButtonActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_addButtonActionPerformed
 
     private void editCustomerRecordButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editButtonActionPerformed
         // TODO add your handling code here:
+
     }//GEN-LAST:event_editButtonActionPerformed
 
-    private void deleteButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteButtonActionPerformed
+    private void deleteCustomerRecordButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteButtonActionPerformed
         // TODO add your handling code here:
+        Connection conn = DBConnection.getConnection();
+        Statement stm = null;
+        Integer result = null;
+        try {
+            stm = conn.createStatement();
+            result = stm.executeUpdate("DELETE FROM `customer` WHERE id = ?");
+            // TODO - Implement processing of results and dialog stating valid or invalid deletion
+            /*if (rs.next()){
+                JOptionPane.showMessageDialog(this, "Account successfully deleted");
+            } else {
+                JOptionPane.showMessageDialog(null, "Could not delete specified account");
+            }*/
+        } catch (SQLException sqle) {
+            throw new RuntimeException(sqle);
+        } finally {
+            try { if (stm != null) stm.close(); } catch (Exception e) { throw new RuntimeException(e); };
+            try { if (conn != null) conn.close(); } catch (Exception e) { throw new RuntimeException(e); };
+        }
     }//GEN-LAST:event_deleteButtonActionPerformed
 
     private void viewCustomerRecordsButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_viewCustomerRecordsButtonActionPerformed
@@ -450,11 +477,11 @@ public class CustomerRecords extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton addButton;
-    private javax.swing.JButton addCustomerButton;
+    private javax.swing.JButton addCustomerRecordButton;
     private javax.swing.JPanel buttonsPanel;
     private javax.swing.JTable customerInformationTable;
     private javax.swing.JPanel customerRecordsButtonPanel;
-    private javax.swing.JButton deleteButton;
+    private javax.swing.JButton deleteCustomerRecordButton;
     private javax.swing.JButton editCustomerRecordButton;
     private javax.swing.JButton findCustomerButton;
     private javax.swing.JPanel functionPanel;
