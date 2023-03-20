@@ -37,9 +37,10 @@ public class TicketRefunds extends javax.swing.JFrame {
         ticketIDLabel = new javax.swing.JLabel();
         ticketIDField = new javax.swing.JTextField();
         refundTicketButton = new javax.swing.JButton();
-        logoLabel = new javax.swing.JLabel();
         pageTitlePanel = new javax.swing.JPanel();
         pageTitleLabel = new javax.swing.JLabel();
+        logoPanel = new javax.swing.JPanel();
+        jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("ATS System | Travel Advisor | Ticket Refunds");
@@ -50,7 +51,7 @@ public class TicketRefunds extends javax.swing.JFrame {
         homeButton.setText("Home");
         homeButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                homeButtonActionPerformed(evt);
+                homeButtonhomeButtonActionPerformed(evt);
             }
         });
 
@@ -66,7 +67,7 @@ public class TicketRefunds extends javax.swing.JFrame {
         logoutButton.setText("Log Out");
         logoutButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                logoutButtonActionPerformed(evt);
+                logoutButtonlogoutButtonActionPerformed(evt);
             }
         });
 
@@ -75,7 +76,7 @@ public class TicketRefunds extends javax.swing.JFrame {
         refundTicketPageButton.setText("Refund Ticket");
         refundTicketPageButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                refundTicketPageButtonActionPerformed(evt);
+                refundTicketPageButtonrefundTicketButtonActionPerformed(evt);
             }
         });
 
@@ -95,15 +96,15 @@ public class TicketRefunds extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(buttonsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(buttonsPanelLayout.createSequentialGroup()
-                        .addComponent(homeButton, javax.swing.GroupLayout.DEFAULT_SIZE, 111, Short.MAX_VALUE)
+                        .addComponent(homeButton, javax.swing.GroupLayout.DEFAULT_SIZE, 109, Short.MAX_VALUE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(viewIndSalesButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(logoutButton, javax.swing.GroupLayout.DEFAULT_SIZE, 115, Short.MAX_VALUE))
+                        .addComponent(logoutButton, javax.swing.GroupLayout.DEFAULT_SIZE, 112, Short.MAX_VALUE))
                     .addGroup(buttonsPanelLayout.createSequentialGroup()
-                        .addComponent(sellTicketPageButton, javax.swing.GroupLayout.DEFAULT_SIZE, 209, Short.MAX_VALUE)
+                        .addComponent(sellTicketPageButton, javax.swing.GroupLayout.DEFAULT_SIZE, 206, Short.MAX_VALUE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(refundTicketPageButton, javax.swing.GroupLayout.DEFAULT_SIZE, 203, Short.MAX_VALUE)))
+                        .addComponent(refundTicketPageButton, javax.swing.GroupLayout.DEFAULT_SIZE, 201, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         buttonsPanelLayout.setVerticalGroup(
@@ -170,8 +171,6 @@ public class TicketRefunds extends javax.swing.JFrame {
                 .addGap(36, 36, 36))
         );
 
-        logoLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("data/smallLogo.png"))); // NOI18N
-
         pageTitlePanel.setBackground(new java.awt.Color(153, 204, 255));
         pageTitlePanel.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
@@ -183,11 +182,24 @@ public class TicketRefunds extends javax.swing.JFrame {
         pageTitlePanel.setLayout(pageTitlePanelLayout);
         pageTitlePanelLayout.setHorizontalGroup(
             pageTitlePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(pageTitleLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 646, Short.MAX_VALUE)
+            .addComponent(pageTitleLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 653, Short.MAX_VALUE)
         );
         pageTitlePanelLayout.setVerticalGroup(
             pageTitlePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(pageTitleLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
+        );
+
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/smallLogo.png"))); // NOI18N
+
+        javax.swing.GroupLayout logoPanelLayout = new javax.swing.GroupLayout(logoPanel);
+        logoPanel.setLayout(logoPanelLayout);
+        logoPanelLayout.setHorizontalGroup(
+            logoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
+        logoPanelLayout.setVerticalGroup(
+            logoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -197,23 +209,24 @@ public class TicketRefunds extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(logoLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(pageTitlePanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(buttonsPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(ticketRefundPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                        .addComponent(ticketRefundPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(logoPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(pageTitlePanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(buttonsPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(logoLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(pageTitlePanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(buttonsPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(pageTitlePanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(buttonsPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(logoPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(ticketRefundPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
@@ -224,7 +237,7 @@ public class TicketRefunds extends javax.swing.JFrame {
 
     private void homeButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_homeButtonActionPerformed
         dispose();
-        new Interface.TravelAdvisor.TravelAdvisorHub().setVisible(true);
+        new TravelAdvisorHub().setVisible(true);
     }//GEN-LAST:event_homeButtonActionPerformed
 
     private void logoutButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_logoutButtonActionPerformed
@@ -237,12 +250,12 @@ public class TicketRefunds extends javax.swing.JFrame {
 
     private void sellTicketPageButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sellTicketPageButtonActionPerformed
         dispose();
-        new Interface.TravelAdvisor.TicketSales().setVisible(true);
+        new TicketSales().setVisible(true);
     }//GEN-LAST:event_sellTicketPageButtonActionPerformed
 
     private void viewIndSalesButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_viewIndSalesButtonActionPerformed
         dispose();
-        new Interface.TravelAdvisor.IndividualSalesReport().setVisible(true);
+        new IndividualSalesReport().setVisible(true);
     }//GEN-LAST:event_viewIndSalesButtonActionPerformed
 
     /**
@@ -285,7 +298,8 @@ public class TicketRefunds extends javax.swing.JFrame {
     private javax.swing.JPanel buttonsPanel;
     private javax.swing.JButton homeButton;
     private javax.swing.JLabel infoPanel;
-    private javax.swing.JLabel logoLabel;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JPanel logoPanel;
     private javax.swing.JButton logoutButton;
     private javax.swing.JLabel pageTitleLabel;
     private javax.swing.JPanel pageTitlePanel;

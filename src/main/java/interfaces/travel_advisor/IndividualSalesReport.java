@@ -40,7 +40,8 @@ public class IndividualSalesReport extends javax.swing.JFrame {
         pageTitlePanel = new javax.swing.JPanel();
         pageTitleLabel = new javax.swing.JLabel();
         tablePanel = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
+        logoPanel = new javax.swing.JPanel();
+        logoLabel = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("ATS System | Travel Advisor | View Individual Sales Report");
@@ -65,7 +66,7 @@ public class IndividualSalesReport extends javax.swing.JFrame {
                 .addComponent(showDDMenu, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(214, 214, 214)
                 .addComponent(orderDDMenu, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 548, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(refreshButton)
                 .addContainerGap())
         );
@@ -86,7 +87,7 @@ public class IndividualSalesReport extends javax.swing.JFrame {
         homeButton.setText("Home");
         homeButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                homeButtonActionPerformed(evt);
+                homeButtonhomeButtonActionPerformed(evt);
             }
         });
 
@@ -98,7 +99,7 @@ public class IndividualSalesReport extends javax.swing.JFrame {
         logoutButton.setText("Log Out");
         logoutButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                logoutButtonActionPerformed(evt);
+                logoutButtonlogoutButtonActionPerformed(evt);
             }
         });
 
@@ -106,7 +107,7 @@ public class IndividualSalesReport extends javax.swing.JFrame {
         refundTicketPageButton.setText("Refund Ticket");
         refundTicketPageButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                refundTicketPageButtonActionPerformed(evt);
+                refundTicketPageButtonrefundTicketButtonActionPerformed(evt);
             }
         });
 
@@ -163,7 +164,7 @@ public class IndividualSalesReport extends javax.swing.JFrame {
         pageTitlePanel.setLayout(pageTitlePanelLayout);
         pageTitlePanelLayout.setHorizontalGroup(
             pageTitlePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(pageTitleLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 636, Short.MAX_VALUE)
+            .addComponent(pageTitleLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 642, Short.MAX_VALUE)
         );
         pageTitlePanelLayout.setVerticalGroup(
             pageTitlePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -184,6 +185,19 @@ public class IndividualSalesReport extends javax.swing.JFrame {
             .addGap(0, 612, Short.MAX_VALUE)
         );
 
+        logoLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/smallLogo.png"))); // NOI18N
+
+        javax.swing.GroupLayout logoPanelLayout = new javax.swing.GroupLayout(logoPanel);
+        logoPanel.setLayout(logoPanelLayout);
+        logoPanelLayout.setHorizontalGroup(
+            logoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(logoLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
+        logoPanelLayout.setVerticalGroup(
+            logoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(logoLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -195,7 +209,8 @@ public class IndividualSalesReport extends javax.swing.JFrame {
                     .addComponent(functionPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
             .addGroup(layout.createSequentialGroup()
-                .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(logoPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(pageTitlePanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -207,7 +222,7 @@ public class IndividualSalesReport extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                     .addComponent(pageTitlePanel, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(buttonsPanel, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(logoPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(16, 16, 16)
                 .addComponent(functionPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -277,7 +292,8 @@ public class IndividualSalesReport extends javax.swing.JFrame {
     private javax.swing.JPanel buttonsPanel;
     private javax.swing.JPanel functionPanel;
     private javax.swing.JButton homeButton;
-    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel logoLabel;
+    private javax.swing.JPanel logoPanel;
     private javax.swing.JButton logoutButton;
     private javax.swing.JComboBox<String> orderDDMenu;
     private javax.swing.JLabel pageTitleLabel;
