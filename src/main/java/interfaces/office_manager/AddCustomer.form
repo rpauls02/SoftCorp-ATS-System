@@ -25,17 +25,17 @@
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="1" attributes="0">
-              <Group type="103" groupAlignment="0" attributes="0">
+              <Group type="103" groupAlignment="1" attributes="0">
                   <Group type="102" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="addCustomerPanel" max="32767" attributes="0"/>
                   </Group>
                   <Group type="102" attributes="0">
-                      <Component id="logoPanel" min="-2" max="-2" attributes="0"/>
+                      <Component id="logoLabel" min="-2" pref="94" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="pageTitlePanel" max="32767" attributes="0"/>
+                      <Component id="pageTitlePanel" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="buttonsPanel" min="-2" max="-2" attributes="0"/>
+                      <Component id="buttonsPanel" max="32767" attributes="0"/>
                   </Group>
               </Group>
               <EmptySpace min="-2" max="-2" attributes="0"/>
@@ -48,10 +48,7 @@
               <Group type="103" groupAlignment="1" attributes="0">
                   <Component id="buttonsPanel" alignment="0" max="32767" attributes="0"/>
                   <Component id="pageTitlePanel" max="32767" attributes="0"/>
-                  <Group type="102" attributes="0">
-                      <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-                      <Component id="logoPanel" min="-2" max="-2" attributes="0"/>
-                  </Group>
+                  <Component id="logoLabel" max="32767" attributes="0"/>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
               <Component id="addCustomerPanel" max="32767" attributes="0"/>
@@ -76,7 +73,7 @@
       <Layout>
         <DimensionLayout dim="0">
           <Group type="103" groupAlignment="0" attributes="0">
-              <Component id="pageTitleLabel" alignment="1" max="32767" attributes="0"/>
+              <Component id="pageTitleLabel" alignment="0" pref="541" max="32767" attributes="0"/>
           </Group>
         </DimensionLayout>
         <DimensionLayout dim="1">
@@ -120,11 +117,11 @@
                           <Component id="logoutButton" max="32767" attributes="0"/>
                       </Group>
                       <Group type="102" alignment="0" attributes="0">
-                          <Component id="viewReportButton" pref="186" max="32767" attributes="0"/>
+                          <Component id="viewReportButton" pref="173" max="32767" attributes="0"/>
                           <EmptySpace min="-2" max="-2" attributes="0"/>
-                          <Component id="viewAlertsButton" pref="129" max="32767" attributes="0"/>
+                          <Component id="viewAlertsButton" pref="116" max="32767" attributes="0"/>
                           <EmptySpace min="-2" max="-2" attributes="0"/>
-                          <Component id="manageStockButton" pref="143" max="32767" attributes="0"/>
+                          <Component id="manageStockButton" pref="130" max="32767" attributes="0"/>
                       </Group>
                   </Group>
                   <EmptySpace min="-2" max="-2" attributes="0"/>
@@ -263,9 +260,15 @@
                                   <Component id="emailField" min="-2" pref="281" max="-2" attributes="0"/>
                               </Group>
                               <Group type="102" alignment="0" attributes="0">
-                                  <Component id="forenameLabel" min="-2" max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                      <Component id="customerIDLabel" alignment="0" max="32767" attributes="0"/>
+                                      <Component id="forenameLabel" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  </Group>
                                   <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="forenameField" min="-2" pref="245" max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                      <Component id="customerIDField" pref="245" max="32767" attributes="0"/>
+                                      <Component id="forenameField" max="32767" attributes="0"/>
+                                  </Group>
                               </Group>
                               <Group type="102" alignment="0" attributes="0">
                                   <Component id="surnameLabel" min="-2" max="-2" attributes="0"/>
@@ -280,7 +283,7 @@
                           </Group>
                       </Group>
                   </Group>
-                  <EmptySpace pref="752" max="32767" attributes="0"/>
+                  <EmptySpace max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -289,7 +292,12 @@
               <Group type="102" alignment="0" attributes="0">
                   <EmptySpace min="-2" pref="16" max="-2" attributes="0"/>
                   <Component id="backButton" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace min="-2" pref="81" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="41" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="customerIDLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="customerIDField" alignment="3" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="forenameLabel" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="forenameField" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -322,6 +330,11 @@
         </DimensionLayout>
       </Layout>
       <SubComponents>
+        <Component class="javax.swing.JLabel" name="customerIDLabel">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Customer ID"/>
+          </Properties>
+        </Component>
         <Component class="javax.swing.JLabel" name="forenameLabel">
           <Properties>
             <Property name="text" type="java.lang.String" value="Forename(s)"/>
@@ -346,6 +359,8 @@
           <Properties>
             <Property name="text" type="java.lang.String" value="Phone"/>
           </Properties>
+        </Component>
+        <Component class="javax.swing.JTextField" name="customerIDField">
         </Component>
         <Component class="javax.swing.JTextField" name="forenameField">
         </Component>
@@ -372,29 +387,7 @@
         </Component>
       </SubComponents>
     </Container>
-    <Container class="javax.swing.JPanel" name="logoPanel">
-
-      <Layout>
-        <DimensionLayout dim="0">
-          <Group type="103" groupAlignment="0" attributes="0">
-              <Component id="logoLabel" alignment="1" max="32767" attributes="0"/>
-          </Group>
-        </DimensionLayout>
-        <DimensionLayout dim="1">
-          <Group type="103" groupAlignment="0" attributes="0">
-              <Component id="logoLabel" alignment="0" max="32767" attributes="0"/>
-          </Group>
-        </DimensionLayout>
-      </Layout>
-      <SubComponents>
-        <Component class="javax.swing.JLabel" name="logoLabel">
-          <Properties>
-            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="3" name="/Images/smallLogo.png"/>
-            </Property>
-          </Properties>
-        </Component>
-      </SubComponents>
-    </Container>
+    <Component class="javax.swing.JLabel" name="logoLabel">
+    </Component>
   </SubComponents>
 </Form>
