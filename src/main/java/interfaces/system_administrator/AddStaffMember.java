@@ -49,6 +49,7 @@ public class AddStaffMember extends javax.swing.JFrame {
         addressField = new javax.swing.JTextField();
         emailField = new javax.swing.JTextField();
         addStaffMemberButton = new javax.swing.JButton();
+        logoPanel = new javax.swing.JPanel();
         logoLabel = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -65,7 +66,7 @@ public class AddStaffMember extends javax.swing.JFrame {
         pageTitlePanel.setLayout(pageTitlePanelLayout);
         pageTitlePanelLayout.setHorizontalGroup(
             pageTitlePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(pageTitleLabel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(pageTitleLabel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 486, Short.MAX_VALUE)
         );
         pageTitlePanelLayout.setVerticalGroup(
             pageTitlePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -112,15 +113,15 @@ public class AddStaffMember extends javax.swing.JFrame {
         buttonsPanelLayout.setHorizontalGroup(
             buttonsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, buttonsPanelLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(buttonsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                .addContainerGap()
+                .addGroup(buttonsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(manageStockButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(buttonsPanelLayout.createSequentialGroup()
-                        .addComponent(homeButton, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(homeButton, javax.swing.GroupLayout.DEFAULT_SIZE, 164, Short.MAX_VALUE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(databaseManagementButton, javax.swing.GroupLayout.DEFAULT_SIZE, 212, Short.MAX_VALUE)
+                        .addComponent(databaseManagementButton, javax.swing.GroupLayout.DEFAULT_SIZE, 246, Short.MAX_VALUE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(logoutButton, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(logoutButton, javax.swing.GroupLayout.DEFAULT_SIZE, 164, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         buttonsPanelLayout.setVerticalGroup(
@@ -139,6 +140,7 @@ public class AddStaffMember extends javax.swing.JFrame {
         addStaffPanel.setBackground(new java.awt.Color(153, 204, 255));
         addStaffPanel.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
+        backButton.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         backButton.setText("Back");
         backButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -146,70 +148,80 @@ public class AddStaffMember extends javax.swing.JFrame {
             }
         });
 
-        staffIDLabel.setText("Staff ID");
+        staffIDLabel.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        staffIDLabel.setText("Staff ID:");
 
-        surnameLabel.setText("Surname");
+        surnameLabel.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        surnameLabel.setText("Surname:");
 
-        roleLabel.setText("Role");
+        roleLabel.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        roleLabel.setText("Role:");
 
-        forenameLabel.setText("Forename(s)");
+        forenameLabel.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        forenameLabel.setText("Forename(s):");
 
-        addressLabel.setText("Address");
+        addressLabel.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        addressLabel.setText("Address:");
 
-        emailLabel.setText("Email");
+        emailLabel.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        emailLabel.setText("Email:");
 
+        addStaffMemberButton.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         addStaffMemberButton.setText("Add Staff Member");
+        addStaffMemberButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                addStaffMemberButtonActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout addStaffPanelLayout = new javax.swing.GroupLayout(addStaffPanel);
         addStaffPanel.setLayout(addStaffPanelLayout);
         addStaffPanelLayout.setHorizontalGroup(
             addStaffPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, addStaffPanelLayout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(addStaffMemberButton)
+                .addGap(59, 59, 59))
             .addGroup(addStaffPanelLayout.createSequentialGroup()
                 .addGroup(addStaffPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(addStaffPanelLayout.createSequentialGroup()
                         .addGap(22, 22, 22)
                         .addComponent(backButton))
                     .addGroup(addStaffPanelLayout.createSequentialGroup()
-                        .addGap(144, 144, 144)
+                        .addGap(441, 441, 441)
                         .addGroup(addStaffPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(addStaffPanelLayout.createSequentialGroup()
-                                .addComponent(emailLabel)
+                                .addComponent(staffIDLabel)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(emailField))
-                            .addGroup(addStaffPanelLayout.createSequentialGroup()
-                                .addGroup(addStaffPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                    .addComponent(addressLabel, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(surnameLabel, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(addStaffPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(surnameField)
-                                    .addGroup(addStaffPanelLayout.createSequentialGroup()
-                                        .addComponent(addressField, javax.swing.GroupLayout.PREFERRED_SIZE, 296, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(0, 3, Short.MAX_VALUE))))
-                            .addGroup(addStaffPanelLayout.createSequentialGroup()
-                                .addComponent(forenameLabel)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(forenameField))
+                                .addComponent(staffIDField))
                             .addGroup(addStaffPanelLayout.createSequentialGroup()
                                 .addComponent(roleLabel)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(roleField))
                             .addGroup(addStaffPanelLayout.createSequentialGroup()
-                                .addComponent(staffIDLabel)
+                                .addComponent(forenameLabel)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(staffIDField)))))
-                .addGap(747, 747, 747))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, addStaffPanelLayout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(addStaffMemberButton)
-                .addGap(90, 90, 90))
+                                .addComponent(forenameField))
+                            .addGroup(addStaffPanelLayout.createSequentialGroup()
+                                .addGroup(addStaffPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(surnameLabel)
+                                    .addComponent(addressLabel))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(addStaffPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(addressField)
+                                    .addComponent(surnameField)))
+                            .addGroup(addStaffPanelLayout.createSequentialGroup()
+                                .addComponent(emailLabel)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(emailField)))))
+                .addGap(440, 440, 440))
         );
         addStaffPanelLayout.setVerticalGroup(
             addStaffPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(addStaffPanelLayout.createSequentialGroup()
                 .addGap(19, 19, 19)
                 .addComponent(backButton)
-                .addGap(51, 51, 51)
+                .addGap(87, 87, 87)
                 .addGroup(addStaffPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(staffIDLabel)
                     .addComponent(staffIDField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -233,9 +245,22 @@ public class AddStaffMember extends javax.swing.JFrame {
                 .addGroup(addStaffPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(emailLabel)
                     .addComponent(emailField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 322, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 225, Short.MAX_VALUE)
                 .addComponent(addStaffMemberButton)
-                .addGap(24, 24, 24))
+                .addGap(44, 44, 44))
+        );
+
+        logoLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/smallLogo.png"))); // NOI18N
+
+        javax.swing.GroupLayout logoPanelLayout = new javax.swing.GroupLayout(logoPanel);
+        logoPanel.setLayout(logoPanelLayout);
+        logoPanelLayout.setHorizontalGroup(
+            logoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(logoLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
+        logoPanelLayout.setVerticalGroup(
+            logoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(logoLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -247,11 +272,11 @@ public class AddStaffMember extends javax.swing.JFrame {
                 .addComponent(addStaffPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
             .addGroup(layout.createSequentialGroup()
-                .addComponent(logoLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(logoPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(pageTitlePanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(buttonsPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(buttonsPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -259,7 +284,7 @@ public class AddStaffMember extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(pageTitlePanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(buttonsPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(logoLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(logoPanel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(addStaffPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
@@ -290,6 +315,10 @@ public class AddStaffMember extends javax.swing.JFrame {
         dispose();
         new SystemAdminHub().setVisible(true);
     }//GEN-LAST:event_backButtonActionPerformed
+
+    private void addStaffMemberButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addStaffMemberButtonActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_addStaffMemberButtonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -340,6 +369,7 @@ public class AddStaffMember extends javax.swing.JFrame {
     private javax.swing.JLabel forenameLabel;
     private javax.swing.JButton homeButton;
     private javax.swing.JLabel logoLabel;
+    private javax.swing.JPanel logoPanel;
     private javax.swing.JButton logoutButton;
     private javax.swing.JButton manageStockButton;
     private javax.swing.JLabel pageTitleLabel;

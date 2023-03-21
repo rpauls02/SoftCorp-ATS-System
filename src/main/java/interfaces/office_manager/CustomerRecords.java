@@ -4,13 +4,7 @@
  */
 package interfaces.office_manager;
 
-import SQL.DBConnection;
-
-import javax.swing.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.sql.*;
-import java.util.Arrays;
+import Interface.OfficeManager.ManageStock;
 
 /**
  *
@@ -24,7 +18,7 @@ public class CustomerRecords extends javax.swing.JFrame {
     public CustomerRecords() {
         initComponents();
     }
-
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -46,19 +40,19 @@ public class CustomerRecords extends javax.swing.JFrame {
         pageTitlePanel = new javax.swing.JPanel();
         pageTitleLabel = new javax.swing.JLabel();
         functionPanel = new javax.swing.JPanel();
-        tableNameLabel = new javax.swing.JLabel();
+        tableName = new javax.swing.JLabel();
         showDDMenu = new javax.swing.JComboBox<>();
         orderDDMenu = new javax.swing.JComboBox<>();
         refreshButton = new javax.swing.JButton();
         tableScrollPane = new javax.swing.JScrollPane();
         customerInformationTable = new javax.swing.JTable();
         customerRecordsButtonPanel = new javax.swing.JPanel();
-        findCustomerButton = new javax.swing.JButton();
+        findButton = new javax.swing.JButton();
         viewTicketsButton = new javax.swing.JButton();
-        addButton = new javax.swing.JButton();
-        editCustomerRecordButton = new javax.swing.JButton();
-        deleteCustomerRecordButton = new javax.swing.JButton();
-        addCustomerRecordButton = new javax.swing.JButton();
+        editButton = new javax.swing.JButton();
+        deleteButton = new javax.swing.JButton();
+        addCustomerButton = new javax.swing.JButton();
+        logoPanel = new javax.swing.JPanel();
         logoLabel = new javax.swing.JLabel();
 
         jPanel1.setBackground(new java.awt.Color(153, 204, 255));
@@ -146,17 +140,17 @@ public class CustomerRecords extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(buttonsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(buttonsPanelLayout.createSequentialGroup()
-                        .addComponent(homeButton, javax.swing.GroupLayout.DEFAULT_SIZE, 126, Short.MAX_VALUE)
+                        .addComponent(homeButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(viewCustomerRecordsButton, javax.swing.GroupLayout.DEFAULT_SIZE, 215, Short.MAX_VALUE)
+                        .addComponent(viewCustomerRecordsButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(logoutButton, javax.swing.GroupLayout.DEFAULT_SIZE, 148, Short.MAX_VALUE))
+                        .addComponent(logoutButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, buttonsPanelLayout.createSequentialGroup()
-                        .addComponent(viewReportButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(viewReportButton, javax.swing.GroupLayout.DEFAULT_SIZE, 232, Short.MAX_VALUE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(viewAlertsButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(viewAlertsButton, javax.swing.GroupLayout.DEFAULT_SIZE, 175, Short.MAX_VALUE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(manageStockButton, javax.swing.GroupLayout.DEFAULT_SIZE, 207, Short.MAX_VALUE)))
+                        .addComponent(manageStockButton, javax.swing.GroupLayout.DEFAULT_SIZE, 189, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         buttonsPanelLayout.setVerticalGroup(
@@ -188,7 +182,7 @@ public class CustomerRecords extends javax.swing.JFrame {
             pageTitlePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pageTitlePanelLayout.createSequentialGroup()
                 .addGap(0, 0, 0)
-                .addComponent(pageTitleLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 557, Short.MAX_VALUE))
+                .addComponent(pageTitleLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 458, Short.MAX_VALUE))
         );
         pageTitlePanelLayout.setVerticalGroup(
             pageTitlePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -199,10 +193,10 @@ public class CustomerRecords extends javax.swing.JFrame {
 
         functionPanel.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
-        tableNameLabel.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        tableNameLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        tableNameLabel.setText("Customer Information");
-        tableNameLabel.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        tableName.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        tableName.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        tableName.setText("Customer Information");
+        tableName.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
         showDDMenu.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         showDDMenu.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Show", "10", "25", "50", "100" }));
@@ -223,7 +217,7 @@ public class CustomerRecords extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(orderDDMenu, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(tableNameLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(tableName, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(refreshButton)
                 .addContainerGap())
@@ -235,7 +229,7 @@ public class CustomerRecords extends javax.swing.JFrame {
                 .addGroup(functionPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(showDDMenu, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(orderDDMenu, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(tableNameLabel)
+                    .addComponent(tableName)
                     .addComponent(refreshButton, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -265,37 +259,40 @@ public class CustomerRecords extends javax.swing.JFrame {
         customerRecordsButtonPanel.setBackground(new java.awt.Color(153, 204, 255));
         customerRecordsButtonPanel.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
-        findCustomerButton.setText("Find");
-        findCustomerButton.addActionListener(new java.awt.event.ActionListener() {
+        findButton.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        findButton.setText("Find");
+        findButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                findCustomerButtonActionPerformed(evt);
+                findButtonActionPerformed(evt);
             }
         });
 
+        viewTicketsButton.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         viewTicketsButton.setText("View Tickets");
 
-        addButton.setText("Add");
-        addButton.addActionListener(new java.awt.event.ActionListener() {
+        editButton.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        editButton.setText("Edit");
+        editButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                addCustomerRecordButtonActionPerformed(evt);
+                editButtonActionPerformed(evt);
             }
         });
 
-        editCustomerRecordButton.setText("Edit");
-        editCustomerRecordButton.addActionListener(new java.awt.event.ActionListener() {
+        deleteButton.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        deleteButton.setText("Delete");
+        deleteButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                editCustomerRecordButtonActionPerformed(evt);
+                deleteButtonActionPerformed(evt);
             }
         });
 
-        deleteCustomerRecordButton.setText("Delete");
-        deleteCustomerRecordButton.addActionListener(new java.awt.event.ActionListener() {
+        addCustomerButton.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        addCustomerButton.setText("Add Customer");
+        addCustomerButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                deleteCustomerRecordButtonActionPerformed(evt);
+                addCustomerButtonActionPerformed(evt);
             }
         });
-
-        addCustomerRecordButton.setText("Add Customer");
 
         javax.swing.GroupLayout customerRecordsButtonPanelLayout = new javax.swing.GroupLayout(customerRecordsButtonPanel);
         customerRecordsButtonPanel.setLayout(customerRecordsButtonPanelLayout);
@@ -303,17 +300,15 @@ public class CustomerRecords extends javax.swing.JFrame {
             customerRecordsButtonPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(customerRecordsButtonPanelLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(addCustomerRecordButton)
+                .addComponent(addCustomerButton, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(findCustomerButton)
+                .addComponent(findButton, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(viewTicketsButton)
+                .addComponent(viewTicketsButton, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(addButton)
+                .addComponent(editButton, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(editCustomerRecordButton)
-                .addGap(18, 18, 18)
-                .addComponent(deleteCustomerRecordButton)
+                .addComponent(deleteButton)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         customerRecordsButtonPanelLayout.setVerticalGroup(
@@ -321,13 +316,25 @@ public class CustomerRecords extends javax.swing.JFrame {
             .addGroup(customerRecordsButtonPanelLayout.createSequentialGroup()
                 .addGap(14, 14, 14)
                 .addGroup(customerRecordsButtonPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(findCustomerButton)
+                    .addComponent(findButton)
                     .addComponent(viewTicketsButton)
-                    .addComponent(addButton)
-                    .addComponent(editCustomerRecordButton)
-                    .addComponent(deleteCustomerRecordButton)
-                    .addComponent(addCustomerRecordButton))
-                .addContainerGap(14, Short.MAX_VALUE))
+                    .addComponent(editButton)
+                    .addComponent(deleteButton)
+                    .addComponent(addCustomerButton))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        logoLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/smallLogo.png"))); // NOI18N
+
+        javax.swing.GroupLayout logoPanelLayout = new javax.swing.GroupLayout(logoPanel);
+        logoPanel.setLayout(logoPanelLayout);
+        logoPanelLayout.setHorizontalGroup(
+            logoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(logoLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
+        logoPanelLayout.setVerticalGroup(
+            logoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(logoLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -337,9 +344,9 @@ public class CustomerRecords extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(logoLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(logoPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(pageTitlePanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(pageTitlePanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(buttonsPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
@@ -355,14 +362,15 @@ public class CustomerRecords extends javax.swing.JFrame {
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addComponent(pageTitlePanel, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 100, Short.MAX_VALUE)
-                    .addComponent(buttonsPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(logoLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addComponent(pageTitlePanel, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 100, Short.MAX_VALUE)
+                        .addComponent(buttonsPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(logoPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(functionPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(tableScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 576, Short.MAX_VALUE)
+                .addComponent(tableScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 575, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(customerRecordsButtonPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
@@ -373,8 +381,7 @@ public class CustomerRecords extends javax.swing.JFrame {
 
     private void homeButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_homeButtonActionPerformed
         dispose();
-        OfficeManagerHub officeManagerHub = new OfficeManagerHub();
-        officeManagerHub.setVisible(true);  
+        new OfficeManagerHub().setVisible(true);  
         
     }//GEN-LAST:event_homeButtonActionPerformed
 
@@ -384,50 +391,24 @@ public class CustomerRecords extends javax.swing.JFrame {
 
     private void viewAlertsButtonActionPerformed(java.awt.event.ActionEvent evt) {                                                 
         dispose();
-        ViewAlerts viewAlerts = new ViewAlerts();
-        viewAlerts.setVisible(true);
+        new ViewAlerts().setVisible(true);
     }                                                                  
 
     private void manageStockButtonActionPerformed(java.awt.event.ActionEvent evt) {                                                  
         dispose();
-        ManageStock manageStock = new ManageStock();
-        manageStock.setVisible(true);
+        new ManageStock().setVisible(true);
     }                                                                   
 
-    private void findCustomerButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_findButtonActionPerformed
+    private void findButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_findButtonActionPerformed
         // TODO add your handling code here:
-
     }//GEN-LAST:event_findButtonActionPerformed
 
-    private void addCustomerRecordButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addButtonActionPerformed
+    private void editButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editButtonActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_addButtonActionPerformed
-
-    private void editCustomerRecordButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editButtonActionPerformed
-        // TODO add your handling code here:
-
     }//GEN-LAST:event_editButtonActionPerformed
 
-    private void deleteCustomerRecordButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteButtonActionPerformed
+    private void deleteButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteButtonActionPerformed
         // TODO add your handling code here:
-        Connection conn = DBConnection.getConnection();
-        Statement stm = null;
-        Integer result = null;
-        try {
-            stm = conn.createStatement();
-            result = stm.executeUpdate("DELETE FROM `customer` WHERE id = ?");
-            // TODO - Implement processing of results and dialog stating valid or invalid deletion
-            /*if (rs.next()){
-                JOptionPane.showMessageDialog(this, "Account successfully deleted");
-            } else {
-                JOptionPane.showMessageDialog(null, "Could not delete specified account");
-            }*/
-        } catch (SQLException sqle) {
-            throw new RuntimeException(sqle);
-        } finally {
-            try { if (stm != null) stm.close(); } catch (Exception e) { throw new RuntimeException(e); };
-            try { if (conn != null) conn.close(); } catch (Exception e) { throw new RuntimeException(e); };
-        }
     }//GEN-LAST:event_deleteButtonActionPerformed
 
     private void viewCustomerRecordsButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_viewCustomerRecordsButtonActionPerformed
@@ -438,6 +419,11 @@ public class CustomerRecords extends javax.swing.JFrame {
         dispose();
         new ViewReport().setVisible(true);
     }//GEN-LAST:event_viewReportButtonActionPerformed
+
+    private void addCustomerButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addCustomerButtonActionPerformed
+        dispose();
+        new AddCustomer().setVisible(true);
+    }//GEN-LAST:event_addCustomerButtonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -476,19 +462,19 @@ public class CustomerRecords extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton addButton;
-    private javax.swing.JButton addCustomerRecordButton;
+    private javax.swing.JButton addCustomerButton;
     private javax.swing.JPanel buttonsPanel;
     private javax.swing.JTable customerInformationTable;
     private javax.swing.JPanel customerRecordsButtonPanel;
-    private javax.swing.JButton deleteCustomerRecordButton;
-    private javax.swing.JButton editCustomerRecordButton;
-    private javax.swing.JButton findCustomerButton;
+    private javax.swing.JButton deleteButton;
+    private javax.swing.JButton editButton;
+    private javax.swing.JButton findButton;
     private javax.swing.JPanel functionPanel;
     private javax.swing.JButton homeButton;
     private javax.swing.JButton jButton1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JLabel logoLabel;
+    private javax.swing.JPanel logoPanel;
     private javax.swing.JButton logoutButton;
     private javax.swing.JButton manageStockButton;
     private javax.swing.JComboBox<String> orderDDMenu;
@@ -496,7 +482,7 @@ public class CustomerRecords extends javax.swing.JFrame {
     private javax.swing.JPanel pageTitlePanel;
     private javax.swing.JButton refreshButton;
     private javax.swing.JComboBox<String> showDDMenu;
-    private javax.swing.JLabel tableNameLabel;
+    private javax.swing.JLabel tableName;
     private javax.swing.JScrollPane tableScrollPane;
     private javax.swing.JButton viewAlertsButton;
     private javax.swing.JButton viewCustomerRecordsButton;
