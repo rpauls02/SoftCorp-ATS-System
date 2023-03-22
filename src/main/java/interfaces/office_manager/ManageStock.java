@@ -9,6 +9,8 @@ import interfaces.office_manager.OfficeManagerHub;
 import interfaces.office_manager.ViewAlerts;
 import interfaces.office_manager.ViewReport;
 
+import javax.swing.*;
+
 /**
  *
  * @author Abdullah
@@ -269,7 +271,10 @@ public class ManageStock extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        logoLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/smallLogo.png"))); // NOI18N
+        //logoLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/smallLogo.png"))); // NOI18N
+        ImageIcon logo = new ImageIcon("data/smallLogo.png");
+        logoLabel.setIcon(logo);
+        logoPanel.add(logoLabel);
 
         javax.swing.GroupLayout logoPanelLayout = new javax.swing.GroupLayout(logoPanel);
         logoPanel.setLayout(logoPanelLayout);

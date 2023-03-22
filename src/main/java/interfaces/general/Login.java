@@ -5,7 +5,7 @@ package interfaces.general;/*
 
 
 import SQL.DBConnection;
-import interfaces.travel_advisor.*;
+import interfaces.travel_advisor.TravelAdvisorHub;
 
 import javax.swing.*;
 import java.awt.*;

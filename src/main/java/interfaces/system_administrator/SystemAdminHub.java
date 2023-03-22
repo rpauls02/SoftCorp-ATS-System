@@ -4,6 +4,8 @@
  */
 package interfaces.system_administrator;
 
+import javax.swing.*;
+
 /**
  *
  * @author Abdullah
@@ -165,7 +167,10 @@ public class SystemAdminHub extends javax.swing.JFrame {
                 .addContainerGap(590, Short.MAX_VALUE))
         );
 
-        logoLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/smallLogo.png"))); // NOI18N
+        //logoLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/smallLogo.png"))); // NOI18N
+        ImageIcon logo = new ImageIcon("data/smallLogo.png");
+        logoLabel.setIcon(logo);
+        logoPanel.add(logoLabel);
 
         javax.swing.GroupLayout logoPanelLayout = new javax.swing.GroupLayout(logoPanel);
         logoPanel.setLayout(logoPanelLayout);
