@@ -4,6 +4,9 @@
  */
 package Interface.TravelAdvisor;
 
+import interfaces.travel_advisor.IndividualSalesReport;
+import interfaces.travel_advisor.TicketSales;
+
 /**
  *
  * @author Abdullah
@@ -230,7 +233,7 @@ public class TravelAdvisorHub extends javax.swing.JFrame {
                 .addComponent(infoLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
-        logoLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/smallLogo.png"))); // NOI18N
+
 
         javax.swing.GroupLayout logoPanelLayout = new javax.swing.GroupLayout(logoPanel);
         logoPanel.setLayout(logoPanelLayout);
@@ -295,7 +298,7 @@ public class TravelAdvisorHub extends javax.swing.JFrame {
 
     private void refundTicketButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_refundTicketButtonActionPerformed
         dispose();
-        new TicketRefunds().setVisible(true);
+        new Interface.TravelAdvisor.TicketRefunds().setVisible(true);
     }//GEN-LAST:event_refundTicketButtonActionPerformed
 
     private void logoutButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_logoutButtonActionPerformed

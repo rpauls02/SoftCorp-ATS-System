@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
-package Interface.TravelAdvisor;
+package interfaces.travel_advisor;
 
 /**
  *
@@ -389,7 +389,7 @@ public class TicketSales extends javax.swing.JFrame {
             .addComponent(pageTitleLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
-        logoLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/smallLogo.png"))); // NOI18N
+
 
         javax.swing.GroupLayout logoPanelLayout = new javax.swing.GroupLayout(logoPanel);
         logoPanel.setLayout(logoPanelLayout);
@@ -441,7 +441,7 @@ public class TicketSales extends javax.swing.JFrame {
 
     private void homeButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_homeButtonActionPerformed
         dispose();
-        new TravelAdvisorHub().setVisible(true);
+        new Interface.TravelAdvisor.TravelAdvisorHub().setVisible(true);
     }//GEN-LAST:event_homeButtonActionPerformed
 
     private void logoutButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_logoutButtonActionPerformed
@@ -450,7 +450,7 @@ public class TicketSales extends javax.swing.JFrame {
 
     private void refundTicketPageButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_refundTicketPageButtonActionPerformed
         dispose();
-        new TicketRefunds().setVisible(true);
+        new Interface.TravelAdvisor.TicketRefunds().setVisible(true);
     }//GEN-LAST:event_refundTicketPageButtonActionPerformed
 
     private void forenameFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_forenameFieldActionPerformed

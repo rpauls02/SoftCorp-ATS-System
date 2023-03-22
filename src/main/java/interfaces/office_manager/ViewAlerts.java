@@ -217,7 +217,6 @@ public class ViewAlerts extends javax.swing.JFrame {
         ));
         tableScrollPane.setViewportView(systemAlertsTable);
 
-        logoLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/smallLogo.png"))); // NOI18N
 
         javax.swing.GroupLayout logoPanelLayout = new javax.swing.GroupLayout(logoPanel);
         logoPanel.setLayout(logoPanelLayout);

@@ -125,6 +125,10 @@ public class AddCustomer extends javax.swing.JFrame {
             }
         });
 
+        addCustomerButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {addCustomerButtonActionPerformed(evt);}
+        });
+
         javax.swing.GroupLayout buttonsPanelLayout = new javax.swing.GroupLayout(buttonsPanel);
         buttonsPanel.setLayout(buttonsPanelLayout);
         buttonsPanelLayout.setHorizontalGroup(
@@ -259,7 +263,7 @@ public class AddCustomer extends javax.swing.JFrame {
                 .addGap(43, 43, 43))
         );
 
-        logoLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/smallLogo.png"))); // NOI18N
+
 
         javax.swing.GroupLayout logoPanelLayout = new javax.swing.GroupLayout(logoPanel);
         logoPanel.setLayout(logoPanelLayout);
@@ -339,6 +343,9 @@ public class AddCustomer extends javax.swing.JFrame {
         new CustomerRecords().setVisible(true);
     }//GEN-LAST:event_backButtonActionPerformed
 
+    private void addCustomerButtonActionPerformed(java.awt.event.ActionEvent evt){
+
+    }
     /**
      * @param args the command line arguments
      */
