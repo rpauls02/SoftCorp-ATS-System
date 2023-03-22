@@ -161,7 +161,8 @@ public class Login extends javax.swing.JFrame {
                     @Override
                     public void actionPerformed(ActionEvent actionEvent) {
                         dispose();
-                        Interface.TravelAdvisor.TravelAdvisorHub travelAdvisorHub = new Interface.TravelAdvisor.TravelAdvisorHub();
+                        TravelAdvisorHub travelAdvisorHub = new TravelAdvisorHub();
+                        travelAdvisorHub.setVisible(true);
                     }
                 });
             } else {
