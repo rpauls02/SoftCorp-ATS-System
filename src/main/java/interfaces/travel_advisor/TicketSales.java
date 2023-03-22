@@ -4,6 +4,10 @@
  */
 package interfaces.travel_advisor;
 
+
+import javax.swing.*;
+
+
 /**
  *
  * @author Abdullah
@@ -390,6 +394,11 @@ public class TicketSales extends javax.swing.JFrame {
         );
 
 
+        //logoLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/smallLogo.png"))); // NOI18N
+        ImageIcon logo = new ImageIcon("data/smallLogo.png");
+        logoLabel.setIcon(logo);
+        logoPanel.add(logoLabel);
+
 
         javax.swing.GroupLayout logoPanelLayout = new javax.swing.GroupLayout(logoPanel);
         logoPanel.setLayout(logoPanelLayout);
@@ -441,7 +450,7 @@ public class TicketSales extends javax.swing.JFrame {
 
     private void homeButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_homeButtonActionPerformed
         dispose();
-        new Interface.TravelAdvisor.TravelAdvisorHub().setVisible(true);
+        new TravelAdvisorHub().setVisible(true);
     }//GEN-LAST:event_homeButtonActionPerformed
 
     private void logoutButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_logoutButtonActionPerformed
@@ -450,7 +459,7 @@ public class TicketSales extends javax.swing.JFrame {
 
     private void refundTicketPageButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_refundTicketPageButtonActionPerformed
         dispose();
-        new Interface.TravelAdvisor.TicketRefunds().setVisible(true);
+        new TicketRefunds().setVisible(true);
     }//GEN-LAST:event_refundTicketPageButtonActionPerformed
 
     private void forenameFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_forenameFieldActionPerformed

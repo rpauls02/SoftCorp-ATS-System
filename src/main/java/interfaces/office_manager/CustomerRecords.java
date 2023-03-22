@@ -6,6 +6,8 @@ package interfaces.office_manager;
 
 import Interface.OfficeManager.ManageStock;
 
+import javax.swing.*;
+
 /**
  *
  * @author Abdullah
@@ -326,6 +328,13 @@ public class CustomerRecords extends javax.swing.JFrame {
 
 
 
+
+        //logoLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/smallLogo.png"))); // NOI18N
+        ImageIcon logo = new ImageIcon("data/smallLogo.png");
+        logoLabel.setIcon(logo);
+        logoPanel.add(logoLabel);
+
+
         javax.swing.GroupLayout logoPanelLayout = new javax.swing.GroupLayout(logoPanel);
         logoPanel.setLayout(logoPanelLayout);
         logoPanelLayout.setHorizontalGroup(
@@ -404,6 +413,10 @@ public class CustomerRecords extends javax.swing.JFrame {
     }//GEN-LAST:event_findButtonActionPerformed
 
     private void editButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editButtonActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_addButtonActionPerformed
+
+    private void editCustomerRecordButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editButtonActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_editButtonActionPerformed
 

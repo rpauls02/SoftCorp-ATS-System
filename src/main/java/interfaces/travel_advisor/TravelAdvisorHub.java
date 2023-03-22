@@ -2,7 +2,9 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
-package Interface.TravelAdvisor;
+package interfaces.travel_advisor;
+
+import javax.swing.*;
 
 import interfaces.travel_advisor.IndividualSalesReport;
 import interfaces.travel_advisor.TicketSales;
@@ -234,6 +236,11 @@ public class TravelAdvisorHub extends javax.swing.JFrame {
         );
 
 
+        //logoLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/data/smallLogo.png"))); // NOI18N
+        ImageIcon logo = new ImageIcon("data/smallLogo.png");
+        logoLabel.setIcon(logo);
+        logoPanel.add(logoLabel);
+
 
         javax.swing.GroupLayout logoPanelLayout = new javax.swing.GroupLayout(logoPanel);
         logoPanel.setLayout(logoPanelLayout);
@@ -298,7 +305,7 @@ public class TravelAdvisorHub extends javax.swing.JFrame {
 
     private void refundTicketButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_refundTicketButtonActionPerformed
         dispose();
-        new Interface.TravelAdvisor.TicketRefunds().setVisible(true);
+        new TicketRefunds().setVisible(true);
     }//GEN-LAST:event_refundTicketButtonActionPerformed
 
     private void logoutButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_logoutButtonActionPerformed

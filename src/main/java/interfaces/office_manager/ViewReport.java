@@ -6,6 +6,8 @@ package interfaces.office_manager;
 
 import Interface.OfficeManager.ManageStock;
 
+import javax.swing.*;
+
 /**
  *
  * @author Abdullah
@@ -283,6 +285,12 @@ public class ViewReport extends javax.swing.JFrame {
                 .addContainerGap(527, Short.MAX_VALUE))
         );
 
+
+
+        //logoLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/smallLogo.png"))); // NOI18N
+        ImageIcon logo = new ImageIcon("data/smallLogo.png");
+        logoLabel.setIcon(logo);
+        logoPanel.add(logoLabel);
 
 
         javax.swing.GroupLayout logoPanelLayout = new javax.swing.GroupLayout(logoPanel);

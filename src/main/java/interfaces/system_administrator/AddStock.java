@@ -4,6 +4,8 @@
  */
 package interfaces.system_administrator;
 
+import javax.swing.*;
+
 /**
  *
  * @author Abdullah
@@ -207,6 +209,11 @@ public class AddStock extends javax.swing.JFrame {
                 .addGap(25, 25, 25))
         );
 
+
+        //logoLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/smallLogo.png"))); // NOI18N
+        ImageIcon logo = new ImageIcon("data/smallLogo.png");
+        logoLabel.setIcon(logo);
+        logoPanel.add(logoLabel);
 
 
         javax.swing.GroupLayout logoPanelLayout = new javax.swing.GroupLayout(logoPanel);
