@@ -4,9 +4,9 @@
  */
 package interfaces.office_manager;
 
-import Interface.OfficeManager.ManageStock;
 
 import javax.swing.*;
+import java.awt.event.ActionEvent;
 
 /**
  *
@@ -272,6 +272,18 @@ public class CustomerRecords extends javax.swing.JFrame {
         viewTicketsButton.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         viewTicketsButton.setText("View Tickets");
 
+        viewTicketsButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                viewTicketsButtonActionPerformed(evt);
+            }
+        });
+
+        refreshButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                refreshButtonActionPerformed(evt);
+            }
+        });
+
         editButton.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         editButton.setText("Edit");
         editButton.addActionListener(new java.awt.event.ActionListener() {
@@ -293,6 +305,18 @@ public class CustomerRecords extends javax.swing.JFrame {
         addCustomerButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 addCustomerButtonActionPerformed(evt);
+            }
+        });
+
+        showDDMenu.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                showDDMenuActionPerformed(evt);
+            }
+        });
+
+        orderDDMenu.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                orderDDMenuActionPerformed(evt);
             }
         });
 
@@ -387,6 +411,18 @@ public class CustomerRecords extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void orderDDMenuActionPerformed(ActionEvent evt) {
+    }
+
+    private void showDDMenuActionPerformed(ActionEvent evt) {
+    }
+
+    private void refreshButtonActionPerformed(ActionEvent evt) {
+    }
+
+    private void viewTicketsButtonActionPerformed(ActionEvent evt) {
+    }
 
     private void homeButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_homeButtonActionPerformed
         dispose();

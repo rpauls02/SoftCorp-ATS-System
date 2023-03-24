@@ -6,6 +6,7 @@ package interfaces.travel_advisor;
 
 
 import javax.swing.*;
+import java.awt.event.ActionEvent;
 
 
 /**
@@ -116,6 +117,12 @@ public class TicketSales extends javax.swing.JFrame {
         sellTicketPageButton.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         sellTicketPageButton.setText("Sell Ticket");
 
+        createTicketButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                createTicketButtonActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout buttonsPanelLayout = new javax.swing.GroupLayout(buttonsPanel);
         buttonsPanel.setLayout(buttonsPanelLayout);
         buttonsPanelLayout.setHorizontalGroup(
@@ -166,18 +173,7 @@ public class TicketSales extends javax.swing.JFrame {
         emailLabel.setText("Email:");
 
         paymentTypeLabel.setText("Payment Type:");
-
-        forenameField.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                forenameFieldActionPerformed(evt);
-            }
-        });
-
-        cardNumberField.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cardNumberFieldActionPerformed(evt);
-            }
-        });
+        
 
         forenameLabel.setText("Forename(s):");
 
@@ -303,6 +299,24 @@ public class TicketSales extends javax.swing.JFrame {
                 typeOfSaleDDActionPerformed(evt);
             }
         });
+
+        paymentTypeDD.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                paymentTypeDDActionPerformed(evt);
+            }
+        });
+        IATACurrencyCodeDD.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                IATACurrencyCodeDDActionPerformed(evt);
+            }
+        });
+        applicableBlankDD.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                applicableBlankDDActionPerformed(evt);
+            }
+        });
+
+
 
         voidButton.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         voidButton.setText("Void");
@@ -447,6 +461,18 @@ public class TicketSales extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void applicableBlankDDActionPerformed(ActionEvent evt) {
+    }
+
+    private void IATACurrencyCodeDDActionPerformed(ActionEvent evt) {
+    }
+
+    private void paymentTypeDDActionPerformed(ActionEvent evt) {
+    }
+
+    private void createTicketButtonActionPerformed(ActionEvent evt) {
+    }
 
     private void homeButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_homeButtonActionPerformed
         dispose();

@@ -5,6 +5,7 @@
 package interfaces.system_administrator;
 
 import javax.swing.*;
+import java.awt.event.ActionEvent;
 
 /**
  *
@@ -166,8 +167,20 @@ public class ManageStock extends javax.swing.JFrame {
         reassignButton.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         reassignButton.setText("Reassign");
 
+        reassignButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                reassignButtonActionPerformed(evt);
+            }
+        });
+
         deleteButton.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         deleteButton.setText("Delete");
+
+        deleteButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                deleteButtonActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout editStockPanelLayout = new javax.swing.GroupLayout(editStockPanel);
         editStockPanel.setLayout(editStockPanelLayout);
@@ -270,6 +283,12 @@ public class ManageStock extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void deleteButtonActionPerformed(ActionEvent evt) {
+    }
+
+    private void reassignButtonActionPerformed(ActionEvent evt) {
+    }
 
     private void homeButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_homeButtonActionPerformed
         dispose();

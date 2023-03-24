@@ -4,9 +4,10 @@
  */
 package interfaces.office_manager;
 
-import Interface.OfficeManager.ManageStock;
+
 
 import javax.swing.*;
+import java.awt.event.ActionEvent;
 
 /**
  *
@@ -50,10 +51,10 @@ public class ViewReport extends javax.swing.JFrame {
         functionPanel = new javax.swing.JPanel();
         reportTypesPanel = new javax.swing.JPanel();
         reportTypesLabel = new javax.swing.JLabel();
-        stockTurnoverReport = new javax.swing.JButton();
+        stockTurnoverReportButton = new javax.swing.JButton();
         domesticSalesReportButton = new javax.swing.JButton();
         interlineSalesReportButton = new javax.swing.JButton();
-        IndividualSalesReportButton = new javax.swing.JButton();
+        individualSalesReportButton = new javax.swing.JButton();
         logoPanel = new javax.swing.JPanel();
         logoLabel = new javax.swing.JLabel();
 
@@ -123,6 +124,39 @@ public class ViewReport extends javax.swing.JFrame {
                 manageStockButtonActionPerformed(evt);
             }
         });
+
+        stockTurnoverReportButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                stockTurnoverReportButtonActionPerformed(evt);
+            }
+        });
+
+        domesticSalesReportButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                interlineSalesReportButtonActionPerformed(evt);
+            }
+        });
+
+        interlineSalesReportButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                interlineSalesReportButtonActionPerformed(evt);
+            }
+        });
+
+        individualSalesReportButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                individualSalesReportButtonActionPerformed(evt);
+            }
+        });
+
+        viewPDFFolderButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                viewPDFFolderButtonActionPerformed(evt);
+            }
+        });
+
+
+
 
         javax.swing.GroupLayout buttonsPanelLayout = new javax.swing.GroupLayout(buttonsPanel);
         buttonsPanel.setLayout(buttonsPanelLayout);
@@ -233,13 +267,13 @@ public class ViewReport extends javax.swing.JFrame {
         reportTypesLabel.setText("Report Types:");
         reportTypesLabel.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
-        stockTurnoverReport.setText("Stock Turnover Report");
+        stockTurnoverReportButton.setText("Stock Turnover Report");
 
         domesticSalesReportButton.setText("Domestic Sales Report");
 
         interlineSalesReportButton.setText("Interline Sales Report");
 
-        IndividualSalesReportButton.setText("Individual Sales Report");
+        individualSalesReportButton.setText("Individual Sales Report");
 
         javax.swing.GroupLayout reportTypesPanelLayout = new javax.swing.GroupLayout(reportTypesPanel);
         reportTypesPanel.setLayout(reportTypesPanelLayout);
@@ -249,13 +283,13 @@ public class ViewReport extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(reportTypesLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(stockTurnoverReport)
+                .addComponent(stockTurnoverReportButton)
                 .addGap(18, 18, 18)
                 .addComponent(domesticSalesReportButton)
                 .addGap(18, 18, 18)
                 .addComponent(interlineSalesReportButton)
                 .addGap(18, 18, 18)
-                .addComponent(IndividualSalesReportButton)
+                .addComponent(individualSalesReportButton)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         reportTypesPanelLayout.setVerticalGroup(
@@ -264,10 +298,10 @@ public class ViewReport extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(reportTypesPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(domesticSalesReportButton, javax.swing.GroupLayout.DEFAULT_SIZE, 31, Short.MAX_VALUE)
-                    .addComponent(stockTurnoverReport, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(stockTurnoverReportButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(reportTypesLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(interlineSalesReportButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(IndividualSalesReportButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(individualSalesReportButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
 
@@ -342,6 +376,18 @@ public class ViewReport extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void viewPDFFolderButtonActionPerformed(ActionEvent evt) {
+    }
+
+    private void individualSalesReportButtonActionPerformed(ActionEvent evt) {
+    }
+
+    private void interlineSalesReportButtonActionPerformed(ActionEvent evt) {
+    }
+
+    private void stockTurnoverReportButtonActionPerformed(ActionEvent evt) {
+    }
 
     private void homeButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_homeButtonActionPerformed
         dispose();
@@ -424,11 +470,13 @@ public class ViewReport extends javax.swing.JFrame {
     private javax.swing.JPanel pageTitlePanel;
     private javax.swing.JLabel reportTypesLabel;
     private javax.swing.JPanel reportTypesPanel;
-    private javax.swing.JButton stockTurnoverReport;
+    private javax.swing.JButton stockTurnoverReportButton;
     private javax.swing.JButton viewAlertsButton;
     private javax.swing.JButton viewCustomerRecordsButton;
     private javax.swing.JPanel viewFolderButtonPanel;
     private javax.swing.JButton viewPDFFolderButton;
     private javax.swing.JButton viewReportButton;
+    private javax.swing.JButton individualSalesReportButton;
+
     // End of variables declaration//GEN-END:variables
 }

@@ -9,6 +9,8 @@ import javax.swing.*;
 import interfaces.travel_advisor.IndividualSalesReport;
 import interfaces.travel_advisor.TicketSales;
 
+import java.awt.event.ActionEvent;
+
 /**
  *
  * @author Abdullah
@@ -97,6 +99,24 @@ public class TravelAdvisorHub extends javax.swing.JFrame {
         sellTicketPageButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 sellTicketPageButtonActionPerformed(evt);
+            }
+        });
+
+        refreshButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                refreshButtonActionPerformed(evt);
+            }
+        });
+
+        showDDMenu.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                showDDMenuActionPerformed(evt);
+            }
+        });
+
+        orderDDMenu.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                orderDDMenuActionPerformed(evt);
             }
         });
 
@@ -302,6 +322,15 @@ public class TravelAdvisorHub extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void orderDDMenuActionPerformed(ActionEvent evt) {
+    }
+
+    private void showDDMenuActionPerformed(ActionEvent evt) {
+    }
+
+    private void refreshButtonActionPerformed(ActionEvent evt) {
+    }
 
     private void refundTicketButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_refundTicketButtonActionPerformed
         dispose();
