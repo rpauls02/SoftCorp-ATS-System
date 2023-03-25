@@ -5,6 +5,8 @@ package interfaces.general;/*
 
 
 import SQL.DBConnection;
+import interfaces.office_manager.OfficeManagerHub;
+import interfaces.system_administrator.SystemAdminHub;
 import interfaces.travel_advisor.TravelAdvisorHub;
 
 import javax.swing.*;
@@ -16,6 +18,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.Arrays;
+import java.util.Objects;
 
 /**
  *
@@ -38,8 +41,8 @@ public class Login extends javax.swing.JFrame {
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
-        usernameLabel = new javax.swing.JLabel();
-        usernameField = new javax.swing.JTextField();
+        idLabel = new javax.swing.JLabel();
+        idField = new javax.swing.JTextField();
         passwordLabel = new javax.swing.JLabel();
         passwordField = new javax.swing.JPasswordField();
         loginButton = new javax.swing.JButton();
@@ -51,24 +54,11 @@ public class Login extends javax.swing.JFrame {
 
         setTitle("AirVia ATS System - Login");
 
-        usernameLabel.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        usernameLabel.setText("Username:");
-
-        usernameField.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                usernameFieldActionPerformed(evt);
-            }
-        });
+        idLabel.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        idLabel.setText("ID:");
 
         passwordLabel.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         passwordLabel.setText("Password:");
-
-        passwordField.setText("passwordField");
-        passwordField.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                passwordFieldActionPerformed(evt);
-            }
-        });
 
         loginButton.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         loginButton.setText("Login");
@@ -98,8 +88,8 @@ public class Login extends javax.swing.JFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(loginButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(passwordLabel)
-                            .addComponent(usernameLabel)
-                            .addComponent(usernameField)
+                            .addComponent(idLabel)
+                            .addComponent(idField)
                             .addComponent(passwordField, javax.swing.GroupLayout.DEFAULT_SIZE, 270, Short.MAX_VALUE))
                         .addGap(157, 157, 157))
                     .addGroup(layout.createSequentialGroup()
@@ -120,9 +110,9 @@ public class Login extends javax.swing.JFrame {
                         .addComponent(versionLabel))
                     .addComponent(logoLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(87, 87, 87)
-                .addComponent(usernameLabel)
+                .addComponent(idLabel)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(usernameField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(idField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(30, 30, 30)
                 .addComponent(passwordLabel)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -135,38 +125,29 @@ public class Login extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void usernameFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_idUsernameFieldActionPerformed
-        // TODO add your handling code here:
-
-    }//GEN-LAST:event_idUsernameFieldActionPerformed
-
-    private void passwordFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_passwordFieldActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_passwordFieldActionPerformed
-
     private void loginButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginButtonActionPerformed
-        // TODO add your handling code here:
         Connection conn = DBConnection.getConnection();
         PreparedStatement pstm = null;
         ResultSet rs = null;
         try {
-            String query = "SELECT forename FROM `staff` WHERE username = ? AND password = ?";
+            String query = "SELECT forename, role FROM in2018g12.staff WHERE id = ? AND password = ?";
             pstm = conn.prepareStatement(query);
-            pstm.setString(1, usernameField.getText());
-            pstm.setString(2, Arrays.toString(passwordField.getPassword()));
+            pstm.setInt(1, Integer.parseInt(idField.getText()));
+            pstm.setString(2, passwordField.getText());
             rs = pstm.executeQuery();
-            if (rs.next()){
-                JOptionPane.showMessageDialog(this, "Welcome, " + rs.getString("forename"));
-                Timer timer = new Timer(5000, new ActionListener() {
-                    @Override
-                    public void actionPerformed(ActionEvent actionEvent) {
-                        dispose();
-                        TravelAdvisorHub travelAdvisorHub = new TravelAdvisorHub();
-                        travelAdvisorHub.setVisible(true);
-                    }
-                });
+            if (rs.next()) {
+                dispose();
+                String role = rs.getString("role");
+                if (Objects.equals(role, "Travel Advisor")) {
+                    new TravelAdvisorHub().setVisible(true);
+                } else if (Objects.equals(role, "Manager")) {
+                    new OfficeManagerHub().setVisible(true);
+                } else if (Objects.equals(role, "Administrator")) {
+                    new SystemAdminHub().setVisible(true);
+                }
             } else {
-                JOptionPane.showMessageDialog(null, "Invalid details entered");
+                JOptionPane.showMessageDialog(this, "Invalid details entered. " +
+                        "Try again or contact system administrator");
             }
         } catch (SQLException sqle) {
             throw new RuntimeException(sqle);
@@ -213,12 +194,12 @@ public class Login extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JTextField usernameField;
-    private javax.swing.JLabel usernameLabel;
+    private javax.swing.JTextField idField;
+    private javax.swing.JLabel idLabel;
     private javax.swing.JLabel interfaceNameLabel;
     private javax.swing.JButton loginButton;
     private javax.swing.JLabel logoLabel;
-    private javax.swing.JPasswordField passwordField;
+    private javax.swing.JTextField passwordField;
     private javax.swing.JLabel passwordLabel;
     private javax.swing.JLabel versionLabel;
     // End of variables declaration//GEN-END:variables
