@@ -4,9 +4,9 @@
  */
 package interfaces.office_manager;
 
-import Interface.OfficeManager.ManageStock;
 
 import javax.swing.*;
+import java.awt.event.ActionEvent;
 
 /**
  *
@@ -135,6 +135,18 @@ public class OfficeManagerHub extends javax.swing.JFrame {
         manageStockButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 manageStockButtonActionPerformed(evt);
+            }
+        });
+
+        showDDMenu.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                showDDMenuActionPerformed(evt);
+            }
+        });
+
+        orderDDMenu.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                orderDDMenuActionPerformed(evt);
             }
         });
 
@@ -281,6 +293,18 @@ public class OfficeManagerHub extends javax.swing.JFrame {
             }
         });
 
+        updateCommissionRateButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                updateCommissionRateButtonActionPerformed(evt);
+            }
+        });
+
+        viewManagerLogsButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                viewManagerLogsButtonActionPerformed(evt);
+            }
+        });
+
         updateCommissionRateButton.setText("Update");
 
         javax.swing.GroupLayout commisionRatePanelLayout = new javax.swing.GroupLayout(commisionRatePanel);
@@ -375,6 +399,18 @@ public class OfficeManagerHub extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void orderDDMenuActionPerformed(ActionEvent evt) {
+    }
+
+    private void showDDMenuActionPerformed(ActionEvent evt) {
+    }
+
+    private void viewManagerLogsButtonActionPerformed(ActionEvent evt) {
+    }
+
+    private void updateCommissionRateButtonActionPerformed(ActionEvent evt) {
+    }
 
     private void homeButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_homeButtonActionPerformed
         // TODO add your handling code here:

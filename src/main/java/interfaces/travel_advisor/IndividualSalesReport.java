@@ -6,6 +6,7 @@ package interfaces.travel_advisor;
 
 
 import javax.swing.*;
+import java.awt.event.ActionEvent;
 
 
 /**
@@ -33,7 +34,7 @@ public class IndividualSalesReport extends javax.swing.JFrame {
 
         functionPanel = new javax.swing.JPanel();
         refreshButton = new javax.swing.JButton();
-        orderDDMenu = new javax.swing.JComboBox<>();
+        reportTypeDDMenu = new javax.swing.JComboBox<>();
         showDDMenu = new javax.swing.JComboBox<>();
         buttonsPanel = new javax.swing.JPanel();
         homeButton = new javax.swing.JButton();
@@ -55,8 +56,8 @@ public class IndividualSalesReport extends javax.swing.JFrame {
         refreshButton.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         refreshButton.setText("Refresh");
 
-        orderDDMenu.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        orderDDMenu.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Interline Sales Reports", "Domestic Sales Reports" }));
+        reportTypeDDMenu.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        reportTypeDDMenu.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Interline Sales Reports", "Domestic Sales Reports" }));
 
         showDDMenu.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         showDDMenu.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Show", "10", "25", "50", "100" }));
@@ -69,7 +70,7 @@ public class IndividualSalesReport extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(showDDMenu, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(214, 214, 214)
-                .addComponent(orderDDMenu, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(reportTypeDDMenu, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(refreshButton)
                 .addContainerGap())
@@ -81,7 +82,7 @@ public class IndividualSalesReport extends javax.swing.JFrame {
                 .addGroup(functionPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(showDDMenu, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(refreshButton)
-                    .addComponent(orderDDMenu, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(reportTypeDDMenu, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(32, 32, 32))
         );
 
@@ -120,6 +121,24 @@ public class IndividualSalesReport extends javax.swing.JFrame {
         sellTicketPageButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 sellTicketPageButtonActionPerformed(evt);
+            }
+        });
+
+        refreshButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                refreshButtonActionPerformed(evt);
+            }
+        });
+
+        showDDMenu.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                showDDMenuActionPerformed(evt);
+            }
+        });
+
+        reportTypeDDMenu.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                reportTypeDDMenuActionPerformed(evt);
             }
         });
 
@@ -243,6 +262,15 @@ public class IndividualSalesReport extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void reportTypeDDMenuActionPerformed(ActionEvent evt) {
+    }
+
+    private void showDDMenuActionPerformed(ActionEvent evt) {
+    }
+
+    private void refreshButtonActionPerformed(ActionEvent evt) {
+    }
+
     private void homeButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_homeButtonActionPerformed
         dispose();
         new TravelAdvisorHub().setVisible(true);
@@ -305,7 +333,7 @@ public class IndividualSalesReport extends javax.swing.JFrame {
     private javax.swing.JLabel logoLabel;
     private javax.swing.JPanel logoPanel;
     private javax.swing.JButton logoutButton;
-    private javax.swing.JComboBox<String> orderDDMenu;
+    private javax.swing.JComboBox<String> reportTypeDDMenu;
     private javax.swing.JLabel pageTitleLabel;
     private javax.swing.JPanel pageTitlePanel;
     private javax.swing.JButton refreshButton;

@@ -5,6 +5,7 @@
 package interfaces.system_administrator;
 
 import javax.swing.*;
+import java.awt.event.ActionEvent;
 
 /**
  *
@@ -145,11 +146,7 @@ public class AddStock extends javax.swing.JFrame {
         toBatchNoLabel.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         toBatchNoLabel.setText("To Batch Number:");
 
-        toBatchNoField.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                toBatchNoFieldActionPerformed(evt);
-            }
-        });
+
 
         backButton.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         backButton.setText("Back");
@@ -161,6 +158,14 @@ public class AddStock extends javax.swing.JFrame {
 
         addStockButton.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         addStockButton.setText("Add Stock");
+
+        addStockButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                addStockButtonActionPerformed(evt);
+            }
+        });
+        
+        
 
         javax.swing.GroupLayout addStockPanelLayout = new javax.swing.GroupLayout(addStockPanel);
         addStockPanel.setLayout(addStockPanelLayout);
@@ -258,6 +263,9 @@ public class AddStock extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void addStockButtonActionPerformed(ActionEvent evt) {
+    }
 
     private void homeButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_homeButtonActionPerformed
         dispose();

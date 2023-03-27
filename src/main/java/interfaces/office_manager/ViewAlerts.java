@@ -4,9 +4,10 @@
  */
 package interfaces.office_manager;
 
-import Interface.OfficeManager.ManageStock;
+
 
 import javax.swing.*;
+import java.awt.event.ActionEvent;
 
 /**
  *
@@ -102,6 +103,24 @@ public class ViewAlerts extends javax.swing.JFrame {
         manageStockButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 manageStockButtonActionPerformed(evt);
+            }
+        });
+
+        refreshButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                refreshButtonActionPerformed(evt);
+            }
+        });
+
+        showDDMenu.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                showDDMenuActionPerformed(evt);
+            }
+        });
+
+        orderDDMenu.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                orderDDMenuActionPerformed(evt);
             }
         });
 
@@ -271,6 +290,15 @@ public class ViewAlerts extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void orderDDMenuActionPerformed(ActionEvent evt) {
+    }
+
+    private void showDDMenuActionPerformed(ActionEvent evt) {
+    }
+
+    private void refreshButtonActionPerformed(ActionEvent evt) {
+    }
 
     private void homeButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_homeButtonActionPerformed
         dispose();

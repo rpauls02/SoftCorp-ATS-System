@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
-package Interface.OfficeManager;
+package interfaces.office_manager;
 
 import interfaces.office_manager.CustomerRecords;
 import interfaces.office_manager.OfficeManagerHub;
@@ -10,6 +10,7 @@ import interfaces.office_manager.ViewAlerts;
 import interfaces.office_manager.ViewReport;
 
 import javax.swing.*;
+import java.awt.event.ActionEvent;
 
 /**
  *
@@ -233,6 +234,24 @@ public class ManageStock extends javax.swing.JFrame {
             }
         });
 
+        refreshButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                refreshButtonActionPerformed(evt);
+            }
+        });
+
+        showDDMenu.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                showDDMenuActionPerformed(evt);
+            }
+        });
+
+        orderDDMenu.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                orderDDMenuActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout editStockPanelLayout = new javax.swing.GroupLayout(editStockPanel);
         editStockPanel.setLayout(editStockPanelLayout);
         editStockPanelLayout.setHorizontalGroup(
@@ -326,6 +345,15 @@ public class ManageStock extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void orderDDMenuActionPerformed(ActionEvent evt) {
+    }
+
+    private void showDDMenuActionPerformed(ActionEvent evt) {
+    }
+
+    private void refreshButtonActionPerformed(ActionEvent evt) {
+    }
 
     private void homeButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_homeButtonActionPerformed
         dispose();

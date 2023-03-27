@@ -9,6 +9,7 @@ package interfaces.travel_advisor;
     import interfaces.travel_advisor.TicketSales;
 
     import javax.swing.*;
+    import java.awt.event.ActionEvent;
 
 
     /**
@@ -92,6 +93,12 @@ public class TicketRefunds extends javax.swing.JFrame {
         sellTicketPageButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 sellTicketPageButtonActionPerformed(evt);
+            }
+        });
+
+        refundTicketButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                refundTicketButtonActionPerformed(evt);
             }
         });
 
@@ -245,7 +252,10 @@ public class TicketRefunds extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void homeButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_homeButtonActionPerformed
+        private void refundTicketButtonActionPerformed(ActionEvent evt) {
+        }
+
+        private void homeButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_homeButtonActionPerformed
         dispose();
         new TravelAdvisorHub().setVisible(true);
     }//GEN-LAST:event_homeButtonActionPerformed
