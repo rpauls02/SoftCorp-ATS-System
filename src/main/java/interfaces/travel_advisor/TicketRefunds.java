@@ -2,17 +2,9 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
-package interfaces.travel_advisor;
+package Interface.TravelAdvisor;
 
-
-    import interfaces.travel_advisor.IndividualSalesReport;
-    import interfaces.travel_advisor.TicketSales;
-
-    import javax.swing.*;
-    import java.awt.event.ActionEvent;
-
-
-    /**
+/**
  *
  * @author Abdullah
  */
@@ -48,7 +40,7 @@ public class TicketRefunds extends javax.swing.JFrame {
         pageTitlePanel = new javax.swing.JPanel();
         pageTitleLabel = new javax.swing.JLabel();
         logoPanel = new javax.swing.JPanel();
-        logoLabel = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("ATS System | Travel Advisor | Ticket Refunds");
@@ -59,7 +51,7 @@ public class TicketRefunds extends javax.swing.JFrame {
         homeButton.setText("Home");
         homeButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                homeButtonActionPerformed(evt);
+                homeButtonhomeButtonActionPerformed(evt);
             }
         });
 
@@ -75,16 +67,16 @@ public class TicketRefunds extends javax.swing.JFrame {
         logoutButton.setText("Log Out");
         logoutButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                logoutButtonActionPerformed(evt);
+                logoutButtonlogoutButtonActionPerformed(evt);
             }
         });
 
         refundTicketPageButton.setBackground(new java.awt.Color(153, 153, 255));
         refundTicketPageButton.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        refundTicketPageButton.setText("Refund Ticket");
+        refundTicketPageButton.setText("View Tickets");
         refundTicketPageButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                refundTicketPageButtonActionPerformed(evt);
+                refundTicketPageButtonrefundTicketButtonActionPerformed(evt);
             }
         });
 
@@ -93,12 +85,6 @@ public class TicketRefunds extends javax.swing.JFrame {
         sellTicketPageButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 sellTicketPageButtonActionPerformed(evt);
-            }
-        });
-
-        refundTicketButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                refundTicketButtonActionPerformed(evt);
             }
         });
 
@@ -201,22 +187,17 @@ public class TicketRefunds extends javax.swing.JFrame {
             .addComponent(pageTitleLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
-
-        //logoLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/smallLogo.png"))); // NOI18N
-        ImageIcon logo = new ImageIcon("data/smallLogo.png");
-        logoLabel.setIcon(logo);
-        logoPanel.add(logoLabel);
-
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/smallLogo.png"))); // NOI18N
 
         javax.swing.GroupLayout logoPanelLayout = new javax.swing.GroupLayout(logoPanel);
         logoPanel.setLayout(logoPanelLayout);
         logoPanelLayout.setHorizontalGroup(
             logoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(logoLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         logoPanelLayout.setVerticalGroup(
             logoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(logoLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -252,10 +233,7 @@ public class TicketRefunds extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-        private void refundTicketButtonActionPerformed(ActionEvent evt) {
-        }
-
-        private void homeButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_homeButtonActionPerformed
+    private void homeButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_homeButtonActionPerformed
         dispose();
         new TravelAdvisorHub().setVisible(true);
     }//GEN-LAST:event_homeButtonActionPerformed
@@ -318,7 +296,7 @@ public class TicketRefunds extends javax.swing.JFrame {
     private javax.swing.JPanel buttonsPanel;
     private javax.swing.JButton homeButton;
     private javax.swing.JLabel infoPanel;
-    private javax.swing.JLabel logoLabel;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel logoPanel;
     private javax.swing.JButton logoutButton;
     private javax.swing.JLabel pageTitleLabel;

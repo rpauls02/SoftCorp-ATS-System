@@ -2,12 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
-package interfaces.travel_advisor;
-
-
-import javax.swing.*;
-import java.awt.event.ActionEvent;
-
+package Interface.TravelAdvisor;
 
 /**
  *
@@ -39,38 +34,60 @@ public class TicketSales extends javax.swing.JFrame {
         sellTicketPageButton = new javax.swing.JButton();
         customerDetailsPanel = new javax.swing.JPanel();
         customerDetailsLabel = new javax.swing.JLabel();
-        surnameField = new javax.swing.JTextField();
-        paymentTypeDD = new javax.swing.JComboBox<>();
-        cardNumberLabel = new javax.swing.JLabel();
-        phoneLabel = new javax.swing.JLabel();
-        surnameLabel = new javax.swing.JLabel();
-        emailLabel = new javax.swing.JLabel();
-        paymentTypeLabel = new javax.swing.JLabel();
-        phoneField = new javax.swing.JTextField();
+        forenameLabel = new javax.swing.JLabel();
         forenameField = new javax.swing.JTextField();
+        surnameField = new javax.swing.JTextField();
+        surnameLabel = new javax.swing.JLabel();
+        phoneLabel = new javax.swing.JLabel();
+        phoneField = new javax.swing.JTextField();
+        emailLabel = new javax.swing.JLabel();
         emailField = new javax.swing.JTextField();
+        paymentTypeLabel = new javax.swing.JLabel();
+        paymentTypeDDMenu = new javax.swing.JComboBox<>();
+        cardDetailsPanel = new javax.swing.JPanel();
+        cardNameLabel = new javax.swing.JLabel();
         cardNameField = new javax.swing.JTextField();
-        cvvField = new javax.swing.JTextField();
+        cardNumberLabel = new javax.swing.JLabel();
         cardNumberField = new javax.swing.JTextField();
         expDateField = new javax.swing.JTextField();
-        forenameLabel = new javax.swing.JLabel();
-        cardNameLabel = new javax.swing.JLabel();
-        cvvLabel = new javax.swing.JLabel();
+        expDateLabel1 = new javax.swing.JLabel();
+        expDateField1 = new javax.swing.JTextField();
         expDateLabel = new javax.swing.JLabel();
+        cvvField = new javax.swing.JTextField();
+        cvvLabel = new javax.swing.JLabel();
+        existingCustomerPanel = new javax.swing.JPanel();
+        jLabel1 = new javax.swing.JLabel();
+        forenameField1 = new javax.swing.JTextField();
+        customerNameLabel = new javax.swing.JLabel();
+        selectCustomerButton = new javax.swing.JButton();
         ticketDetailsPanel = new javax.swing.JPanel();
         ticketDetailsLabel = new javax.swing.JLabel();
-        IATACurrencyCodeLabel = new javax.swing.JLabel();
-        amountPayableField = new javax.swing.JTextField();
+        saleDateLabel = new javax.swing.JLabel();
         typeOfSaleLabel = new javax.swing.JLabel();
-        amountPayableLabel = new javax.swing.JLabel();
         applicableBlankLabel = new javax.swing.JLabel();
-        voidBlankLabel = new javax.swing.JLabel();
         createTicketButton = new javax.swing.JButton();
-        applicableBlankDD = new javax.swing.JComboBox<>();
-        IATACurrencyCodeDD = new javax.swing.JComboBox<>();
         typeOfSaleDD = new javax.swing.JComboBox<>();
-        voidBlankField = new javax.swing.JTextField();
-        voidButton = new javax.swing.JButton();
+        convertedAmountPanel = new javax.swing.JPanel();
+        IATACurrencyCodeDD = new javax.swing.JComboBox<>();
+        IATACurrencyCodeLabel = new javax.swing.JLabel();
+        exchangeRateLabel = new javax.swing.JLabel();
+        showRateLabel = new javax.swing.JLabel();
+        blankListSP = new javax.swing.JScrollPane();
+        blankList = new javax.swing.JList<>();
+        payLaterLabel = new javax.swing.JLabel();
+        plYesCheckbox = new javax.swing.JCheckBox();
+        plNoCheckbox = new javax.swing.JCheckBox();
+        subtotalLabel = new javax.swing.JLabel();
+        subtotalAmtLabel = new javax.swing.JLabel();
+        taxLabel = new javax.swing.JLabel();
+        taxAmountLabel = new javax.swing.JLabel();
+        otherLabel = new javax.swing.JLabel();
+        otherAmtLabel = new javax.swing.JLabel();
+        usdPayableLabel = new javax.swing.JLabel();
+        usdAmtLabel = new javax.swing.JLabel();
+        iataPayableLabel = new javax.swing.JLabel();
+        iataAmtLabel = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
         pageTitlePanel = new javax.swing.JPanel();
         pageTitleLabel = new javax.swing.JLabel();
         logoPanel = new javax.swing.JPanel();
@@ -78,18 +95,23 @@ public class TicketSales extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("ATS System | Travel Advisor | Ticket Sales");
+        setResizable(false);
 
+        buttonsPanel.setBackground(new java.awt.Color(49, 174, 209));
         buttonsPanel.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
-        homeButton.setBackground(new java.awt.Color(153, 204, 255));
+        homeButton.setBackground(new java.awt.Color(54, 198, 238));
+        homeButton.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         homeButton.setText("Home");
+        homeButton.setPreferredSize(new java.awt.Dimension(79, 42));
         homeButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                homeButtonActionPerformed(evt);
+                homeButtonhomeButtonActionPerformed(evt);
             }
         });
 
-        viewIndSalesButton.setBackground(new java.awt.Color(153, 204, 255));
+        viewIndSalesButton.setBackground(new java.awt.Color(54, 198, 238));
+        viewIndSalesButton.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         viewIndSalesButton.setText("View Individual Sales Report");
         viewIndSalesButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -98,28 +120,29 @@ public class TicketSales extends javax.swing.JFrame {
         });
 
         logoutButton.setBackground(new java.awt.Color(255, 102, 102));
+        logoutButton.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         logoutButton.setText("Log Out");
         logoutButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                logoutButtonActionPerformed(evt);
+                logoutButtonlogoutButtonActionPerformed(evt);
             }
         });
 
-        refundTicketPageButton.setBackground(new java.awt.Color(153, 204, 255));
+        refundTicketPageButton.setBackground(new java.awt.Color(54, 198, 238));
+        refundTicketPageButton.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         refundTicketPageButton.setText("Refund Ticket");
         refundTicketPageButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                refundTicketPageButtonActionPerformed(evt);
+                refundTicketPageButtonrefundTicketButtonActionPerformed(evt);
             }
         });
 
         sellTicketPageButton.setBackground(new java.awt.Color(153, 153, 255));
-        sellTicketPageButton.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        sellTicketPageButton.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         sellTicketPageButton.setText("Sell Ticket");
-
-        createTicketButton.addActionListener(new java.awt.event.ActionListener() {
+        sellTicketPageButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                createTicketButtonActionPerformed(evt);
+                sellTicketPageButtonActionPerformed(evt);
             }
         });
 
@@ -139,7 +162,7 @@ public class TicketSales extends javax.swing.JFrame {
                     .addGroup(buttonsPanelLayout.createSequentialGroup()
                         .addComponent(sellTicketPageButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(refundTicketPageButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                        .addComponent(refundTicketPageButton, javax.swing.GroupLayout.PREFERRED_SIZE, 313, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
         );
         buttonsPanelLayout.setVerticalGroup(
@@ -148,247 +171,534 @@ public class TicketSales extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(buttonsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                     .addComponent(logoutButton, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(viewIndSalesButton, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(viewIndSalesButton, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(homeButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(buttonsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(sellTicketPageButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(refundTicketPageButton, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap())
+                .addGap(6, 6, 6)
+                .addGroup(buttonsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(refundTicketPageButton, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(sellTicketPageButton, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(2, 2, 2))
         );
 
-        customerDetailsPanel.setBackground(new java.awt.Color(153, 204, 255));
-        customerDetailsPanel.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        customerDetailsPanel.setBackground(new java.awt.Color(49, 174, 209));
+        customerDetailsPanel.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        customerDetailsPanel.setPreferredSize(new java.awt.Dimension(588, 678));
 
+        customerDetailsLabel.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         customerDetailsLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         customerDetailsLabel.setText("Customer Details");
         customerDetailsLabel.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
-        cardNumberLabel.setText("Card Number:");
+        forenameLabel.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        forenameLabel.setText("Forename:");
 
-        phoneLabel.setText("Phone:");
+        forenameField.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        forenameField.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                forenameFieldActionPerformed(evt);
+            }
+        });
 
+        surnameField.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+
+        surnameLabel.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         surnameLabel.setText("Surname:");
 
+        phoneLabel.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        phoneLabel.setText("Phone:");
+
+        phoneField.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+
+        emailLabel.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         emailLabel.setText("Email:");
 
+        emailField.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+
+        paymentTypeLabel.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         paymentTypeLabel.setText("Payment Type:");
-        
 
-        forenameLabel.setText("Forename(s):");
+        paymentTypeDDMenu.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        paymentTypeDDMenu.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Select Payment Type", "Card", "Cash" }));
 
+        cardDetailsPanel.setBackground(new java.awt.Color(49, 174, 209));
+        cardDetailsPanel.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+
+        cardNameLabel.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         cardNameLabel.setText("Card Name:");
 
+        cardNameField.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+
+        cardNumberLabel.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        cardNumberLabel.setText("Card Number:");
+
+        cardNumberField.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        cardNumberField.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cardNumberFieldActionPerformed(evt);
+            }
+        });
+
+        expDateField.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+
+        expDateLabel1.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        expDateLabel1.setText("Issue No.(if applicable):");
+
+        expDateField1.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+
+        expDateLabel.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        expDateLabel.setText("Expiry Date:");
+
+        cvvField.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+
+        cvvLabel.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         cvvLabel.setText("CVV:");
 
-        expDateLabel.setText("Exp. Date:");
+        javax.swing.GroupLayout cardDetailsPanelLayout = new javax.swing.GroupLayout(cardDetailsPanel);
+        cardDetailsPanel.setLayout(cardDetailsPanelLayout);
+        cardDetailsPanelLayout.setHorizontalGroup(
+            cardDetailsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(cardDetailsPanelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(cardDetailsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(cardDetailsPanelLayout.createSequentialGroup()
+                        .addComponent(cardNumberLabel)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(cardNumberField))
+                    .addGroup(cardDetailsPanelLayout.createSequentialGroup()
+                        .addComponent(cardNameLabel)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(cardNameField))
+                    .addGroup(cardDetailsPanelLayout.createSequentialGroup()
+                        .addGroup(cardDetailsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(expDateLabel1)
+                            .addGroup(cardDetailsPanelLayout.createSequentialGroup()
+                                .addComponent(expDateLabel)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(cvvField, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGroup(cardDetailsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(cardDetailsPanelLayout.createSequentialGroup()
+                                .addGap(85, 85, 85)
+                                .addComponent(cvvLabel)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(expDateField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(0, 0, Short.MAX_VALUE))
+                            .addGroup(cardDetailsPanelLayout.createSequentialGroup()
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(expDateField)))))
+                .addContainerGap())
+        );
+        cardDetailsPanelLayout.setVerticalGroup(
+            cardDetailsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(cardDetailsPanelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(cardDetailsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(cardNumberField, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(cardNumberLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(cardDetailsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(cardNameLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(cardNameField, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(cardDetailsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(expDateLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(expDateField, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(cardDetailsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(cardDetailsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(expDateField1, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(cvvLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(cardDetailsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(expDateLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(cvvField, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        expDateLabel.getAccessibleContext().setAccessibleDescription("");
+
+        existingCustomerPanel.setBackground(new java.awt.Color(49, 174, 209));
+        existingCustomerPanel.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+
+        jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel1.setText("Select Existing Customer");
+        jLabel1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+
+        forenameField1.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        forenameField1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                forenameField1ActionPerformed(evt);
+            }
+        });
+
+        customerNameLabel.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        customerNameLabel.setText("Name:");
+
+        selectCustomerButton.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        selectCustomerButton.setText("Select");
+        selectCustomerButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                selectCustomerButtonActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout existingCustomerPanelLayout = new javax.swing.GroupLayout(existingCustomerPanel);
+        existingCustomerPanel.setLayout(existingCustomerPanelLayout);
+        existingCustomerPanelLayout.setHorizontalGroup(
+            existingCustomerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(existingCustomerPanelLayout.createSequentialGroup()
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 213, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
+            .addGroup(existingCustomerPanelLayout.createSequentialGroup()
+                .addGap(16, 16, 16)
+                .addComponent(customerNameLabel)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(forenameField1, javax.swing.GroupLayout.PREFERRED_SIZE, 292, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(selectCustomerButton)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        existingCustomerPanelLayout.setVerticalGroup(
+            existingCustomerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(existingCustomerPanelLayout.createSequentialGroup()
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(existingCustomerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(existingCustomerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(customerNameLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(selectCustomerButton))
+                    .addComponent(forenameField1))
+                .addGap(0, 11, Short.MAX_VALUE))
+        );
 
         javax.swing.GroupLayout customerDetailsPanelLayout = new javax.swing.GroupLayout(customerDetailsPanel);
         customerDetailsPanel.setLayout(customerDetailsPanelLayout);
         customerDetailsPanelLayout.setHorizontalGroup(
             customerDetailsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(customerDetailsPanelLayout.createSequentialGroup()
-                .addGap(96, 96, 96)
-                .addGroup(customerDetailsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(customerDetailsPanelLayout.createSequentialGroup()
-                        .addGroup(customerDetailsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addComponent(phoneLabel, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(emailLabel, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(customerDetailsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(emailField)
-                            .addComponent(phoneField)))
-                    .addGroup(customerDetailsPanelLayout.createSequentialGroup()
-                        .addComponent(forenameLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap()
+                .addComponent(customerDetailsLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, customerDetailsPanelLayout.createSequentialGroup()
+                .addGap(25, 25, 25)
+                .addGroup(customerDetailsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(existingCustomerPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(cardDetailsPanel, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, customerDetailsPanelLayout.createSequentialGroup()
+                        .addComponent(forenameLabel)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(forenameField))
-                    .addGroup(customerDetailsPanelLayout.createSequentialGroup()
-                        .addComponent(surnameLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, customerDetailsPanelLayout.createSequentialGroup()
+                        .addComponent(paymentTypeLabel)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(surnameField))
-                    .addGroup(customerDetailsPanelLayout.createSequentialGroup()
-                        .addComponent(cardNumberLabel)
+                        .addComponent(paymentTypeDDMenu, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, customerDetailsPanelLayout.createSequentialGroup()
+                        .addComponent(emailLabel)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(cardNumberField))
+                        .addComponent(emailField))
                     .addGroup(customerDetailsPanelLayout.createSequentialGroup()
-                        .addComponent(cardNameLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(phoneLabel)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(cardNameField))
-                    .addGroup(customerDetailsPanelLayout.createSequentialGroup()
-                        .addGroup(customerDetailsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(customerDetailsPanelLayout.createSequentialGroup()
-                                .addComponent(cvvLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(cvvField, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(customerDetailsPanelLayout.createSequentialGroup()
-                                .addComponent(expDateLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(expDateField, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(customerDetailsPanelLayout.createSequentialGroup()
-                                .addComponent(paymentTypeLabel)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(paymentTypeDD, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(0, 164, Short.MAX_VALUE)))
-                .addGap(119, 119, 119))
-            .addComponent(customerDetailsLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(phoneField))
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, customerDetailsPanelLayout.createSequentialGroup()
+                        .addComponent(surnameLabel)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(surnameField)))
+                .addGap(26, 26, 26))
         );
         customerDetailsPanelLayout.setVerticalGroup(
             customerDetailsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(customerDetailsPanelLayout.createSequentialGroup()
-                .addComponent(customerDetailsLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(157, 157, 157)
+                .addContainerGap()
+                .addComponent(customerDetailsLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
                 .addGroup(customerDetailsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(forenameField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(forenameLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                    .addComponent(forenameField, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(forenameLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(customerDetailsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(customerDetailsPanelLayout.createSequentialGroup()
+                        .addGap(19, 19, 19)
+                        .addComponent(surnameLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(customerDetailsPanelLayout.createSequentialGroup()
+                        .addGap(18, 18, 18)
+                        .addComponent(surnameField, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(18, 18, 18)
                 .addGroup(customerDetailsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(surnameLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 18, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(surnameField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                    .addComponent(phoneField, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(phoneLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
                 .addGroup(customerDetailsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(phoneLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(phoneField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(7, 7, 7)
+                    .addComponent(emailLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(emailField, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
                 .addGroup(customerDetailsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(emailLabel)
-                    .addComponent(emailField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(customerDetailsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(paymentTypeLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(paymentTypeDD))
-                .addGap(70, 70, 70)
-                .addGroup(customerDetailsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(cardNameField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(cardNameLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(customerDetailsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(cardNumberField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(cardNumberLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(customerDetailsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(expDateField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(expDateLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(customerDetailsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(cvvField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(cvvLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(141, 141, 141))
+                    .addComponent(paymentTypeLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(paymentTypeDDMenu))
+                .addGap(18, 18, 18)
+                .addComponent(cardDetailsPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(existingCustomerPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(38, 38, 38))
         );
 
-        ticketDetailsPanel.setBackground(new java.awt.Color(153, 204, 255));
-        ticketDetailsPanel.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        ticketDetailsPanel.setBackground(new java.awt.Color(49, 174, 209));
+        ticketDetailsPanel.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        ticketDetailsPanel.setPreferredSize(new java.awt.Dimension(594, 477));
 
+        ticketDetailsLabel.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         ticketDetailsLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        ticketDetailsLabel.setText("Ticket Details");
+        ticketDetailsLabel.setText("Sale Details");
         ticketDetailsLabel.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
-        IATACurrencyCodeLabel.setText("IATA Currency Code:");
+        saleDateLabel.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        saleDateLabel.setText("Date:");
 
+        typeOfSaleLabel.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         typeOfSaleLabel.setText("Type of Sale:");
 
-        amountPayableLabel.setText("Amount Payable:");
+        applicableBlankLabel.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        applicableBlankLabel.setText("Applicable Blank(s):");
 
-        applicableBlankLabel.setText("Applicable Blank:");
-
-        voidBlankLabel.setText("Void Blank:");
-
+        createTicketButton.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         createTicketButton.setText("Create Ticket");
 
+        typeOfSaleDD.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        typeOfSaleDD.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Select Sale Type", "Interline", "Domestic" }));
         typeOfSaleDD.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 typeOfSaleDDActionPerformed(evt);
             }
         });
 
-        paymentTypeDD.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                paymentTypeDDActionPerformed(evt);
-            }
-        });
+        convertedAmountPanel.setBackground(new java.awt.Color(49, 174, 209));
+        convertedAmountPanel.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        convertedAmountPanel.setMaximumSize(new java.awt.Dimension(514, 207));
+        convertedAmountPanel.setMinimumSize(new java.awt.Dimension(514, 207));
+        convertedAmountPanel.setPreferredSize(new java.awt.Dimension(514, 207));
+        convertedAmountPanel.setRequestFocusEnabled(false);
+
+        IATACurrencyCodeDD.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        IATACurrencyCodeDD.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Select IATA Code", "AED", "AFN", "ALL", "AMD", "ANG", "AOA", "ARS", "AUD", "AWG", "AZN", "BAM", "BBD", "BDT", "BGN", "BHD", "BIF", "BMD", "BND", "BOB", "BOV", "BRL", "BSD", "BTN", "BWP", "BYN", "BZD", "CAD", "CDF", "CHE", "CHF", "CHW", "CLF", "CLP", "CNY", "COP", "COU", "CRC", "CUC", "CUP", "CVE", "CZK", "DJF", "DKK", "DOP", "DZD", "EGP", "ERN", "ETB", "EUR", "FJD", "FKP", "GBP", "GEL", "GHS", "GIP", "GMD", "GNF", "GTQ", "GYD", "HKD", "HNL", "HRK", "HTG", "HUF", "IDR", "ILS", "INR", "IQD", "IRR", "ISK", "JMD", "JOD", "JPY", "KES", "KGS", "KHR", "KMF", "KPW", "KRW", "KWD", "KYD", "KZT", "LAK", "LBP", "LKR", "LRD", "LSL", "LYD", "MAD", "MDL", "MGA", "MKD", "MMK", "MNT", "MOP", "MRU", "MVR", "MWK", "MXN", "MXV", "MYR", "MZN", "NAD", "NGN", "NIO", "NOK", "NPR", "NZD", "OMR", "PAB", "PEN", "PGK", "PHP", "PKR", "PLN", "PYG", "QAR", "RON", "RSD", "RUB", "RWF", "SAR", "SBD", "SCR", "SDG", "SEK", "SGD", "SHP", "SLE", "SOS", "SRD", "SSP", "STN", "SVC", "SYP", "SZL", "THB", "TJS", "TMT", "TND", "TOP", "TRY", "TTD", "TWD", "TZS", "UAH", "UGX", "USD", "USN", "UYI", "UYU", "UZS", "VED", "VEF", "BND", "VUV", "WST", "XAF", "XCD", "XOF", "XPF", "XSU", "XUA", "YER", "ZAR", "ZMW", "ZWL" }));
         IATACurrencyCodeDD.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 IATACurrencyCodeDDActionPerformed(evt);
             }
         });
-        applicableBlankDD.addActionListener(new java.awt.event.ActionListener() {
+
+        IATACurrencyCodeLabel.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        IATACurrencyCodeLabel.setText("IATA Currency Code:");
+
+        exchangeRateLabel.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        exchangeRateLabel.setText("Exchange Rate:");
+
+        showRateLabel.setBackground(new java.awt.Color(255, 255, 255));
+        showRateLabel.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        showRateLabel.setForeground(new java.awt.Color(255, 255, 255));
+        showRateLabel.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+
+        javax.swing.GroupLayout convertedAmountPanelLayout = new javax.swing.GroupLayout(convertedAmountPanel);
+        convertedAmountPanel.setLayout(convertedAmountPanelLayout);
+        convertedAmountPanelLayout.setHorizontalGroup(
+            convertedAmountPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(convertedAmountPanelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(convertedAmountPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(convertedAmountPanelLayout.createSequentialGroup()
+                        .addComponent(IATACurrencyCodeLabel)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(IATACurrencyCodeDD, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, convertedAmountPanelLayout.createSequentialGroup()
+                        .addComponent(exchangeRateLabel)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(showRateLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                .addContainerGap())
+        );
+        convertedAmountPanelLayout.setVerticalGroup(
+            convertedAmountPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(convertedAmountPanelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(convertedAmountPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(IATACurrencyCodeLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 30, Short.MAX_VALUE)
+                    .addComponent(IATACurrencyCodeDD, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addGroup(convertedAmountPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(exchangeRateLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 30, Short.MAX_VALUE)
+                    .addComponent(showRateLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        blankList.setBackground(new java.awt.Color(49, 174, 209));
+        blankList.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        blankList.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        blankList.setModel(new javax.swing.AbstractListModel<String>() {
+            String[] strings = { "---Interlines---", "444 - Automatic Ticketing(4 coupons)", "440 - Manual Ticketing", "420 - Automatic Ticketing(2 coupons)", "---Domestic---", "201 - Manual Ticketing(2 coupons)", "101 - Manual Ticketing(1 coupon)", "---Miscellaneous---", "451 - Excess Luggage", "452 - Other Services" };
+            public int getSize() { return strings.length; }
+            public String getElementAt(int i) { return strings[i]; }
+        });
+        blankListSP.setViewportView(blankList);
+
+        payLaterLabel.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        payLaterLabel.setText("Pay Later?:");
+
+        plYesCheckbox.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        plYesCheckbox.setText("Yes");
+        plYesCheckbox.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                applicableBlankDDActionPerformed(evt);
+                plYesCheckboxActionPerformed(evt);
             }
         });
 
+        plNoCheckbox.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        plNoCheckbox.setText("No");
+        plNoCheckbox.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                plNoCheckboxActionPerformed(evt);
+            }
+        });
 
+        subtotalLabel.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        subtotalLabel.setText("Subtotal:");
 
-        voidButton.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        voidButton.setText("Void");
+        subtotalAmtLabel.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        subtotalAmtLabel.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+
+        taxLabel.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        taxLabel.setText("Tax:");
+
+        taxAmountLabel.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        taxAmountLabel.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+
+        otherLabel.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        otherLabel.setText("Other:");
+
+        otherAmtLabel.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        otherAmtLabel.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+
+        usdPayableLabel.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        usdPayableLabel.setText("Amount Payable (USD):");
+
+        usdAmtLabel.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        usdAmtLabel.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+
+        iataPayableLabel.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        iataPayableLabel.setText("Amount Payable (IATA):");
+
+        iataAmtLabel.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        iataAmtLabel.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+
+        jLabel6.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        jLabel6.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
         javax.swing.GroupLayout ticketDetailsPanelLayout = new javax.swing.GroupLayout(ticketDetailsPanel);
         ticketDetailsPanel.setLayout(ticketDetailsPanelLayout);
         ticketDetailsPanelLayout.setHorizontalGroup(
             ticketDetailsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(ticketDetailsLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(ticketDetailsPanelLayout.createSequentialGroup()
-                .addGap(163, 163, 163)
+                .addContainerGap()
                 .addGroup(ticketDetailsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(ticketDetailsLabel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, ticketDetailsPanelLayout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(createTicketButton))
                     .addGroup(ticketDetailsPanelLayout.createSequentialGroup()
-                        .addComponent(typeOfSaleLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(typeOfSaleDD, javax.swing.GroupLayout.PREFERRED_SIZE, 173, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(ticketDetailsPanelLayout.createSequentialGroup()
-                        .addComponent(IATACurrencyCodeLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(IATACurrencyCodeDD, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(voidBlankLabel)
-                    .addGroup(ticketDetailsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, ticketDetailsPanelLayout.createSequentialGroup()
-                            .addComponent(voidBlankField, javax.swing.GroupLayout.PREFERRED_SIZE, 163, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                            .addComponent(voidButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, ticketDetailsPanelLayout.createSequentialGroup()
-                            .addGroup(ticketDetailsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(applicableBlankLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(amountPayableLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                            .addGroup(ticketDetailsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(amountPayableField)
-                                .addComponent(applicableBlankDD, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                .addContainerGap(175, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, ticketDetailsPanelLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(createTicketButton)
-                .addGap(32, 32, 32))
+                        .addGap(0, 26, Short.MAX_VALUE)
+                        .addGroup(ticketDetailsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addGroup(ticketDetailsPanelLayout.createSequentialGroup()
+                                .addComponent(typeOfSaleLabel)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(typeOfSaleDD, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addGroup(ticketDetailsPanelLayout.createSequentialGroup()
+                                .addComponent(applicableBlankLabel)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(blankListSP, javax.swing.GroupLayout.DEFAULT_SIZE, 367, Short.MAX_VALUE))
+                            .addComponent(convertedAmountPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 525, Short.MAX_VALUE)
+                            .addGroup(ticketDetailsPanelLayout.createSequentialGroup()
+                                .addComponent(usdPayableLabel)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(usdAmtLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addGroup(ticketDetailsPanelLayout.createSequentialGroup()
+                                .addComponent(iataPayableLabel)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(iataAmtLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addGroup(ticketDetailsPanelLayout.createSequentialGroup()
+                                .addComponent(saleDateLabel)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jLabel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, ticketDetailsPanelLayout.createSequentialGroup()
+                                .addGroup(ticketDetailsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(ticketDetailsPanelLayout.createSequentialGroup()
+                                        .addComponent(taxLabel)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(taxAmountLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(ticketDetailsPanelLayout.createSequentialGroup()
+                                        .addComponent(payLaterLabel)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addComponent(plYesCheckbox)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(plNoCheckbox)))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addGroup(ticketDetailsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                    .addGroup(ticketDetailsPanelLayout.createSequentialGroup()
+                                        .addComponent(subtotalLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(subtotalAmtLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 183, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(ticketDetailsPanelLayout.createSequentialGroup()
+                                        .addComponent(otherLabel)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addComponent(otherAmtLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                        .addGap(0, 27, Short.MAX_VALUE)))
+                .addContainerGap())
         );
         ticketDetailsPanelLayout.setVerticalGroup(
             ticketDetailsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(ticketDetailsPanelLayout.createSequentialGroup()
-                .addComponent(ticketDetailsLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(158, 158, 158)
-                .addGroup(ticketDetailsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(typeOfSaleLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(typeOfSaleDD, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(ticketDetailsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(IATACurrencyCodeLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 18, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(IATACurrencyCodeDD, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(ticketDetailsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(applicableBlankLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(applicableBlankDD, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(7, 7, 7)
-                .addGroup(ticketDetailsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(amountPayableLabel)
-                    .addComponent(amountPayableField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(42, 42, 42)
-                .addComponent(voidBlankLabel)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(ticketDetailsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(voidBlankField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(voidButton))
+                .addContainerGap()
+                .addComponent(ticketDetailsLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addGroup(ticketDetailsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(saleDateLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 30, Short.MAX_VALUE)
+                    .addComponent(jLabel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addGroup(ticketDetailsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(typeOfSaleLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(typeOfSaleDD, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addComponent(convertedAmountPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addGroup(ticketDetailsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(applicableBlankLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(blankListSP, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(ticketDetailsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(ticketDetailsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(subtotalLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(payLaterLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(plYesCheckbox)
+                        .addComponent(plNoCheckbox))
+                    .addComponent(subtotalAmtLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(ticketDetailsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(ticketDetailsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(taxLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 30, Short.MAX_VALUE)
+                        .addComponent(taxAmountLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(ticketDetailsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(otherLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(otherAmtLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(18, 18, 18)
+                .addGroup(ticketDetailsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(usdPayableLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 30, Short.MAX_VALUE)
+                    .addComponent(usdAmtLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addGroup(ticketDetailsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(iataPayableLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 30, Short.MAX_VALUE)
+                    .addComponent(iataAmtLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
                 .addComponent(createTicketButton)
-                .addGap(25, 25, 25))
+                .addContainerGap())
         );
 
-        pageTitlePanel.setBackground(new java.awt.Color(153, 204, 255));
+        convertedAmountPanel.getAccessibleContext().setAccessibleName("");
+
+        pageTitlePanel.setBackground(new java.awt.Color(49, 174, 209));
         pageTitlePanel.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
         pageTitleLabel.setBackground(new java.awt.Color(153, 204, 255));
@@ -400,29 +710,40 @@ public class TicketSales extends javax.swing.JFrame {
         pageTitlePanel.setLayout(pageTitlePanelLayout);
         pageTitlePanelLayout.setHorizontalGroup(
             pageTitlePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(pageTitleLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(pageTitleLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 476, Short.MAX_VALUE)
         );
         pageTitlePanelLayout.setVerticalGroup(
             pageTitlePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(pageTitleLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pageTitlePanelLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(pageTitleLabel)
+                .addGap(35, 35, 35))
         );
 
+        logoPanel.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        logoPanel.setPreferredSize(new java.awt.Dimension(104, 104));
 
-        //logoLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/smallLogo.png"))); // NOI18N
-        ImageIcon logo = new ImageIcon("data/smallLogo.png");
-        logoLabel.setIcon(logo);
-        logoPanel.add(logoLabel);
-
+        logoLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/smallLogo.png"))); // NOI18N
 
         javax.swing.GroupLayout logoPanelLayout = new javax.swing.GroupLayout(logoPanel);
         logoPanel.setLayout(logoPanelLayout);
         logoPanelLayout.setHorizontalGroup(
             logoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(logoLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGap(0, 102, Short.MAX_VALUE)
+            .addGroup(logoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(logoPanelLayout.createSequentialGroup()
+                    .addGap(0, 0, Short.MAX_VALUE)
+                    .addComponent(logoLabel)
+                    .addGap(0, 0, Short.MAX_VALUE)))
         );
         logoPanelLayout.setVerticalGroup(
             logoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(logoLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGap(0, 0, Short.MAX_VALUE)
+            .addGroup(logoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(logoPanelLayout.createSequentialGroup()
+                    .addGap(0, 0, Short.MAX_VALUE)
+                    .addComponent(logoLabel)
+                    .addGap(0, 0, Short.MAX_VALUE)))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -430,13 +751,12 @@ public class TicketSales extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(0, 0, 0)
+                .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(2, 2, 2)
                         .addComponent(logoPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(pageTitlePanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addComponent(pageTitlePanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(customerDetailsPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -447,32 +767,21 @@ public class TicketSales extends javax.swing.JFrame {
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(buttonsPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(pageTitlePanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addComponent(logoPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addComponent(pageTitlePanel, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(logoPanel, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(buttonsPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(ticketDetailsPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(ticketDetailsPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 678, Short.MAX_VALUE)
                     .addComponent(customerDetailsPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
-
-    private void applicableBlankDDActionPerformed(ActionEvent evt) {
-    }
-
-    private void IATACurrencyCodeDDActionPerformed(ActionEvent evt) {
-    }
-
-    private void paymentTypeDDActionPerformed(ActionEvent evt) {
-    }
-
-    private void createTicketButtonActionPerformed(ActionEvent evt) {
-    }
 
     private void homeButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_homeButtonActionPerformed
         dispose();
@@ -492,10 +801,6 @@ public class TicketSales extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_forenameFieldActionPerformed
 
-    private void cardNumberFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cardNumberFieldActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_cardNumberFieldActionPerformed
-
     private void viewIndSalesButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_viewIndSalesButtonActionPerformed
         dispose();
         new IndividualSalesReport().setVisible(true);
@@ -504,6 +809,34 @@ public class TicketSales extends javax.swing.JFrame {
     private void typeOfSaleDDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_typeOfSaleDDActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_typeOfSaleDDActionPerformed
+
+    private void cardNumberFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cardNumberFieldActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cardNumberFieldActionPerformed
+
+    private void sellTicketPageButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sellTicketPageButtonActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_sellTicketPageButtonActionPerformed
+
+    private void forenameField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_forenameField1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_forenameField1ActionPerformed
+
+    private void selectCustomerButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_selectCustomerButtonActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_selectCustomerButtonActionPerformed
+
+    private void IATACurrencyCodeDDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_IATACurrencyCodeDDActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_IATACurrencyCodeDDActionPerformed
+
+    private void plYesCheckboxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_plYesCheckboxActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_plYesCheckboxActionPerformed
+
+    private void plNoCheckboxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_plNoCheckboxActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_plNoCheckboxActionPerformed
 
     /**
      * @param args the command line arguments
@@ -544,47 +877,69 @@ public class TicketSales extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JComboBox<String> IATACurrencyCodeDD;
     private javax.swing.JLabel IATACurrencyCodeLabel;
-    private javax.swing.JTextField amountPayableField;
-    private javax.swing.JLabel amountPayableLabel;
-    private javax.swing.JComboBox<String> applicableBlankDD;
     private javax.swing.JLabel applicableBlankLabel;
+    private javax.swing.JList<String> blankList;
+    private javax.swing.JScrollPane blankListSP;
     private javax.swing.JPanel buttonsPanel;
+    private javax.swing.JPanel cardDetailsPanel;
     private javax.swing.JTextField cardNameField;
     private javax.swing.JLabel cardNameLabel;
     private javax.swing.JTextField cardNumberField;
     private javax.swing.JLabel cardNumberLabel;
+    private javax.swing.JPanel convertedAmountPanel;
     private javax.swing.JButton createTicketButton;
     private javax.swing.JLabel customerDetailsLabel;
     private javax.swing.JPanel customerDetailsPanel;
+    private javax.swing.JLabel customerNameLabel;
     private javax.swing.JTextField cvvField;
     private javax.swing.JLabel cvvLabel;
     private javax.swing.JTextField emailField;
     private javax.swing.JLabel emailLabel;
+    private javax.swing.JLabel exchangeRateLabel;
+    private javax.swing.JPanel existingCustomerPanel;
     private javax.swing.JTextField expDateField;
+    private javax.swing.JTextField expDateField1;
     private javax.swing.JLabel expDateLabel;
+    private javax.swing.JLabel expDateLabel1;
     private javax.swing.JTextField forenameField;
+    private javax.swing.JTextField forenameField1;
     private javax.swing.JLabel forenameLabel;
     private javax.swing.JButton homeButton;
+    private javax.swing.JLabel iataAmtLabel;
+    private javax.swing.JLabel iataPayableLabel;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel logoLabel;
     private javax.swing.JPanel logoPanel;
     private javax.swing.JButton logoutButton;
+    private javax.swing.JLabel otherAmtLabel;
+    private javax.swing.JLabel otherLabel;
     private javax.swing.JLabel pageTitleLabel;
     private javax.swing.JPanel pageTitlePanel;
-    private javax.swing.JComboBox<String> paymentTypeDD;
+    private javax.swing.JLabel payLaterLabel;
+    private javax.swing.JComboBox<String> paymentTypeDDMenu;
     private javax.swing.JLabel paymentTypeLabel;
     private javax.swing.JTextField phoneField;
     private javax.swing.JLabel phoneLabel;
+    private javax.swing.JCheckBox plNoCheckbox;
+    private javax.swing.JCheckBox plYesCheckbox;
     private javax.swing.JButton refundTicketPageButton;
+    private javax.swing.JLabel saleDateLabel;
+    private javax.swing.JButton selectCustomerButton;
     private javax.swing.JButton sellTicketPageButton;
+    private javax.swing.JLabel showRateLabel;
+    private javax.swing.JLabel subtotalAmtLabel;
+    private javax.swing.JLabel subtotalLabel;
     private javax.swing.JTextField surnameField;
     private javax.swing.JLabel surnameLabel;
+    private javax.swing.JLabel taxAmountLabel;
+    private javax.swing.JLabel taxLabel;
     private javax.swing.JLabel ticketDetailsLabel;
     private javax.swing.JPanel ticketDetailsPanel;
     private javax.swing.JComboBox<String> typeOfSaleDD;
     private javax.swing.JLabel typeOfSaleLabel;
+    private javax.swing.JLabel usdAmtLabel;
+    private javax.swing.JLabel usdPayableLabel;
     private javax.swing.JButton viewIndSalesButton;
-    private javax.swing.JTextField voidBlankField;
-    private javax.swing.JLabel voidBlankLabel;
-    private javax.swing.JButton voidButton;
     // End of variables declaration//GEN-END:variables
 }
