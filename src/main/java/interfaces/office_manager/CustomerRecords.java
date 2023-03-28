@@ -4,9 +4,8 @@
  */
 package interfaces.office_manager;
 
-
-import javax.swing.*;
-import java.awt.event.ActionEvent;
+import Interface.OfficeManager.AddCustomer;
+import Interface.OfficeManager.ManageStock;
 
 /**
  *
@@ -30,72 +29,56 @@ public class CustomerRecords extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPanel1 = new javax.swing.JPanel();
-        jButton1 = new javax.swing.JButton();
         buttonsPanel = new javax.swing.JPanel();
         homeButton = new javax.swing.JButton();
         viewCustomerRecordsButton = new javax.swing.JButton();
         logoutButton = new javax.swing.JButton();
         viewAlertsButton = new javax.swing.JButton();
-        viewReportButton = new javax.swing.JButton();
         manageStockButton = new javax.swing.JButton();
+        viewReportButton = new javax.swing.JButton();
         pageTitlePanel = new javax.swing.JPanel();
         pageTitleLabel = new javax.swing.JLabel();
         functionPanel = new javax.swing.JPanel();
-        tableName = new javax.swing.JLabel();
+        refreshButton = new javax.swing.JButton();
         showDDMenu = new javax.swing.JComboBox<>();
         orderDDMenu = new javax.swing.JComboBox<>();
-        refreshButton = new javax.swing.JButton();
+        tableNameLabel = new javax.swing.JLabel();
         tableScrollPane = new javax.swing.JScrollPane();
         customerInformationTable = new javax.swing.JTable();
-        customerRecordsButtonPanel = new javax.swing.JPanel();
+        tableFunctionsPanel = new javax.swing.JPanel();
         findButton = new javax.swing.JButton();
         viewTicketsButton = new javax.swing.JButton();
         editButton = new javax.swing.JButton();
         deleteButton = new javax.swing.JButton();
         addCustomerButton = new javax.swing.JButton();
+        jTextField1 = new javax.swing.JTextField();
         logoPanel = new javax.swing.JPanel();
         logoLabel = new javax.swing.JLabel();
 
-        jPanel1.setBackground(new java.awt.Color(153, 204, 255));
-        jPanel1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-
-        jButton1.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        jButton1.setText("Update");
-
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(63, 63, 63)
-                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jButton1)
-                .addGap(40, 40, 40))
-        );
-
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("ATS System | Office Manager | View Customer Records");
+        setBackground(new java.awt.Color(49, 174, 209));
+        setMinimumSize(new java.awt.Dimension(1200, 800));
 
+        buttonsPanel.setBackground(new java.awt.Color(49, 174, 209));
         buttonsPanel.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
-        homeButton.setBackground(new java.awt.Color(153, 204, 255));
+        homeButton.setBackground(new java.awt.Color(54, 198, 238));
+        homeButton.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         homeButton.setText("Home");
+        homeButton.setPreferredSize(new java.awt.Dimension(79, 40));
         homeButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                homeButtonActionPerformed(evt);
+                homeButtonhomeButtonActionPerformed(evt);
             }
         });
 
         viewCustomerRecordsButton.setBackground(new java.awt.Color(153, 153, 255));
-        viewCustomerRecordsButton.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        viewCustomerRecordsButton.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         viewCustomerRecordsButton.setText("View Customer Records");
+        viewCustomerRecordsButton.setMaximumSize(new java.awt.Dimension(230, 40));
+        viewCustomerRecordsButton.setMinimumSize(new java.awt.Dimension(230, 40));
+        viewCustomerRecordsButton.setPreferredSize(new java.awt.Dimension(230, 40));
         viewCustomerRecordsButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 viewCustomerRecordsButtonActionPerformed(evt);
@@ -103,34 +86,50 @@ public class CustomerRecords extends javax.swing.JFrame {
         });
 
         logoutButton.setBackground(new java.awt.Color(255, 102, 102));
+        logoutButton.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         logoutButton.setText("Log Out");
+        logoutButton.setMaximumSize(new java.awt.Dimension(95, 40));
+        logoutButton.setMinimumSize(new java.awt.Dimension(95, 40));
+        logoutButton.setPreferredSize(new java.awt.Dimension(95, 40));
         logoutButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                logoutButtonActionPerformed(evt);
+                logoutButtonlogoutButtonActionPerformed(evt);
             }
         });
 
-        viewAlertsButton.setBackground(new java.awt.Color(153, 204, 255));
+        viewAlertsButton.setBackground(new java.awt.Color(54, 198, 238));
+        viewAlertsButton.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         viewAlertsButton.setText("View Alerts");
+        viewAlertsButton.setMaximumSize(new java.awt.Dimension(117, 40));
+        viewAlertsButton.setMinimumSize(new java.awt.Dimension(117, 40));
+        viewAlertsButton.setPreferredSize(new java.awt.Dimension(117, 40));
         viewAlertsButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                viewAlertsButtonActionPerformed(evt);
+                viewAlertsButtonrefundTicketButtonActionPerformed(evt);
             }
         });
 
-        viewReportButton.setBackground(new java.awt.Color(153, 204, 255));
+        manageStockButton.setBackground(new java.awt.Color(54, 198, 238));
+        manageStockButton.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        manageStockButton.setText("Manage Stock");
+        manageStockButton.setMaximumSize(new java.awt.Dimension(143, 40));
+        manageStockButton.setMinimumSize(new java.awt.Dimension(143, 40));
+        manageStockButton.setPreferredSize(new java.awt.Dimension(143, 40));
+        manageStockButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                manageStockButtonrefundTicketButtonActionPerformed(evt);
+            }
+        });
+
+        viewReportButton.setBackground(new java.awt.Color(54, 198, 238));
+        viewReportButton.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         viewReportButton.setText("Generate/View Report");
+        viewReportButton.setMaximumSize(new java.awt.Dimension(203, 40));
+        viewReportButton.setMinimumSize(new java.awt.Dimension(203, 40));
+        viewReportButton.setPreferredSize(new java.awt.Dimension(203, 40));
         viewReportButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 viewReportButtonActionPerformed(evt);
-            }
-        });
-
-        manageStockButton.setBackground(new java.awt.Color(153, 204, 255));
-        manageStockButton.setText("Manage Stock");
-        manageStockButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                manageStockButtonActionPerformed(evt);
             }
         });
 
@@ -144,15 +143,15 @@ public class CustomerRecords extends javax.swing.JFrame {
                     .addGroup(buttonsPanelLayout.createSequentialGroup()
                         .addComponent(homeButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(viewCustomerRecordsButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(viewCustomerRecordsButton, javax.swing.GroupLayout.PREFERRED_SIZE, 313, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(logoutButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, buttonsPanelLayout.createSequentialGroup()
-                        .addComponent(viewReportButton, javax.swing.GroupLayout.DEFAULT_SIZE, 232, Short.MAX_VALUE)
+                        .addComponent(logoutButton, javax.swing.GroupLayout.PREFERRED_SIZE, 166, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(buttonsPanelLayout.createSequentialGroup()
+                        .addComponent(viewAlertsButton, javax.swing.GroupLayout.PREFERRED_SIZE, 194, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(viewAlertsButton, javax.swing.GroupLayout.DEFAULT_SIZE, 175, Short.MAX_VALUE)
+                        .addComponent(viewReportButton, javax.swing.GroupLayout.PREFERRED_SIZE, 242, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(manageStockButton, javax.swing.GroupLayout.DEFAULT_SIZE, 189, Short.MAX_VALUE)))
+                        .addComponent(manageStockButton, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
         );
         buttonsPanelLayout.setVerticalGroup(
@@ -160,23 +159,26 @@ public class CustomerRecords extends javax.swing.JFrame {
             .addGroup(buttonsPanelLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(buttonsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addComponent(viewCustomerRecordsButton, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 43, Short.MAX_VALUE)
-                    .addComponent(homeButton, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, buttonsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(viewCustomerRecordsButton, javax.swing.GroupLayout.DEFAULT_SIZE, 42, Short.MAX_VALUE)
+                        .addComponent(homeButton, javax.swing.GroupLayout.DEFAULT_SIZE, 42, Short.MAX_VALUE))
                     .addComponent(logoutButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(buttonsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(viewAlertsButton, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(viewReportButton, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(manageStockButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap())
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(buttonsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(viewReportButton, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(manageStockButton, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(viewAlertsButton, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        pageTitlePanel.setBackground(new java.awt.Color(153, 204, 255));
+        pageTitlePanel.setBackground(new java.awt.Color(49, 174, 209));
         pageTitlePanel.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        pageTitlePanel.setMaximumSize(new java.awt.Dimension(211, 40));
+        pageTitlePanel.setMinimumSize(new java.awt.Dimension(211, 40));
 
         pageTitleLabel.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         pageTitleLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        pageTitleLabel.setText("Customer Records");
+        pageTitleLabel.setText("View Customer Records");
 
         javax.swing.GroupLayout pageTitlePanelLayout = new javax.swing.GroupLayout(pageTitlePanel);
         pageTitlePanel.setLayout(pageTitlePanelLayout);
@@ -184,21 +186,22 @@ public class CustomerRecords extends javax.swing.JFrame {
             pageTitlePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pageTitlePanelLayout.createSequentialGroup()
                 .addGap(0, 0, 0)
-                .addComponent(pageTitleLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 458, Short.MAX_VALUE))
+                .addComponent(pageTitleLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 408, Short.MAX_VALUE))
         );
         pageTitlePanelLayout.setVerticalGroup(
             pageTitlePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(pageTitlePanelLayout.createSequentialGroup()
-                .addComponent(pageTitleLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pageTitlePanelLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(pageTitleLabel)
+                .addGap(35, 35, 35))
         );
 
-        functionPanel.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        functionPanel.setBackground(new java.awt.Color(49, 174, 209));
+        functionPanel.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        functionPanel.setPreferredSize(new java.awt.Dimension(1151, 48));
 
-        tableName.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        tableName.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        tableName.setText("Customer Information");
-        tableName.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        refreshButton.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        refreshButton.setText("Refresh");
 
         showDDMenu.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         showDDMenu.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Show", "10", "25", "50", "100" }));
@@ -206,50 +209,59 @@ public class CustomerRecords extends javax.swing.JFrame {
         orderDDMenu.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         orderDDMenu.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Order", "By Number", "By Date", "By Status" }));
 
-        refreshButton.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        refreshButton.setText("Refresh");
+        tableNameLabel.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        tableNameLabel.setText("Customer Information ");
 
         javax.swing.GroupLayout functionPanelLayout = new javax.swing.GroupLayout(functionPanel);
         functionPanel.setLayout(functionPanelLayout);
         functionPanelLayout.setHorizontalGroup(
             functionPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(functionPanelLayout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, functionPanelLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(showDDMenu, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(orderDDMenu, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(tableName, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(18, 18, 18)
+                .addComponent(orderDDMenu, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(refreshButton)
                 .addContainerGap())
+            .addGroup(functionPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(functionPanelLayout.createSequentialGroup()
+                    .addGap(0, 501, Short.MAX_VALUE)
+                    .addComponent(tableNameLabel)
+                    .addGap(0, 502, Short.MAX_VALUE)))
         );
         functionPanelLayout.setVerticalGroup(
             functionPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(functionPanelLayout.createSequentialGroup()
-                .addGap(2, 2, 2)
-                .addGroup(functionPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(showDDMenu, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(orderDDMenu, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(tableName)
-                    .addComponent(refreshButton, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, functionPanelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(functionPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(refreshButton, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(orderDDMenu, javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(showDDMenu, javax.swing.GroupLayout.Alignment.LEADING))
+                .addContainerGap())
+            .addGroup(functionPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(functionPanelLayout.createSequentialGroup()
+                    .addGap(0, 0, Short.MAX_VALUE)
+                    .addComponent(tableNameLabel)
+                    .addGap(0, 0, Short.MAX_VALUE)))
         );
 
-        customerInformationTable.setBackground(new java.awt.Color(153, 204, 255));
+        tableScrollPane.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+
+        customerInformationTable.setBackground(new java.awt.Color(49, 174, 209));
         customerInformationTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null}
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null}
             },
             new String [] {
-                "Customer ID", "Forename(s)", "Surname", "Address", "Email", "Phone", "Status"
+                "Username", "Forename", "Surname", "Address", "Postcode", "Email", "Phone", "Status"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.Integer.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.Object.class, java.lang.Object.class
+                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -258,8 +270,8 @@ public class CustomerRecords extends javax.swing.JFrame {
         });
         tableScrollPane.setViewportView(customerInformationTable);
 
-        customerRecordsButtonPanel.setBackground(new java.awt.Color(153, 204, 255));
-        customerRecordsButtonPanel.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        tableFunctionsPanel.setBackground(new java.awt.Color(49, 174, 209));
+        tableFunctionsPanel.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
         findButton.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         findButton.setText("Find");
@@ -272,20 +284,8 @@ public class CustomerRecords extends javax.swing.JFrame {
         viewTicketsButton.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         viewTicketsButton.setText("View Tickets");
 
-        viewTicketsButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                viewTicketsButtonActionPerformed(evt);
-            }
-        });
-
-        refreshButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                refreshButtonActionPerformed(evt);
-            }
-        });
-
         editButton.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        editButton.setText("Edit");
+        editButton.setText("Edit Customer");
         editButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 editButtonActionPerformed(evt);
@@ -293,7 +293,7 @@ public class CustomerRecords extends javax.swing.JFrame {
         });
 
         deleteButton.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        deleteButton.setText("Delete");
+        deleteButton.setText("Delete Customer");
         deleteButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 deleteButtonActionPerformed(evt);
@@ -308,66 +308,72 @@ public class CustomerRecords extends javax.swing.JFrame {
             }
         });
 
-        showDDMenu.addActionListener(new java.awt.event.ActionListener() {
+        jTextField1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                showDDMenuActionPerformed(evt);
+                jTextField1ActionPerformed(evt);
             }
         });
 
-        orderDDMenu.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                orderDDMenuActionPerformed(evt);
-            }
-        });
-
-        javax.swing.GroupLayout customerRecordsButtonPanelLayout = new javax.swing.GroupLayout(customerRecordsButtonPanel);
-        customerRecordsButtonPanel.setLayout(customerRecordsButtonPanelLayout);
-        customerRecordsButtonPanelLayout.setHorizontalGroup(
-            customerRecordsButtonPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(customerRecordsButtonPanelLayout.createSequentialGroup()
+        javax.swing.GroupLayout tableFunctionsPanelLayout = new javax.swing.GroupLayout(tableFunctionsPanel);
+        tableFunctionsPanel.setLayout(tableFunctionsPanelLayout);
+        tableFunctionsPanelLayout.setHorizontalGroup(
+            tableFunctionsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(tableFunctionsPanelLayout.createSequentialGroup()
                 .addContainerGap()
+                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(findButton)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(viewTicketsButton)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(addCustomerButton, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(findButton, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(viewTicketsButton, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(editButton, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(editButton)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(deleteButton)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
         );
-        customerRecordsButtonPanelLayout.setVerticalGroup(
-            customerRecordsButtonPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(customerRecordsButtonPanelLayout.createSequentialGroup()
-                .addGap(14, 14, 14)
-                .addGroup(customerRecordsButtonPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(findButton)
-                    .addComponent(viewTicketsButton)
-                    .addComponent(editButton)
-                    .addComponent(deleteButton)
-                    .addComponent(addCustomerButton))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        tableFunctionsPanelLayout.setVerticalGroup(
+            tableFunctionsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(tableFunctionsPanelLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(tableFunctionsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addComponent(jTextField1, javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(tableFunctionsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(deleteButton)
+                        .addComponent(editButton)
+                        .addComponent(viewTicketsButton)
+                        .addComponent(findButton)
+                        .addComponent(addCustomerButton)))
+                .addContainerGap(8, Short.MAX_VALUE))
         );
 
+        logoPanel.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        logoPanel.setMaximumSize(new java.awt.Dimension(104, 104));
+        logoPanel.setMinimumSize(new java.awt.Dimension(104, 104));
+        logoPanel.setPreferredSize(new java.awt.Dimension(104, 104));
 
-
-
-        //logoLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/smallLogo.png"))); // NOI18N
-        ImageIcon logo = new ImageIcon("data/smallLogo.png");
-        logoLabel.setIcon(logo);
-        logoPanel.add(logoLabel);
-
+        logoLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/smallLogo.png"))); // NOI18N
 
         javax.swing.GroupLayout logoPanelLayout = new javax.swing.GroupLayout(logoPanel);
         logoPanel.setLayout(logoPanelLayout);
         logoPanelLayout.setHorizontalGroup(
             logoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(logoLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGap(0, 102, Short.MAX_VALUE)
+            .addGroup(logoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(logoPanelLayout.createSequentialGroup()
+                    .addGap(0, 0, Short.MAX_VALUE)
+                    .addComponent(logoLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGap(0, 0, Short.MAX_VALUE)))
         );
         logoPanelLayout.setVerticalGroup(
             logoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(logoLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGap(0, 102, Short.MAX_VALUE)
+            .addGroup(logoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(logoPanelLayout.createSequentialGroup()
+                    .addGap(0, 0, Short.MAX_VALUE)
+                    .addComponent(logoLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGap(0, 0, Short.MAX_VALUE)))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -375,54 +381,38 @@ public class CustomerRecords extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addComponent(logoPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(pageTitlePanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(buttonsPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(customerRecordsButtonPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(6, 6, 6)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(tableScrollPane)
-                            .addComponent(functionPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                        .addComponent(buttonsPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(tableFunctionsPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(functionPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 1188, Short.MAX_VALUE)
+                    .addComponent(tableScrollPane, javax.swing.GroupLayout.Alignment.TRAILING))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                        .addComponent(pageTitlePanel, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 100, Short.MAX_VALUE)
-                        .addComponent(buttonsPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addComponent(logoPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addComponent(pageTitlePanel, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(logoPanel, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(buttonsPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(functionPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(tableScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 575, Short.MAX_VALUE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(customerRecordsButtonPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(tableScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 568, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(tableFunctionsPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void orderDDMenuActionPerformed(ActionEvent evt) {
-    }
-
-    private void showDDMenuActionPerformed(ActionEvent evt) {
-    }
-
-    private void refreshButtonActionPerformed(ActionEvent evt) {
-    }
-
-    private void viewTicketsButtonActionPerformed(ActionEvent evt) {
-    }
 
     private void homeButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_homeButtonActionPerformed
         dispose();
@@ -450,10 +440,6 @@ public class CustomerRecords extends javax.swing.JFrame {
 
     private void editButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editButtonActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_addButtonActionPerformed
-
-    private void editCustomerRecordButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editButtonActionPerformed
-        // TODO add your handling code here:
     }//GEN-LAST:event_editButtonActionPerformed
 
     private void deleteButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteButtonActionPerformed
@@ -464,15 +450,27 @@ public class CustomerRecords extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_viewCustomerRecordsButtonActionPerformed
 
+    private void addCustomerButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addCustomerButtonActionPerformed
+        dispose();
+        new AddCustomer().setVisible(true);
+    }//GEN-LAST:event_addCustomerButtonActionPerformed
+
+    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField1ActionPerformed
+
+    private void viewAlertsButtonrefundTicketButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_viewAlertsButtonrefundTicketButtonActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_viewAlertsButtonrefundTicketButtonActionPerformed
+
     private void viewReportButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_viewReportButtonActionPerformed
         dispose();
         new ViewReport().setVisible(true);
     }//GEN-LAST:event_viewReportButtonActionPerformed
 
-    private void addCustomerButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addCustomerButtonActionPerformed
-        dispose();
-        new AddCustomer().setVisible(true);
-    }//GEN-LAST:event_addCustomerButtonActionPerformed
+    private void manageStockButtonrefundTicketButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_manageStockButtonrefundTicketButtonActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_manageStockButtonrefundTicketButtonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -514,14 +512,12 @@ public class CustomerRecords extends javax.swing.JFrame {
     private javax.swing.JButton addCustomerButton;
     private javax.swing.JPanel buttonsPanel;
     private javax.swing.JTable customerInformationTable;
-    private javax.swing.JPanel customerRecordsButtonPanel;
     private javax.swing.JButton deleteButton;
     private javax.swing.JButton editButton;
     private javax.swing.JButton findButton;
     private javax.swing.JPanel functionPanel;
     private javax.swing.JButton homeButton;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JPanel jPanel1;
+    private javax.swing.JTextField jTextField1;
     private javax.swing.JLabel logoLabel;
     private javax.swing.JPanel logoPanel;
     private javax.swing.JButton logoutButton;
@@ -531,7 +527,8 @@ public class CustomerRecords extends javax.swing.JFrame {
     private javax.swing.JPanel pageTitlePanel;
     private javax.swing.JButton refreshButton;
     private javax.swing.JComboBox<String> showDDMenu;
-    private javax.swing.JLabel tableName;
+    private javax.swing.JPanel tableFunctionsPanel;
+    private javax.swing.JLabel tableNameLabel;
     private javax.swing.JScrollPane tableScrollPane;
     private javax.swing.JButton viewAlertsButton;
     private javax.swing.JButton viewCustomerRecordsButton;
