@@ -4,7 +4,10 @@
  */
 package interfaces.office_manager;
 
-import Interface.OfficeManager.ManageStock;
+import interfaces.general.Login;
+import interfaces.system_administrator.ManageStock;
+
+import javax.swing.*;
 
 /**
  *
@@ -60,7 +63,7 @@ public class ViewAlerts extends javax.swing.JFrame {
         homeButton.setText("Home");
         homeButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                homeButtonhomeButtonActionPerformed(evt);
+                homeButtonActionPerformed(evt);
             }
         });
 
@@ -78,7 +81,7 @@ public class ViewAlerts extends javax.swing.JFrame {
         logoutButton.setText("Log Out");
         logoutButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                logoutButtonlogoutButtonActionPerformed(evt);
+                logoutButtonActionPerformed(evt);
             }
         });
 
@@ -87,7 +90,7 @@ public class ViewAlerts extends javax.swing.JFrame {
         viewAlertsButton.setText("View Alerts");
         viewAlertsButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                viewAlertsButtonrefundTicketButtonActionPerformed(evt);
+                viewAlertsButtonActionPerformed(evt);
             }
         });
 
@@ -96,7 +99,7 @@ public class ViewAlerts extends javax.swing.JFrame {
         manageStockButton.setText("Manage Stock");
         manageStockButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                manageStockButtonrefundTicketButtonActionPerformed(evt);
+                manageStockButtonActionPerformed(evt);
             }
         });
 
@@ -245,7 +248,11 @@ public class ViewAlerts extends javax.swing.JFrame {
         logoPanel.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         logoPanel.setPreferredSize(new java.awt.Dimension(104, 104));
 
-        logoLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/smallLogo.png"))); // NOI18N
+        //logoLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/data/smallLogo.png"))); // NOI18N
+        ImageIcon logo = new ImageIcon("/data/smallLogo.png");
+        logoLabel.setIcon(logo);
+        logoPanel.add(logoLabel);
+        getContentPane().add(logoPanel);
 
         javax.swing.GroupLayout logoPanelLayout = new javax.swing.GroupLayout(logoPanel);
         logoPanel.setLayout(logoPanelLayout);
@@ -309,7 +316,8 @@ public class ViewAlerts extends javax.swing.JFrame {
     }//GEN-LAST:event_homeButtonActionPerformed
 
     private void logoutButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_logoutButtonActionPerformed
-        // TODO add your handling code here:
+        dispose();
+        new Login().setVisible(true);
     }//GEN-LAST:event_logoutButtonActionPerformed
 
     private void viewAlertsButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_viewAlertsButtonActionPerformed

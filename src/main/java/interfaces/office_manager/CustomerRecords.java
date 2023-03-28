@@ -4,6 +4,11 @@
  */
 package interfaces.office_manager;
 
+import interfaces.general.Login;
+import interfaces.system_administrator.ManageStock;
+
+import javax.swing.*;
+
 /**
  *
  * @author Abdullah
@@ -66,7 +71,7 @@ public class CustomerRecords extends javax.swing.JFrame {
         homeButton.setPreferredSize(new java.awt.Dimension(79, 40));
         homeButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                homeButtonhomeButtonActionPerformed(evt);
+                homeButtonActionPerformed(evt);
             }
         });
 
@@ -90,7 +95,7 @@ public class CustomerRecords extends javax.swing.JFrame {
         logoutButton.setPreferredSize(new java.awt.Dimension(95, 40));
         logoutButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                logoutButtonlogoutButtonActionPerformed(evt);
+                logoutButtonActionPerformed(evt);
             }
         });
 
@@ -114,7 +119,7 @@ public class CustomerRecords extends javax.swing.JFrame {
         manageStockButton.setPreferredSize(new java.awt.Dimension(143, 40));
         manageStockButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                manageStockButtonrefundTicketButtonActionPerformed(evt);
+                manageStockButtonActionPerformed(evt);
             }
         });
 
@@ -325,12 +330,6 @@ public class CustomerRecords extends javax.swing.JFrame {
             }
         });
 
-        jTextField1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField1ActionPerformed(evt);
-            }
-        });
-
         javax.swing.GroupLayout tableFunctionsPanelLayout = new javax.swing.GroupLayout(tableFunctionsPanel);
         tableFunctionsPanel.setLayout(tableFunctionsPanelLayout);
         tableFunctionsPanelLayout.setHorizontalGroup(
@@ -370,7 +369,11 @@ public class CustomerRecords extends javax.swing.JFrame {
         logoPanel.setMinimumSize(new java.awt.Dimension(104, 104));
         logoPanel.setPreferredSize(new java.awt.Dimension(104, 104));
 
-        logoLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/smallLogo.png"))); // NOI18N
+        //logoLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/data/smallLogo.png"))); // NOI18N
+        ImageIcon logo = new ImageIcon("/data/smallLogo.png");
+        logoLabel.setIcon(logo);
+        logoPanel.add(logoLabel);
+        getContentPane().add(logoPanel);
 
         javax.swing.GroupLayout logoPanelLayout = new javax.swing.GroupLayout(logoPanel);
         logoPanel.setLayout(logoPanelLayout);
@@ -433,12 +436,12 @@ public class CustomerRecords extends javax.swing.JFrame {
 
     private void homeButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_homeButtonActionPerformed
         dispose();
-        new OfficeManagerHub().setVisible(true);  
-        
+        new OfficeManagerHub().setVisible(true);
     }//GEN-LAST:event_homeButtonActionPerformed
 
-    private void logoutButtonActionPerformed(java.awt.event.ActionEvent evt) {                                        
-        // TODO add your handling code here:
+    private void logoutButtonActionPerformed(java.awt.event.ActionEvent evt) {
+        dispose();
+        new Login().setVisible(true);
     }                                                        
 
     private void viewAlertsButtonActionPerformed(java.awt.event.ActionEvent evt) {                                                 
@@ -471,10 +474,6 @@ public class CustomerRecords extends javax.swing.JFrame {
         dispose();
         new AddCustomer().setVisible(true);
     }//GEN-LAST:event_addCustomerButtonActionPerformed
-
-    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField1ActionPerformed
 
     private void viewAlertsButtonrefundTicketButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_viewAlertsButtonrefundTicketButtonActionPerformed
         // TODO add your handling code here:

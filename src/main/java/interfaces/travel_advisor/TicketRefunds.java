@@ -4,7 +4,9 @@
  */
 package interfaces.travel_advisor;
 
-/**
+    import interfaces.general.Login;
+
+    /**
  *
  * @author Abdullah
  */
@@ -51,7 +53,7 @@ public class TicketRefunds extends javax.swing.JFrame {
         homeButton.setText("Home");
         homeButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                homeButtonhomeButtonActionPerformed(evt);
+                homeButtonActionPerformed(evt);
             }
         });
 
@@ -67,7 +69,7 @@ public class TicketRefunds extends javax.swing.JFrame {
         logoutButton.setText("Log Out");
         logoutButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                logoutButtonlogoutButtonActionPerformed(evt);
+                logoutButtonActionPerformed(evt);
             }
         });
 
@@ -76,7 +78,7 @@ public class TicketRefunds extends javax.swing.JFrame {
         refundTicketPageButton.setText("View Tickets");
         refundTicketPageButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                refundTicketPageButtonrefundTicketButtonActionPerformed(evt);
+                refundTicketPageButtonActionPerformed(evt);
             }
         });
 
@@ -187,7 +189,7 @@ public class TicketRefunds extends javax.swing.JFrame {
             .addComponent(pageTitleLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/smallLogo.png"))); // NOI18N
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/data/smallLogo.png"))); // NOI18N
 
         javax.swing.GroupLayout logoPanelLayout = new javax.swing.GroupLayout(logoPanel);
         logoPanel.setLayout(logoPanelLayout);
@@ -239,7 +241,8 @@ public class TicketRefunds extends javax.swing.JFrame {
     }//GEN-LAST:event_homeButtonActionPerformed
 
     private void logoutButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_logoutButtonActionPerformed
-        // TODO add your handling code here:
+        dispose();
+        new Login().setVisible(true);
     }//GEN-LAST:event_logoutButtonActionPerformed
 
     private void refundTicketPageButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_refundTicketPageButtonActionPerformed

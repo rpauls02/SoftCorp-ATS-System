@@ -4,6 +4,11 @@
  */
 package interfaces.office_manager;
 
+import interfaces.general.Login;
+import interfaces.system_administrator.ManageStock;
+
+import javax.swing.*;
+
 /**
  *
  * @author Abdullah
@@ -87,7 +92,7 @@ public class AddCustomer extends javax.swing.JFrame {
         homeButton.setText("Home");
         homeButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                homeButtonhomeButtonActionPerformed(evt);
+                homeButtonActionPerformed(evt);
             }
         });
 
@@ -105,7 +110,7 @@ public class AddCustomer extends javax.swing.JFrame {
         logoutButton.setText("Log Out");
         logoutButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                logoutButtonlogoutButtonActionPerformed(evt);
+                logoutButtonActionPerformed(evt);
             }
         });
 
@@ -123,7 +128,7 @@ public class AddCustomer extends javax.swing.JFrame {
         manageStockButton.setText("Manage Stock");
         manageStockButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                manageStockButtonrefundTicketButtonActionPerformed(evt);
+                manageStockButtonActionPerformed(evt);
             }
         });
 
@@ -132,7 +137,7 @@ public class AddCustomer extends javax.swing.JFrame {
         viewAlertsButton.setText("View Alerts");
         viewAlertsButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                viewAlertsButtonrefundTicketButtonActionPerformed(evt);
+                viewAlertsButtonActionPerformed(evt);
             }
         });
 
@@ -292,7 +297,11 @@ public class AddCustomer extends javax.swing.JFrame {
         logoPanel.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         logoPanel.setPreferredSize(new java.awt.Dimension(104, 104));
 
-        logoLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/smallLogo.png"))); // NOI18N
+        //logoLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/data/smallLogo.png"))); // NOI18N
+        ImageIcon logo = new ImageIcon("/data/smallLogo.png");
+        logoLabel.setIcon(logo);
+        logoPanel.add(logoLabel);
+        getContentPane().add(logoPanel);
 
         javax.swing.GroupLayout logoPanelLayout = new javax.swing.GroupLayout(logoPanel);
         logoPanel.setLayout(logoPanelLayout);
@@ -357,7 +366,8 @@ public class AddCustomer extends javax.swing.JFrame {
     }//GEN-LAST:event_viewCustomerRecordsButtonActionPerformed
 
     private void logoutButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_logoutButtonActionPerformed
-        // TODO add your handling code here:
+        dispose();
+        new Login().setVisible(true);
     }//GEN-LAST:event_logoutButtonActionPerformed
 
     private void viewAlertsButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_viewAlertsButtonActionPerformed
@@ -382,6 +392,7 @@ public class AddCustomer extends javax.swing.JFrame {
 
     private void addCustomerButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addCustomerButtonActionPerformed
         // TODO add your handling code here:
+
     }//GEN-LAST:event_addCustomerButtonActionPerformed
 
     /**

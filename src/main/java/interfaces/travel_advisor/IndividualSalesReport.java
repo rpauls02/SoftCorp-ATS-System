@@ -4,6 +4,10 @@
  */
 package interfaces.travel_advisor;
 
+import interfaces.general.Login;
+
+import javax.swing.*;
+
 /**
  *
  * @author Abdullah
@@ -122,7 +126,7 @@ public class IndividualSalesReport extends javax.swing.JFrame {
         homeButton.setText("Home");
         homeButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                homeButtonhomeButtonActionPerformed(evt);
+                homeButtonActionPerformed(evt);
             }
         });
 
@@ -138,7 +142,7 @@ public class IndividualSalesReport extends javax.swing.JFrame {
         logoutButton.setText("Log Out");
         logoutButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                logoutButtonlogoutButtonActionPerformed(evt);
+                logoutButtonActionPerformed(evt);
             }
         });
 
@@ -150,7 +154,7 @@ public class IndividualSalesReport extends javax.swing.JFrame {
         refundTicketPageButton.setPreferredSize(new java.awt.Dimension(90, 26));
         refundTicketPageButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                refundTicketPageButtonrefundTicketButtonActionPerformed(evt);
+                refundTicketPageButtonActionPerformed(evt);
             }
         });
 
@@ -228,7 +232,11 @@ public class IndividualSalesReport extends javax.swing.JFrame {
         logoPanel.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         logoPanel.setPreferredSize(new java.awt.Dimension(104, 104));
 
-        logoLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/smallLogo.png"))); // NOI18N
+        //logoLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/data/smallLogo.png"))); // NOI18N
+        ImageIcon logo = new ImageIcon("/data/smallLogo.png");
+        logoLabel.setIcon(logo);
+        logoPanel.add(logoLabel);
+        getContentPane().add(logoPanel);
 
         javax.swing.GroupLayout logoPanelLayout = new javax.swing.GroupLayout(logoPanel);
         logoPanel.setLayout(logoPanelLayout);
@@ -339,7 +347,8 @@ public class IndividualSalesReport extends javax.swing.JFrame {
     }//GEN-LAST:event_homeButtonActionPerformed
 
     private void logoutButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_logoutButtonActionPerformed
-        // TODO add your handling code here:
+        dispose();
+        new Login().setVisible(true);
     }//GEN-LAST:event_logoutButtonActionPerformed
 
     private void refundTicketPageButtonActionPerformed(java.awt.event.ActionEvent evt) {                                                       
@@ -354,13 +363,6 @@ public class IndividualSalesReport extends javax.swing.JFrame {
 
     private void reportTypeDDMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_reportTypeDDMenuActionPerformed
         // TODO add your handling code here:
-        if (reportTypeDDMenu.getSelectedItem() == "Interline Sales"){
-            domesticSalesPanel.setVisible(false);
-            interlineSalesPanel.setVisible(true);
-        } else {
-            interlineSalesPanel.setVisible(false);
-            domesticSalesPanel.setVisible(true);
-        }
     }//GEN-LAST:event_reportTypeDDMenuActionPerformed
 
     private void refreshButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_refreshButtonActionPerformed

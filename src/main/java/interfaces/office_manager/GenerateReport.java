@@ -4,7 +4,9 @@
  */
 package interfaces.office_manager;
 
-import Interface.OfficeManager.ManageStock;
+import interfaces.general.Login;
+
+import javax.swing.*;
 
 /**
  *
@@ -87,7 +89,7 @@ public class GenerateReport extends javax.swing.JFrame {
         homeButton.setText("Home");
         homeButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                homeButtonhomeButtonActionPerformed(evt);
+                homeButtonActionPerformed(evt);
             }
         });
 
@@ -105,7 +107,7 @@ public class GenerateReport extends javax.swing.JFrame {
         logoutButton.setText("Log Out");
         logoutButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                logoutButtonlogoutButtonActionPerformed(evt);
+                logoutButtonActionPerformed(evt);
             }
         });
 
@@ -118,21 +120,21 @@ public class GenerateReport extends javax.swing.JFrame {
             }
         });
 
-        manageStockButton.setBackground(new java.awt.Color(54, 198, 238));
+        /*manageStockButton.setBackground(new java.awt.Color(54, 198, 238));
         manageStockButton.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         manageStockButton.setText("Manage Stock");
         manageStockButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                manageStockButtonrefundTicketButtonActionPerformed(evt);
+                manageStockButtonActionPerformed(evt);
             }
-        });
+        });*/
 
         viewAlertsButton.setBackground(new java.awt.Color(54, 198, 238));
         viewAlertsButton.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         viewAlertsButton.setText("View Alerts");
         viewAlertsButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                viewAlertsButtonrefundTicketButtonActionPerformed(evt);
+                viewAlertsButtonActionPerformed(evt);
             }
         });
 
@@ -336,7 +338,11 @@ public class GenerateReport extends javax.swing.JFrame {
 
         logoPanel.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
-        logoLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/smallLogo.png"))); // NOI18N
+        //logoLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/data/smallLogo.png"))); // NOI18N
+        ImageIcon logo = new ImageIcon("/data/smallLogo.png");
+        logoLabel.setIcon(logo);
+        logoPanel.add(logoLabel);
+        getContentPane().add(logoPanel);
 
         javax.swing.GroupLayout logoPanelLayout = new javax.swing.GroupLayout(logoPanel);
         logoPanel.setLayout(logoPanelLayout);
@@ -405,7 +411,8 @@ public class GenerateReport extends javax.swing.JFrame {
     }//GEN-LAST:event_homeButtonActionPerformed
 
     private void logoutButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_logoutButtonActionPerformed
-        // TODO add your handling code here:
+        dispose();
+        new Login().setVisible(true);
     }//GEN-LAST:event_logoutButtonActionPerformed
 
     private void viewAlertsButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_viewAlertsButtonActionPerformed
@@ -413,10 +420,10 @@ public class GenerateReport extends javax.swing.JFrame {
         new ViewAlerts().setVisible(true);
     }//GEN-LAST:event_viewAlertsButtonActionPerformed
 
-    private void manageStockButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_manageStockButtonActionPerformed
+    /*private void manageStockButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_manageStockButtonActionPerformed
         dispose();
         new ManageStock().setVisible(true);
-    }//GEN-LAST:event_manageStockButtonActionPerformed
+    }//GEN-LAST:event_manageStockButtonActionPerformed*/
 
     private void viewCustomerRecordsButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_viewCustomerRecordsButtonActionPerformed
         dispose();
