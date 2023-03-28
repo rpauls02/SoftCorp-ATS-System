@@ -6,6 +6,8 @@ package interfaces.travel_advisor;
 
 import interfaces.general.Login;
 
+import interfaces.general.Login;
+
 import javax.swing.*;
 
 /**
@@ -803,7 +805,7 @@ public class TicketSales extends javax.swing.JFrame {
 
     private void viewIndSalesButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_viewIndSalesButtonActionPerformed
         dispose();
-        new IndividualSalesReport().setVisible(true);
+        new GenerateIndividualReport().setVisible(true);
     }//GEN-LAST:event_viewIndSalesButtonActionPerformed
 
     private void typeOfSaleDDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_typeOfSaleDDActionPerformed

@@ -247,7 +247,6 @@ public class SystemAdminHub extends javax.swing.JFrame {
     }//GEN-LAST:event_databaseManagementButtonActionPerformed
 
     private void addStaffButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addStaffButtonActionPerformed
-        dispose();
         new AddStaffMember().setVisible(true);
     }//GEN-LAST:event_addStaffButtonActionPerformed
 

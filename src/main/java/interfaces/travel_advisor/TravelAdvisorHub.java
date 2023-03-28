@@ -5,8 +5,8 @@
 package interfaces.travel_advisor;
 
 import interfaces.general.Login;
-
 import javax.swing.*;
+import interfaces.general.Login;
 
 /**
  *
@@ -403,7 +403,7 @@ public class TravelAdvisorHub extends javax.swing.JFrame {
 
     private void viewIndSalesButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_viewIndSalesButtonActionPerformed
         dispose();
-        new IndividualSalesReport().setVisible(true);
+        new GenerateIndividualReport().setVisible(true);
     }//GEN-LAST:event_viewIndSalesButtonActionPerformed
 
     private void voidBlankButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_voidBlankButtonActionPerformed

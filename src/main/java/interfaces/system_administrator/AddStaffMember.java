@@ -6,8 +6,13 @@ package interfaces.system_administrator;
 
 import interfaces.general.Login;
 import interfaces.office_manager.OfficeManagerHub;
+import SQL.DBConnection;
+import interfaces.general.Login;
 
 import javax.swing.*;
+import java.sql.Connection;
+import java.sql.SQLException;
+import java.sql.Statement;
 
 /**
  *
@@ -367,6 +372,29 @@ public class AddStaffMember extends javax.swing.JFrame {
 
     private void addStaffMemberButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addStaffMemberButtonActionPerformed
         // TODO add your handling code here:
+        /*Connection conn = DBConnection.getConnection();
+        Statement stm = null;
+        try {
+            stm = conn.createStatement();
+            String query =
+                    "INSERT INTO in2018g12.staff (id, password, role, forename, surname)" +
+                            "VALUES ('" + staffIDField.getText() + "', '" + passwordField.getText() +
+                            "', '" + roleField.getText() + "', '" + forenameField.getText() +
+                            "', '" + surnameField.getText() + "')";
+            int result = stm.executeUpdate(query);
+            if (result > 0){
+                JOptionPane.showMessageDialog(this, "Customer added. " +
+                        "Review using 'View Customer Records' menu");
+            } else {
+                JOptionPane.showMessageDialog(this, "Could not add customer. " +
+                        "Review details entered or contact system administrator");
+            }
+        } catch (SQLException sqle) {
+            throw new RuntimeException(sqle);
+        } finally {
+            try { if (conn != null) conn.close(); } catch (Exception e) { throw new RuntimeException(e); };
+            try { if (stm != null) stm.close(); } catch (Exception e) { throw new RuntimeException(e); };
+        }*/
     }//GEN-LAST:event_addStaffMemberButtonActionPerformed
 
     private void forenameFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_forenameFieldActionPerformed

@@ -379,6 +379,7 @@
             <Property name="text" type="java.lang.String" value="Payment Type:"/>
           </Properties>
         </Component>
+<<<<<<< Updated upstream
         <Component class="javax.swing.JComboBox" name="paymentTypeDDMenu">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
@@ -400,6 +401,23 @@
           </AuxValues>
         </Component>
         <Container class="javax.swing.JPanel" name="cardDetailsPanel">
+=======
+        <Component class="javax.swing.JTextField" name="phoneField">
+        </Component>
+        <Component class="javax.swing.JTextField" name="forenameField">
+        </Component>
+        <Component class="javax.swing.JTextField" name="emailField">
+        </Component>
+        <Component class="javax.swing.JTextField" name="cardNameField">
+        </Component>
+        <Component class="javax.swing.JTextField" name="cvvField">
+        </Component>
+        <Component class="javax.swing.JTextField" name="cardNumberField">
+        </Component>
+        <Component class="javax.swing.JTextField" name="expDateField">
+        </Component>
+        <Component class="javax.swing.JLabel" name="forenameLabel">
+>>>>>>> Stashed changes
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="d1" green="ae" red="31" type="rgb"/>

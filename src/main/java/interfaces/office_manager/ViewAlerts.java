@@ -5,7 +5,6 @@
 package interfaces.office_manager;
 
 import interfaces.general.Login;
-import interfaces.system_administrator.ManageStock;
 
 import javax.swing.*;
 
@@ -254,6 +253,7 @@ public class ViewAlerts extends javax.swing.JFrame {
         logoPanel.add(logoLabel);
         getContentPane().add(logoPanel);
 
+
         javax.swing.GroupLayout logoPanelLayout = new javax.swing.GroupLayout(logoPanel);
         logoPanel.setLayout(logoPanelLayout);
         logoPanelLayout.setHorizontalGroup(
@@ -321,8 +321,9 @@ public class ViewAlerts extends javax.swing.JFrame {
     }//GEN-LAST:event_logoutButtonActionPerformed
 
     private void viewAlertsButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_viewAlertsButtonActionPerformed
-       
-    }//GEN-LAST:event_viewAlertsButtonActionPerformed
+        dispose();
+        new ViewAlerts().setVisible(true);
+        }//GEN-LAST:event_viewAlertsButtonActionPerformed
 
     private void manageStockButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_manageStockButtonActionPerformed
         dispose();
