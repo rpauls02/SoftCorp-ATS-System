@@ -4,9 +4,6 @@
  */
 package interfaces.office_manager;
 
-import Interface.OfficeManager.AddCustomer;
-import Interface.OfficeManager.ManageStock;
-
 /**
  *
  * @author Abdullah
@@ -202,12 +199,27 @@ public class CustomerRecords extends javax.swing.JFrame {
 
         refreshButton.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         refreshButton.setText("Refresh");
+        refreshButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                refreshButtonActionPerformed(evt);
+            }
+        });
 
         showDDMenu.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         showDDMenu.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Show", "10", "25", "50", "100" }));
+        showDDMenu.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                showDDMenuActionPerformed(evt);
+            }
+        });
 
         orderDDMenu.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         orderDDMenu.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Order", "By Number", "By Date", "By Status" }));
+        orderDDMenu.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                orderDDMenuActionPerformed(evt);
+            }
+        });
 
         tableNameLabel.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         tableNameLabel.setText("Customer Information ");
@@ -283,6 +295,11 @@ public class CustomerRecords extends javax.swing.JFrame {
 
         viewTicketsButton.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         viewTicketsButton.setText("View Tickets");
+        viewTicketsButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                viewTicketsButtonActionPerformed(evt);
+            }
+        });
 
         editButton.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         editButton.setText("Edit Customer");
@@ -465,12 +482,28 @@ public class CustomerRecords extends javax.swing.JFrame {
 
     private void viewReportButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_viewReportButtonActionPerformed
         dispose();
-        new ViewReport().setVisible(true);
+        new GenerateReport().setVisible(true);
     }//GEN-LAST:event_viewReportButtonActionPerformed
 
     private void manageStockButtonrefundTicketButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_manageStockButtonrefundTicketButtonActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_manageStockButtonrefundTicketButtonActionPerformed
+
+    private void showDDMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_showDDMenuActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_showDDMenuActionPerformed
+
+    private void orderDDMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_orderDDMenuActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_orderDDMenuActionPerformed
+
+    private void refreshButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_refreshButtonActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_refreshButtonActionPerformed
+
+    private void viewTicketsButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_viewTicketsButtonActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_viewTicketsButtonActionPerformed
 
     /**
      * @param args the command line arguments

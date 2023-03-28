@@ -10,12 +10,12 @@ import Interface.OfficeManager.ManageStock;
  *
  * @author Abdullah
  */
-public class ViewReport extends javax.swing.JFrame {
+public class GenerateReport extends javax.swing.JFrame {
 
     /**
      * Creates new form generateReportFrame
      */
-    public ViewReport() {
+    public GenerateReport() {
         initComponents();
     }
     
@@ -51,7 +51,7 @@ public class ViewReport extends javax.swing.JFrame {
         stockTurnoverReport = new javax.swing.JButton();
         domesticSalesReportButton = new javax.swing.JButton();
         interlineSalesReportButton = new javax.swing.JButton();
-        IndividualSalesReportButton = new javax.swing.JButton();
+        individualSalesReportButton = new javax.swing.JButton();
         logoPanel = new javax.swing.JPanel();
         logoLabel = new javax.swing.JLabel();
 
@@ -111,7 +111,12 @@ public class ViewReport extends javax.swing.JFrame {
 
         viewReportButton.setBackground(new java.awt.Color(153, 153, 255));
         viewReportButton.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        viewReportButton.setText("Generate/View Report");
+        viewReportButton.setText("Generate Report");
+        viewReportButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                viewReportButtonActionPerformed(evt);
+            }
+        });
 
         manageStockButton.setBackground(new java.awt.Color(54, 198, 238));
         manageStockButton.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
@@ -217,6 +222,11 @@ public class ViewReport extends javax.swing.JFrame {
 
         viewPDFFolderButton.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         viewPDFFolderButton.setText("View PDF Folder");
+        viewPDFFolderButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                viewPDFFolderButtonActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout viewFolderButtonPanelLayout = new javax.swing.GroupLayout(viewFolderButtonPanel);
         viewFolderButtonPanel.setLayout(viewFolderButtonPanelLayout);
@@ -247,15 +257,35 @@ public class ViewReport extends javax.swing.JFrame {
 
         stockTurnoverReport.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         stockTurnoverReport.setText("Stock Turnover Report");
+        stockTurnoverReport.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                stockTurnoverReportActionPerformed(evt);
+            }
+        });
 
         domesticSalesReportButton.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         domesticSalesReportButton.setText("Domestic Sales Report");
+        domesticSalesReportButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                domesticSalesReportButtonActionPerformed(evt);
+            }
+        });
 
         interlineSalesReportButton.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         interlineSalesReportButton.setText("Interline Sales Report");
+        interlineSalesReportButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                interlineSalesReportButtonActionPerformed(evt);
+            }
+        });
 
-        IndividualSalesReportButton.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        IndividualSalesReportButton.setText("Individual Sales Report");
+        individualSalesReportButton.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        individualSalesReportButton.setText("Individual Sales Report");
+        individualSalesReportButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                individualSalesReportButtonActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout reportTypesPanelLayout = new javax.swing.GroupLayout(reportTypesPanel);
         reportTypesPanel.setLayout(reportTypesPanelLayout);
@@ -271,7 +301,7 @@ public class ViewReport extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addComponent(interlineSalesReportButton)
                 .addGap(18, 18, 18)
-                .addComponent(IndividualSalesReportButton)
+                .addComponent(individualSalesReportButton)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         reportTypesPanelLayout.setVerticalGroup(
@@ -283,7 +313,7 @@ public class ViewReport extends javax.swing.JFrame {
                     .addComponent(stockTurnoverReport, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(domesticSalesReportButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(interlineSalesReportButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(IndividualSalesReportButton))
+                    .addComponent(individualSalesReportButton))
                 .addContainerGap())
         );
 
@@ -393,6 +423,30 @@ public class ViewReport extends javax.swing.JFrame {
         new CustomerRecords().setVisible(true);
     }//GEN-LAST:event_viewCustomerRecordsButtonActionPerformed
 
+    private void viewReportButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_viewReportButtonActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_viewReportButtonActionPerformed
+
+    private void stockTurnoverReportActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_stockTurnoverReportActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_stockTurnoverReportActionPerformed
+
+    private void domesticSalesReportButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_domesticSalesReportButtonActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_domesticSalesReportButtonActionPerformed
+
+    private void interlineSalesReportButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_interlineSalesReportButtonActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_interlineSalesReportButtonActionPerformed
+
+    private void individualSalesReportButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_individualSalesReportButtonActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_individualSalesReportButtonActionPerformed
+
+    private void viewPDFFolderButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_viewPDFFolderButtonActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_viewPDFFolderButtonActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -410,14 +464,18 @@ public class ViewReport extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(ViewReport.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(GenerateReport.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(ViewReport.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(GenerateReport.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(ViewReport.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(GenerateReport.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(ViewReport.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(GenerateReport.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
         //</editor-fold>
@@ -426,17 +484,17 @@ public class ViewReport extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new ViewReport().setVisible(true);
+                new GenerateReport().setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton IndividualSalesReportButton;
     private javax.swing.JPanel buttonsPanel;
     private javax.swing.JButton domesticSalesReportButton;
     private javax.swing.JPanel functionPanel;
     private javax.swing.JButton homeButton;
+    private javax.swing.JButton individualSalesReportButton;
     private javax.swing.JLabel infoLine1Label;
     private javax.swing.JLabel infoLine2Label;
     private javax.swing.JLabel infoLine3Label;

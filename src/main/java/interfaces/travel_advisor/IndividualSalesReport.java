@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
-package Interface.TravelAdvisor;
+package interfaces.travel_advisor;
 
 /**
  *
@@ -49,7 +49,6 @@ public class IndividualSalesReport extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("ATS System | Travel Advisor | View Individual Sales Report");
-        setMaximumSize(new java.awt.Dimension(1920, 1080));
         setMinimumSize(new java.awt.Dimension(1200, 800));
         setResizable(false);
 
@@ -66,12 +65,27 @@ public class IndividualSalesReport extends javax.swing.JFrame {
 
         refreshButton.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         refreshButton.setText("Refresh");
+        refreshButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                refreshButtonActionPerformed(evt);
+            }
+        });
 
         showDDMenu.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         showDDMenu.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Show", "10", "25", "50", "100" }));
+        showDDMenu.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                showDDMenuActionPerformed(evt);
+            }
+        });
 
         orderDDMenu.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         orderDDMenu.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Order", "By Number", "By Date", "By Status" }));
+        orderDDMenu.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                orderDDMenuActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout functionPanelLayout = new javax.swing.GroupLayout(functionPanel);
         functionPanel.setLayout(functionPanelLayout);
@@ -348,6 +362,18 @@ public class IndividualSalesReport extends javax.swing.JFrame {
             domesticSalesPanel.setVisible(true);
         }
     }//GEN-LAST:event_reportTypeDDMenuActionPerformed
+
+    private void refreshButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_refreshButtonActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_refreshButtonActionPerformed
+
+    private void orderDDMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_orderDDMenuActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_orderDDMenuActionPerformed
+
+    private void showDDMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_showDDMenuActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_showDDMenuActionPerformed
 
     /**
      * @param args the command line arguments

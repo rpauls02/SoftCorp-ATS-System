@@ -2,10 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
-package Interface.OfficeManager;
-
-import Interface.OfficeManager.ManageStock;
-import Interface.OfficeManager.ManageStock;
+package interfaces.office_manager;
 
 /**
  *
@@ -59,7 +56,6 @@ public class AddCustomer extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("ATS System | Office Manager | View Customer Records | Add Customer");
         setFocusable(false);
-        setPreferredSize(new java.awt.Dimension(1200, 800));
 
         pageTitlePanel.setBackground(new java.awt.Color(49, 174, 209));
         pageTitlePanel.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
@@ -371,7 +367,7 @@ public class AddCustomer extends javax.swing.JFrame {
 
     private void viewReportButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_viewReportButtonActionPerformed
         dispose();
-        new ViewReport().setVisible(true);
+        new GenerateReport().setVisible(true);
     }//GEN-LAST:event_viewReportButtonActionPerformed
 
     private void manageStockButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_manageStockButtonActionPerformed

@@ -389,7 +389,7 @@ public class OfficeManagerHub extends javax.swing.JFrame {
 
     private void viewReportButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_viewReportButtonActionPerformed
         dispose();
-        new ViewReport().setVisible(true);
+        new GenerateReport().setVisible(true);
     }//GEN-LAST:event_viewReportButtonActionPerformed
 
     private void viewCustomerRecordsButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_viewCustomerRecordsButtonActionPerformed

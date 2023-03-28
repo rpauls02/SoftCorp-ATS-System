@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
-package Interface.TravelAdvisor;
+package interfaces.travel_advisor;
 
 /**
  *
@@ -193,11 +193,6 @@ public class TicketSales extends javax.swing.JFrame {
         forenameLabel.setText("Forename:");
 
         forenameField.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        forenameField.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                forenameFieldActionPerformed(evt);
-            }
-        });
 
         surnameField.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
 
@@ -219,6 +214,11 @@ public class TicketSales extends javax.swing.JFrame {
 
         paymentTypeDDMenu.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         paymentTypeDDMenu.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Select Payment Type", "Card", "Cash" }));
+        paymentTypeDDMenu.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                paymentTypeDDMenuActionPerformed(evt);
+            }
+        });
 
         cardDetailsPanel.setBackground(new java.awt.Color(49, 174, 209));
         cardDetailsPanel.setBorder(javax.swing.BorderFactory.createEtchedBorder());
@@ -232,11 +232,6 @@ public class TicketSales extends javax.swing.JFrame {
         cardNumberLabel.setText("Card Number:");
 
         cardNumberField.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        cardNumberField.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cardNumberFieldActionPerformed(evt);
-            }
-        });
 
         expDateField.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
 
@@ -324,11 +319,6 @@ public class TicketSales extends javax.swing.JFrame {
         jLabel1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
         forenameField1.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        forenameField1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                forenameField1ActionPerformed(evt);
-            }
-        });
 
         customerNameLabel.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         customerNameLabel.setText("Name:");
@@ -460,6 +450,11 @@ public class TicketSales extends javax.swing.JFrame {
 
         createTicketButton.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         createTicketButton.setText("Create Ticket");
+        createTicketButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                createTicketButtonActionPerformed(evt);
+            }
+        });
 
         typeOfSaleDD.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         typeOfSaleDD.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Select Sale Type", "Interline", "Domestic" }));
@@ -797,10 +792,6 @@ public class TicketSales extends javax.swing.JFrame {
         new TicketRefunds().setVisible(true);
     }//GEN-LAST:event_refundTicketPageButtonActionPerformed
 
-    private void forenameFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_forenameFieldActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_forenameFieldActionPerformed
-
     private void viewIndSalesButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_viewIndSalesButtonActionPerformed
         dispose();
         new IndividualSalesReport().setVisible(true);
@@ -810,17 +801,9 @@ public class TicketSales extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_typeOfSaleDDActionPerformed
 
-    private void cardNumberFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cardNumberFieldActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_cardNumberFieldActionPerformed
-
     private void sellTicketPageButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sellTicketPageButtonActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_sellTicketPageButtonActionPerformed
-
-    private void forenameField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_forenameField1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_forenameField1ActionPerformed
 
     private void selectCustomerButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_selectCustomerButtonActionPerformed
         // TODO add your handling code here:
@@ -837,6 +820,14 @@ public class TicketSales extends javax.swing.JFrame {
     private void plNoCheckboxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_plNoCheckboxActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_plNoCheckboxActionPerformed
+
+    private void createTicketButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_createTicketButtonActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_createTicketButtonActionPerformed
+
+    private void paymentTypeDDMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_paymentTypeDDMenuActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_paymentTypeDDMenuActionPerformed
 
     /**
      * @param args the command line arguments

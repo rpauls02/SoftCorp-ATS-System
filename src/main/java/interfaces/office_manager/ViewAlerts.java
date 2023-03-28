@@ -51,7 +51,6 @@ public class ViewAlerts extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("ATS System | Office Manager | View Alerts");
-        setPreferredSize(new java.awt.Dimension(1200, 800));
 
         buttonsPanel.setBackground(new java.awt.Color(49, 174, 209));
         buttonsPanel.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
@@ -176,9 +175,19 @@ public class ViewAlerts extends javax.swing.JFrame {
 
         showDDMenu.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         showDDMenu.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Show", "10", "25", "50", "100" }));
+        showDDMenu.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                showDDMenuActionPerformed(evt);
+            }
+        });
 
         orderDDMenu.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         orderDDMenu.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Order", "By Number", "By Date", "By Status" }));
+        orderDDMenu.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                orderDDMenuActionPerformed(evt);
+            }
+        });
 
         tableName.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         tableName.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -186,6 +195,11 @@ public class ViewAlerts extends javax.swing.JFrame {
 
         refreshButton.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         refreshButton.setText("Refresh");
+        refreshButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                refreshButtonActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout functionPanelLayout = new javax.swing.GroupLayout(functionPanel);
         functionPanel.setLayout(functionPanelLayout);
@@ -314,8 +328,20 @@ public class ViewAlerts extends javax.swing.JFrame {
 
     private void viewReportButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_viewReportButtonActionPerformed
         dispose();
-        new ViewReport().setVisible(true);
+        new GenerateReport().setVisible(true);
     }//GEN-LAST:event_viewReportButtonActionPerformed
+
+    private void showDDMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_showDDMenuActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_showDDMenuActionPerformed
+
+    private void orderDDMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_orderDDMenuActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_orderDDMenuActionPerformed
+
+    private void refreshButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_refreshButtonActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_refreshButtonActionPerformed
 
     /**
      * @param args the command line arguments
