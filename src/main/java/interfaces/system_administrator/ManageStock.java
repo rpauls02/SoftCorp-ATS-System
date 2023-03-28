@@ -426,8 +426,7 @@ public class ManageStock extends javax.swing.JFrame {
     }//GEN-LAST:event_databaseManagementButtonActionPerformed
 
     private void addStockButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addStockButtonActionPerformed
-        dispose();
-        new AddStock().setVisible(true);
+        // TODO add your handling code here:
     }//GEN-LAST:event_addStockButtonActionPerformed
 
     private void fromBlankFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fromBlankFieldActionPerformed
