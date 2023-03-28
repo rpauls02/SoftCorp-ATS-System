@@ -1,4 +1,4 @@
-package entities.staff;
+package staff;
 
 import javax.swing.*;
 import java.sql.*;

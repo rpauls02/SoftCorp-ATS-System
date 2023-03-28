@@ -1,9 +1,7 @@
-package entities.staff;
+package staff;
 
 //import entities.report.Report;
-import entities.ticket.Blank;
 
-import java.math.BigDecimal;
 
 public class OfficeManager extends StaffAccount {
 

@@ -1,4 +1,4 @@
-package entities.staff;
+package staff;
 
 public class SystemAdministrator extends StaffAccount {
 

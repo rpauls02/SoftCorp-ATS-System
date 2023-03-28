@@ -1,4 +1,6 @@
-package entities.staff;
+package staff;
+
+import staff.StaffAccount;
 
 import java.math.BigDecimal;
 import java.sql.Connection;

@@ -1,4 +1,4 @@
-package entities.ticket;
+package ticket;
 
 import java.sql.Time;
 import java.util.Date;

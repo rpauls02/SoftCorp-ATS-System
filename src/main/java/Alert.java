@@ -1,7 +1,3 @@
-package entities;
-
-import entities.ticket.Ticket;
-
 import java.util.Date;
 
 public class Alert {
