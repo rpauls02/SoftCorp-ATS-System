@@ -4,9 +4,6 @@
  */
 package interfaces.system_administrator;
 
-import javax.swing.*;
-import java.awt.event.ActionEvent;
-
 /**
  *
  * @author Abdullah
@@ -146,7 +143,11 @@ public class AddStock extends javax.swing.JFrame {
         toBatchNoLabel.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         toBatchNoLabel.setText("To Batch Number:");
 
-
+        toBatchNoField.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                toBatchNoFieldActionPerformed(evt);
+            }
+        });
 
         backButton.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         backButton.setText("Back");
@@ -158,14 +159,6 @@ public class AddStock extends javax.swing.JFrame {
 
         addStockButton.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         addStockButton.setText("Add Stock");
-
-        addStockButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                addStockButtonActionPerformed(evt);
-            }
-        });
-        
-        
 
         javax.swing.GroupLayout addStockPanelLayout = new javax.swing.GroupLayout(addStockPanel);
         addStockPanel.setLayout(addStockPanelLayout);
@@ -214,12 +207,7 @@ public class AddStock extends javax.swing.JFrame {
                 .addGap(25, 25, 25))
         );
 
-
-        //logoLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/smallLogo.png"))); // NOI18N
-        ImageIcon logo = new ImageIcon("data/smallLogo.png");
-        logoLabel.setIcon(logo);
-        logoPanel.add(logoLabel);
-
+        logoLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/smallLogo.png"))); // NOI18N
 
         javax.swing.GroupLayout logoPanelLayout = new javax.swing.GroupLayout(logoPanel);
         logoPanel.setLayout(logoPanelLayout);
@@ -263,9 +251,6 @@ public class AddStock extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void addStockButtonActionPerformed(ActionEvent evt) {
-    }
 
     private void homeButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_homeButtonActionPerformed
         dispose();
