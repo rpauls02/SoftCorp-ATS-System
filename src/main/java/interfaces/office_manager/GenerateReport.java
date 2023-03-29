@@ -4,6 +4,8 @@
  */
 package interfaces.office_manager;
 
+import javax.swing.*;
+
 /**
  *
  * @author Abdullah
@@ -334,7 +336,11 @@ public class GenerateReport extends javax.swing.JFrame {
 
         logoPanel.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
-        logoLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/smallLogo.png"))); // NOI18N
+        //logoLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/smallLogo.png"))); // NOI18N
+        ImageIcon logo = new ImageIcon("/data/bigLogo.png");
+        logoLabel.setIcon(logo);
+        logoPanel.add(logoLabel);
+        getContentPane().add(logoPanel);
 
         javax.swing.GroupLayout logoPanelLayout = new javax.swing.GroupLayout(logoPanel);
         logoPanel.setLayout(logoPanelLayout);

@@ -7,10 +7,14 @@ package interfaces.office_manager;
 import SQL.DBConnection;
 
 import javax.swing.*;
+
 import java.awt.*;
 import java.sql.Connection;
 import java.sql.SQLException;
 import java.sql.Statement;
+
+import java.sql.*;
+
 
 /**
  *
@@ -370,7 +374,11 @@ public class CustomerRecords extends javax.swing.JFrame {
         logoPanel.setMinimumSize(new java.awt.Dimension(104, 104));
         logoPanel.setPreferredSize(new java.awt.Dimension(104, 104));
 
-        logoLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/smallLogo.png"))); // NOI18N
+        //logoLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/smallLogo.png"))); // NOI18N
+        ImageIcon logo = new ImageIcon("/data/bigLogo.png");
+        logoLabel.setIcon(logo);
+        logoPanel.add(logoLabel);
+        getContentPane().add(logoPanel);
 
         javax.swing.GroupLayout logoPanelLayout = new javax.swing.GroupLayout(logoPanel);
         logoPanel.setLayout(logoPanelLayout);
@@ -453,6 +461,29 @@ public class CustomerRecords extends javax.swing.JFrame {
 
     private void findButtonActionPerformed(java.awt.event.ActionEvent evt) {
         // TODO add your handling code here:
+        Connection conn = DBConnection.getConnection();
+        Statement stm = null;
+
+        String surname = customerIDField.getText();
+
+        try {
+            stm = conn.createStatement();
+            String query = null;
+            int result = stm.executeUpdate(query);
+            String sql = "SELECT * FROM Customer WHERE Surname = '" + surname + "'";
+            PreparedStatement statement = null;
+            ResultSet rs = statement.executeQuery(sql);
+
+            while (rs.next()) {
+                int customerId = rs.getInt("CustomerID");
+                String surnameField = rs.getString("Surname");
+
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+
     }
 
     private void editButtonActionPerformed(java.awt.event.ActionEvent evt) {
@@ -484,6 +515,25 @@ public class CustomerRecords extends javax.swing.JFrame {
 
     private void deleteButtonActionPerformed(java.awt.event.ActionEvent evt) {
         // TODO add your handling code here:
+        Connection conn = DBConnection.getConnection();
+        Statement stm = null;
+        try {
+            stm = conn.createStatement();
+        int selectedRow = customerInformationTable.getSelectedRow();
+        String customerID = customerInformationTable.getValueAt(selectedRow, 0).toString();
+        String query = "DELETE FROM Customers WHERE CustomerIDField = '" + customerIDField + "'";
+            int result = stm.executeUpdate(query);
+            if (result > 0)
+            {
+        JOptionPane.showMessageDialog(this, "Customer deleted successfully.");
+            }
+        } catch (SQLException sqle) {
+            throw new RuntimeException(sqle);
+        } finally {
+            try { if (conn != null) conn.close(); } catch (Exception e) { throw new RuntimeException(e); };
+            try { if (stm != null) stm.close(); } catch (Exception e) { throw new RuntimeException(e); };
+        }
+
     }
 
     private void viewCustomerRecordsButtonActionPerformed(java.awt.event.ActionEvent evt) {
@@ -528,28 +578,8 @@ public class CustomerRecords extends javax.swing.JFrame {
      * @param args the command line arguments
      */
     public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(CustomerRecords.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(CustomerRecords.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(CustomerRecords.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(CustomerRecords.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
+       /* Set the Nimbus look and feel */
+
         //</editor-fold>
 
         /* Create and display the form */
