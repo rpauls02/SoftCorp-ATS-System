@@ -7,14 +7,20 @@ package interfaces.office_manager;
 import SQL.DBConnection;
 
 import javax.swing.*;
+
+import java.awt.*;
+import java.sql.Connection;
+import java.sql.SQLException;
+import java.sql.Statement;
+
 import java.sql.*;
+
 
 /**
  *
  * @author Abdullah
  */
 public class CustomerRecords extends javax.swing.JFrame {
-
     /**
      * Creates new form viewCustomerRecordsFrame
      */
@@ -30,16 +36,15 @@ public class CustomerRecords extends javax.swing.JFrame {
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">
     private void initComponents() {
-
+        pageTitlePanel = new javax.swing.JPanel();
+        pageTitleLabel = new javax.swing.JLabel();
         buttonsPanel = new javax.swing.JPanel();
         homeButton = new javax.swing.JButton();
         viewCustomerRecordsButton = new javax.swing.JButton();
         logoutButton = new javax.swing.JButton();
-        viewAlertsButton = new javax.swing.JButton();
-        manageStockButton = new javax.swing.JButton();
         viewReportButton = new javax.swing.JButton();
-        pageTitlePanel = new javax.swing.JPanel();
-        pageTitleLabel = new javax.swing.JLabel();
+        manageStockButton = new javax.swing.JButton();
+        viewAlertsButton = new javax.swing.JButton();
         functionPanel = new javax.swing.JPanel();
         refreshButton = new javax.swing.JButton();
         showDDMenu = new javax.swing.JComboBox<>();
@@ -474,6 +479,29 @@ public class CustomerRecords extends javax.swing.JFrame {
 
     private void editButtonActionPerformed(java.awt.event.ActionEvent evt) {
         // TODO add your handling code here:
+        Connection conn = DBConnection.getConnection();
+        Statement stm = null;
+        try {
+            stm = conn.createStatement();
+            String query =
+                    "UPDATE in2018g12.customer (forename, surname, address, /*postcode,*/ phone, email)" +
+                            "VALUES ('" + forenameField.getText() + "', '" + surnameField.getText() +
+                            "', '" + addressField.getText() + /*"', '" + postcodeField.getText() +*/
+                            "', '" + phoneField.getText() + "', '" + emailField.getText() + "')";
+            int result = stm.executeUpdate(query);
+            if (result > 0){
+                JOptionPane.showMessageDialog(this, "Customer record updated. " +
+                        "Review using 'View Customer Records' menu");
+            } else {
+                JOptionPane.showMessageDialog(this, "Could not update customer record. " +
+                        "Review details entered or contact system administrator");
+            }
+        } catch (SQLException sqle) {
+            throw new RuntimeException(sqle);
+        } finally {
+            try { if (conn != null) conn.close(); } catch (Exception e) { throw new RuntimeException(e); };
+            try { if (stm != null) stm.close(); } catch (Exception e) { throw new RuntimeException(e); };
+        }
     }
 
     private void deleteButtonActionPerformed(java.awt.event.ActionEvent evt) {
@@ -558,6 +586,12 @@ public class CustomerRecords extends javax.swing.JFrame {
     private javax.swing.JPanel buttonsPanel;
     private javax.swing.JTextField customerIDField;
     private javax.swing.JTable customerInformationTable;
+    private javax.swing.JTextField forenameField;
+    private javax.swing.JTextField surnameField;
+    private javax.swing.JTextField addressField;
+    private javax.swing.JTextField phoneField;
+    private javax.swing.JTextField emailField;
+
     private javax.swing.JButton deleteButton;
     private javax.swing.JButton editButton;
     private javax.swing.JButton findButton;
