@@ -26,7 +26,6 @@ public class AddStaffMember extends javax.swing.JFrame {
     public AddStaffMember() {
         initComponents();
     }
-    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -370,9 +369,9 @@ public class AddStaffMember extends javax.swing.JFrame {
         new SystemAdminHub().setVisible(true);
     }//GEN-LAST:event_backButtonActionPerformed
 
-    private void addStaffMemberButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addStaffMemberButtonActionPerformed
+    private void addStaffMemberButtonActionPerformed(java.awt.event.ActionEvent evt) { //GEN-FIRST:event_addStaffMemberButtonActionPerformed
         // TODO add your handling code here:
-        /*Connection conn = DBConnection.getConnection();
+        /* Connection conn = DBConnection.getConnection();
         Statement stm = null;
         try {
             stm = conn.createStatement();
@@ -394,8 +393,8 @@ public class AddStaffMember extends javax.swing.JFrame {
         } finally {
             try { if (conn != null) conn.close(); } catch (Exception e) { throw new RuntimeException(e); };
             try { if (stm != null) stm.close(); } catch (Exception e) { throw new RuntimeException(e); };
-        }*/
-    }//GEN-LAST:event_addStaffMemberButtonActionPerformed
+        } */
+    } //GEN-LAST:event_addStaffMemberButtonActionPerformed
 
     private void forenameFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_forenameFieldActionPerformed
         // TODO add your handling code here:
