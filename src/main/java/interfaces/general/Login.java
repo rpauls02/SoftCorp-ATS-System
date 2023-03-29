@@ -173,7 +173,7 @@ public class Login extends javax.swing.JFrame {
         PreparedStatement pstm = null;
         ResultSet rs = null;
         try {
-            String query = "SELECT forename, role FROM in2018g12.staff WHERE id = ? AND password = ?";
+            String query = "SELECT role FROM in2018g12.staff WHERE id = ? AND password = ?";
             pstm = conn.prepareStatement(query);
             pstm.setInt(1, Integer.parseInt(idField.getText()));
             pstm.setString(2, passwordField.getText());
