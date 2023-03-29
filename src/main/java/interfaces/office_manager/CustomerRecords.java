@@ -455,30 +455,21 @@ public class CustomerRecords extends javax.swing.JFrame {
     }
 
     private void findButtonActionPerformed(java.awt.event.ActionEvent evt) {
-        // TODO add your handling code here:
         Connection conn = DBConnection.getConnection();
-        Statement stm = null;
-
-        String surname = customerIDField.getText();
-
+        PreparedStatement pstm = null;
         try {
-            stm = conn.createStatement();
-            String query = null;
-            int result = stm.executeUpdate(query);
-            String sql = "SELECT * FROM Customer WHERE Surname = '" + surname + "'";
+            String query = "SELECT * FROM customer WHERE surname = '" + customerIDField.getText() + "'";
+            pstm = conn.prepareStatement(query);
+            int result = pstm.executeUpdate(query);
             PreparedStatement statement = null;
-            ResultSet rs = statement.executeQuery(sql);
-
+            ResultSet rs = statement.executeQuery(query);
             while (rs.next()) {
-                int customerId = rs.getInt("CustomerID");
-                String surnameField = rs.getString("Surname");
-
+                int customerId = rs.getInt("customerID");
+                String surnameField = rs.getString("surname");
             }
         } catch (SQLException e) {
-            e.printStackTrace();
+
         }
-
-
     }
 
     private void editButtonActionPerformed(java.awt.event.ActionEvent evt) {
