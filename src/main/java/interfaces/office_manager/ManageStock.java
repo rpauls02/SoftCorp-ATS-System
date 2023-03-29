@@ -4,13 +4,15 @@
  */
 package interfaces.office_manager;
 
+import SQL.DBConnection;
+import interfaces.general.Login;
 import interfaces.office_manager.CustomerRecords;
 import interfaces.office_manager.OfficeManagerHub;
 import interfaces.office_manager.ViewAlerts;
-import interfaces.office_manager.ViewReport;
+import interfaces.office_manager.GenerateReport;
 
 import javax.swing.*;
-import java.awt.event.ActionEvent;
+import java.sql.*;
 
 /**
  *
@@ -107,11 +109,6 @@ public class ManageStock extends javax.swing.JFrame {
         manageStockButton.setBackground(new java.awt.Color(153, 153, 255));
         manageStockButton.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         manageStockButton.setText("Manage Stock");
-        manageStockButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                manageStockButtonActionPerformed(evt);
-            }
-        });
 
         javax.swing.GroupLayout buttonsPanelLayout = new javax.swing.GroupLayout(buttonsPanel);
         buttonsPanel.setLayout(buttonsPanelLayout);
@@ -234,24 +231,6 @@ public class ManageStock extends javax.swing.JFrame {
             }
         });
 
-        refreshButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                refreshButtonActionPerformed(evt);
-            }
-        });
-
-        showDDMenu.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                showDDMenuActionPerformed(evt);
-            }
-        });
-
-        orderDDMenu.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                orderDDMenuActionPerformed(evt);
-            }
-        });
-
         javax.swing.GroupLayout editStockPanelLayout = new javax.swing.GroupLayout(editStockPanel);
         editStockPanel.setLayout(editStockPanelLayout);
         editStockPanelLayout.setHorizontalGroup(
@@ -293,7 +272,7 @@ public class ManageStock extends javax.swing.JFrame {
 
         //logoLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/smallLogo.png"))); // NOI18N
         ImageIcon logo = new ImageIcon("data/smallLogo.png");
-        logoLabel.setIcon(logo);
+        logoLabel.setIcon(logo); 
         logoPanel.add(logoLabel);
 
 
@@ -342,18 +321,8 @@ public class ManageStock extends javax.swing.JFrame {
                 .addComponent(tablePanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
         );
-
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void orderDDMenuActionPerformed(ActionEvent evt) {
-    }
-
-    private void showDDMenuActionPerformed(ActionEvent evt) {
-    }
-
-    private void refreshButtonActionPerformed(ActionEvent evt) {
-    }
 
     private void homeButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_homeButtonActionPerformed
         dispose();
@@ -361,7 +330,8 @@ public class ManageStock extends javax.swing.JFrame {
     }//GEN-LAST:event_homeButtonActionPerformed
 
     private void logoutButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_logoutButtonActionPerformed
-        // TODO add your handling code here:
+        dispose();
+        new Login().setVisible(true);
     }//GEN-LAST:event_logoutButtonActionPerformed
 
     private void viewAlertsButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_viewAlertsButtonActionPerformed
@@ -369,17 +339,39 @@ public class ManageStock extends javax.swing.JFrame {
         new ViewAlerts().setVisible(true);
     }//GEN-LAST:event_viewAlertsButtonActionPerformed
 
-    private void manageStockButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_manageStockButtonActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_manageStockButtonActionPerformed
-
     private void assignButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_assignButtonActionPerformed
         // TODO add your handling code here:
+        /*Connection conn = DBConnection.getConnection();
+        Statement stm = null;
+        int selectedRow = blankStockTable.getSelectedRow();
+        try {
+            stm = conn.createStatement();
+            if (selectedRow != 1){
+                String query =
+                        "UPDATE blank SET status = 'Assigned' WHERE ";
+                int result = stm.executeUpdate(query);
+                if (result > 0){
+                    JOptionPane.showMessageDialog(this, "Selected blanks have been assigned. " +
+                            "A message has been sent to the appropriate advisor(s).");
+
+                } else {
+                    JOptionPane.showMessageDialog(this, "Could not assign blank. " +
+                            "Review selection or contact system administrator");
+                }
+            } else {
+                JOptionPane.showMessageDialog(this, "No blank selected.");
+            }
+        } catch (SQLException sqle) {
+            throw new RuntimeException(sqle);
+        } finally {
+            try { if (conn != null) conn.close(); } catch (Exception e) { throw new RuntimeException(e); };
+            try { if (stm != null) stm.close(); } catch (Exception e) { throw new RuntimeException(e); };
+        }*/
     }//GEN-LAST:event_assignButtonActionPerformed
 
     private void viewReportButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_viewReportButtonActionPerformed
         dispose();
-        new ViewReport().setVisible(true);
+        new GenerateReport().setVisible(true);
     }//GEN-LAST:event_viewReportButtonActionPerformed
 
     private void viewCustomerRecordsButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_viewCustomerRecordsButtonActionPerformed
@@ -389,6 +381,7 @@ public class ManageStock extends javax.swing.JFrame {
 
     private void reassignButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_reassignButtonActionPerformed
         // TODO add your handling code here:
+
     }//GEN-LAST:event_reassignButtonActionPerformed
 
     /**

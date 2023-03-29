@@ -4,6 +4,10 @@
  */
 package interfaces.system_administrator;
 
+import interfaces.general.Login;
+
+import javax.swing.*;
+
 /**
  *
  * @author Abdullah
@@ -57,7 +61,6 @@ public class ManageStock extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("ATS System | System Admin | Manage Stock");
         setBackground(new java.awt.Color(49, 174, 209));
-        setMaximumSize(new java.awt.Dimension(1920, 1080));
         setMinimumSize(new java.awt.Dimension(1200, 800));
 
         buttonsPanel.setBackground(new java.awt.Color(49, 174, 209));
@@ -338,7 +341,11 @@ public class ManageStock extends javax.swing.JFrame {
         logoPanel.setMinimumSize(new java.awt.Dimension(104, 104));
         logoPanel.setPreferredSize(new java.awt.Dimension(104, 104));
 
-        logoLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/smallLogo.png"))); // NOI18N
+        //logoLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/data/smallLogo.png"))); // NOI18N
+        ImageIcon logo = new ImageIcon("/data/smallLogo.png");
+        logoLabel.setIcon(logo);
+        logoPanel.add(logoLabel);
+        getContentPane().add(logoPanel);
 
         javax.swing.GroupLayout logoPanelLayout = new javax.swing.GroupLayout(logoPanel);
         logoPanel.setLayout(logoPanelLayout);
@@ -405,7 +412,8 @@ public class ManageStock extends javax.swing.JFrame {
     }//GEN-LAST:event_homeButtonActionPerformed
 
     private void logoutButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_logoutButtonActionPerformed
-        // TODO add your handling code here:
+        dispose();
+        new Login().setVisible(true);
     }//GEN-LAST:event_logoutButtonActionPerformed
 
     private void assignButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_assignButtonActionPerformed
@@ -418,8 +426,7 @@ public class ManageStock extends javax.swing.JFrame {
     }//GEN-LAST:event_databaseManagementButtonActionPerformed
 
     private void addStockButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addStockButtonActionPerformed
-        dispose();
-        new AddStock().setVisible(true);
+        // TODO add your handling code here:
     }//GEN-LAST:event_addStockButtonActionPerformed
 
     private void fromBlankFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fromBlankFieldActionPerformed

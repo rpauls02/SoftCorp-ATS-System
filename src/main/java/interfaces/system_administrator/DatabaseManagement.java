@@ -4,6 +4,10 @@
  */
 package interfaces.system_administrator;
 
+import interfaces.general.Login;
+
+import javax.swing.*;
+
 /**
  *
  * @author Abdullah
@@ -56,8 +60,8 @@ public class DatabaseManagement extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("ATS System | System Admin | Database Management");
-        setMaximumSize(new java.awt.Dimension(1200, 800));
         setMinimumSize(new java.awt.Dimension(1200, 800));
+        setMaximumSize(new java.awt.Dimension(1920, 1080));
         setPreferredSize(new java.awt.Dimension(1200, 800));
         setSize(new java.awt.Dimension(1200, 800));
 
@@ -158,10 +162,16 @@ public class DatabaseManagement extends javax.swing.JFrame {
         panelTitle.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         panelTitle.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         panelTitle.setText("Backup Database");
-        panelTitle.setBorder(new javax.swing.border.MatteBorder(null));
+        panelTitle.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
         backupDatabaseButton.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         backupDatabaseButton.setText("Backup Database");
+        backupDatabaseButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                backupDatabaseButtonActionPerformed(evt);
+            }
+        });
+
 
         locationSelectionLabel.setBackground(new java.awt.Color(204, 204, 204));
         locationSelectionLabel.setBorder(javax.swing.BorderFactory.createEtchedBorder());
@@ -244,6 +254,11 @@ public class DatabaseManagement extends javax.swing.JFrame {
 
         restoreDatabaseButton.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         restoreDatabaseButton.setText("Restore Database");
+        restoreDatabaseButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                restoreDatabaseButtonActionPerformed(evt);
+            }
+        });
 
         backupFileLabel.setBackground(new java.awt.Color(204, 204, 204));
         backupFileLabel.setBorder(javax.swing.BorderFactory.createEtchedBorder());
@@ -338,7 +353,11 @@ public class DatabaseManagement extends javax.swing.JFrame {
         logoPanel.setMinimumSize(new java.awt.Dimension(104, 104));
         logoPanel.setPreferredSize(new java.awt.Dimension(104, 104));
 
-        logoLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/smallLogo.png"))); // NOI18N
+        //logoLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/data/smallLogo.png"))); // NOI18N
+        ImageIcon logo = new ImageIcon("/data/smallLogo.png");
+        logoLabel.setIcon(logo);
+        logoPanel.add(logoLabel);
+        getContentPane().add(logoPanel);
 
         javax.swing.GroupLayout logoPanelLayout = new javax.swing.GroupLayout(logoPanel);
         logoPanel.setLayout(logoPanelLayout);
@@ -375,8 +394,7 @@ public class DatabaseManagement extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(buttonsPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(functionPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
-                .addContainerGap())
-        );
+        ));
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
@@ -402,13 +420,22 @@ public class DatabaseManagement extends javax.swing.JFrame {
     }//GEN-LAST:event_homeButtonActionPerformed
 
     private void logoutButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_logoutButtonActionPerformed
-        // TODO add your handling code here:
+        dispose();
+        new Login().setVisible(true);
     }//GEN-LAST:event_logoutButtonActionPerformed
 
     private void manageStockPageButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_manageStockPageButtonActionPerformed
         dispose();
         new ManageStock().setVisible(true);
     }//GEN-LAST:event_manageStockPageButtonActionPerformed
+
+    private void restoreDatabaseButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_restoreDatabaseButtonActionPerformed
+
+    }//GEN-LAST:event_restoreDatabaseButtonActionPerformed
+
+    private void backupDatabaseButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backupDatabaseButtonActionPerformed
+
+    }//GEN-LAST:event_backupDatabaseButtonActionPerformed
 
     /**
      * @param args the command line arguments

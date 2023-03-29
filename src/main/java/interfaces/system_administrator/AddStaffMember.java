@@ -4,6 +4,16 @@
  */
 package interfaces.system_administrator;
 
+import interfaces.general.Login;
+import interfaces.office_manager.OfficeManagerHub;
+import SQL.DBConnection;
+import interfaces.general.Login;
+
+import javax.swing.*;
+import java.sql.Connection;
+import java.sql.SQLException;
+import java.sql.Statement;
+
 /**
  *
  * @author Abdullah
@@ -16,7 +26,6 @@ public class AddStaffMember extends javax.swing.JFrame {
     public AddStaffMember() {
         initComponents();
     }
-    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -275,7 +284,11 @@ public class AddStaffMember extends javax.swing.JFrame {
         logoPanel.setMinimumSize(new java.awt.Dimension(104, 104));
         logoPanel.setPreferredSize(new java.awt.Dimension(104, 104));
 
-        logoLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/smallLogo.png"))); // NOI18N
+        //logoLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/data/smallLogo.png"))); // NOI18N
+        ImageIcon logo = new ImageIcon("/data/smallLogo.png");
+        logoLabel.setIcon(logo);
+        logoPanel.add(logoLabel);
+        getContentPane().add(logoPanel);
 
         javax.swing.GroupLayout logoPanelLayout = new javax.swing.GroupLayout(logoPanel);
         logoPanel.setLayout(logoPanelLayout);
@@ -332,7 +345,8 @@ public class AddStaffMember extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void homeButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_homeButtonActionPerformed
-
+        dispose();
+        new SystemAdminHub().setVisible(true);
     }//GEN-LAST:event_homeButtonActionPerformed
 
     private void databaseManagementButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_databaseManagementButtonActionPerformed
@@ -341,7 +355,8 @@ public class AddStaffMember extends javax.swing.JFrame {
     }//GEN-LAST:event_databaseManagementButtonActionPerformed
 
     private void logoutButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_logoutButtonActionPerformed
-        // TODO add your handling code here:
+        dispose();
+        new Login().setVisible(true);
     }//GEN-LAST:event_logoutButtonActionPerformed
 
     private void manageStockButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_manageStockButtonActionPerformed
@@ -354,9 +369,32 @@ public class AddStaffMember extends javax.swing.JFrame {
         new SystemAdminHub().setVisible(true);
     }//GEN-LAST:event_backButtonActionPerformed
 
-    private void addStaffMemberButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addStaffMemberButtonActionPerformed
+    private void addStaffMemberButtonActionPerformed(java.awt.event.ActionEvent evt) { //GEN-FIRST:event_addStaffMemberButtonActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_addStaffMemberButtonActionPerformed
+        /* Connection conn = DBConnection.getConnection();
+        Statement stm = null;
+        try {
+            stm = conn.createStatement();
+            String query =
+                    "INSERT INTO in2018g12.staff (id, password, role, forename, surname)" +
+                            "VALUES ('" + staffIDField.getText() + "', '" + passwordField.getText() +
+                            "', '" + roleField.getText() + "', '" + forenameField.getText() +
+                            "', '" + surnameField.getText() + "')";
+            int result = stm.executeUpdate(query);
+            if (result > 0){
+                JOptionPane.showMessageDialog(this, "Customer added. " +
+                        "Review using 'View Customer Records' menu");
+            } else {
+                JOptionPane.showMessageDialog(this, "Could not add customer. " +
+                        "Review details entered or contact system administrator");
+            }
+        } catch (SQLException sqle) {
+            throw new RuntimeException(sqle);
+        } finally {
+            try { if (conn != null) conn.close(); } catch (Exception e) { throw new RuntimeException(e); };
+            try { if (stm != null) stm.close(); } catch (Exception e) { throw new RuntimeException(e); };
+        } */
+    } //GEN-LAST:event_addStaffMemberButtonActionPerformed
 
     private void forenameFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_forenameFieldActionPerformed
         // TODO add your handling code here:

@@ -223,8 +223,11 @@
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Segoe UI" size="18" style="1"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="Generate/View Report"/>
+            <Property name="text" type="java.lang.String" value="Generate Report"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="viewReportButtonActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JButton" name="manageStockButton">
           <Properties>
@@ -366,6 +369,9 @@
             </Property>
             <Property name="text" type="java.lang.String" value="View PDF Folder"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="viewPDFFolderButtonActionPerformed"/>
+          </Events>
         </Component>
       </SubComponents>
     </Container>
@@ -427,7 +433,7 @@
                       <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Component id="interlineSalesReportButton" min="-2" max="-2" attributes="0"/>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Component id="IndividualSalesReportButton" min="-2" max="-2" attributes="0"/>
+                      <Component id="individualSalesReportButton" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="32767" attributes="0"/>
                   </Group>
               </Group>
@@ -441,7 +447,7 @@
                           <Component id="stockTurnoverReport" alignment="3" max="32767" attributes="0"/>
                           <Component id="domesticSalesReportButton" alignment="3" max="32767" attributes="0"/>
                           <Component id="interlineSalesReportButton" alignment="3" max="32767" attributes="0"/>
-                          <Component id="IndividualSalesReportButton" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="individualSalesReportButton" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
                   </Group>
@@ -465,6 +471,9 @@
                 </Property>
                 <Property name="text" type="java.lang.String" value="Stock Turnover Report"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="stockTurnoverReportActionPerformed"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JButton" name="domesticSalesReportButton">
               <Properties>
@@ -473,6 +482,9 @@
                 </Property>
                 <Property name="text" type="java.lang.String" value="Domestic Sales Report"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="domesticSalesReportButtonActionPerformed"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JButton" name="interlineSalesReportButton">
               <Properties>
@@ -481,14 +493,20 @@
                 </Property>
                 <Property name="text" type="java.lang.String" value="Interline Sales Report"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="interlineSalesReportButtonActionPerformed"/>
+              </Events>
             </Component>
-            <Component class="javax.swing.JButton" name="IndividualSalesReportButton">
+            <Component class="javax.swing.JButton" name="individualSalesReportButton">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Segoe UI" size="18" style="0"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Individual Sales Report"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="individualSalesReportButtonActionPerformed"/>
+              </Events>
             </Component>
           </SubComponents>
         </Container>
@@ -533,7 +551,7 @@
         <Component class="javax.swing.JLabel" name="logoLabel">
           <Properties>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="3" name="/Images/smallLogo.png"/>
+              <Image iconType="3" name="/data/smallLogo.png"/>
             </Property>
           </Properties>
         </Component>
