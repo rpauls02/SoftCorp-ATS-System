@@ -369,7 +369,11 @@ public class CustomerRecords extends javax.swing.JFrame {
         logoPanel.setMinimumSize(new java.awt.Dimension(104, 104));
         logoPanel.setPreferredSize(new java.awt.Dimension(104, 104));
 
-        logoLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/smallLogo.png"))); // NOI18N
+        //logoLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/smallLogo.png"))); // NOI18N
+        ImageIcon logo = new ImageIcon("/data/bigLogo.png");
+        logoLabel.setIcon(logo);
+        logoPanel.add(logoLabel);
+        getContentPane().add(logoPanel);
 
         javax.swing.GroupLayout logoPanelLayout = new javax.swing.GroupLayout(logoPanel);
         logoPanel.setLayout(logoPanelLayout);
