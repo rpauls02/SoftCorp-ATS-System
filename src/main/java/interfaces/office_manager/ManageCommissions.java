@@ -64,7 +64,11 @@ public class ManageCommissions extends javax.swing.JFrame {
 
         logoPanel.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
-        logoLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/data/smallLogo.png"))); // NOI18N
+        //logoLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/data/smallLogo.png"))); // NOI18N
+        ImageIcon logo = new ImageIcon("/data/smallLogo.png");
+        logoLabel.setIcon(logo);
+        logoPanel.add(logoLabel);
+        getContentPane().add(logoPanel);
 
         javax.swing.GroupLayout logoPanelLayout = new javax.swing.GroupLayout(logoPanel);
         logoPanel.setLayout(logoPanelLayout);
@@ -296,7 +300,7 @@ public class ManageCommissions extends javax.swing.JFrame {
                         "Date", "Commission Rate", "Ticket ID", "Staff ID"
                 }
         ) {
-            Class[] types = new Class [] {
+            final Class[] types = new Class [] {
                     java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
             };
 
@@ -475,8 +479,8 @@ public class ManageCommissions extends javax.swing.JFrame {
         } catch (SQLException sqle) {
             throw new RuntimeException(sqle);
         } finally {
-            try { if (conn != null) conn.close(); } catch (Exception e) { throw new RuntimeException(e); };
-            try { if (stm != null) stm.close(); } catch (Exception e) { throw new RuntimeException(e); };
+            try { if (conn != null) conn.close(); } catch (Exception e) { throw new RuntimeException(e); }
+            try { if (stm != null) stm.close(); } catch (Exception e) { throw new RuntimeException(e); }
         }
     }//GEN-LAST:event_addRateButtonActionPerformed
 
@@ -495,7 +499,7 @@ public class ManageCommissions extends javax.swing.JFrame {
     /**
      * @param args the command line arguments
      */
-    public static void main(String args[]) {
+    public static void main(String[] args) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.

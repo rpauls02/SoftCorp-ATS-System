@@ -43,6 +43,7 @@ public class OfficeManagerHub extends javax.swing.JFrame {
         viewAlertsButton = new javax.swing.JButton();
         manageStockButton = new javax.swing.JButton();
         viewReportButton = new javax.swing.JButton();
+        manageCommissionsButton = new javax.swing.JButton();
         functionPanel = new javax.swing.JPanel();
         refreshButton = new javax.swing.JButton();
         tableName = new javax.swing.JLabel();
@@ -50,10 +51,6 @@ public class OfficeManagerHub extends javax.swing.JFrame {
         showDDMenu = new javax.swing.JComboBox<>();
         tableScrollPane = new javax.swing.JScrollPane();
         advisorInformationPanel = new javax.swing.JTable();
-        commisionRatePanel = new javax.swing.JPanel();
-        setCommissionRateLabel = new javax.swing.JLabel();
-        setCommissionRateField = new javax.swing.JTextField();
-        updateCommissionRateButton = new javax.swing.JButton();
         logoPanel = new javax.swing.JPanel();
         logoLabel = new javax.swing.JLabel();
 
@@ -76,7 +73,7 @@ public class OfficeManagerHub extends javax.swing.JFrame {
         pageTitlePanel.setLayout(pageTitlePanelLayout);
         pageTitlePanelLayout.setHorizontalGroup(
                 pageTitlePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(idAndRoleLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 469, Short.MAX_VALUE)
+                        .addComponent(idAndRoleLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 398, Short.MAX_VALUE)
                         .addComponent(welcomeLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         pageTitlePanelLayout.setVerticalGroup(
@@ -97,7 +94,7 @@ public class OfficeManagerHub extends javax.swing.JFrame {
         homeButton.setText("Home");
         homeButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-               homeButtonActionPerformed(evt);
+                homeButtonActionPerformed(evt);
             }
         });
 
@@ -146,25 +143,36 @@ public class OfficeManagerHub extends javax.swing.JFrame {
             }
         });
 
+        manageCommissionsButton.setBackground(new java.awt.Color(54, 198, 238));
+        manageCommissionsButton.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        manageCommissionsButton.setText("Manage Commissions");
+        manageCommissionsButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                manageCommissionsButtonActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout buttonsPanelLayout = new javax.swing.GroupLayout(buttonsPanel);
         buttonsPanel.setLayout(buttonsPanelLayout);
         buttonsPanelLayout.setHorizontalGroup(
                 buttonsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addGroup(buttonsPanelLayout.createSequentialGroup()
                                 .addContainerGap()
-                                .addGroup(buttonsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addGroup(buttonsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                         .addGroup(buttonsPanelLayout.createSequentialGroup()
-                                                .addComponent(homeButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                                .addComponent(homeButton)
                                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                .addComponent(viewCustomerRecordsButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                                .addComponent(viewCustomerRecordsButton, javax.swing.GroupLayout.PREFERRED_SIZE, 239, javax.swing.GroupLayout.PREFERRED_SIZE)
                                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                .addComponent(logoutButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                                .addComponent(manageCommissionsButton, javax.swing.GroupLayout.DEFAULT_SIZE, 225, Short.MAX_VALUE)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                .addComponent(logoutButton))
                                         .addGroup(buttonsPanelLayout.createSequentialGroup()
-                                                .addComponent(viewAlertsButton, javax.swing.GroupLayout.PREFERRED_SIZE, 173, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addComponent(viewAlertsButton, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
                                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                .addComponent(viewReportButton, javax.swing.GroupLayout.PREFERRED_SIZE, 218, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addComponent(viewReportButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                .addComponent(manageStockButton, javax.swing.GroupLayout.DEFAULT_SIZE, 184, Short.MAX_VALUE)))
+                                                .addComponent(manageStockButton, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)))
                                 .addContainerGap())
         );
         buttonsPanelLayout.setVerticalGroup(
@@ -172,9 +180,11 @@ public class OfficeManagerHub extends javax.swing.JFrame {
                         .addGroup(buttonsPanelLayout.createSequentialGroup()
                                 .addContainerGap()
                                 .addGroup(buttonsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                        .addComponent(viewCustomerRecordsButton, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 42, Short.MAX_VALUE)
+                                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, buttonsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                                .addComponent(viewCustomerRecordsButton, javax.swing.GroupLayout.DEFAULT_SIZE, 42, Short.MAX_VALUE)
+                                                .addComponent(logoutButton, javax.swing.GroupLayout.DEFAULT_SIZE, 42, Short.MAX_VALUE))
                                         .addComponent(homeButton, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 42, Short.MAX_VALUE)
-                                        .addComponent(logoutButton, javax.swing.GroupLayout.DEFAULT_SIZE, 42, Short.MAX_VALUE))
+                                        .addComponent(manageCommissionsButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                                 .addGap(6, 6, 6)
                                 .addGroup(buttonsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                         .addComponent(manageStockButton, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -211,7 +221,7 @@ public class OfficeManagerHub extends javax.swing.JFrame {
                                 .addComponent(showDDMenu, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)
                                 .addComponent(orderDDMenu, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(297, 297, 297)
+                                .addGap(298, 298, 298)
                                 .addComponent(tableName)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(refreshButton)
@@ -220,17 +230,18 @@ public class OfficeManagerHub extends javax.swing.JFrame {
         functionPanelLayout.setVerticalGroup(
                 functionPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addGroup(functionPanelLayout.createSequentialGroup()
+                                .addContainerGap()
                                 .addGroup(functionPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                         .addGroup(functionPanelLayout.createSequentialGroup()
-                                                .addGap(7, 7, 7)
-                                                .addComponent(refreshButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                                .addComponent(showDDMenu, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                                         .addGroup(functionPanelLayout.createSequentialGroup()
-                                                .addGap(8, 8, 8)
-                                                .addGroup(functionPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                                        .addComponent(tableName, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                                        .addComponent(orderDDMenu)
-                                                        .addComponent(showDDMenu))))
-                                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                                .addGroup(functionPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, functionPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                                                .addComponent(orderDDMenu, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                                .addComponent(tableName, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                                        .addComponent(refreshButton, javax.swing.GroupLayout.Alignment.LEADING))
+                                                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
 
         tableScrollPane.setBorder(javax.swing.BorderFactory.createEtchedBorder());
@@ -257,54 +268,11 @@ public class OfficeManagerHub extends javax.swing.JFrame {
         });
         tableScrollPane.setViewportView(advisorInformationPanel);
 
-        commisionRatePanel.setBackground(new java.awt.Color(49, 174, 209));
-        commisionRatePanel.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-
-        setCommissionRateLabel.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        setCommissionRateLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        setCommissionRateLabel.setText("Add Commission Rate");
-        setCommissionRateLabel.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-
-        setCommissionRateField.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-
-        updateCommissionRateButton.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        updateCommissionRateButton.setText("Add");
-        updateCommissionRateButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                updateCommissionRateButtonActionPerformed(evt);
-            }
-        });
-
-        javax.swing.GroupLayout commisionRatePanelLayout = new javax.swing.GroupLayout(commisionRatePanel);
-        commisionRatePanel.setLayout(commisionRatePanelLayout);
-        commisionRatePanelLayout.setHorizontalGroup(
-                commisionRatePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(commisionRatePanelLayout.createSequentialGroup()
-                                .addContainerGap()
-                                .addComponent(setCommissionRateField, javax.swing.GroupLayout.PREFERRED_SIZE, 209, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(updateCommissionRateButton)
-                                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addGroup(commisionRatePanelLayout.createSequentialGroup()
-                                .addComponent(setCommissionRateLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 195, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(0, 0, Short.MAX_VALUE))
-        );
-        commisionRatePanelLayout.setVerticalGroup(
-                commisionRatePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(commisionRatePanelLayout.createSequentialGroup()
-                                .addComponent(setCommissionRateLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(12, 12, 12)
-                                .addGroup(commisionRatePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(updateCommissionRateButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(setCommissionRateField))
-                                .addGap(16, 16, 16))
-        );
-
         logoPanel.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         logoPanel.setPreferredSize(new java.awt.Dimension(104, 104));
 
-        //logoLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/smallLogo.png"))); // NOI18N
-        ImageIcon logo = new ImageIcon("/data/bigLogo.png");
+        //logoLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/data/smallLogo.png"))); // NOI18N
+        ImageIcon logo = new ImageIcon("/data/smallLogo.png");
         logoLabel.setIcon(logo);
         logoPanel.add(logoLabel);
         getContentPane().add(logoPanel);
@@ -316,18 +284,18 @@ public class OfficeManagerHub extends javax.swing.JFrame {
                         .addGap(0, 102, Short.MAX_VALUE)
                         .addGroup(logoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                 .addGroup(logoPanelLayout.createSequentialGroup()
-                                        .addGap(0, 0, Short.MAX_VALUE)
+                                        .addGap(0, 51, Short.MAX_VALUE)
                                         .addComponent(logoLabel)
-                                        .addGap(0, 0, Short.MAX_VALUE)))
+                                        .addGap(0, 51, Short.MAX_VALUE)))
         );
         logoPanelLayout.setVerticalGroup(
                 logoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addGap(0, 102, Short.MAX_VALUE)
                         .addGroup(logoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                 .addGroup(logoPanelLayout.createSequentialGroup()
-                                        .addGap(0, 0, Short.MAX_VALUE)
+                                        .addGap(0, 51, Short.MAX_VALUE)
                                         .addComponent(logoLabel)
-                                        .addGap(0, 0, Short.MAX_VALUE)))
+                                        .addGap(0, 51, Short.MAX_VALUE)))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -342,10 +310,9 @@ public class OfficeManagerHub extends javax.swing.JFrame {
                                         .addGroup(layout.createSequentialGroup()
                                                 .addComponent(logoPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                .addComponent(pageTitlePanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                                .addComponent(pageTitlePanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                .addComponent(buttonsPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                                        .addComponent(commisionRatePanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                                .addComponent(buttonsPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -353,15 +320,13 @@ public class OfficeManagerHub extends javax.swing.JFrame {
                         .addGroup(layout.createSequentialGroup()
                                 .addContainerGap()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                        .addComponent(logoPanel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addComponent(pageTitlePanel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(buttonsPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                        .addComponent(buttonsPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(logoPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(functionPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(functionPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(tableScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 522, Short.MAX_VALUE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(commisionRatePanel, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(tableScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 624, Short.MAX_VALUE)
                                 .addContainerGap())
         );
 
@@ -397,33 +362,15 @@ public class OfficeManagerHub extends javax.swing.JFrame {
         new CustomerRecords().setVisible(true);
     }
 
-    private void updateCommissionRateButtonActionPerformed(java.awt.event.ActionEvent evt) {
-        Connection conn = DBConnection.getConnection();
-        Statement stm = null;
-        try {
-            stm = conn.createStatement();
-            String query =
-                    "INSERT INTO in2018g12.commission (rate) " +
-                            "VALUES ('" + Double.parseDouble(setCommissionRateField.getText()) + "')";
-            int result = stm.executeUpdate(query);
-            if (result > 0) {
-                JOptionPane.showMessageDialog(this, "Commission rate updated.");
-            } else {
-                JOptionPane.showMessageDialog(null, "Could not add rate. " +
-                        "Review rate entered or contact system administrator");
-            }
-        } catch (SQLException sqle) {
-            throw new RuntimeException(sqle);
-        } finally {
-            try { if (conn != null) conn.close(); } catch (Exception e) { throw new RuntimeException(e); };
-            try { if (stm != null) stm.close(); } catch (Exception e) { throw new RuntimeException(e); };
-        }
+    private void manageCommissionsButtonActionPerformed(java.awt.event.ActionEvent evt) {
+        // TODO add your handling code here:
     }
+
 
     /**
      * @param args the command line arguments
      */
-    public static void main(String args[]) {
+    public static void main(String[] args) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
@@ -459,23 +406,20 @@ public class OfficeManagerHub extends javax.swing.JFrame {
     // Variables declaration - do not modify
     private javax.swing.JTable advisorInformationPanel;
     private javax.swing.JPanel buttonsPanel;
-    private javax.swing.JPanel commisionRatePanel;
     private javax.swing.JPanel functionPanel;
     private javax.swing.JButton homeButton;
     private javax.swing.JLabel idAndRoleLabel;
     private javax.swing.JLabel logoLabel;
     private javax.swing.JPanel logoPanel;
     private javax.swing.JButton logoutButton;
+    private javax.swing.JButton manageCommissionsButton;
     private javax.swing.JButton manageStockButton;
     private javax.swing.JComboBox<String> orderDDMenu;
     private javax.swing.JPanel pageTitlePanel;
     private javax.swing.JButton refreshButton;
-    private javax.swing.JTextField setCommissionRateField;
-    private javax.swing.JLabel setCommissionRateLabel;
     private javax.swing.JComboBox<String> showDDMenu;
     private javax.swing.JLabel tableName;
     private javax.swing.JScrollPane tableScrollPane;
-    private javax.swing.JButton updateCommissionRateButton;
     private javax.swing.JButton viewAlertsButton;
     private javax.swing.JButton viewCustomerRecordsButton;
     private javax.swing.JButton viewReportButton;

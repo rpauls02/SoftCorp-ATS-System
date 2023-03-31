@@ -172,7 +172,7 @@ public class SystemAdminHub extends javax.swing.JFrame {
         logoPanel.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         logoPanel.setPreferredSize(new java.awt.Dimension(104, 104));
 
-        //ogoLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/data/smallLogo.png"))); // NOI18N
+        //logoLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/data/smallLogo.png"))); // NOI18N
         ImageIcon logo = new ImageIcon("/data/smallLogo.png");
         logoLabel.setIcon(logo);
         logoPanel.add(logoLabel);
@@ -253,7 +253,7 @@ public class SystemAdminHub extends javax.swing.JFrame {
     /**
      * @param args the command line arguments
      */
-    public static void main(String args[]) {
+    public static void main(String[] args) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.

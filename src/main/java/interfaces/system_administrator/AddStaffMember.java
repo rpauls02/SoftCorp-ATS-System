@@ -8,11 +8,14 @@ import interfaces.general.Login;
 import interfaces.office_manager.OfficeManagerHub;
 import SQL.DBConnection;
 import interfaces.general.Login;
-
 import javax.swing.*;
+import java.awt.event.ActionEvent;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 import java.sql.Connection;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.Random;
 
 /**
  *
@@ -183,11 +186,6 @@ public class AddStaffMember extends javax.swing.JFrame {
         forenameField.setMaximumSize(new java.awt.Dimension(64, 30));
         forenameField.setMinimumSize(new java.awt.Dimension(64, 30));
         forenameField.setPreferredSize(new java.awt.Dimension(64, 30));
-        forenameField.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                forenameFieldActionPerformed(evt);
-            }
-        });
 
         addStaffMemberButton.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         addStaffMemberButton.setText("Add Staff Member");
@@ -370,40 +368,42 @@ public class AddStaffMember extends javax.swing.JFrame {
     }//GEN-LAST:event_backButtonActionPerformed
 
     private void addStaffMemberButtonActionPerformed(java.awt.event.ActionEvent evt) { //GEN-FIRST:event_addStaffMemberButtonActionPerformed
-        // TODO add your handling code here:
-        /* Connection conn = DBConnection.getConnection();
+        Random rand = new Random();
+        int lower = 200;
+        int upper = 300;
+        int random_id = rand.nextInt(upper - lower) + lower;
+
+
+
+        Connection conn = DBConnection.getConnection();
         Statement stm = null;
         try {
             stm = conn.createStatement();
             String query =
                     "INSERT INTO in2018g12.staff (id, password, role, forename, surname)" +
-                            "VALUES ('" + staffIDField.getText() + "', '" + passwordField.getText() +
+                            "VALUES ('" + random_id + "', '" +
                             "', '" + roleField.getText() + "', '" + forenameField.getText() +
                             "', '" + surnameField.getText() + "')";
             int result = stm.executeUpdate(query);
             if (result > 0){
-                JOptionPane.showMessageDialog(this, "Customer added. " +
-                        "Review using 'View Customer Records' menu");
+                JOptionPane.showMessageDialog(this, "Staff member added. " +
+                        "Review using 'Home' menu");
             } else {
-                JOptionPane.showMessageDialog(this, "Could not add customer. " +
+                JOptionPane.showMessageDialog(this, "Could not add staff member. " +
                         "Review details entered or contact system administrator");
             }
         } catch (SQLException sqle) {
             throw new RuntimeException(sqle);
         } finally {
-            try { if (conn != null) conn.close(); } catch (Exception e) { throw new RuntimeException(e); };
-            try { if (stm != null) stm.close(); } catch (Exception e) { throw new RuntimeException(e); };
-        } */
+            try { if (conn != null) conn.close(); } catch (Exception e) { throw new RuntimeException(e); }
+            try { if (stm != null) stm.close(); } catch (Exception e) { throw new RuntimeException(e); }
+        }
     } //GEN-LAST:event_addStaffMemberButtonActionPerformed
-
-    private void forenameFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_forenameFieldActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_forenameFieldActionPerformed
 
     /**
      * @param args the command line arguments
      */
-    public static void main(String args[]) {
+    public static void main(String[] args) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
