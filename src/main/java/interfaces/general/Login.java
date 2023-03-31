@@ -8,6 +8,10 @@ import SQL.DBConnection;
 import interfaces.office_manager.OfficeManagerHub;
 import interfaces.system_administrator.SystemAdminHub;
 import interfaces.travel_advisor.TravelAdvisorHub;
+import staff.OfficeManager;
+import staff.StaffAccount;
+import staff.SystemAdministrator;
+import staff.TravelAdvisor;
 
 import javax.swing.*;
 import java.sql.Connection;
@@ -21,6 +25,10 @@ import java.util.Objects;
  * @author Abdullah
  */
 public class Login extends javax.swing.JFrame {
+
+    private TravelAdvisor advisor;
+    private OfficeManager manager;
+    private SystemAdministrator admin;
 
     /**
      * Creates new form loginFrame
@@ -173,7 +181,7 @@ public class Login extends javax.swing.JFrame {
         PreparedStatement pstm = null;
         ResultSet rs = null;
         try {
-            String query = "SELECT role FROM in2018g12.staff WHERE id = ? AND password = ?";
+            String query = "SELECT * FROM in2018g12.staff WHERE id = ? AND password = ?";
             pstm = conn.prepareStatement(query);
             pstm.setInt(1, Integer.parseInt(idField.getText()));
             pstm.setString(2, passwordField.getText());
@@ -182,10 +190,13 @@ public class Login extends javax.swing.JFrame {
                 dispose();
                 String role = rs.getString("role");
                 if (Objects.equals(role, "Travel Advisor")) {
+                    advisor = new TravelAdvisor(rs.getInt("id"), rs.getString("password"), role, rs.getString("forename"), rs.getString("surname"), rs.getString("phone"), rs.getString("email"));
                     new TravelAdvisorHub().setVisible(true);
                 } else if (Objects.equals(role, "Manager")) {
+                    manager = new OfficeManager(rs.getInt("id"), rs.getString("password"), role, rs.getString("forename"), rs.getString("surname"), rs.getString("phone"), rs.getString("email"));
                     new OfficeManagerHub().setVisible(true);
                 } else if (Objects.equals(role, "Administrator")) {
+                    admin = new SystemAdministrator(rs.getInt("id"), rs.getString("password"), role, rs.getString("forename"), rs.getString("surname"), rs.getString("phone"), rs.getString("email"));
                     new SystemAdminHub().setVisible(true);
                 }
             } else {
@@ -200,6 +211,18 @@ public class Login extends javax.swing.JFrame {
             try { if (conn != null) conn.close(); } catch (Exception e) { throw new RuntimeException(e); };
         }
     }//GEN-LAST:event_loginButtonActionPerformed
+
+    public TravelAdvisor getAdvisor() {
+        return advisor;
+    }
+
+    public OfficeManager getManager() {
+        return manager;
+    }
+
+    public SystemAdministrator getAdmin() {
+        return admin;
+    }
 
     /**
      * @param args the command line arguments
