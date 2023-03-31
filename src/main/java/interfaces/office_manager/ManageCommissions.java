@@ -440,7 +440,8 @@ public class ManageCommissions extends javax.swing.JFrame {
     }//GEN-LAST:event_viewAlertsButtonrefundTicketButtonActionPerformed
 
     private void manageStockButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_manageStockButtonrefundTicketButtonActionPerformed
-        // TODO add your handling code here:
+        dispose();
+        new ManageStock().setVisible(true);
     }//GEN-LAST:event_manageStockButtonrefundTicketButtonActionPerformed
 
     private void viewReportButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_viewReportButtonActionPerformed

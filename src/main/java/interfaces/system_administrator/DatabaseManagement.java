@@ -8,8 +8,6 @@ import interfaces.general.Login;
 
 import javax.swing.*;
 import java.io.File;
-import java.nio.file.Files;
-import java.sql.*;
 
 /**
  *
@@ -437,7 +435,7 @@ public class DatabaseManagement extends javax.swing.JFrame {
 
     private void manageStockPageButtonActionPerformed(java.awt.event.ActionEvent evt) {
         dispose();
-        new ManageStock().setVisible(true);
+        new AddStock().setVisible(true);
     }
 
     private void selectBackupLocationButtonActionPerformed(java.awt.event.ActionEvent evt) {
@@ -445,7 +443,7 @@ public class DatabaseManagement extends javax.swing.JFrame {
         JFileChooser fileChooser = new JFileChooser();
         int result = fileChooser.showOpenDialog(this);
         if (result == JFileChooser.APPROVE_OPTION) {
-            backupLocationLabel.setText(fileChooser.getSelectedFile() + "\\" + "dBbackup.sql");
+            backupLocationLabel.setText(fileChooser.getSelectedFile() + "\\" + "dbbackup.sql");
         }
     }
 

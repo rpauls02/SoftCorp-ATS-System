@@ -5,13 +5,9 @@
 package interfaces.system_administrator;
 
 import interfaces.general.Login;
-import interfaces.office_manager.OfficeManagerHub;
 import SQL.DBConnection;
-import interfaces.general.Login;
+
 import javax.swing.*;
-import java.awt.event.ActionEvent;
-import java.security.MessageDigest;
-import java.security.NoSuchAlgorithmException;
 import java.sql.Connection;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -359,7 +355,7 @@ public class AddStaffMember extends javax.swing.JFrame {
 
     private void manageStockButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_manageStockButtonActionPerformed
         dispose();
-        new ManageStock().setVisible(true);
+        new AddStock().setVisible(true);
     }//GEN-LAST:event_manageStockButtonActionPerformed
 
     private void backButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backButtonActionPerformed

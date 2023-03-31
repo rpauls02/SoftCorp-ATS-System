@@ -238,7 +238,7 @@ public class SystemAdminHub extends javax.swing.JFrame {
 
     private void manageStockButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_manageStockButtonActionPerformed
         dispose();
-        new ManageStock().setVisible(true);
+        new AddStock().setVisible(true);
     }//GEN-LAST:event_manageStockButtonActionPerformed
 
     private void databaseManagementButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_databaseManagementButtonActionPerformed
