@@ -13,9 +13,9 @@ public class OfficeManager extends StaffAccount {
 	 * @param phone    Phone number of staff member
 	 * @param email    Company email generated for staff member
 	 */
-	public OfficeManager(int id, String role, String forename, String surname, String phone, String email) {
-		super(id, role, forename, surname, phone, email);
-		setRole("Office Manager");
+
+	public OfficeManager(int id, String password, String role, String forename, String surname, String phone, String email) {
+		super(id, password, role, forename, surname, phone, email);
 	}
 
 	/**

@@ -22,9 +22,15 @@ public abstract class StaffAccount {
 	 * @param phone Phone number of staff member
 	 * @param email Company email generated for staff member
 	 */
-	public StaffAccount(int id, String role, String forename, String surname, String phone, String email) {
-		// TODO - implement StaffAccount.StaffAccount
-		throw new UnsupportedOperationException();
+
+	public StaffAccount(int id, String password, String role, String forename, String surname, String phone, String email) {
+		this.id = id;
+		this.password = password;
+		this.role = role;
+		this.forename = forename;
+		this.surname = surname;
+		this.phone = phone;
+		this.email = email;
 	}
 
 	/**
