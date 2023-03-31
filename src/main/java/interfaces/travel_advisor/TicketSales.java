@@ -9,6 +9,8 @@ import interfaces.general.Login;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -317,6 +319,12 @@ public class TicketSales extends javax.swing.JFrame {
         findCustomerButton.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         findCustomerButton.setText("Find");
         findCustomerButton.setPreferredSize(new java.awt.Dimension(72, 30));
+        findCustomerButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent evt) {
+                findCustomerButtonActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout existingCustomerPanelLayout = new javax.swing.GroupLayout(existingCustomerPanel);
         existingCustomerPanel.setLayout(existingCustomerPanelLayout);
@@ -868,8 +876,7 @@ public class TicketSales extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_typeOfSaleDDActionPerformed
 
-    private void selectCustomerButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_selectCustomerButtonActionPerformed
-        // TODO add your handling code here:
+    private void findCustomerButtonActionPerformed(java.awt.event.ActionEvent evt) {
         Connection conn = DBConnection.getConnection();
         PreparedStatement pstm = null;
         ResultSet rs = null;
@@ -891,6 +898,9 @@ public class TicketSales extends javax.swing.JFrame {
             try { if (pstm != null) pstm.close(); } catch (Exception e) { throw new RuntimeException(e); }
             try { if (rs != null) rs.close(); } catch (Exception e) { throw new RuntimeException(e); }
         }
+    }
+
+    private void selectCustomerButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_selectCustomerButtonActionPerformed
 
     }//GEN-LAST:event_selectCustomerButtonActionPerformed
 
