@@ -928,9 +928,62 @@ public class TicketSales extends javax.swing.JFrame {
         }
     }
 
-    private void selectCustomerButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_selectCustomerButtonActionPerformed
+    //old method
+//    private void selectCustomerButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_selectCustomerButtonActionPerformed
+//
+//    }//GEN-LAST:event_selectCustomerButtonActionPerformed
 
-    }//GEN-LAST:event_selectCustomerButtonActionPerformed
+    private void selectCustomerButtonActionPerformed(java.awt.event.ActionEvent evt) {
+        Connection conn = null;
+        PreparedStatement pstm1 = null;
+        PreparedStatement pstm2 = null;
+        ResultSet rs1 = null;
+        ResultSet rs2 = null;
+        try {
+            conn = DBConnection.getConnection();
+            String selectedName = (String) customerNameDDMenu.getSelectedItem();
+            String[] nameParts = selectedName.split(" ");
+            String query1 = "SELECT * FROM in2018g12.customer WHERE forename = ? AND surname = ?";
+            pstm1 = conn.prepareStatement(query1);
+            pstm1.setString(1, nameParts[0]);
+            pstm1.setString(2, nameParts[1]);
+            rs1 = pstm1.executeQuery();
+            if (rs1.next()) {
+                String customerId = rs1.getString("customer_id");
+                String query2 = "SELECT * FROM in2018g12.card WHERE customer_id = ?";
+                pstm2 = conn.prepareStatement(query2);
+                pstm2.setString(1, customerId);
+                rs2 = pstm2.executeQuery();
+                if (rs2.next()) {
+                    String cardNumber = rs2.getString("card_number");
+                    String expiryDate = rs2.getString("expiry_date");
+                    String cvv = rs2.getString("cvv");
+                    String forename = rs1.getString("forename");
+                    String surname = rs1.getString("surname");
+                    String email = rs1.getString("email");
+                    String phone = rs1.getString("phone");
+                    // Set retrieved details to the fields below the "Select Existing Customer" section
+                    cardNumberField.setText(cardNumber);
+                    expDateField.setText(expiryDate);
+                    cvvField.setText(cvv);
+                    forenameField.setText(forename);
+                    surnameField.setText(surname);
+                    emailField.setText(email);
+                    phoneField.setText(phone);
+                }
+            }
+        } catch (SQLException sqle) {
+            JOptionPane.showMessageDialog(this, "Could not select customer. " +
+                    "Review customer selection");
+        } finally {
+            try { if (conn != null) conn.close(); } catch (Exception e) { throw new RuntimeException(e); }
+            try { if (pstm1 != null) pstm1.close(); } catch (Exception e) { throw new RuntimeException(e); }
+            try { if (rs1 != null) rs1.close(); } catch (Exception e) { throw new RuntimeException(e); }
+            try { if (pstm2 != null) pstm2.close(); } catch (Exception e) { throw new RuntimeException(e); }
+            try { if (rs2 != null) rs2.close(); } catch (Exception e) { throw new RuntimeException(e); }
+        }
+    }
+
 
     private void IATACurrencyCodeDDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_IATACurrencyCodeDDActionPerformed
         // TODO add your handling code here:
