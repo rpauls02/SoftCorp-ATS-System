@@ -876,19 +876,47 @@ public class TicketSales extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_typeOfSaleDDActionPerformed
 
+
+    //old function
+//    private void findCustomerButtonActionPerformed(java.awt.event.ActionEvent evt) {
+//        Connection conn = DBConnection.getConnection();
+//        PreparedStatement pstm = null;
+//        ResultSet rs = null;
+//        try {
+//            String query = "SELECT forename, surname FROM in2018g12.customer WHERE surname = ?";
+//            pstm = conn.prepareStatement(query);
+//            pstm.setString(1, ((JTextField)customerNameDDMenu.getEditor().getEditorComponent()).getText());
+//            rs = pstm.executeQuery();
+//            while (rs.next()) {
+//                String forename = rs.getString("forename");
+//                String surname = rs.getString("surname");
+//                ((JTextField)customerNameDDMenu.getEditor().getEditorComponent()).setText(forename + " " +  surname);
+//            }
+//        } catch (SQLException sqle) {
+//            JOptionPane.showMessageDialog(this, "Could not find customer. " +
+//                    "Review name entered");
+//        } finally {
+//            try { if (conn != null) conn.close(); } catch (Exception e) { throw new RuntimeException(e); }
+//            try { if (pstm != null) pstm.close(); } catch (Exception e) { throw new RuntimeException(e); }
+//            try { if (rs != null) rs.close(); } catch (Exception e) { throw new RuntimeException(e); }
+//        }
+//    }
+    //new one completed by Mustafa Nadeem
     private void findCustomerButtonActionPerformed(java.awt.event.ActionEvent evt) {
-        Connection conn = DBConnection.getConnection();
+        Connection conn = null;
         PreparedStatement pstm = null;
         ResultSet rs = null;
         try {
+            conn = DBConnection.getConnection();
             String query = "SELECT forename, surname FROM in2018g12.customer WHERE surname = ?";
             pstm = conn.prepareStatement(query);
             pstm.setString(1, ((JTextField)customerNameDDMenu.getEditor().getEditorComponent()).getText());
             rs = pstm.executeQuery();
+            customerNameDDMenu.removeAllItems(); // Remove all items from the combo box
             while (rs.next()) {
                 String forename = rs.getString("forename");
                 String surname = rs.getString("surname");
-                ((JTextField)customerNameDDMenu.getEditor().getEditorComponent()).setText(forename + " " +  surname);
+                customerNameDDMenu.addItem(forename + " " +  surname); // Add the retrieved names to the combo box
             }
         } catch (SQLException sqle) {
             JOptionPane.showMessageDialog(this, "Could not find customer. " +
