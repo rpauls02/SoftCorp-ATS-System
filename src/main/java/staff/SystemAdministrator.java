@@ -10,9 +10,9 @@ public class SystemAdministrator extends StaffAccount {
 	 * @param phone    Phone number of staff member
 	 * @param email    Company email generated for staff member
 	 */
-	public SystemAdministrator(int id, String role, String forename, String surname, String phone, String email) {
-		super(id, role, forename, surname, phone, email);
-		setRole("System Administrator");
+
+	public SystemAdministrator(int id, String password, String role, String forename, String surname, String phone, String email) {
+		super(id, password, role, forename, surname, phone, email);
 	}
 
 	/**

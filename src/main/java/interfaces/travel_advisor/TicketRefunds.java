@@ -78,11 +78,6 @@ public class TicketRefunds extends javax.swing.JFrame {
         refundTicketPageButton.setBackground(new java.awt.Color(153, 153, 255));
         refundTicketPageButton.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         refundTicketPageButton.setText("View Tickets");
-        refundTicketPageButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                refundTicketPageButtonActionPerformed(evt);
-            }
-        });
 
         sellTicketPageButton.setBackground(new java.awt.Color(153, 204, 255));
         sellTicketPageButton.setText("Sell Ticket");
@@ -192,11 +187,11 @@ public class TicketRefunds extends javax.swing.JFrame {
         );
 
         //logoLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/data/smallLogo.png"))); // NOI18N
-        ImageIcon logo = new ImageIcon("/data/bigLogo.png");
+        ImageIcon logo = new ImageIcon("/data/smallLogo.png");
         logoLabel.setIcon(logo);
         logoPanel.add(logoLabel);
         getContentPane().add(logoPanel);
-        
+
         javax.swing.GroupLayout logoPanelLayout = new javax.swing.GroupLayout(logoPanel);
         logoPanel.setLayout(logoPanelLayout);
         logoPanelLayout.setHorizontalGroup(
@@ -251,10 +246,6 @@ public class TicketRefunds extends javax.swing.JFrame {
         new Login().setVisible(true);
     }//GEN-LAST:event_logoutButtonActionPerformed
 
-    private void refundTicketPageButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_refundTicketPageButtonActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_refundTicketPageButtonActionPerformed
-
     private void sellTicketPageButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sellTicketPageButtonActionPerformed
         dispose();
         new TicketSales().setVisible(true);
@@ -268,7 +259,7 @@ public class TicketRefunds extends javax.swing.JFrame {
     /**
      * @param args the command line arguments
      */
-    public static void main(String args[]) {
+    public static void main(String[] args) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.

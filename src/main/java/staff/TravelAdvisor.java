@@ -23,9 +23,8 @@ public class TravelAdvisor extends StaffAccount {
      * @param phone    Phone number of staff member
      * @param email    Company email generated for staff member
      */
-    public TravelAdvisor(int id, String role, String forename, String surname, String phone, String email) {
-        super(id, role, forename, surname, phone, email);
-        setRole("Travel Advisor");
+    public TravelAdvisor(int id, String password, String role, String forename, String surname, String phone, String email) {
+        super(id, password, role, forename, surname, phone, email);
     }
 
     /**
