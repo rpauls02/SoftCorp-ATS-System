@@ -8,6 +8,7 @@ import interfaces.general.Login;
 import SQL.DBConnection;
 
 import javax.swing.*;
+import java.io.IOException;
 import java.sql.Connection;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -102,7 +103,13 @@ public class AddStaffMember extends javax.swing.JFrame {
         databaseManagementButton.setText("Database Management");
         databaseManagementButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                databaseManagementButtonActionPerformed(evt);
+                try {
+                    databaseManagementButtonActionPerformed(evt);
+                } catch (IOException e) {
+                    throw new RuntimeException(e);
+                } catch (InterruptedException e) {
+                    throw new RuntimeException(e);
+                }
             }
         });
 
@@ -343,7 +350,7 @@ public class AddStaffMember extends javax.swing.JFrame {
         new SystemAdminHub().setVisible(true);
     }//GEN-LAST:event_homeButtonActionPerformed
 
-    private void databaseManagementButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_databaseManagementButtonActionPerformed
+    private void databaseManagementButtonActionPerformed(java.awt.event.ActionEvent evt) throws IOException, InterruptedException {//GEN-FIRST:event_databaseManagementButtonActionPerformed
         dispose();
         new DatabaseManagement().setVisible(true);
     }//GEN-LAST:event_databaseManagementButtonActionPerformed

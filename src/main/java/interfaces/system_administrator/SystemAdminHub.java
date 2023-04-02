@@ -7,6 +7,7 @@ package interfaces.system_administrator;
 import interfaces.general.Login;
 
 import javax.swing.*;
+import java.io.IOException;
 
 /**
  *
@@ -61,7 +62,13 @@ public class SystemAdminHub extends javax.swing.JFrame {
         databaseManagementButton.setText("Database Management");
         databaseManagementButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                databaseManagementButtonActionPerformed(evt);
+                try {
+                    databaseManagementButtonActionPerformed(evt);
+                } catch (IOException e) {
+                    throw new RuntimeException(e);
+                } catch (InterruptedException e) {
+                    throw new RuntimeException(e);
+                }
             }
         });
 
@@ -241,7 +248,7 @@ public class SystemAdminHub extends javax.swing.JFrame {
         new AddStock().setVisible(true);
     }//GEN-LAST:event_manageStockButtonActionPerformed
 
-    private void databaseManagementButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_databaseManagementButtonActionPerformed
+    private void databaseManagementButtonActionPerformed(java.awt.event.ActionEvent evt) throws IOException, InterruptedException {//GEN-FIRST:event_databaseManagementButtonActionPerformed
         dispose();
         new DatabaseManagement().setVisible(true);
     }//GEN-LAST:event_databaseManagementButtonActionPerformed
