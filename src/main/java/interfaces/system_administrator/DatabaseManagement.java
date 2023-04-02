@@ -7,7 +7,10 @@ package interfaces.system_administrator;
 import interfaces.general.Login;
 
 import javax.swing.*;
-import java.io.File;
+import java.io.*;
+import java.util.*;
+
+
 
 /**
  *
@@ -18,7 +21,7 @@ public class DatabaseManagement extends javax.swing.JFrame {
     /**
      * Creates new form databaseManagementFrame
      */
-    public DatabaseManagement() {
+    public DatabaseManagement() throws IOException, InterruptedException {
         initComponents();
     }
 
@@ -30,7 +33,7 @@ public class DatabaseManagement extends javax.swing.JFrame {
      */
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">
-    private void initComponents() {
+    private void initComponents() throws IOException, InterruptedException {
 
         buttonsPanel = new javax.swing.JPanel();
         homeButton = new javax.swing.JButton();
@@ -168,8 +171,38 @@ public class DatabaseManagement extends javax.swing.JFrame {
         backupDatabaseButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 backupDatabaseButtonActionPerformed(evt);
+
+                String username = "in2018g12_d";
+                String password = "password";
+                String databaseName = "in2018g12";
+                String databaseBackupPath = "backup_path";
+
+
+                try {
+                    Date today = new Date();
+                    String fileName = databaseName + "_" + today.getTime() + ".sql";
+                    String backupFile = databaseBackupPath + "\\" + fileName;
+                    File file = new File(backupFile);
+                    file.createNewFile();
+
+                    String command = "mysqldump -u " + username + " -p" + password + " " + databaseName + " -r " + backupFile;
+                    Process p = Runtime.getRuntime().exec(command);
+                    int backupComplete = p.waitFor();
+
+                    if (backupComplete == 0) {
+                        System.out.println("Backup successfully created");
+                    } else {
+                        System.out.println("Backup failed");
+                    }
+
+                } catch (IOException e) {
+                    e.printStackTrace();
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
             }
-        });
+                });
+
 
         backupLocationLabel.setBackground(new java.awt.Color(204, 204, 204));
         backupLocationLabel.setBorder(javax.swing.BorderFactory.createEtchedBorder());
@@ -258,9 +291,35 @@ public class DatabaseManagement extends javax.swing.JFrame {
         restoreDatabaseButton.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         restoreDatabaseButton.setText("Restore Database");
         restoreDatabaseButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                restoreDatabaseButtonActionPerformed(evt);
-            }
+            public void actionPerformed(java.awt.event.ActionEvent evt) {restoreDatabaseButtonActionPerformed(evt);
+
+                String username = "in2018g12_d";
+                String password = "password";
+                String databaseName = "in2018g12";
+
+                String backupFilePath = "path_to_backup_file";
+
+                try {
+                    ProcessBuilder processBuilder = new ProcessBuilder(
+                            "mysql",
+                            "in2018g12_d" + username,
+                            "password" + password,
+                            databaseName);
+                    processBuilder.redirectInput(new File(backupFilePath));
+                    Process process = processBuilder.start();
+                    int restoreComplete = process.waitFor();
+
+                    if (restoreComplete == 0) {
+                        System.out.println("Database restored successfully");
+                    } else {
+                        System.out.println("Database restore failed");
+                    }
+
+                } catch (IOException | InterruptedException e) {
+                    e.printStackTrace();
+                }
+
+                }
         });
 
         backupFileLabel.setBackground(new java.awt.Color(204, 204, 204));
@@ -500,7 +559,13 @@ public class DatabaseManagement extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new DatabaseManagement().setVisible(true);
+                try {
+                    new DatabaseManagement().setVisible(true);
+                } catch (IOException e) {
+                    throw new RuntimeException(e);
+                } catch (InterruptedException e) {
+                    throw new RuntimeException(e);
+                }
             }
         });
     }

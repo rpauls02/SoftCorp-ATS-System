@@ -8,6 +8,7 @@ import SQL.DBConnection;
 import interfaces.general.Login;
 
 import javax.swing.*;
+import java.io.IOException;
 import java.sql.*;
 import java.util.ArrayList;
 
@@ -91,7 +92,13 @@ public class AddStock extends javax.swing.JFrame {
         databaseManagementButton.setText("Database Management");
         databaseManagementButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                databaseManagementButtonActionPerformed(evt);
+                try {
+                    databaseManagementButtonActionPerformed(evt);
+                } catch (IOException e) {
+                    throw new RuntimeException(e);
+                } catch (InterruptedException e) {
+                    throw new RuntimeException(e);
+                }
             }
         });
 
@@ -205,6 +212,9 @@ public class AddStock extends javax.swing.JFrame {
         deleteButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 deleteButtonActionPerformed(evt);
+
+
+
             }
         });
 
@@ -438,7 +448,7 @@ public class AddStock extends javax.swing.JFrame {
         new Login().setVisible(true);
     }
 
-    private void databaseManagementButtonActionPerformed(java.awt.event.ActionEvent evt) {
+    private void databaseManagementButtonActionPerformed(java.awt.event.ActionEvent evt) throws IOException, InterruptedException {
         dispose();
         new DatabaseManagement().setVisible(true);
     }
