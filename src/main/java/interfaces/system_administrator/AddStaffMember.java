@@ -9,6 +9,8 @@ import SQL.DBConnection;
 
 import javax.swing.*;
 import java.io.IOException;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 import java.sql.Connection;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -26,6 +28,33 @@ public class AddStaffMember extends javax.swing.JFrame {
     public AddStaffMember() {
         initComponents();
     }
+
+    // connect the password from the data in place for String password
+
+//    public static String encrypt(String password) {
+//        try {
+//            // Create a MessageDigest instance for MD5 hashing algorithm
+//            MessageDigest md = MessageDigest.getInstance("MD5");
+//
+//            // Add password bytes to digest
+//            md.update(password.getBytes());
+//
+//            // Get the hash's bytes
+//            byte[] bytes = md.digest();
+//
+//            // Convert to hexadecimal format
+//            StringBuilder sb = new StringBuilder();
+//            for (int i = 0; i < bytes.length; i++) {
+//                sb.append(Integer.toString((bytes[i] & 0xff) + 0x100, 16).substring(1));
+//            }
+//
+//            // Return the encrypted password
+//            return sb.toString();
+//        } catch (NoSuchAlgorithmException e) {
+//            e.printStackTrace();
+//            return null;
+//        }
+//    }
 
     /**
      * This method is called from within the constructor to initialize the form.
