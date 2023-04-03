@@ -19,18 +19,14 @@ public abstract class StaffAccount {
 	 * @param role Role of staff member
 	 * @param forename First name(s) of staff member
 	 * @param surname Surname(s) of staff member
-	 * @param phone Phone number of staff member
-	 * @param email Company email generated for staff member
 	 */
 
-	public StaffAccount(int id, String password, String role, String forename, String surname, String phone, String email) {
+	public StaffAccount(int id, String password, String role, String forename, String surname) {
 		this.id = id;
 		this.password = password;
 		this.role = role;
 		this.forename = forename;
 		this.surname = surname;
-		this.phone = phone;
-		this.email = email;
 	}
 
 	/**

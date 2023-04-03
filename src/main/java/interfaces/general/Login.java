@@ -190,13 +190,13 @@ public class Login extends javax.swing.JFrame {
                 dispose();
                 String role = rs.getString("role");
                 if (Objects.equals(role, "Travel Advisor")) {
-                    advisor = new TravelAdvisor(rs.getInt("id"), rs.getString("password"), role, rs.getString("forename"), rs.getString("surname"), rs.getString("phone"), rs.getString("email"));
+                    advisor = new TravelAdvisor(rs.getInt("id"), rs.getString("password"), role, rs.getString("forename"), rs.getString("surname"));
                     new TravelAdvisorHub().setVisible(true);
                 } else if (Objects.equals(role, "Manager")) {
-                    manager = new OfficeManager(rs.getInt("id"), rs.getString("password"), role, rs.getString("forename"), rs.getString("surname"), rs.getString("phone"), rs.getString("email"));
+                    manager = new OfficeManager(rs.getInt("id"), rs.getString("password"), role, rs.getString("forename"), rs.getString("surname"));
                     new OfficeManagerHub().setVisible(true);
                 } else if (Objects.equals(role, "Administrator")) {
-                    admin = new SystemAdministrator(rs.getInt("id"), rs.getString("password"), role, rs.getString("forename"), rs.getString("surname"), rs.getString("phone"), rs.getString("email"));
+                    admin = new SystemAdministrator(rs.getInt("id"), rs.getString("password"), role, rs.getString("forename"), rs.getString("surname"));
                     new SystemAdminHub().setVisible(true);
                 }
             } else {
