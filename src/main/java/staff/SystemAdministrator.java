@@ -7,12 +7,10 @@ public class SystemAdministrator extends StaffAccount {
 	 * @param role     Role of staff member
 	 * @param forename First name(s) of staff member
 	 * @param surname  Surname(s) of staff member
-	 * @param phone    Phone number of staff member
-	 * @param email    Company email generated for staff member
 	 */
 
-	public SystemAdministrator(int id, String password, String role, String forename, String surname, String phone, String email) {
-		super(id, password, role, forename, surname, phone, email);
+	public SystemAdministrator(int id, String password, String role, String forename, String surname) {
+		super(id, password, role, forename, surname);
 	}
 
 	/**
