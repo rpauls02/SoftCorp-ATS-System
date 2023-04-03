@@ -459,6 +459,13 @@ public class AddStaffMember extends javax.swing.JFrame {
         }
         //</editor-fold>
 
+
+    // testing encryption password
+//        String password = "mypassword123";
+//        String encryptedPassword = encrypt(password);
+//        System.out.println("Original Password: " + password);
+//        System.out.println("Encrypted Password: " + encryptedPassword);
+
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
