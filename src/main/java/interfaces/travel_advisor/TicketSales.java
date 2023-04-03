@@ -928,11 +928,6 @@ public class TicketSales extends javax.swing.JFrame {
         }
     }
 
-    //old method
-//    private void selectCustomerButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_selectCustomerButtonActionPerformed
-//
-//    }//GEN-LAST:event_selectCustomerButtonActionPerformed
-
     private void selectCustomerButtonActionPerformed(java.awt.event.ActionEvent evt) {
         Connection conn = null;
         PreparedStatement pstm1 = null;
@@ -941,6 +936,7 @@ public class TicketSales extends javax.swing.JFrame {
         ResultSet rs2 = null;
         try {
             conn = DBConnection.getConnection();
+            conn.setAutoCommit(false);
             String selectedName = (String) customerNameDDMenu.getSelectedItem();
             String[] nameParts = selectedName.split(" ");
             String query1 = "SELECT * FROM in2018g12.customer WHERE forename = ? AND surname = ?";
@@ -949,8 +945,8 @@ public class TicketSales extends javax.swing.JFrame {
             pstm1.setString(2, nameParts[1]);
             rs1 = pstm1.executeQuery();
             if (rs1.next()) {
-                String customerId = rs1.getString("customer_id");
-                String query2 = "SELECT * FROM in2018g12.card WHERE customer_id = ?";
+                String customerId = rs1.getString("customerUsername");
+                String query2 = "SELECT * FROM in2018g12.card WHERE customerUsername = ?";
                 pstm2 = conn.prepareStatement(query2);
                 pstm2.setString(1, customerId);
                 rs2 = pstm2.executeQuery();
@@ -971,6 +967,8 @@ public class TicketSales extends javax.swing.JFrame {
                     emailField.setText(email);
                     phoneField.setText(phone);
                 }
+                conn.commit();
+                conn.setAutoCommit(true);
             }
         } catch (SQLException sqle) {
             JOptionPane.showMessageDialog(this, "Could not select customer. " +
