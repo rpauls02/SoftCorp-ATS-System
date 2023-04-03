@@ -14,6 +14,7 @@ import staff.SystemAdministrator;
 import staff.TravelAdvisor;
 
 import javax.swing.*;
+import java.awt.event.KeyEvent;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -26,9 +27,9 @@ import java.util.Objects;
  */
 public class Login extends javax.swing.JFrame {
 
-    private TravelAdvisor advisor;
-    private OfficeManager manager;
-    private SystemAdministrator admin;
+    private TravelAdvisor advisor = null;
+    private OfficeManager manager = null;
+    private SystemAdministrator admin = null;
 
     /**
      * Creates new form loginFrame
@@ -174,13 +175,15 @@ public class Login extends javax.swing.JFrame {
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void loginButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginButtonActionPerformed
-        Connection conn = DBConnection.getConnection();
+        Connection conn = null;
         PreparedStatement pstm = null;
         ResultSet rs = null;
         try {
+            conn = DBConnection.getConnection();
             String query = "SELECT * FROM in2018g12.staff WHERE id = ? AND password = ?";
             pstm = conn.prepareStatement(query);
             pstm.setInt(1, Integer.parseInt(idField.getText()));
