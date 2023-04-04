@@ -88,10 +88,12 @@ public class Login extends javax.swing.JFrame {
         });
 
         logoPanel.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        logoPanel.setMaximumSize(new java.awt.Dimension(144, 144));
+        logoPanel.setMinimumSize(new java.awt.Dimension(144, 144));
         logoPanel.setPreferredSize(new java.awt.Dimension(144, 144));
 
         //logoLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/bigLogo.png"))); // NOI18N
-        ImageIcon logo = new ImageIcon("/data/bigLogo.png");
+        ImageIcon logo = new ImageIcon("data/bigLogo.png");
         logoLabel.setIcon(logo);
         logoPanel.add(logoLabel);
         getContentPane().add(logoPanel);
@@ -104,7 +106,7 @@ public class Login extends javax.swing.JFrame {
             .addGroup(logoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(logoPanelLayout.createSequentialGroup()
                     .addGap(0, 0, Short.MAX_VALUE)
-                    .addComponent(logoLabel)
+                    .addComponent(logoLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGap(0, 0, Short.MAX_VALUE)))
         );
         logoPanelLayout.setVerticalGroup(
@@ -113,7 +115,7 @@ public class Login extends javax.swing.JFrame {
             .addGroup(logoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(logoPanelLayout.createSequentialGroup()
                     .addGap(0, 0, Short.MAX_VALUE)
-                    .addComponent(logoLabel)
+                    .addComponent(logoLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGap(0, 0, Short.MAX_VALUE)))
         );
 
