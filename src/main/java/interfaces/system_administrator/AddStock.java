@@ -523,22 +523,24 @@ public class AddStock extends javax.swing.JFrame {
     }
 
     private void deleteButtonActionPerformed(java.awt.event.ActionEvent evt) {
-        Connection conn = DBConnection.getConnection();
-        Statement stm = null;
-        String query = null;
+        Connection conn = DBConnection.getConnection(); // Connect to database
+        Statement stm = null; // Creates statement object "stm"
+        String query = null;  // Creates variable query of type "string"
         try {
             if (blankStockTable.getSelectionModel().isSelectionEmpty()){
-                //query = "DELETE FROM blank WHERE";
+                query = "DELETE FROM blank WHERE id BETWEEN " + fromBlankField.getText() + " AND " + toBlankField.getText(); // SQL statement to delete a range of blanks
             }
-            stm = conn.createStatement();
-            int result = stm.executeUpdate(query);
-            if (result > 0){
-                JOptionPane.showMessageDialog(this, "Customer added. " +
-                        "Review using 'View Customer Records' menu");
+            stm = conn.createStatement(); // Initialize statement object
+            int result = stm.executeUpdate(query); // execute SQL statement
+            if (result > 0){ // Check if stock is deleted successfully
+                JOptionPane.showMessageDialog(this, "Blank stock deleted. " +
+                        "Review using 'Manage Stock' menu");                                         // Dialog box that informs user that stock has been successfully deleted
             } else {
-                JOptionPane.showMessageDialog(this, "Could not add customer. " +
-                        "Review details entered or contact system administrator");
+                JOptionPane.showMessageDialog(this, "Could not delete stock. " +
+                        "Review details entered or contact system administrator");                   // Dialog box that informs user that the stock could not be deleted
             }
+
+
         } catch (SQLException sqle) {
             throw new RuntimeException(sqle);
         } finally {

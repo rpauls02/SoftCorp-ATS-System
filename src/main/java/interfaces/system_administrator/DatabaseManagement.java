@@ -172,6 +172,7 @@ public class DatabaseManagement extends javax.swing.JFrame {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 backupDatabaseButtonActionPerformed(evt);
 
+                // Set database credentials
                 String username = "in2018g12_d";
                 String password = "password";
                 String databaseName = "in2018g12";
@@ -179,20 +180,20 @@ public class DatabaseManagement extends javax.swing.JFrame {
 
 
                 try {
-                    Date today = new Date();
-                    String fileName = databaseName + "_" + today.getTime() + ".sql";
-                    String backupFile = databaseBackupPath + "\\" + fileName;
-                    File file = new File(backupFile);
-                    file.createNewFile();
+                    Date today = new Date(); // Get the current date
+                    String fileName = databaseName + "_" + today.getTime() + ".sql"; // Generate unique file name
+                    String backupFile = databaseBackupPath + "\\" + fileName; // Create backup file path
+                    File file = new File(backupFile); // Create new file object
+                    file.createNewFile(); // Create the backup file
 
-                    String command = "mysqldump -u " + username + " -p" + password + " " + databaseName + " -r " + backupFile;
-                    Process p = Runtime.getRuntime().exec(command);
-                    int backupComplete = p.waitFor();
+                    String command = "mysqldump -u " + username + " -p" + password + " " + databaseName + " -r " + backupFile; // Create the backup command
+                    Process p = Runtime.getRuntime().exec(command); // Execute backup command
+                    int backupComplete = p.waitFor(); // Wait for backup to complete
 
-                    if (backupComplete == 0) {
-                        System.out.println("Backup successfully created");
+                    if (backupComplete == 0) { // Check if backup was successful
+                        System.out.println("Backup successfully created"); // Print success message
                     } else {
-                        System.out.println("Backup failed");
+                        System.out.println("Backup failed"); // Print failure message
                     }
 
                 } catch (IOException e) {
@@ -293,26 +294,26 @@ public class DatabaseManagement extends javax.swing.JFrame {
         restoreDatabaseButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {restoreDatabaseButtonActionPerformed(evt);
 
-                String username = "in2018g12_d";
-                String password = "password";
-                String databaseName = "in2018g12";
+                String username = "in2018g12_d"; // Set the database user
+                String password = "password"; // Set the database password
+                String databaseName = "in2018g12"; // Set the database name
 
-                String backupFilePath = "path_to_backup_file";
+                String backupFilePath = "path_to_backup_file"; // Set path to backup file
 
                 try {
-                    ProcessBuilder processBuilder = new ProcessBuilder(
+                    ProcessBuilder processBuilder = new ProcessBuilder( // Create a process builder to execute the SQL command to restore the database
                             "mysql",
                             "in2018g12_d" + username,
                             "password" + password,
                             databaseName);
-                    processBuilder.redirectInput(new File(backupFilePath));
-                    Process process = processBuilder.start();
-                    int restoreComplete = process.waitFor();
+                    processBuilder.redirectInput(new File(backupFilePath)); // Redirect input from the backup file
+                    Process process = processBuilder.start(); // Start the process
+                    int restoreComplete = process.waitFor(); // Wait for process to complete
 
-                    if (restoreComplete == 0) {
-                        System.out.println("Database restored successfully");
+                    if (restoreComplete == 0) { // Check if process is completed successfully
+                        System.out.println("Database restored successfully"); // Print success message
                     } else {
-                        System.out.println("Database restore failed");
+                        System.out.println("Database restore failed"); // Print failure message
                     }
 
                 } catch (IOException | InterruptedException e) {
