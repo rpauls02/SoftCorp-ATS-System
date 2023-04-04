@@ -1,7 +1,6 @@
 import java.util.Random;
 
 class BlankNumbers{
-
     public static void main(String[] args) {
         Random random = new Random();
 

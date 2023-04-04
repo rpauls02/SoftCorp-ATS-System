@@ -4,7 +4,6 @@ package staff;
 
 
 public class OfficeManager extends StaffAccount {
-
 	/**
 	 * @param id       Automatically generated and assigned 3 digit value
 	 * @param role     Role of staff member
