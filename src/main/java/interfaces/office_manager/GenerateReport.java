@@ -4,6 +4,8 @@
  */
 package interfaces.office_manager;
 
+import interfaces.general.Login;
+
 import javax.swing.*;
 
 /**
@@ -238,8 +240,8 @@ public class GenerateReport extends javax.swing.JFrame {
 
         logoPanel.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
-        //logoLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/data/smallLogo.png"))); // NOI18N
-        ImageIcon logo = new ImageIcon("/data/smallLogo.png");
+        //logoLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("data/smallLogo.png"))); // NOI18N
+        ImageIcon logo = new ImageIcon("data/smallLogo.png");
         logoLabel.setIcon(logo);
         logoPanel.add(logoLabel);
         getContentPane().add(logoPanel);
@@ -277,8 +279,8 @@ public class GenerateReport extends javax.swing.JFrame {
             }
         });
 
-        viewCustomerRecordsButton.setBackground(new java.awt.Color(153, 153, 255));
-        viewCustomerRecordsButton.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        viewCustomerRecordsButton.setBackground(new java.awt.Color(54, 198, 238));
+        viewCustomerRecordsButton.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         viewCustomerRecordsButton.setText("View Customer Records");
         viewCustomerRecordsButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -314,8 +316,8 @@ public class GenerateReport extends javax.swing.JFrame {
             }
         });
 
-        viewReportButton.setBackground(new java.awt.Color(54, 198, 238));
-        viewReportButton.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        viewReportButton.setBackground(new java.awt.Color(153, 153, 255));
+        viewReportButton.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         viewReportButton.setText("Generate/View Report");
         viewReportButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -412,6 +414,7 @@ public class GenerateReport extends javax.swing.JFrame {
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>
 
     private void homeButtonActionPerformed(java.awt.event.ActionEvent evt) {
@@ -420,7 +423,8 @@ public class GenerateReport extends javax.swing.JFrame {
     }
 
     private void logoutButtonActionPerformed(java.awt.event.ActionEvent evt) {
-        // TODO add your handling code here:
+        dispose();
+        new Login().setVisible(true);
     }
 
     private void viewAlertsButtonActionPerformed(java.awt.event.ActionEvent evt) {
@@ -463,7 +467,8 @@ public class GenerateReport extends javax.swing.JFrame {
     }
 
     private void manageCommissionsButtonActionPerformed(java.awt.event.ActionEvent evt) {
-        // TODO add your handling code here:
+        dispose();
+        new ManageCommissions().setVisible(true);
     }
 
     /**
