@@ -875,7 +875,7 @@ public class TicketSales extends javax.swing.JFrame {
             convertedAmountPanel.setOpaque(true);
             convertedAmountPanel.setEnabled(false);
             IATACurrencyCodeDD.setEnabled(false);
-
+            showRateLabel.setText(" ");
         } else {
             convertedAmountPanel.setBackground(new Color(49,174,209));
             convertedAmountPanel.setOpaque(false);
@@ -1000,28 +1000,33 @@ public class TicketSales extends javax.swing.JFrame {
 
         // displays exchange rate depending on the selected IATA code
         String iataCode = IATACurrencyCodeDD.getSelectedItem().toString();
-        String apiURL = "https://openexchangerates.org/api/latest.json?app_id=c8d2619d67494c45b9fb6d1833872198&base=USD";
 
-        try {
-            URL url = new URL(apiURL);
-            HttpURLConnection connection = (HttpURLConnection) url.openConnection();
-            connection.setRequestMethod("GET");
+        if (iataCode == "Select IATA Code") {
+            showRateLabel.setText(" ");
+        } else {
+            String apiURL = "https://openexchangerates.org/api/latest.json?app_id=c8d2619d67494c45b9fb6d1833872198&base=USD";
 
-            BufferedReader br = new BufferedReader(new InputStreamReader((connection.getInputStream())));
-            String inputLine;
-            StringBuilder sb = new StringBuilder();
-            while ((inputLine = br.readLine()) != null) {
-                sb.append(inputLine);
+            try {
+                URL url = new URL(apiURL);
+                HttpURLConnection connection = (HttpURLConnection) url.openConnection();
+                connection.setRequestMethod("GET");
+
+                BufferedReader br = new BufferedReader(new InputStreamReader((connection.getInputStream())));
+                String inputLine;
+                StringBuilder sb = new StringBuilder();
+                while ((inputLine = br.readLine()) != null) {
+                    sb.append(inputLine);
+                }
+                br.close();
+
+                JSONObject json = new JSONObject(sb.toString());
+                JSONObject rates = json.getJSONObject("rates");
+                Double exchangeRate = rates.getDouble(iataCode);
+
+                showRateLabel.setText(exchangeRate.toString());
+            } catch (Exception e) {
+                throw new RuntimeException(e);
             }
-            br.close();
-
-            JSONObject json = new JSONObject(sb.toString());
-            JSONObject rates = json.getJSONObject("rates");
-            Double exchangeRate = rates.getDouble(iataCode);
-
-            showRateLabel.setText(exchangeRate.toString());
-        } catch (Exception e) {
-            throw new RuntimeException(e);
         }
     }//GEN-LAST:event_IATACurrencyCodeDDActionPerformed
 
