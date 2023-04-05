@@ -874,10 +874,13 @@ public class TicketSales extends javax.swing.JFrame {
             convertedAmountPanel.setBackground(Color.GRAY);
             convertedAmountPanel.setOpaque(true);
             convertedAmountPanel.setEnabled(false);
+            IATACurrencyCodeDD.setEnabled(false);
+
         } else {
             convertedAmountPanel.setBackground(new Color(49,174,209));
             convertedAmountPanel.setOpaque(false);
             convertedAmountPanel.setEnabled(true);
+            IATACurrencyCodeDD.setEnabled(true);
         }
     }//GEN-LAST:event_typeOfSaleDDActionPerformed
 
@@ -1017,7 +1020,6 @@ public class TicketSales extends javax.swing.JFrame {
             Double exchangeRate = rates.getDouble(iataCode);
 
             showRateLabel.setText(exchangeRate.toString());
-
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
