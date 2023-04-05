@@ -6,17 +6,22 @@ package interfaces.travel_advisor;
 
 import SQL.DBConnection;
 import interfaces.general.Login;
+import org.json.JSONObject;
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
+import java.net.HttpURLConnection;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.time.LocalDate;
 import java.util.Objects;
+
+import java.net.URL;
 
 /**
  *
@@ -989,6 +994,33 @@ public class TicketSales extends javax.swing.JFrame {
             case():
 
         }*/
+
+        // displays exchange rate depending on the selected IATA code
+        String iataCode = IATACurrencyCodeDD.getSelectedItem().toString();
+        String apiURL = "https://openexchangerates.org/api/latest.json?app_id=c8d2619d67494c45b9fb6d1833872198&base=USD";
+
+        try {
+            URL url = new URL(apiURL);
+            HttpURLConnection connection = (HttpURLConnection) url.openConnection();
+            connection.setRequestMethod("GET");
+
+            BufferedReader br = new BufferedReader(new InputStreamReader((connection.getInputStream())));
+            String inputLine;
+            StringBuilder sb = new StringBuilder();
+            while ((inputLine = br.readLine()) != null) {
+                sb.append(inputLine);
+            }
+            br.close();
+
+            JSONObject json = new JSONObject(sb.toString());
+            JSONObject rates = json.getJSONObject("rates");
+            Double exchangeRate = rates.getDouble(iataCode);
+
+            showRateLabel.setText(exchangeRate.toString());
+
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
     }//GEN-LAST:event_IATACurrencyCodeDDActionPerformed
 
     private void createTicketButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_createTicketButtonActionPerformed
