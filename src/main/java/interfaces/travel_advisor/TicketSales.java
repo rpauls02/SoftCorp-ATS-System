@@ -7,10 +7,12 @@ package interfaces.travel_advisor;
 import SQL.DBConnection;
 import customer.Customer;
 import customer.RegularCustomer;
+import customer.ValuedCustomer;
 import interfaces.general.Login;
 import org.json.JSONObject;
 
 import javax.swing.*;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.BufferedReader;
@@ -22,6 +24,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.time.LocalDate;
+import java.util.Objects;
 import java.util.Random;
 
 import java.net.URL;
@@ -883,14 +886,30 @@ public class TicketSales extends javax.swing.JFrame {
 
     private void viewTicketsPageButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_viewTicketsPageButtonActionPerformed
         dispose();
-        new ViewTickets().setVisible(true);
+        //new ViewTickets().setVisible(true);
     }//GEN-LAST:event_viewTicketsPageButtonActionPerformed
 
     private void viewIndSalesButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_viewIndSalesButtonActionPerformed
         dispose();
         new GenerateIndividualReport().setVisible(true);
     }//GEN-LAST:event_viewIndSalesButtonActionPerformed
-    
+
+    private void typeOfSaleDDMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_typeOfSaleDDActionPerformed
+        if (Objects.equals(typeOfSaleDDMenu.getSelectedItem(), "Domestic")){
+            convertedAmountPanel.setBackground(Color.GRAY);
+            convertedAmountPanel.setOpaque(true);
+            convertedAmountPanel.setEnabled(false);
+            iataCurrencyCodeDDMenu.setEnabled(false);
+            showRateLabel.setText(" ");
+        } else {
+            convertedAmountPanel.setBackground(new Color(49,174,209));
+            convertedAmountPanel.setOpaque(false);
+            convertedAmountPanel.setEnabled(true);
+            iataCurrencyCodeDDMenu.setEnabled(true);
+        }
+    }//GEN-LAST:event_typeOfSaleDDActionPerformed
+
+    //new one completed by Mustafa Nadeem
     private void findCustomerButtonActionPerformed(java.awt.event.ActionEvent evt) {
         Connection conn = null;
         PreparedStatement pstm = null;
@@ -976,33 +995,33 @@ public class TicketSales extends javax.swing.JFrame {
 
     private void iataCurrencyCodeDDMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_iataCurrencyCodeDDMenuMenuActionPerformed
         // displays exchange rate depending on the selected IATA code
-        String iataCode = iataCurrencyCodeDDMenu.getSelectedItem().toString();
-        String apiURL = "https://openexchangerates.org/api/latest.json?app_id=c8d2619d67494c45b9fb6d1833872198&base=USD";
 
-        try {
-            URL url = new URL(apiURL);
-            HttpURLConnection connection = (HttpURLConnection) url.openConnection();
-            connection.setRequestMethod("GET");
+        if (iataCurrencyCodeDDMenu.getSelectedItem().toString().equals("Select IATA Code")) {
+            showRateLabel.setText(" ");
+        } else {
+            String apiURL = "https://openexchangerates.org/api/latest.json?app_id=c8d2619d67494c45b9fb6d1833872198&base=USD";
 
-            BufferedReader br = new BufferedReader(new InputStreamReader((connection.getInputStream())));
-            String inputLine;
-            StringBuilder sb = new StringBuilder();
-            while ((inputLine = br.readLine()) != null) {
-                sb.append(inputLine);
-            }
-            br.close();
+            try {
+                URL url = new URL(apiURL);
+                HttpURLConnection connection = (HttpURLConnection) url.openConnection();
+                connection.setRequestMethod("GET");
 
-            JSONObject json = new JSONObject(sb.toString());
-            JSONObject rates = json.getJSONObject("rates");
-            Double exchangeRate = rates.getDouble(iataCode);
-
-            if (iataCurrencyCodeDDMenu.getSelectedItem().toString().equals("Select IATA Code")) {
-                    showRateLabel.setText(null);
-                } else {
-                    showRateLabel.setText(exchangeRate.toString());
+                BufferedReader br = new BufferedReader(new InputStreamReader((connection.getInputStream())));
+                String inputLine;
+                StringBuilder sb = new StringBuilder();
+                while ((inputLine = br.readLine()) != null) {
+                    sb.append(inputLine);
                 }
-        } catch (Exception e) {
-            throw new RuntimeException(e);
+                br.close();
+
+                JSONObject json = new JSONObject(sb.toString());
+                JSONObject rates = json.getJSONObject("rates");
+                double exchangeRate = rates.getDouble(iataCurrencyCodeDDMenu.getSelectedItem().toString());
+
+                showRateLabel.setText(Double.toString(exchangeRate));
+            } catch (Exception e) {
+                throw new RuntimeException(e);
+            }
         }
     }//GEN-LAST:event_iataCurrencyCodeDDMenuMenuActionPerformed
 
@@ -1046,7 +1065,7 @@ public class TicketSales extends javax.swing.JFrame {
                 pstm1.setString(4, phoneField.getText());
                 pstm1.setString(5, emailField.getText());
                 pstm1.setString(6, "Regular");
-                //regCustomer = new RegularCustomer(username, );
+                regCustomer = new RegularCustomer(username, forenameField.getText(), surnameField.getText(), phoneField.getText(), emailField.getText(), "Regular");
                 pstm1Result = pstm1.executeUpdate(createCustomerQuery);
 
                 createTicketQuery = "INSERT INTO in2018g12.ticket VALUES (?, ?, ?, ?)";
