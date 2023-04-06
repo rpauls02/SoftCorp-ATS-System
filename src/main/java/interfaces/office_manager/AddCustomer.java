@@ -5,12 +5,12 @@
 package interfaces.office_manager;
 
 import SQL.DBConnection;
+import interfaces.general.Login;
 
 import javax.swing.*;
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.SQLException;
-import java.sql.Statement;
+import java.sql.*;
+import java.util.Objects;
+import java.util.Random;
 
 /**
  *
@@ -216,8 +216,8 @@ public class AddCustomer extends javax.swing.JFrame {
         logoPanel.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         logoPanel.setPreferredSize(new java.awt.Dimension(104, 104));
 
-        //logoLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/data/smallLogo.png"))); // NOI18N
-        ImageIcon logo = new ImageIcon("/data/smallLogo.png");
+        //logoLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("data/smallLogo.png"))); // NOI18N
+        ImageIcon logo = new ImageIcon("data/smallLogo.png");
         logoLabel.setIcon(logo);
         logoPanel.add(logoLabel);
         getContentPane().add(logoPanel);
@@ -258,11 +258,6 @@ public class AddCustomer extends javax.swing.JFrame {
         viewCustomerRecordsButton.setBackground(new java.awt.Color(153, 153, 255));
         viewCustomerRecordsButton.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         viewCustomerRecordsButton.setText("View Customer Records");
-        viewCustomerRecordsButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                viewCustomerRecordsButtonActionPerformed(evt);
-            }
-        });
 
         logoutButton.setBackground(new java.awt.Color(255, 102, 102));
         logoutButton.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
@@ -403,6 +398,7 @@ public class AddCustomer extends javax.swing.JFrame {
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>
 
     private void homeButtonActionPerformed(java.awt.event.ActionEvent evt) {
@@ -410,12 +406,9 @@ public class AddCustomer extends javax.swing.JFrame {
         new OfficeManagerHub().setVisible(true);
     }
 
-    private void viewCustomerRecordsButtonActionPerformed(java.awt.event.ActionEvent evt) {
-        // TODO add your handling code here:
-    }
-
     private void logoutButtonActionPerformed(java.awt.event.ActionEvent evt) {
-        // TODO add your handling code here:
+        dispose();
+        new Login().setVisible(true);
     }
 
     private void viewAlertsButtonActionPerformed(java.awt.event.ActionEvent evt) {
@@ -438,33 +431,58 @@ public class AddCustomer extends javax.swing.JFrame {
     }
 
     private void addCustomerButtonActionPerformed(java.awt.event.ActionEvent evt) {
-        Connection conn = DBConnection.getConnection();
-        Statement stm = null;
+        String[] usernames = {forenameField.getText(), forenameField.getText() + surnameField.getText().charAt(0)};
+        Random random = new Random();
+        int index = random.nextInt(usernames.length);
+        String username = usernames[index];
+
+        Connection conn = null;
+        PreparedStatement pstm = null;
+        ResultSet rs = null;
         try {
-            String query = "INSERT INTO in2018g12.customer (username, forename, surname, address, postcode, phone, email, status) " +
-                    "VALUES ('" + forenameField.getText() + "', '" + surnameField.getText() +
-                    "', '" + addressField.getText() + "', '" + postcodeField.getText() +
-                    "', '" + phoneField.getText() + "', '" + emailField.getText() +
-                    "', '" + custStatusDDMenu.getSelectedItem() + "')";
-            stm = conn.createStatement();
-            int result = stm.executeUpdate(query);
-            if (result > 0){
-                JOptionPane.showMessageDialog(this, "Customer added. " +
-                        "Review using 'View Customer Records' menu");
-            } else {
-                JOptionPane.showMessageDialog(this, "Could not add customer. " +
-                        "Review details entered or contact system administrator");
+            conn = DBConnection.getConnection();
+            String checkCustomerQuery = "SELECT COUNT(*) AS count FROM in2018g12.customer WHERE username=?";
+            pstm = conn.prepareStatement(checkCustomerQuery);
+            pstm.setString(1, username);
+            rs = pstm.executeQuery();
+            if (rs.next()){
+                int count = rs.getInt("count");
+                if (count > 0){
+                    JOptionPane.showMessageDialog(this, "Customer already exists in system. " +
+                            "Review using 'View Customer Records' menu or contact system administrator");
+                } else {
+                    String query = "INSERT INTO in2018g12.customer VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
+                    pstm = conn.prepareStatement(query);
+                    pstm.setString(1, username);
+                    pstm.setString(2, forenameField.getText());
+                    pstm.setString(3, surnameField.getText());
+                    pstm.setString(4, addressField.getText());
+                    pstm.setString(5, postcodeField.getText());
+                    pstm.setString(6, phoneField.getText());
+                    pstm.setString(7, emailField.getText());
+                    pstm.setString(8, Objects.requireNonNull(custStatusDDMenu.getSelectedItem()).toString());
+                    int result = pstm.executeUpdate();
+                    if (result > 0) {
+                        JOptionPane.showMessageDialog(this, "Customer added to system. " +
+                                "Review using 'View Customer Records' menu");
+                    } else {
+                        JOptionPane.showMessageDialog(this, "Could not add customer to system. " +
+                                "Review details entered or contact system administrator");
+                    }
+                }
             }
         } catch (SQLException sqle) {
-            throw new RuntimeException(sqle);
+            if (conn != null) { try { conn.rollback(); } catch (SQLException e) { throw new RuntimeException(sqle); }}
         } finally {
             try { if (conn != null) conn.close(); } catch (Exception e) { throw new RuntimeException(e); }
-            try { if (stm != null) stm.close(); } catch (Exception e) { throw new RuntimeException(e); }
+            try { if (pstm != null) pstm.close(); } catch (Exception e) { throw new RuntimeException(e); }
+            try { if (rs != null) rs.close(); } catch (Exception e) { throw new RuntimeException(e); }
         }
     }
 
     private void manageCommissionsButtonActionPerformed(java.awt.event.ActionEvent evt) {
-        // TODO add your handling code here:
+        dispose();
+        new ManageCommissions().setVisible(true);
     }
 
     /**
