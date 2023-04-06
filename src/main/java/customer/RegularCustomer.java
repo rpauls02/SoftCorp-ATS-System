@@ -9,6 +9,11 @@ public class RegularCustomer extends Customer {
 		this.payLater = payLater;
 	}
 
+	public RegularCustomer(String username, String forename, String surname, String phone, String email, String status) {
+		super(username, forename, surname, phone, email, status);
+		this.payLater = payLater;
+	}
+
 	public boolean getPayLater() {
 		return this.payLater;
 	}
