@@ -192,7 +192,7 @@ public class Login extends javax.swing.JFrame {
             pstm.setString(2, passwordField.getText());
             rs = pstm.executeQuery();
             if (rs.next()) {
-                dispose();
+                setVisible(false);
                 String role = rs.getString("role");
                 if (Objects.equals(role, "Travel Advisor")) {
                     advisor = new TravelAdvisor(rs.getInt("id"), rs.getString("password"), role, rs.getString("forename"), rs.getString("surname"));
@@ -205,11 +205,11 @@ public class Login extends javax.swing.JFrame {
                     new SystemAdminHub().setVisible(true);
                 }
             } else {
-                JOptionPane.showMessageDialog(this, "Invalid details entered. " +
+                JOptionPane.showMessageDialog(this, "Incorrect details entered. " +
                         "Try again or contact system administrator");
             }
         } catch (SQLException sqle) {
-            throw new RuntimeException(sqle);
+            if (conn != null) { try { conn.rollback(); } catch (SQLException e) { throw new RuntimeException(sqle); }}
         } finally {
             try { if (rs != null) rs.close(); } catch (Exception e) { throw new RuntimeException(e); }
             try { if (pstm != null) pstm.close(); } catch (Exception e) { throw new RuntimeException(e); }
