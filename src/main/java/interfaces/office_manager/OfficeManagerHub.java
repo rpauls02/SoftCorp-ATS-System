@@ -5,10 +5,13 @@
 package interfaces.office_manager;
 
 import SQL.DBConnection;
+import interfaces.general.Login;
+
 import javax.swing.*;
-import java.sql.Connection;
-import java.sql.SQLException;
-import java.sql.Statement;
+import javax.swing.table.DefaultTableModel;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.sql.*;
 
 
 /**
@@ -16,6 +19,8 @@ import java.sql.Statement;
  * @author Abdullah
  */
 public class OfficeManagerHub extends javax.swing.JFrame {
+
+    private final Login previousPage = new Login();
 
     /**
      * Creates new form officeManagerHomeFrame
@@ -45,12 +50,12 @@ public class OfficeManagerHub extends javax.swing.JFrame {
         viewReportButton = new javax.swing.JButton();
         manageCommissionsButton = new javax.swing.JButton();
         functionPanel = new javax.swing.JPanel();
-        refreshButton = new javax.swing.JButton();
+        refreshTableButton = new javax.swing.JButton();
         tableName = new javax.swing.JLabel();
         orderDDMenu = new javax.swing.JComboBox<>();
         showDDMenu = new javax.swing.JComboBox<>();
         tableScrollPane = new javax.swing.JScrollPane();
-        advisorInformationPanel = new javax.swing.JTable();
+        advisorInformationTable = new javax.swing.JTable();
         logoPanel = new javax.swing.JPanel();
         logoLabel = new javax.swing.JLabel();
 
@@ -60,14 +65,13 @@ public class OfficeManagerHub extends javax.swing.JFrame {
         pageTitlePanel.setBackground(new java.awt.Color(49, 174, 209));
         pageTitlePanel.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
-        idAndRoleLabel.setBackground(new java.awt.Color(49, 174, 209));
         idAndRoleLabel.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         idAndRoleLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        idAndRoleLabel.setText("Staff ID | Office Manager");
+        //idAndRoleLabel.setText(previousPage.getManager().getId() + " | " + "Office Manager");
 
         welcomeLabel.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         welcomeLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        welcomeLabel.setText("Welcome Name");
+        //welcomeLabel.setText("Welcome " + previousPage.getManager().getForename());
 
         javax.swing.GroupLayout pageTitlePanelLayout = new javax.swing.GroupLayout(pageTitlePanel);
         pageTitlePanel.setLayout(pageTitlePanelLayout);
@@ -199,8 +203,14 @@ public class OfficeManagerHub extends javax.swing.JFrame {
         functionPanel.setMinimumSize(new java.awt.Dimension(779, 48));
         functionPanel.setPreferredSize(new java.awt.Dimension(779, 48));
 
-        refreshButton.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        refreshButton.setText("Refresh");
+        refreshTableButton.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        refreshTableButton.setText("Refresh");
+        refreshTableButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                refreshTableButtonActionPerformed(evt);
+            }
+        });
 
         tableName.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         tableName.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -224,7 +234,7 @@ public class OfficeManagerHub extends javax.swing.JFrame {
                                 .addGap(298, 298, 298)
                                 .addComponent(tableName)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(refreshButton)
+                                .addComponent(refreshTableButton)
                                 .addContainerGap())
         );
         functionPanelLayout.setVerticalGroup(
@@ -240,14 +250,14 @@ public class OfficeManagerHub extends javax.swing.JFrame {
                                                         .addGroup(javax.swing.GroupLayout.Alignment.LEADING, functionPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                                                 .addComponent(orderDDMenu, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                                                 .addComponent(tableName, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                                                        .addComponent(refreshButton, javax.swing.GroupLayout.Alignment.LEADING))
+                                                        .addComponent(refreshTableButton, javax.swing.GroupLayout.Alignment.LEADING))
                                                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
 
         tableScrollPane.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
-        advisorInformationPanel.setBackground(new java.awt.Color(49, 174, 209));
-        advisorInformationPanel.setModel(new javax.swing.table.DefaultTableModel(
+        advisorInformationTable.setBackground(new java.awt.Color(49, 174, 209));
+        advisorInformationTable.setModel(new javax.swing.table.DefaultTableModel(
                 new Object [][] {
                         {null, null, null, null, null},
                         {null, null, null, null, null},
@@ -255,7 +265,7 @@ public class OfficeManagerHub extends javax.swing.JFrame {
                         {null, null, null, null, null}
                 },
                 new String [] {
-                        "ID", "Role", "Forename(s)", "Surname", "Email"
+                        "ID", "Role", "Forename", "Surname", "Email"
                 }
         ) {
             Class[] types = new Class [] {
@@ -266,13 +276,13 @@ public class OfficeManagerHub extends javax.swing.JFrame {
                 return types [columnIndex];
             }
         });
-        tableScrollPane.setViewportView(advisorInformationPanel);
+        tableScrollPane.setViewportView(advisorInformationTable);
 
         logoPanel.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         logoPanel.setPreferredSize(new java.awt.Dimension(104, 104));
 
-        //logoLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/data/smallLogo.png"))); // NOI18N
-        ImageIcon logo = new ImageIcon("/data/smallLogo.png");
+        //logoLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("data/smallLogo.png"))); // NOI18N
+        ImageIcon logo = new ImageIcon("data/smallLogo.png");
         logoLabel.setIcon(logo);
         logoPanel.add(logoLabel);
         getContentPane().add(logoPanel);
@@ -335,11 +345,13 @@ public class OfficeManagerHub extends javax.swing.JFrame {
     }// </editor-fold>
 
     private void homeButtonActionPerformed(java.awt.event.ActionEvent evt) {
-        // TODO add your handling code here:
+        dispose();
+        new OfficeManagerHub().setVisible(true);
     }
 
     private void logoutButtonActionPerformed(java.awt.event.ActionEvent evt) {
-        // TODO add your handling code here:
+        dispose();
+        new Login().setVisible(true);
     }
 
     private void viewAlertsButtonActionPerformed(java.awt.event.ActionEvent evt) {
@@ -363,7 +375,41 @@ public class OfficeManagerHub extends javax.swing.JFrame {
     }
 
     private void manageCommissionsButtonActionPerformed(java.awt.event.ActionEvent evt) {
-        // TODO add your handling code here:
+        dispose();
+        new ManageCommissions().setVisible(true);
+    }
+
+    private void refreshTableButtonActionPerformed(java.awt.event.ActionEvent evt) {
+        DefaultTableModel model = (DefaultTableModel)advisorInformationTable.getModel();
+        Connection conn = null;
+        PreparedStatement pstm = null;
+        ResultSet rs = null;
+        try {
+            conn = DBConnection.getConnection();
+            String query = "SELECT * FROM in2018g12.customer";
+            pstm = conn.prepareStatement(query);
+            rs = pstm.executeQuery();
+            if (!rs.next()){
+                JOptionPane.showMessageDialog(this, "Could not refresh table data. Try again or contact system administrator");
+            } else {
+                model.setRowCount(0);
+                do {
+                    Object[] row = new Object[5];
+                    row[0] = rs.getString("id");
+                    row[1] = rs.getString("role");
+                    row[2] = rs.getString("forename");
+                    row[3] = rs.getString("surname");
+                    row[4] = rs.getString("email");
+                    model.addRow(row);
+                } while (rs.next());
+            }
+        } catch (SQLException sqle) {
+            if (conn != null) { try { conn.rollback(); } catch (SQLException e) { throw new RuntimeException(sqle); }}
+        } finally {
+            try { if (rs != null) rs.close(); } catch (Exception e) { throw new RuntimeException(e); }
+            try { if (pstm != null) pstm.close(); } catch (Exception e) { throw new RuntimeException(e); }
+            try { if (conn != null) conn.close(); } catch (Exception e) { throw new RuntimeException(e); }
+        }
     }
 
 
@@ -404,7 +450,7 @@ public class OfficeManagerHub extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify
-    private javax.swing.JTable advisorInformationPanel;
+    private javax.swing.JTable advisorInformationTable;
     private javax.swing.JPanel buttonsPanel;
     private javax.swing.JPanel functionPanel;
     private javax.swing.JButton homeButton;
@@ -416,7 +462,7 @@ public class OfficeManagerHub extends javax.swing.JFrame {
     private javax.swing.JButton manageStockButton;
     private javax.swing.JComboBox<String> orderDDMenu;
     private javax.swing.JPanel pageTitlePanel;
-    private javax.swing.JButton refreshButton;
+    private javax.swing.JButton refreshTableButton;
     private javax.swing.JComboBox<String> showDDMenu;
     private javax.swing.JLabel tableName;
     private javax.swing.JScrollPane tableScrollPane;
