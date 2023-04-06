@@ -934,9 +934,9 @@
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" alignment="0" attributes="0">
-                              <Component id="IATACurrencyCodeLabel" min="-2" max="-2" attributes="0"/>
+                              <Component id="iataCurrencyCodeLabel" min="-2" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
-                              <Component id="IATACurrencyCodeDD" max="32767" attributes="0"/>
+                              <Component id="iataCurrencyCodeDD" max="32767" attributes="0"/>
                           </Group>
                           <Group type="102" alignment="1" attributes="0">
                               <Component id="exchangeRateLabel" min="-2" max="-2" attributes="0"/>
@@ -953,8 +953,8 @@
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                          <Component id="IATACurrencyCodeLabel" pref="30" max="32767" attributes="0"/>
-                          <Component id="IATACurrencyCodeDD" pref="0" max="32767" attributes="0"/>
+                          <Component id="iataCurrencyCodeLabel" pref="30" max="32767" attributes="0"/>
+                          <Component id="iataCurrencyCodeDD" pref="0" max="32767" attributes="0"/>
                       </Group>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" max="-2" attributes="0">
@@ -967,7 +967,7 @@
             </DimensionLayout>
           </Layout>
           <SubComponents>
-            <Component class="javax.swing.JComboBox" name="IATACurrencyCodeDD">
+            <Component class="javax.swing.JComboBox" name="iataCurrencyCodeDD">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Segoe UI" size="18" style="0"/>
@@ -1146,13 +1146,13 @@
                 </Property>
               </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="IATACurrencyCodeDDActionPerformed"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="iataCurrencyCodeDDActionPerformed"/>
               </Events>
               <AuxValues>
                 <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
               </AuxValues>
             </Component>
-            <Component class="javax.swing.JLabel" name="IATACurrencyCodeLabel">
+            <Component class="javax.swing.JLabel" name="iataCurrencyCodeLabel">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Segoe UI" size="18" style="0"/>
@@ -1458,7 +1458,7 @@
         <Component class="javax.swing.JLabel" name="logoLabel">
           <Properties>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="3" name="/data/smallLogo.png"/>
+              <Image iconType="3" name="data/smallLogo.png"/>
             </Property>
           </Properties>
         </Component>
