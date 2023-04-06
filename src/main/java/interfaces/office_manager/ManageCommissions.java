@@ -7,7 +7,11 @@ package interfaces.office_manager;
 import SQL.DBConnection;
 
 import javax.swing.*;
+import javax.swing.table.DefaultTableModel;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.sql.Statement;
 
@@ -494,7 +498,51 @@ public class ManageCommissions extends javax.swing.JFrame {
     }//GEN-LAST:event_editRateButtonActionPerformed
 
     private void deleteRateButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteRateButtonActionPerformed
-        // TODO add your handling code here:
+        commissionRateTable.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                if (e.getClickCount() == 1) {
+                    int selectedRow = commissionRateTable.getSelectedRow();
+                    if (selectedRow>=0){
+                        String date = commissionRateTable.getValueAt(selectedRow, 0).toString();
+                        String commissionRate = commissionRateTable.getValueAt(selectedRow, 1).toString();
+                        String ticketID = commissionRateTable.getValueAt(selectedRow, 2).toString();
+                        String staffID = commissionRateTable.getValueAt(selectedRow, 3).toString();
+
+                        ((DefaultTableModel) commissionRateTable.getModel()).removeRow(selectedRow);
+
+                        try {
+                            // Creating connection to database
+                            Connection conn = DBConnection.getConnection();
+
+                            // Creating DELETE SQL query with parameters
+                            String deleteQuery = "DELETE FROM in2018g12.commission WHERE date = ? AND commissionRate = ? AND ticketID = ? AND staffID = ?";
+                            PreparedStatement preparedStatement = conn.prepareStatement(deleteQuery);
+                            preparedStatement.setString(1, date);
+                            preparedStatement.setString(2, commissionRate);
+                            preparedStatement.setString(3, ticketID);
+                            preparedStatement.setString(4, staffID);
+
+                            // Executing DELETE query
+                            int rowsAffected = preparedStatement.executeUpdate();
+                            if (rowsAffected > 0) {
+                                System.out.println("Row deleted from the database.");
+                            } else {
+                                System.out.println("No rows deleted from the database.");
+                            }
+
+                            // Closing connection and statement
+                            preparedStatement.close();
+                            conn.close();
+
+                        } catch (SQLException ex) {
+                            ex.printStackTrace();
+                        }
+                    }
+                }
+            }
+        });
+
     }//GEN-LAST:event_deleteRateButtonActionPerformed
 
     /**
