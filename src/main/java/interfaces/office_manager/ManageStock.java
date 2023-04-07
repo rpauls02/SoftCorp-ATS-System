@@ -535,39 +535,41 @@ public class ManageStock extends javax.swing.JFrame {
 
     private void assignButtonActionPerformed(java.awt.event.ActionEvent evt) {
         Connection conn = null;
-        Statement stm = null;
+        PreparedStatement pstm = null;
         try {
             conn = DBConnection.getConnection();
-            String query = "UPDATE in2018g12.blank " +
-                    "SET staffID = '" + Integer.parseInt(staffIDField.getText()) + "' status = 'Assigned'" +
-                    "WHERE staffID = " + Integer.parseInt(staffIDField.getText());
-            stm = conn.createStatement();
-            int result = stm.executeUpdate(query);
+            String query = "UPDATE in2018g12.blank SET staffID = ?, status = ? WHERE staffID = ?";
+            pstm = conn.prepareStatement(query);
+            pstm.setInt(1, Integer.parseInt(staffIDField.getText()));
+            pstm.setString(2, "Assigned");
+            pstm.setInt(3, Integer.parseInt(staffIDField.getText()));
+            int result = pstm.executeUpdate(query);
             if (result > 0){
                 JOptionPane.showMessageDialog(this, "Selected blanks have been assigned. " +
                         "Review using the stock information table in this menu");
             } else {
-                JOptionPane.showMessageDialog(this, "Could not add customer. " +
+                JOptionPane.showMessageDialog(this, "Could not assign blank(s). " +
                         "Review details entered or contact system administrator");
             }
         } catch (SQLException sqle) {
             if (conn != null) { try { conn.rollback(); } catch (SQLException e) { throw new RuntimeException(sqle); }}
         } finally {
             try { if (conn != null) conn.close(); } catch (Exception e) { throw new RuntimeException(e); }
-            try { if (stm != null) stm.close(); } catch (Exception e) { throw new RuntimeException(e); }
+            try { if (pstm != null) pstm.close(); } catch (Exception e) { throw new RuntimeException(e); }
         }
     }
 
     private void reassignButtonActionPerformed(java.awt.event.ActionEvent evt) {
         Connection conn = null;
-        Statement stm = null;
+        PreparedStatement pstm = null;
         try {
             conn = DBConnection.getConnection();
-            String query = "UPDATE in2018g12.blank " +
-                    "SET staffID = '" + Integer.parseInt(staffIDField.getText()) + "' status = 'Assigned'" +
-                    "WHERE staffID = '" + idLabel.getText() + "'";
-            stm = conn.createStatement();
-            int result = stm.executeUpdate(query);
+            String query = "UPDATE in2018g12.blank SET staffID = ?, status = ? WHERE staffID = ?";
+            pstm = conn.prepareStatement(query);
+            pstm.setInt(1, Integer.parseInt(staffIDField.getText()));
+            pstm.setString(2, "Assigned");
+            pstm.setInt(3, Integer.parseInt(staffIDField.getText()));
+            int result = pstm.executeUpdate();
             if (result > 0){
                 JOptionPane.showMessageDialog(this, "Selected blanks have been reassigned. " +
                         "Review using the stock information table in this menu");
@@ -579,7 +581,7 @@ public class ManageStock extends javax.swing.JFrame {
             if (conn != null) { try { conn.rollback(); } catch (SQLException e) { throw new RuntimeException(sqle); }}
         } finally {
             try { if (conn != null) conn.close(); } catch (Exception e) { throw new RuntimeException(e); }
-            try { if (stm != null) stm.close(); } catch (Exception e) { throw new RuntimeException(e); }
+            try { if (pstm != null) pstm.close(); } catch (Exception e) { throw new RuntimeException(e); }
         }
     }
 
