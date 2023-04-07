@@ -502,6 +502,7 @@ public class ViewTickets extends javax.swing.JFrame {
         try {
             FileWriter writer = new FileWriter("refunds.txt", true);
             writer.write(customerTicketsTable.getValueAt(0, 0) + " returned and full refund given. \n");
+            writer.close();
         } catch (IOException e){
             JOptionPane.showMessageDialog(this, "Could not record refund. Review selection or contact system administrator", "Error", JOptionPane.ERROR_MESSAGE);
         } finally {
