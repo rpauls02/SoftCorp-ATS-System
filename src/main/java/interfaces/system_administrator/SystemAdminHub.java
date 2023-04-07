@@ -7,13 +7,14 @@ package interfaces.system_administrator;
 import interfaces.general.Login;
 
 import javax.swing.*;
-import java.io.IOException;
 
 /**
  *
  * @author Abdullah
  */
 public class SystemAdminHub extends javax.swing.JFrame {
+
+    private final Login previousPage = new Login();
 
     /**
      * Creates new form systemAdminHomeFrame
@@ -62,13 +63,7 @@ public class SystemAdminHub extends javax.swing.JFrame {
         databaseManagementButton.setText("Database Management");
         databaseManagementButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                try {
-                    databaseManagementButtonActionPerformed(evt);
-                } catch (IOException e) {
-                    throw new RuntimeException(e);
-                } catch (InterruptedException e) {
-                    throw new RuntimeException(e);
-                }
+                databaseManagementButtonActionPerformed(evt);
             }
         });
 
@@ -125,11 +120,11 @@ public class SystemAdminHub extends javax.swing.JFrame {
 
         idAndRoleLabel.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         idAndRoleLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        idAndRoleLabel.setText("Staff ID | Admin");
+        idAndRoleLabel.setText(previousPage.getAdmin().getId() + " | " + "Office Manager");
 
         welcomeLabel.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         welcomeLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        welcomeLabel.setText("Welcome Name");
+        welcomeLabel.setText("Welcome " + previousPage.getAdmin().getForename());
 
         javax.swing.GroupLayout pageTitlePanelLayout = new javax.swing.GroupLayout(pageTitlePanel);
         pageTitlePanel.setLayout(pageTitlePanelLayout);
@@ -179,8 +174,8 @@ public class SystemAdminHub extends javax.swing.JFrame {
         logoPanel.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         logoPanel.setPreferredSize(new java.awt.Dimension(104, 104));
 
-        //logoLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/data/smallLogo.png"))); // NOI18N
-        ImageIcon logo = new ImageIcon("/data/smallLogo.png");
+        //logoLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("data/smallLogo.png"))); // NOI18N
+        ImageIcon logo = new ImageIcon("data/smallLogo.png");
         logoLabel.setIcon(logo);
         logoPanel.add(logoLabel);
         getContentPane().add(logoPanel);
@@ -236,6 +231,7 @@ public class SystemAdminHub extends javax.swing.JFrame {
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void logoutButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_logoutButtonActionPerformed
@@ -248,7 +244,7 @@ public class SystemAdminHub extends javax.swing.JFrame {
         new AddStock().setVisible(true);
     }//GEN-LAST:event_manageStockButtonActionPerformed
 
-    private void databaseManagementButtonActionPerformed(java.awt.event.ActionEvent evt) throws IOException, InterruptedException {//GEN-FIRST:event_databaseManagementButtonActionPerformed
+    private void databaseManagementButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_databaseManagementButtonActionPerformed
         dispose();
         new DatabaseManagement().setVisible(true);
     }//GEN-LAST:event_databaseManagementButtonActionPerformed
