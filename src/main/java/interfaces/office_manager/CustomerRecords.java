@@ -5,8 +5,12 @@
 package interfaces.office_manager;
 
 import SQL.DBConnection;
+import interfaces.general.Login;
+import interfaces.travel_advisor.ViewTickets;
 
 import javax.swing.*;
+import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableRowSorter;
 
 import java.awt.*;
 import java.sql.Connection;
@@ -14,6 +18,8 @@ import java.sql.SQLException;
 import java.sql.Statement;
 
 import java.sql.*;
+import java.util.List;
+import java.util.Objects;
 
 
 /**
@@ -38,14 +44,14 @@ public class CustomerRecords extends javax.swing.JFrame {
     private void initComponents() {
 
         functionPanel = new javax.swing.JPanel();
-        refreshButton = new javax.swing.JButton();
+        refreshTableButton = new javax.swing.JButton();
         showDDMenu = new javax.swing.JComboBox<>();
         orderDDMenu = new javax.swing.JComboBox<>();
         tableNameLabel = new javax.swing.JLabel();
         tableScrollPane = new javax.swing.JScrollPane();
         customerInformationTable = new javax.swing.JTable();
         tableFunctionsPanel = new javax.swing.JPanel();
-        findButton = new javax.swing.JButton();
+        findCustomerButton = new javax.swing.JButton();
         viewTicketsButton = new javax.swing.JButton();
         editButton = new javax.swing.JButton();
         deleteButton = new javax.swing.JButton();
@@ -73,11 +79,11 @@ public class CustomerRecords extends javax.swing.JFrame {
         functionPanel.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         functionPanel.setPreferredSize(new java.awt.Dimension(1151, 48));
 
-        refreshButton.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        refreshButton.setText("Refresh");
-        refreshButton.addActionListener(new java.awt.event.ActionListener() {
+        refreshTableButton.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        refreshTableButton.setText("Refresh");
+        refreshTableButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                refreshButtonActionPerformed(evt);
+                refreshTableButtonActionPerformed(evt);
             }
         });
 
@@ -110,7 +116,7 @@ public class CustomerRecords extends javax.swing.JFrame {
                                 .addGap(18, 18, 18)
                                 .addComponent(orderDDMenu, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(refreshButton)
+                                .addComponent(refreshTableButton)
                                 .addContainerGap())
                         .addGroup(functionPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                 .addGroup(functionPanelLayout.createSequentialGroup()
@@ -123,7 +129,7 @@ public class CustomerRecords extends javax.swing.JFrame {
                         .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, functionPanelLayout.createSequentialGroup()
                                 .addContainerGap()
                                 .addGroup(functionPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                        .addComponent(refreshButton, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(refreshTableButton, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                         .addGroup(javax.swing.GroupLayout.Alignment.LEADING, functionPanelLayout.createSequentialGroup()
                                                 .addGroup(functionPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                                                         .addComponent(orderDDMenu, javax.swing.GroupLayout.Alignment.LEADING)
@@ -140,7 +146,7 @@ public class CustomerRecords extends javax.swing.JFrame {
         tableScrollPane.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
         customerInformationTable.setBackground(new java.awt.Color(49, 174, 209));
-        customerInformationTable.setModel(new javax.swing.table.DefaultTableModel(
+            customerInformationTable.setModel(new javax.swing.table.DefaultTableModel(
                 new Object [][] {
                         {null, null, null, null, null, null, null, null},
                         {null, null, null, null, null, null, null, null},
@@ -164,11 +170,11 @@ public class CustomerRecords extends javax.swing.JFrame {
         tableFunctionsPanel.setBackground(new java.awt.Color(49, 174, 209));
         tableFunctionsPanel.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
-        findButton.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        findButton.setText("Find");
-        findButton.addActionListener(new java.awt.event.ActionListener() {
+        findCustomerButton.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        findCustomerButton.setText("Find");
+        findCustomerButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                findButtonActionPerformed(evt);
+                findCustomerButtonActionPerformed(evt);
             }
         });
 
@@ -214,7 +220,7 @@ public class CustomerRecords extends javax.swing.JFrame {
                                 .addContainerGap()
                                 .addComponent(customerIDField, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(findButton)
+                                .addComponent(findCustomerButton)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(viewTicketsButton)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 330, Short.MAX_VALUE)
@@ -235,7 +241,7 @@ public class CustomerRecords extends javax.swing.JFrame {
                                                 .addComponent(deleteButton)
                                                 .addComponent(editButton)
                                                 .addComponent(viewTicketsButton)
-                                                .addComponent(findButton)
+                                                .addComponent(findCustomerButton)
                                                 .addComponent(addCustomerButton)))
                                 .addContainerGap(8, Short.MAX_VALUE))
         );
@@ -245,7 +251,7 @@ public class CustomerRecords extends javax.swing.JFrame {
         logoPanel.setMinimumSize(new java.awt.Dimension(104, 104));
         logoPanel.setPreferredSize(new java.awt.Dimension(104, 104));
 
-        //logoLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/data/smallLogo.png"))); // NOI18N
+        //logoLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("data/smallLogo.png"))); // NOI18N
         ImageIcon logo = new ImageIcon("data/smallLogo.png");
         logoLabel.setIcon(logo);
         logoPanel.add(logoLabel);
@@ -287,11 +293,6 @@ public class CustomerRecords extends javax.swing.JFrame {
         viewCustomerRecordsButton.setBackground(new java.awt.Color(153, 153, 255));
         viewCustomerRecordsButton.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         viewCustomerRecordsButton.setText("View Customer Records");
-        viewCustomerRecordsButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                viewCustomerRecordsButtonActionPerformed(evt);
-            }
-        });
 
         logoutButton.setBackground(new java.awt.Color(255, 102, 102));
         logoutButton.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
@@ -308,7 +309,7 @@ public class CustomerRecords extends javax.swing.JFrame {
         viewAlertsButton.setPreferredSize(new java.awt.Dimension(117, 42));
         viewAlertsButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                viewAlertsButtonrefundTicketButtonActionPerformed(evt);
+                viewAlertsButtonActionPerformed(evt);
             }
         });
 
@@ -317,7 +318,7 @@ public class CustomerRecords extends javax.swing.JFrame {
         manageStockButton.setText("Manage Stock");
         manageStockButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                manageStockButtonrefundTicketButtonActionPerformed(evt);
+                manageStockButtonActionPerformed(evt);
             }
         });
 
@@ -439,16 +440,17 @@ public class CustomerRecords extends javax.swing.JFrame {
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>
 
     private void homeButtonActionPerformed(java.awt.event.ActionEvent evt) {
         dispose();
         new OfficeManagerHub().setVisible(true);
-
     }
 
     private void logoutButtonActionPerformed(java.awt.event.ActionEvent evt) {
-        // TODO add your handling code here:
+        dispose();
+        new Login().setVisible(true);
     }
 
     private void viewAlertsButtonActionPerformed(java.awt.event.ActionEvent evt) {
@@ -461,34 +463,162 @@ public class CustomerRecords extends javax.swing.JFrame {
         new ManageStock().setVisible(true);
     }
 
-    private void findButtonActionPerformed(java.awt.event.ActionEvent evt) {
-        Connection conn = DBConnection.getConnection();
+    private void addCustomerButtonActionPerformed(java.awt.event.ActionEvent evt) {
+        new AddCustomer().setVisible(true);
+    }
+
+    private void viewReportButtonActionPerformed(java.awt.event.ActionEvent evt) {
+        dispose();
+        new GenerateReport().setVisible(true);
+    }
+
+    private void manageCommissionsButtonActionPerformed(java.awt.event.ActionEvent evt) {
+        dispose();
+        new ManageCommissions().setVisible(true);
+    }
+
+    private void showDDMenuActionPerformed(java.awt.event.ActionEvent evt) {
+        DefaultTableModel model = (DefaultTableModel) customerInformationTable.getModel();
+        int rowCount = model.getRowCount();
+        int maxRows;
+        switch ((String) Objects.requireNonNull(showDDMenu.getSelectedItem())) {
+            case "10" -> {
+                maxRows = 10;
+                if (rowCount > maxRows) {
+                    model.setRowCount(maxRows);
+                }
+            }
+            case "25" -> {
+                maxRows = 25;
+                if (rowCount > maxRows) {
+                    model.setRowCount(maxRows);
+                }
+            }
+            case "50" -> {
+                maxRows = 50;
+                if (rowCount > maxRows) {
+                    model.setRowCount(maxRows);
+                }
+            }
+            case "100" -> {
+                maxRows = 100;
+                if (rowCount > maxRows) {
+                    model.setRowCount(maxRows);
+                }
+            }
+        }
+    }
+
+    private void orderDDMenuActionPerformed(java.awt.event.ActionEvent evt) {
+        DefaultTableModel model = (DefaultTableModel)customerInformationTable.getModel();
+        TableRowSorter<DefaultTableModel> sorter = new TableRowSorter<>(model);
+        switch ((String) Objects.requireNonNull(orderDDMenu.getSelectedItem())){
+            case "By Date" -> {
+                sorter.setSortKeys(java.util.List.of(new RowSorter.SortKey(0, SortOrder.ASCENDING)));
+            }
+            case "By Number" -> {
+                sorter.setSortKeys(java.util.List.of(new RowSorter.SortKey(1, SortOrder.ASCENDING)));
+            }
+            case "By Status" -> {
+                sorter.setSortKeys(List.of(new RowSorter.SortKey(3, SortOrder.ASCENDING)));
+            }
+        }
+        customerInformationTable.setRowSorter(sorter);
+        sorter.sort();
+    }
+
+    private void refreshTableButtonActionPerformed(java.awt.event.ActionEvent evt) {
+        DefaultTableModel model = (DefaultTableModel)customerInformationTable.getModel();
+        Connection conn = null;
         PreparedStatement pstm = null;
+        ResultSet rs = null;
         try {
+            conn = DBConnection.getConnection();
+            String query = "SELECT * FROM in2018g12.customer";
+            pstm = conn.prepareStatement(query);
+            rs = pstm.executeQuery();
+            if (!rs.next()){
+                JOptionPane.showMessageDialog(this, "Could not refresh table data. Try again or contact system administrator");
+            } else {
+                model.setRowCount(0);
+                do {
+                    Object[] row = new Object[8];
+                    row[0] = rs.getString("username");
+                    row[1] = rs.getString("forename");
+                    row[2] = rs.getString("surname");
+                    row[3] = rs.getString("address");
+                    row[4] = rs.getString("postcode");
+                    row[5] = rs.getString("email");
+                    row[6] = rs.getString("phone");
+                    row[7] = rs.getString("status");
+                    model.addRow(row);
+                } while (rs.next());
+            }
+        } catch (SQLException sqle) {
+            if (conn != null) { try { conn.rollback(); } catch (SQLException e) { throw new RuntimeException(sqle); }}
+        } finally {
+            try { if (rs != null) rs.close(); } catch (Exception e) { throw new RuntimeException(e); }
+            try { if (pstm != null) pstm.close(); } catch (Exception e) { throw new RuntimeException(e); }
+            try { if (conn != null) conn.close(); } catch (Exception e) { throw new RuntimeException(e); }
+        }
+    }
+
+    private void findCustomerButtonActionPerformed(java.awt.event.ActionEvent evt) {
+        DefaultTableModel model = (DefaultTableModel)customerInformationTable.getModel();
+
+        Connection conn = null;
+        PreparedStatement pstm = null;
+        ResultSet rs = null;
+        try {
+            conn = DBConnection.getConnection();
             String query = "SELECT * FROM customer WHERE surname = '" + customerIDField.getText() + "'";
             pstm = conn.prepareStatement(query);
-            int result = pstm.executeUpdate(query);
-            PreparedStatement statement = null;
-            ResultSet rs = statement.executeQuery(query);
-            while (rs.next()) {
-                int customerId = rs.getInt("customerID");
-                String surnameField = rs.getString("surname");
+            rs = pstm.executeQuery(query);
+            if (!rs.next()){
+                JOptionPane.showMessageDialog(this, "Customer not found. " +
+                        "Review entered details or contact system administrator");
+            } else {
+                do {
+                    model.setRowCount(0);
+                    Object[] row = new Object[8];
+                    row[0] = rs.getString("username");
+                    row[1] = rs.getString("forename");
+                    row[2] = rs.getString("surname");
+                    row[3] = rs.getString("address");
+                    row[4] = rs.getString("postcode");
+                    row[5] = rs.getString("email");
+                    row[6] = rs.getString("phone");
+                    row[7] = rs.getString("status");
+                    model.addRow(row);
+                } while (rs.next());
             }
-        } catch (SQLException e) {
-
+        } catch (SQLException sqle) {
+            if (conn != null) { try { conn.rollback(); } catch (SQLException e) { throw new RuntimeException(sqle); }}
+        } finally {
+            try { if (conn != null) conn.close(); } catch (Exception e) { throw new RuntimeException(e); }
+            try { if (pstm != null) pstm.close(); } catch (Exception e) { throw new RuntimeException(e); }
+            try { if (rs != null) rs.close(); } catch (Exception e) { throw new RuntimeException(e); }
         }
     }
 
     private void editButtonActionPerformed(java.awt.event.ActionEvent evt) {
-        Connection conn = DBConnection.getConnection();
-        Statement stm = null;
+        Connection conn = null;
+        PreparedStatement pstm = null;
         try {
-            stm = conn.createStatement();
+            conn = DBConnection.getConnection();
             String query =
-                    "UPDATE in2018g12.customer (forename, surname, address, postcode, phone, email)" +
-                            "VALUES ('" + customerInformationTable.getModel().getValueAt(customerInformationTable.getSelectedRow(), customerInformationTable.getSelectedColumn());
-
-            int result = stm.executeUpdate(query);
+                    "UPDATE in2018g12.customer " +
+                    "SET (forename = ?, surname = ?, address = ?, postcode = ?, phone = ?, email = ?, status = ?)" +
+                    "WHERE username = " + customerInformationTable.getValueAt(0, 0);
+            pstm = conn.prepareStatement(query);
+            pstm.setString(1, (String) customerInformationTable.getValueAt(customerInformationTable.getSelectedRow(), 1));
+            pstm.setString(2, (String) customerInformationTable.getValueAt(customerInformationTable.getSelectedRow(), 2));
+            pstm.setString(3, (String) customerInformationTable.getValueAt(customerInformationTable.getSelectedRow(), 3));
+            pstm.setString(4, (String) customerInformationTable.getValueAt(customerInformationTable.getSelectedRow(), 4));
+            pstm.setString(5, (String) customerInformationTable.getValueAt(customerInformationTable.getSelectedRow(), 5));
+            pstm.setString(6, (String) customerInformationTable.getValueAt(customerInformationTable.getSelectedRow(), 6));
+            pstm.setString(7, (String) customerInformationTable.getValueAt(customerInformationTable.getSelectedRow(), 7));
+            int result = pstm.executeUpdate(query);
             if (result > 0){
                 JOptionPane.showMessageDialog(this, "Customer record updated. " +
                         "Review using 'View Customer Records' menu");
@@ -497,77 +627,59 @@ public class CustomerRecords extends javax.swing.JFrame {
                         "Review details entered or contact system administrator");
             }
         } catch (SQLException sqle) {
-            throw new RuntimeException(sqle);
+            if (conn != null) { try { conn.rollback(); } catch (SQLException e) { throw new RuntimeException(sqle); }}
         } finally {
             try { if (conn != null) conn.close(); } catch (Exception e) { throw new RuntimeException(e); }
-            try { if (stm != null) stm.close(); } catch (Exception e) { throw new RuntimeException(e); }
+            try { if (pstm != null) pstm.close(); } catch (Exception e) { throw new RuntimeException(e); }
         }
     }
 
     private void deleteButtonActionPerformed(java.awt.event.ActionEvent evt) {
-        // TODO add your handling code here:
-        Connection conn = DBConnection.getConnection();
+        Connection conn = null;
         Statement stm = null;
         try {
+            conn = DBConnection.getConnection();
             stm = conn.createStatement();
-        int selectedRow = customerInformationTable.getSelectedRow();
-        String customerID = customerInformationTable.getValueAt(selectedRow, 0).toString();
-        String query = "DELETE FROM customer WHERE surname = '" + customerIDField;
+            int selectedRow = customerInformationTable.getSelectedRow();
+            String customerID = customerInformationTable.getValueAt(selectedRow, 0).toString();
+            String query = "DELETE FROM customer WHERE surname = '" + customerIDField.getText() + "'";
             int result = stm.executeUpdate(query);
             if (result > 0)
             {
-        JOptionPane.showMessageDialog(this, "Customer deleted successfully.");
+                JOptionPane.showMessageDialog(this, "Customer deleted successfully.");
             }
         } catch (SQLException sqle) {
-            throw new RuntimeException(sqle);
+            if (conn != null) { try { conn.rollback(); } catch (SQLException e) { throw new RuntimeException(sqle); }}
         } finally {
             try { if (conn != null) conn.close(); } catch (Exception e) { throw new RuntimeException(e); }
             try { if (stm != null) stm.close(); } catch (Exception e) { throw new RuntimeException(e); }
         }
-
     }
 
-    private void viewCustomerRecordsButtonActionPerformed(java.awt.event.ActionEvent evt) {
-        // TODO add your handling code here:
+    private void viewTicketsButtonActionPerformed(java.awt.event.ActionEvent evt){
+        /*new ViewTickets().setVisible(true);
+        Connection conn = null;
+        PreparedStatement pstm = null;
+        try{
+            conn = DBConnection.getConnection();
+            int selectedRow = customerInformationTable.getSelectedRow();
+            String customerUsername = customerInformationTable.getValueAt(selectedRow, 0).toString();
+            String query = "SELECT * FROM in2018g12.ticket WHERE customerUsername = ?";
+            pstm = conn.prepareStatement(query);
+            int result = pstm.executeUpdate();
+            if (result > 0){
+
+            }
+
+
+        } catch (SQLException sqle){
+            if (conn != null) { try { conn.rollback(); } catch (SQLException e) { throw new RuntimeException(sqle); }}
+        } finally {
+            try { if (conn != null) conn.close(); } catch (Exception e) { throw new RuntimeException(e); }
+            try { if (pstm != null) pstm.close(); } catch (Exception e) { throw new RuntimeException(e); }
+        }*/
     }
 
-    private void addCustomerButtonActionPerformed(java.awt.event.ActionEvent evt) {
-        dispose();
-        new AddCustomer().setVisible(true);
-    }
-
-    private void viewAlertsButtonrefundTicketButtonActionPerformed(java.awt.event.ActionEvent evt) {
-        // TODO add your handling code here:
-    }
-
-    private void viewReportButtonActionPerformed(java.awt.event.ActionEvent evt) {
-        dispose();
-        new GenerateReport().setVisible(true);
-    }
-
-    private void manageStockButtonrefundTicketButtonActionPerformed(java.awt.event.ActionEvent evt) {
-        // TODO add your handling code here:
-    }
-
-    private void showDDMenuActionPerformed(java.awt.event.ActionEvent evt) {
-        // TODO add your handling code here:
-    }
-
-    private void orderDDMenuActionPerformed(java.awt.event.ActionEvent evt) {
-        // TODO add your handling code here:
-    }
-
-    private void refreshButtonActionPerformed(java.awt.event.ActionEvent evt) {
-        // TODO add your handling code here:
-    }
-
-    private void viewTicketsButtonActionPerformed(java.awt.event.ActionEvent evt) {
-        // TODO add your handling code here:
-    }
-
-    private void manageCommissionsButtonActionPerformed(java.awt.event.ActionEvent evt) {
-        // TODO add your handling code here:
-    }
 
     /**
      * @param args the command line arguments
@@ -592,7 +704,7 @@ public class CustomerRecords extends javax.swing.JFrame {
     private javax.swing.JTable customerInformationTable;
     private javax.swing.JButton deleteButton;
     private javax.swing.JButton editButton;
-    private javax.swing.JButton findButton;
+    private javax.swing.JButton findCustomerButton;
     private javax.swing.JPanel functionPanel;
     private javax.swing.JButton homeButton;
     private javax.swing.JLabel logoLabel;
@@ -603,7 +715,7 @@ public class CustomerRecords extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> orderDDMenu;
     private javax.swing.JLabel pageTitleLabel;
     private javax.swing.JPanel pageTitlePanel;
-    private javax.swing.JButton refreshButton;
+    private javax.swing.JButton refreshTableButton;
     private javax.swing.JComboBox<String> showDDMenu;
     private javax.swing.JPanel tableFunctionsPanel;
     private javax.swing.JLabel tableNameLabel;
