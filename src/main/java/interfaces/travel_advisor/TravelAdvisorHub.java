@@ -561,14 +561,14 @@ public class TravelAdvisorHub extends javax.swing.JFrame {
 
     private void voidBlankButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_voidBlankButtonActionPerformed
         Connection conn = null;
-        Statement stm = null;
+        PreparedStatement pstm = null;
         try {
             conn = DBConnection.getConnection();
-            String query = "UPDATE in2018g12.blank " +
-                    "SET status = 'Void' " +
-                    "WHERE staffID =" + previousPage.getAdvisor().getId();
-            stm = conn.createStatement();
-            int result = stm.executeUpdate(query);
+            String query = "UPDATE blank SET status = ? WHERE staffID = ?";
+            pstm = conn.prepareStatement(query);
+            pstm.setString(1, "Void");
+            pstm.setInt(2, previousPage.getAdvisor().getId());
+            int result = pstm.executeUpdate(query);
             if (result > 0){
                 JOptionPane.showMessageDialog(this, "Selected blank has been voided. " +
                         "Review using the personal stock information table in this menu");
@@ -580,7 +580,7 @@ public class TravelAdvisorHub extends javax.swing.JFrame {
             if (conn != null) { try { conn.rollback(); } catch (SQLException e) { throw new RuntimeException(sqle); }}
         } finally {
             try { if (conn != null) conn.close(); } catch (Exception e) { throw new RuntimeException(e); }
-            try { if (stm != null) stm.close(); } catch (Exception e) { throw new RuntimeException(e); }
+            try { if (pstm != null) pstm.close(); } catch (Exception e) { throw new RuntimeException(e); }
         }
 
     }//GEN-LAST:event_voidBlankButtonActionPerformed
