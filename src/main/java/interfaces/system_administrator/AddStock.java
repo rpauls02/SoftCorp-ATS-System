@@ -423,6 +423,10 @@ public class AddStock extends javax.swing.JFrame {
         Connection conn = null;
         PreparedStatement pstm = null;
         try {
+            conn = DBConnection.getConnection();
+            String query = "INSERT INTO in2018g12.blank (number, date, type, status) VALUES (?, ?, ?, ?)";
+            pstm = conn.prepareStatement(query);
+
             for (int i = Integer.parseInt(toBlankField.getText()); i <= Integer.parseInt(fromBlankField.getText()); i++) {
                 if (toBlankField.getText().length() == 3){
                     //Creates a blank with number xxx00000111
@@ -455,9 +459,6 @@ public class AddStock extends javax.swing.JFrame {
                 blankType = "OtherServices";
             }
 
-            conn = DBConnection.getConnection();
-            String query = "INSERT INTO in2018g12.blank (number, date, type, status) VALUES (?, ?, ?, ?)";
-            pstm = conn.prepareStatement(query);
             pstm.setString(1, blankNumber);
             pstm.setString(2, String.valueOf(LocalDate.now()));
             pstm.setString(3, blankType);
