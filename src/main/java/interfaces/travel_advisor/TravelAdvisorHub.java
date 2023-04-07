@@ -7,11 +7,19 @@ package interfaces.travel_advisor;
 import SQL.DBConnection;
 import interfaces.general.Login;
 import javax.swing.*;
+import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableRowSorter;
+
 import interfaces.general.Login;
 import interfaces.office_manager.OfficeManagerHub;
 import interfaces.system_administrator.SystemAdminHub;
+import staff.OfficeManager;
+import staff.SystemAdministrator;
+import staff.TravelAdvisor;
 
 import java.sql.*;
+import java.util.Arrays;
+import java.util.List;
 import java.util.Objects;
 
 /**
@@ -19,6 +27,8 @@ import java.util.Objects;
  * @author Abdullah
  */
 public class TravelAdvisorHub extends javax.swing.JFrame {
+
+    private final Login previousPage = new Login();
 
     /**
      * Creates new form TravelAdvisorHub
@@ -37,20 +47,20 @@ public class TravelAdvisorHub extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">
     private void initComponents() {
 
-        TravelAdvisorHomePanel = new javax.swing.JPanel();
+        travelAdvisorHomePanel = new javax.swing.JPanel();
         buttonsPanel = new javax.swing.JPanel();
         homeButton = new javax.swing.JButton();
         viewIndSalesButton = new javax.swing.JButton();
         logoutButton = new javax.swing.JButton();
-        refundTicketPageButton = new javax.swing.JButton();
+        viewTicketsPageButton = new javax.swing.JButton();
         sellTicketPageButton = new javax.swing.JButton();
         functionPanel = new javax.swing.JPanel();
         tableName = new javax.swing.JLabel();
         showDDMenu = new javax.swing.JComboBox<>();
         orderDDMenu = new javax.swing.JComboBox<>();
-        refreshButton = new javax.swing.JButton();
+        refreshTableButton = new javax.swing.JButton();
         tableScrollPane = new javax.swing.JScrollPane();
-        blanksTable = new javax.swing.JTable();
+        personalBlanksTable = new javax.swing.JTable();
         pageTitlePanel = new javax.swing.JPanel();
         idAndRoleLabel = new javax.swing.JLabel();
         welcomeLabel = new javax.swing.JLabel();
@@ -66,7 +76,12 @@ public class TravelAdvisorHub extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("ATS System | Travel Advisor | Home");
         setBackground(new java.awt.Color(54, 198, 238));
+        setMaximumSize(new java.awt.Dimension(1200, 800));
         setMinimumSize(new java.awt.Dimension(1200, 800));
+
+        travelAdvisorHomePanel.setBackground(new java.awt.Color(255, 255, 255));
+        travelAdvisorHomePanel.setMaximumSize(new java.awt.Dimension(1200, 800));
+        travelAdvisorHomePanel.setMinimumSize(new java.awt.Dimension(1200, 800));
 
         buttonsPanel.setBackground(new java.awt.Color(49, 174, 209));
         buttonsPanel.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
@@ -93,12 +108,12 @@ public class TravelAdvisorHub extends javax.swing.JFrame {
             }
         });
 
-        refundTicketPageButton.setBackground(new java.awt.Color(54, 198, 238));
-        refundTicketPageButton.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        refundTicketPageButton.setText("Refund Ticket");
-        refundTicketPageButton.addActionListener(new java.awt.event.ActionListener() {
+        viewTicketsPageButton.setBackground(new java.awt.Color(54, 198, 238));
+        viewTicketsPageButton.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        viewTicketsPageButton.setText("View Customer Tickets");
+        viewTicketsPageButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                refundTicketButtonActionPerformed(evt);
+                viewTicketsPageButtonActionPerformed(evt);
             }
         });
 
@@ -127,7 +142,7 @@ public class TravelAdvisorHub extends javax.swing.JFrame {
                                         .addGroup(buttonsPanelLayout.createSequentialGroup()
                                                 .addComponent(sellTicketPageButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                .addComponent(refundTicketPageButton, javax.swing.GroupLayout.PREFERRED_SIZE, 278, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                                .addComponent(viewTicketsPageButton, javax.swing.GroupLayout.PREFERRED_SIZE, 278, javax.swing.GroupLayout.PREFERRED_SIZE)))
                                 .addContainerGap())
         );
         buttonsPanelLayout.setVerticalGroup(
@@ -141,7 +156,7 @@ public class TravelAdvisorHub extends javax.swing.JFrame {
                                 .addGap(10, 10, 10)
                                 .addGroup(buttonsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                         .addComponent(sellTicketPageButton, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(refundTicketPageButton, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addComponent(viewTicketsPageButton, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addContainerGap())
         );
 
@@ -169,12 +184,12 @@ public class TravelAdvisorHub extends javax.swing.JFrame {
             }
         });
 
-        refreshButton.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        refreshButton.setText("Refresh");
-        refreshButton.setAlignmentY(0.0F);
-        refreshButton.addActionListener(new java.awt.event.ActionListener() {
+        refreshTableButton.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        refreshTableButton.setText("Refresh");
+        refreshTableButton.setAlignmentY(0.0F);
+        refreshTableButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                refreshButtonActionPerformed(evt);
+                refreshTableButtonActionPerformed(evt);
             }
         });
 
@@ -190,7 +205,7 @@ public class TravelAdvisorHub extends javax.swing.JFrame {
                                 .addGap(258, 258, 258)
                                 .addComponent(tableName, javax.swing.GroupLayout.PREFERRED_SIZE, 194, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 420, Short.MAX_VALUE)
-                                .addComponent(refreshButton)
+                                .addComponent(refreshTableButton)
                                 .addContainerGap())
         );
         functionPanelLayout.setVerticalGroup(
@@ -201,14 +216,15 @@ public class TravelAdvisorHub extends javax.swing.JFrame {
                                         .addComponent(orderDDMenu, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addComponent(showDDMenu, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addComponent(tableName, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(refreshButton))
+                                        .addComponent(refreshTableButton))
                                 .addGap(0, 5, Short.MAX_VALUE))
         );
 
         tableScrollPane.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
-        blanksTable.setBackground(new java.awt.Color(49, 174, 209));
-        blanksTable.setModel(new javax.swing.table.DefaultTableModel(
+        personalBlanksTable.setBackground(new java.awt.Color(49, 174, 209));
+        personalBlanksTable.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        personalBlanksTable.setModel(new javax.swing.table.DefaultTableModel(
                 new Object [][] {
                         {null, null, null, null},
                         {null, null, null, null},
@@ -216,10 +232,13 @@ public class TravelAdvisorHub extends javax.swing.JFrame {
                         {null, null, null, null}
                 },
                 new String [] {
-                        "Number", "Type", "Status", "Date"
+                        "Date", "Number", "Type", "Status"
                 }
         ));
-        tableScrollPane.setViewportView(blanksTable);
+        personalBlanksTable.setColumnSelectionAllowed(true);
+        personalBlanksTable.getTableHeader().setReorderingAllowed(false);
+        tableScrollPane.setViewportView(personalBlanksTable);
+        personalBlanksTable.getColumnModel().getSelectionModel().setSelectionMode(javax.swing.ListSelectionModel.MULTIPLE_INTERVAL_SELECTION);
 
         pageTitlePanel.setBackground(new java.awt.Color(49, 174, 209));
         pageTitlePanel.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
@@ -277,7 +296,7 @@ public class TravelAdvisorHub extends javax.swing.JFrame {
         logoPanel.setPreferredSize(new java.awt.Dimension(104, 104));
 
         //logoLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/data/smallLogo.png"))); // NOI18N
-        ImageIcon logo = new ImageIcon("/data/smallLogo.png");
+        ImageIcon logo = new ImageIcon("data/smallLogo.png");
         logoLabel.setIcon(logo);
         logoPanel.add(logoLabel);
         getContentPane().add(logoPanel);
@@ -349,14 +368,14 @@ public class TravelAdvisorHub extends javax.swing.JFrame {
                                 .addContainerGap())
         );
 
-        javax.swing.GroupLayout TravelAdvisorHomePanelLayout = new javax.swing.GroupLayout(TravelAdvisorHomePanel);
-        TravelAdvisorHomePanel.setLayout(TravelAdvisorHomePanelLayout);
-        TravelAdvisorHomePanelLayout.setHorizontalGroup(
-                TravelAdvisorHomePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(TravelAdvisorHomePanelLayout.createSequentialGroup()
+        javax.swing.GroupLayout travelAdvisorHomePanelLayout = new javax.swing.GroupLayout(travelAdvisorHomePanel);
+        travelAdvisorHomePanel.setLayout(travelAdvisorHomePanelLayout);
+        travelAdvisorHomePanelLayout.setHorizontalGroup(
+                travelAdvisorHomePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(travelAdvisorHomePanelLayout.createSequentialGroup()
                                 .addContainerGap()
-                                .addGroup(TravelAdvisorHomePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addGroup(TravelAdvisorHomePanelLayout.createSequentialGroup()
+                                .addGroup(travelAdvisorHomePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addGroup(travelAdvisorHomePanelLayout.createSequentialGroup()
                                                 .addComponent(logoPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                                 .addComponent(pageTitlePanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -368,11 +387,11 @@ public class TravelAdvisorHub extends javax.swing.JFrame {
                                         .addComponent(tableFunctionsPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                                 .addContainerGap())
         );
-        TravelAdvisorHomePanelLayout.setVerticalGroup(
-                TravelAdvisorHomePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(TravelAdvisorHomePanelLayout.createSequentialGroup()
+        travelAdvisorHomePanelLayout.setVerticalGroup(
+                travelAdvisorHomePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(travelAdvisorHomePanelLayout.createSequentialGroup()
                                 .addContainerGap()
-                                .addGroup(TravelAdvisorHomePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addGroup(travelAdvisorHomePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                         .addComponent(buttonsPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                         .addComponent(pageTitlePanel, javax.swing.GroupLayout.DEFAULT_SIZE, 104, Short.MAX_VALUE)
                                         .addComponent(logoPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -383,42 +402,33 @@ public class TravelAdvisorHub extends javax.swing.JFrame {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(tableScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 520, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(tableFunctionsPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(tableFunctionsPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
                 layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(TravelAdvisorHomePanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(travelAdvisorHomePanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
                 layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(layout.createSequentialGroup()
-                                .addComponent(TravelAdvisorHomePanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addComponent(travelAdvisorHomePanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>
 
-    private void refreshButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_refreshButtonActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_refreshButtonActionPerformed
-
-    private void showDDMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_showDDMenuActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_showDDMenuActionPerformed
-
     private void sellTicketPageButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sellTicketPageButtonActionPerformed
         dispose();
         new TicketSales().setVisible(true);
     }//GEN-LAST:event_sellTicketPageButtonActionPerformed
 
-    private void refundTicketButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_refundTicketButtonActionPerformed
+    private void viewTicketsPageButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_refundTicketButtonActionPerformed
         dispose();
-        new TicketRefunds().setVisible(true);
+        new ViewTickets().setVisible(true);
     }//GEN-LAST:event_refundTicketButtonActionPerformed
 
     private void logoutButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_logoutButtonActionPerformed
@@ -431,14 +441,132 @@ public class TravelAdvisorHub extends javax.swing.JFrame {
         new GenerateIndividualReport().setVisible(true);
     }//GEN-LAST:event_viewIndSalesButtonActionPerformed
 
+    private void refreshTableButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_refreshTableButtonActionPerformed
+        DefaultTableModel model = (DefaultTableModel)personalBlanksTable.getModel();
+        Connection conn = null;
+        PreparedStatement pstm = null;
+        ResultSet rs = null;
+        try {
+            conn = DBConnection.getConnection();
+            String query = "SELECT * FROM in2018g12.blank WHERE staffID = ?";
+            pstm = conn.prepareStatement(query);
+            pstm.setInt(1, previousPage.getAdvisor().getId());
+            rs = pstm.executeQuery();
+            if (!rs.next()){
+                JOptionPane.showMessageDialog(this, "Could not refresh table data. " +
+                        "Try again or contact system administrator");
+            } else {
+                model.setRowCount(0);
+                do {
+                    Object[] row = new Object[4];
+                    row[0] = rs.getString("date");
+                    row[1] = rs.getString("number");
+                    row[2] = rs.getString("type");
+                    row[3] = rs.getString("status");
+                    model.addRow(row);
+                } while (rs.next());
+            }
+                //JOptionPane.showMessageDialog(this, "Could not refresh table data. Try again or contact system administrator");
+        } catch (SQLException sqle) {
+            if (conn != null) { try { conn.rollback(); } catch (SQLException e) { throw new RuntimeException(sqle); }}
+        } finally {
+            try { if (rs != null) rs.close(); } catch (Exception e) { throw new RuntimeException(e); }
+            try { if (pstm != null) pstm.close(); } catch (Exception e) { throw new RuntimeException(e); }
+            try { if (conn != null) conn.close(); } catch (Exception e) { throw new RuntimeException(e); }
+        }
+    }//GEN-LAST:event_refreshTableButtonActionPerformed
+
+    private void showDDMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_showDDMenuActionPerformed
+        DefaultTableModel model = (DefaultTableModel) personalBlanksTable.getModel();
+        int rowCount = model.getRowCount();
+        int maxRows;
+        switch ((String) Objects.requireNonNull(showDDMenu.getSelectedItem())) {
+            case "10" -> {
+                maxRows = 10;
+                if (rowCount > maxRows) {
+                    model.setRowCount(maxRows);
+                }
+            }
+            case "25" -> {
+                maxRows = 25;
+                if (rowCount > maxRows) {
+                    model.setRowCount(maxRows);
+                }
+            }
+            case "50" -> {
+                maxRows = 50;
+                if (rowCount > maxRows) {
+                    model.setRowCount(maxRows);
+                }
+            }
+            case "100" -> {
+                maxRows = 100;
+                if (rowCount > maxRows) {
+                    model.setRowCount(maxRows);
+                }
+            }
+        }
+    }//GEN-LAST:event_showDDMenuActionPerformed
+
+    private void orderDDMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_orderDDMenuActionPerformed
+        DefaultTableModel model = (DefaultTableModel)personalBlanksTable.getModel();
+        TableRowSorter<DefaultTableModel> sorter = new TableRowSorter<>(model);
+        switch ((String) Objects.requireNonNull(orderDDMenu.getSelectedItem())){
+            case "By Date" -> {
+                sorter.setSortKeys(List.of(new RowSorter.SortKey(0, SortOrder.ASCENDING)));
+            }
+            case "By Number" -> {
+                sorter.setSortKeys(List.of(new RowSorter.SortKey(1, SortOrder.ASCENDING)));
+            }
+            case "By Status" -> {
+                sorter.setSortKeys(List.of(new RowSorter.SortKey(3, SortOrder.ASCENDING)));
+            }
+        }
+        personalBlanksTable.setRowSorter(sorter);
+        sorter.sort();
+    }//GEN-LAST:event_orderDDMenuActionPerformed
+
+    private void findBlankButtonActionPerformed(java.awt.event.ActionEvent evt) {
+        DefaultTableModel model = (DefaultTableModel)personalBlanksTable.getModel();
+        Connection conn = null;
+        PreparedStatement pstm = null;
+        ResultSet rs = null;
+        try {
+            conn = DBConnection.getConnection();
+            String query = "SELECT * FROM in2018g12.blank " +
+                    "WHERE number = " + findBlankLabel.getText() +
+                    " AND staffID = " + previousPage.getAdvisor().getId();
+            pstm = conn.prepareStatement(query);
+            rs = pstm.executeQuery();
+            if (rs.next()){
+                model.setRowCount(0);
+                Object[] row = new Object[4];
+                row[0] = rs.getString("date");
+                row[1] = rs.getString("number");
+                row[2] = rs.getString("type");
+                row[3] = rs.getString("status");
+                model.addRow(row);
+            } else {
+                JOptionPane.showMessageDialog(this, "Could not find requested blank. " +
+                        "Review entered number or contact system administrator");
+            }
+        } catch (SQLException sqle) {
+            if (conn != null) { try { conn.rollback(); } catch (SQLException e) { throw new RuntimeException(sqle); }}
+        } finally {
+            try { if (rs != null) rs.close(); } catch (Exception e) { throw new RuntimeException(e); }
+            try { if (pstm != null) pstm.close(); } catch (Exception e) { throw new RuntimeException(e); }
+            try { if (conn != null) conn.close(); } catch (Exception e) { throw new RuntimeException(e); }
+        }
+    }
+
     private void voidBlankButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_voidBlankButtonActionPerformed
-        Login previousPage = new Login();
-        Connection conn = DBConnection.getConnection();
+        Connection conn = null;
         Statement stm = null;
         try {
+            conn = DBConnection.getConnection();
             String query = "UPDATE in2018g12.blank " +
-                           "SET status = 'Void' " +
-                           "WHERE staffID =" + previousPage.getAdvisor().getId();
+                    "SET status = 'Void' " +
+                    "WHERE staffID =" + previousPage.getAdvisor().getId();
             stm = conn.createStatement();
             int result = stm.executeUpdate(query);
             if (result > 0){
@@ -449,21 +577,13 @@ public class TravelAdvisorHub extends javax.swing.JFrame {
                         "Review selection or contact system administrator");
             }
         } catch (SQLException sqle) {
-            throw new RuntimeException(sqle);
+            if (conn != null) { try { conn.rollback(); } catch (SQLException e) { throw new RuntimeException(sqle); }}
         } finally {
             try { if (conn != null) conn.close(); } catch (Exception e) { throw new RuntimeException(e); }
             try { if (stm != null) stm.close(); } catch (Exception e) { throw new RuntimeException(e); }
         }
 
     }//GEN-LAST:event_voidBlankButtonActionPerformed
-
-    private void orderDDMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_orderDDMenuActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_orderDDMenuActionPerformed
-
-    private void findBlankButtonActionPerformed(java.awt.event.ActionEvent evt) {
-        // TODO add your handling code here:
-    }
 
     /**
      * @param args the command line arguments
@@ -516,8 +636,7 @@ public class TravelAdvisorHub extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify
-    private javax.swing.JPanel TravelAdvisorHomePanel;
-    private javax.swing.JTable blanksTable;
+    private javax.swing.JTable personalBlanksTable;
     private javax.swing.JPanel buttonsPanel;
     private javax.swing.JButton findBlankButton;
     private javax.swing.JTextField findBlankLabel;
@@ -531,14 +650,15 @@ public class TravelAdvisorHub extends javax.swing.JFrame {
     private javax.swing.JButton logoutButton;
     private javax.swing.JComboBox<String> orderDDMenu;
     private javax.swing.JPanel pageTitlePanel;
-    private javax.swing.JButton refreshButton;
-    private javax.swing.JButton refundTicketPageButton;
+    private javax.swing.JButton refreshTableButton;
     private javax.swing.JButton sellTicketPageButton;
     private javax.swing.JComboBox<String> showDDMenu;
     private javax.swing.JPanel tableFunctionsPanel;
     private javax.swing.JLabel tableName;
     private javax.swing.JScrollPane tableScrollPane;
+    private javax.swing.JPanel travelAdvisorHomePanel;
     private javax.swing.JButton viewIndSalesButton;
+    private javax.swing.JButton viewTicketsPageButton;
     private javax.swing.JButton voidBlankButton;
     private javax.swing.JLabel welcomeLabel;
     // End of variables declaration
