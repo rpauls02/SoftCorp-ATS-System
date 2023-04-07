@@ -4,9 +4,18 @@
  */
 package interfaces.office_manager;
 
+import SQL.DBConnection;
 import interfaces.general.Login;
 
 import javax.swing.*;
+import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableRowSorter;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.List;
+import java.util.Objects;
 
 /**
  *
@@ -36,7 +45,7 @@ public class ViewAlerts extends javax.swing.JFrame {
         showDDMenu = new javax.swing.JComboBox<>();
         orderDDMenu = new javax.swing.JComboBox<>();
         tableName = new javax.swing.JLabel();
-        refreshButton = new javax.swing.JButton();
+        refreshTableButton = new javax.swing.JButton();
         tableScrollPane = new javax.swing.JScrollPane();
         systemAlertsTable = new javax.swing.JTable();
         logoPanel = new javax.swing.JPanel();
@@ -78,11 +87,11 @@ public class ViewAlerts extends javax.swing.JFrame {
         tableName.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         tableName.setText("System Alerts");
 
-        refreshButton.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        refreshButton.setText("Refresh");
-        refreshButton.addActionListener(new java.awt.event.ActionListener() {
+        refreshTableButton.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        refreshTableButton.setText("Refresh");
+        refreshTableButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                refreshButtonActionPerformed(evt);
+                refreshTableButtonActionPerformed(evt);
             }
         });
 
@@ -98,7 +107,7 @@ public class ViewAlerts extends javax.swing.JFrame {
                                 .addGap(282, 282, 282)
                                 .addComponent(tableName)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 456, Short.MAX_VALUE)
-                                .addComponent(refreshButton)
+                                .addComponent(refreshTableButton)
                                 .addContainerGap())
         );
         functionPanelLayout.setVerticalGroup(
@@ -109,7 +118,7 @@ public class ViewAlerts extends javax.swing.JFrame {
                                         .addComponent(orderDDMenu)
                                         .addComponent(showDDMenu, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addComponent(tableName)
-                                        .addComponent(refreshButton))
+                                        .addComponent(refreshTableButton))
                                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -132,8 +141,8 @@ public class ViewAlerts extends javax.swing.JFrame {
         logoPanel.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         logoPanel.setPreferredSize(new java.awt.Dimension(104, 104));
 
-        //logoLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/data/smallLogo.png"))); // NOI18N
-        ImageIcon logo = new ImageIcon("/data/smallLogo.png");
+        //logoLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("data/smallLogo.png"))); // NOI18N
+        ImageIcon logo = new ImageIcon("data/smallLogo.png");
         logoLabel.setIcon(logo);
         logoPanel.add(logoLabel);
         getContentPane().add(logoPanel);
@@ -324,6 +333,7 @@ public class ViewAlerts extends javax.swing.JFrame {
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>
 
     private void homeButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_homeButtonActionPerformed
@@ -357,19 +367,93 @@ public class ViewAlerts extends javax.swing.JFrame {
     }//GEN-LAST:event_viewReportButtonActionPerformed
 
     private void showDDMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_showDDMenuActionPerformed
-        // TODO add your handling code here:
+        DefaultTableModel model = (DefaultTableModel) systemAlertsTable.getModel();
+        int rowCount = model.getRowCount();
+        int maxRows;
+        switch ((String) Objects.requireNonNull(showDDMenu.getSelectedItem())) {
+            case "10" -> {
+                maxRows = 10;
+                if (rowCount > maxRows) {
+                    model.setRowCount(maxRows);
+                }
+            }
+            case "25" -> {
+                maxRows = 25;
+                if (rowCount > maxRows) {
+                    model.setRowCount(maxRows);
+                }
+            }
+            case "50" -> {
+                maxRows = 50;
+                if (rowCount > maxRows) {
+                    model.setRowCount(maxRows);
+                }
+            }
+            case "100" -> {
+                maxRows = 100;
+                if (rowCount > maxRows) {
+                    model.setRowCount(maxRows);
+                }
+            }
+        }
     }//GEN-LAST:event_showDDMenuActionPerformed
 
     private void orderDDMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_orderDDMenuActionPerformed
-        // TODO add your handling code here:
+        DefaultTableModel model = (DefaultTableModel)systemAlertsTable.getModel();
+        TableRowSorter<DefaultTableModel> sorter = new TableRowSorter<>(model);
+        switch ((String) Objects.requireNonNull(orderDDMenu.getSelectedItem())){
+            case "By Date" -> {
+                sorter.setSortKeys(List.of(new RowSorter.SortKey(0, SortOrder.ASCENDING)));
+            }
+            case "By Number" -> {
+                sorter.setSortKeys(List.of(new RowSorter.SortKey(1, SortOrder.ASCENDING)));
+            }
+            case "By Status" -> {
+                sorter.setSortKeys(List.of(new RowSorter.SortKey(3, SortOrder.ASCENDING)));
+            }
+        }
+        systemAlertsTable.setRowSorter(sorter);
+        sorter.sort();
     }//GEN-LAST:event_orderDDMenuActionPerformed
 
-    private void refreshButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_refreshButtonActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_refreshButtonActionPerformed
+    private void refreshTableButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_refreshTableButtonActionPerformed
+        DefaultTableModel model = (DefaultTableModel)systemAlertsTable.getModel();
+        Connection conn = null;
+        PreparedStatement pstm = null;
+        ResultSet rs = null;
+        try {
+            conn = DBConnection.getConnection();
+            String query = "SELECT * FROM in2018g12.alert";
+            pstm = conn.prepareStatement(query);
+            rs = pstm.executeQuery();
+            if (!rs.next()){
+                JOptionPane.showMessageDialog(this, "Could not refresh table data. " +
+                        "Try again or contact system administrator");
+            } else {
+                model.setRowCount(0);
+                do {
+                    Object[] row = new Object[6];
+                    row[0] = rs.getString("date");
+                    row[1] = rs.getString("id");
+                    row[2] = rs.getString("customerUsername");
+                    row[3] = rs.getString("type");
+                    row[4] = rs.getString("description");
+                    row[5] = rs.getString("resolved");
+                    model.addRow(row);
+                } while (rs.next());
+            }
+        } catch (SQLException sqle) {
+            if (conn != null) { try { conn.rollback(); } catch (SQLException e) { throw new RuntimeException(sqle); }}
+        } finally {
+            try { if (rs != null) rs.close(); } catch (Exception e) { throw new RuntimeException(e); }
+            try { if (pstm != null) pstm.close(); } catch (Exception e) { throw new RuntimeException(e); }
+            try { if (conn != null) conn.close(); } catch (Exception e) { throw new RuntimeException(e); }
+        }
+    }//GEN-LAST:event_refreshTableButtonActionPerformed
 
     private void manageCommissionsButtonActionPerformed(java.awt.event.ActionEvent evt) {
-        // TODO add your handling code here:
+        dispose();
+        new ManageCommissions().setVisible(true);
     }
 
     /**
@@ -420,7 +504,7 @@ public class ViewAlerts extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> orderDDMenu;
     private javax.swing.JLabel pageTitleLabel;
     private javax.swing.JPanel pageTitlePanel;
-    private javax.swing.JButton refreshButton;
+    private javax.swing.JButton refreshTableButton;
     private javax.swing.JComboBox<String> showDDMenu;
     private javax.swing.JTable systemAlertsTable;
     private javax.swing.JLabel tableName;
