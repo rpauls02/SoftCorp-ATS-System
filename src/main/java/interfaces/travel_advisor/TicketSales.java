@@ -30,6 +30,8 @@ import java.util.Random;
 import java.net.URL;
 import java.util.Scanner;
 
+import sale.ExchangeRate;
+
 /**
  *
  * @author Abdullah
@@ -996,6 +998,7 @@ public class TicketSales extends javax.swing.JFrame {
     private void iataCurrencyCodeDDMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_iataCurrencyCodeDDMenuMenuActionPerformed
         // displays exchange rate depending on the selected IATA code
 
+        ExchangeRate.showExchangeRate(iataCurrencyCodeDDMenu, showRateLabel);
         if (iataCurrencyCodeDDMenu.getSelectedItem().toString().equals("Select IATA Code")) {
             showRateLabel.setText(" ");
         } else {
