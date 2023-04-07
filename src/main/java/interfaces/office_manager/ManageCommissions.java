@@ -5,6 +5,7 @@
 package interfaces.office_manager;
 
 import SQL.DBConnection;
+import interfaces.general.Login;
 
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
@@ -14,6 +15,11 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.sql.Statement;
+import javax.swing.table.TableRowSorter;
+import javax.swing.text.View;
+import java.sql.*;
+import java.util.List;
+import java.util.Objects;
 
 /**
  *
@@ -50,7 +56,7 @@ public class ManageCommissions extends javax.swing.JFrame {
         viewReportButton = new javax.swing.JButton();
         manageCommissionsButton = new javax.swing.JButton();
         functionPanel = new javax.swing.JPanel();
-        refreshButton = new javax.swing.JButton();
+        refreshTableButton = new javax.swing.JButton();
         showDDMenu = new javax.swing.JComboBox<>();
         orderDDMenu = new javax.swing.JComboBox<>();
         tableNameLabel = new javax.swing.JLabel();
@@ -68,8 +74,8 @@ public class ManageCommissions extends javax.swing.JFrame {
 
         logoPanel.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
-        //logoLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/data/smallLogo.png"))); // NOI18N
-        ImageIcon logo = new ImageIcon("/data/smallLogo.png");
+        //logoLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("data/smallLogo.png"))); // NOI18N
+        ImageIcon logo = new ImageIcon("data/smallLogo.png");
         logoLabel.setIcon(logo);
         logoPanel.add(logoLabel);
         getContentPane().add(logoPanel);
@@ -226,11 +232,11 @@ public class ManageCommissions extends javax.swing.JFrame {
         functionPanel.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         functionPanel.setPreferredSize(new java.awt.Dimension(1151, 48));
 
-        refreshButton.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        refreshButton.setText("Refresh");
-        refreshButton.addActionListener(new java.awt.event.ActionListener() {
+        refreshTableButton.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        refreshTableButton.setText("Refresh");
+        refreshTableButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                refreshButtonActionPerformed(evt);
+                refreshTableButtonActionPerformed(evt);
             }
         });
 
@@ -263,7 +269,7 @@ public class ManageCommissions extends javax.swing.JFrame {
                                 .addGap(18, 18, 18)
                                 .addComponent(orderDDMenu, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(refreshButton)
+                                .addComponent(refreshTableButton)
                                 .addContainerGap())
                         .addGroup(functionPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                 .addGroup(functionPanelLayout.createSequentialGroup()
@@ -276,7 +282,7 @@ public class ManageCommissions extends javax.swing.JFrame {
                         .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, functionPanelLayout.createSequentialGroup()
                                 .addContainerGap()
                                 .addGroup(functionPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                        .addComponent(refreshButton, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(refreshTableButton, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                         .addGroup(javax.swing.GroupLayout.Alignment.LEADING, functionPanelLayout.createSequentialGroup()
                                                 .addGroup(functionPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                                                         .addComponent(orderDDMenu, javax.swing.GroupLayout.Alignment.LEADING)
@@ -424,10 +430,12 @@ public class ManageCommissions extends javax.swing.JFrame {
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void homeButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_homeButtonhomeButtonActionPerformed
-        // TODO add your handling code here:
+        dispose();
+        new OfficeManagerHub().setVisible(true);
     }//GEN-LAST:event_homeButtonhomeButtonActionPerformed
 
     private void viewCustomerRecordsButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_viewCustomerRecordsButtonActionPerformed
@@ -436,11 +444,13 @@ public class ManageCommissions extends javax.swing.JFrame {
     }//GEN-LAST:event_viewCustomerRecordsButtonActionPerformed
 
     private void logoutButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_logoutButtonlogoutButtonActionPerformed
-        // TODO add your handling code here:
+        dispose();
+        new Login().setVisible(true);
     }//GEN-LAST:event_logoutButtonlogoutButtonActionPerformed
 
     private void viewAlertsButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_viewAlertsButtonrefundTicketButtonActionPerformed
-        // TODO add your handling code here:
+        dispose();
+        new ViewAlerts().setVisible(true);
     }//GEN-LAST:event_viewAlertsButtonrefundTicketButtonActionPerformed
 
     private void manageStockButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_manageStockButtonrefundTicketButtonActionPerformed
@@ -453,22 +463,94 @@ public class ManageCommissions extends javax.swing.JFrame {
         new GenerateReport().setVisible(true);
     }//GEN-LAST:event_viewReportButtonActionPerformed
 
-    private void refreshButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_refreshButtonActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_refreshButtonActionPerformed
+    private void refreshTableButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_refreshTableButtonActionPerformed
+        DefaultTableModel model = (DefaultTableModel)commissionRateTable.getModel();
+        Connection conn = null;
+        PreparedStatement pstm = null;
+        ResultSet rs = null;
+        try {
+            conn = DBConnection.getConnection();
+            String query = "SELECT * FROM in2018g12.commission";
+            pstm = conn.prepareStatement(query);
+            rs = pstm.executeQuery();
+            if (!rs.next()){
+                JOptionPane.showMessageDialog(this, "Could not refresh table data. " +
+                        "Try again or contact system administrator");
+            } else {
+                model.setRowCount(0);
+                do {
+                    Object[] row = new Object[4];
+                    row[0] = rs.getString("date");
+                    row[1] = rs.getString("rate");
+                    row[2] = rs.getString("ticketID");
+                    row[3] = rs.getString("staffID");
+                    model.addRow(row);
+                } while (rs.next());
+            }
+        } catch (SQLException sqle) {
+            if (conn != null) { try { conn.rollback(); } catch (SQLException e) { throw new RuntimeException(sqle); }}
+        } finally {
+            try { if (rs != null) rs.close(); } catch (Exception e) { throw new RuntimeException(e); }
+            try { if (pstm != null) pstm.close(); } catch (Exception e) { throw new RuntimeException(e); }
+            try { if (conn != null) conn.close(); } catch (Exception e) { throw new RuntimeException(e); }
+        }
+    }//GEN-LAST:event_refreshTableButtonActionPerformed
 
     private void showDDMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_showDDMenuActionPerformed
-        // TODO add your handling code here:
+        DefaultTableModel model = (DefaultTableModel) commissionRateTable.getModel();
+        int rowCount = model.getRowCount();
+        int maxRows;
+        switch ((String) Objects.requireNonNull(showDDMenu.getSelectedItem())) {
+            case "10" -> {
+                maxRows = 10;
+                if (rowCount > maxRows) {
+                    model.setRowCount(maxRows);
+                }
+            }
+            case "25" -> {
+                maxRows = 25;
+                if (rowCount > maxRows) {
+                    model.setRowCount(maxRows);
+                }
+            }
+            case "50" -> {
+                maxRows = 50;
+                if (rowCount > maxRows) {
+                    model.setRowCount(maxRows);
+                }
+            }
+            case "100" -> {
+                maxRows = 100;
+                if (rowCount > maxRows) {
+                    model.setRowCount(maxRows);
+                }
+            }
+        }
     }//GEN-LAST:event_showDDMenuActionPerformed
 
     private void orderDDMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_orderDDMenuActionPerformed
-        // TODO add your handling code here:
+        DefaultTableModel model = (DefaultTableModel)commissionRateTable.getModel();
+        TableRowSorter<DefaultTableModel> sorter = new TableRowSorter<>(model);
+        switch ((String) Objects.requireNonNull(orderDDMenu.getSelectedItem())){
+            case "By Date" -> {
+                sorter.setSortKeys(List.of(new RowSorter.SortKey(0, SortOrder.ASCENDING)));
+            }
+            case "By Number" -> {
+                sorter.setSortKeys(List.of(new RowSorter.SortKey(1, SortOrder.ASCENDING)));
+            }
+            case "By Status" -> {
+                sorter.setSortKeys(List.of(new RowSorter.SortKey(3, SortOrder.ASCENDING)));
+            }
+        }
+        commissionRateTable.setRowSorter(sorter);
+        sorter.sort();
     }//GEN-LAST:event_orderDDMenuActionPerformed
 
     private void addRateButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addRateButtonActionPerformed
-        Connection conn = DBConnection.getConnection();
+        Connection conn = null;
         Statement stm = null;
         try {
+            conn = DBConnection.getConnection();
             stm = conn.createStatement();
             String query =
                     "INSERT INTO in2018g12.commission (rate) " +
@@ -476,13 +558,13 @@ public class ManageCommissions extends javax.swing.JFrame {
             int result = stm.executeUpdate(query);
             if (result > 0) {
                 JOptionPane.showMessageDialog(this, "Commission rate added. " +
-                        "Review in commission rates table in this menu");
+                        "Review using 'Manage Commission Rates' menu");
             } else {
-                JOptionPane.showMessageDialog(null, "Could not add rate. " +
+                JOptionPane.showMessageDialog(this, "Could not add rate. " +
                         "Review rate entered or contact system administrator");
             }
         } catch (SQLException sqle) {
-            throw new RuntimeException(sqle);
+            if (conn != null) { try { conn.rollback(); } catch (SQLException e) { throw new RuntimeException(sqle); }}
         } finally {
             try { if (conn != null) conn.close(); } catch (Exception e) { throw new RuntimeException(e); }
             try { if (stm != null) stm.close(); } catch (Exception e) { throw new RuntimeException(e); }
@@ -599,7 +681,7 @@ public class ManageCommissions extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> orderDDMenu;
     private javax.swing.JLabel pageTitleLabel;
     private javax.swing.JPanel pageTitlePanel;
-    private javax.swing.JButton refreshButton;
+    private javax.swing.JButton refreshTableButton;
     private javax.swing.JComboBox<String> showDDMenu;
     private javax.swing.JPanel tableFunctionsPanel;
     private javax.swing.JLabel tableNameLabel;
