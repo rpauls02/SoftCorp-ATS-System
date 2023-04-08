@@ -58,7 +58,7 @@ public class TravelAdvisorHub extends javax.swing.JFrame {
         tableName = new javax.swing.JLabel();
         showDDMenu = new javax.swing.JComboBox<>();
         orderDDMenu = new javax.swing.JComboBox<>();
-        refreshTableButton = new javax.swing.JButton();
+        refreshButton = new javax.swing.JButton();
         tableScrollPane = new javax.swing.JScrollPane();
         personalBlanksTable = new javax.swing.JTable();
         pageTitlePanel = new javax.swing.JPanel();
@@ -76,7 +76,6 @@ public class TravelAdvisorHub extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("ATS System | Travel Advisor | Home");
         setBackground(new java.awt.Color(54, 198, 238));
-        setMaximumSize(new java.awt.Dimension(1200, 800));
         setMinimumSize(new java.awt.Dimension(1200, 800));
 
         travelAdvisorHomePanel.setBackground(new java.awt.Color(255, 255, 255));
@@ -184,10 +183,10 @@ public class TravelAdvisorHub extends javax.swing.JFrame {
             }
         });
 
-        refreshTableButton.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        refreshTableButton.setText("Refresh");
-        refreshTableButton.setAlignmentY(0.0F);
-        refreshTableButton.addActionListener(new java.awt.event.ActionListener() {
+        refreshButton.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        refreshButton.setText("Refresh");
+        refreshButton.setAlignmentY(0.0F);
+        refreshButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 refreshTableButtonActionPerformed(evt);
             }
@@ -205,7 +204,7 @@ public class TravelAdvisorHub extends javax.swing.JFrame {
                                 .addGap(258, 258, 258)
                                 .addComponent(tableName, javax.swing.GroupLayout.PREFERRED_SIZE, 194, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 420, Short.MAX_VALUE)
-                                .addComponent(refreshTableButton)
+                                .addComponent(refreshButton)
                                 .addContainerGap())
         );
         functionPanelLayout.setVerticalGroup(
@@ -216,7 +215,7 @@ public class TravelAdvisorHub extends javax.swing.JFrame {
                                         .addComponent(orderDDMenu, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addComponent(showDDMenu, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addComponent(tableName, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(refreshTableButton))
+                                        .addComponent(refreshButton))
                                 .addGap(0, 5, Short.MAX_VALUE))
         );
 
@@ -232,7 +231,7 @@ public class TravelAdvisorHub extends javax.swing.JFrame {
                         {null, null, null, null}
                 },
                 new String [] {
-                        "Date", "Number", "Type", "Status"
+                        "Number", "Type", "Status", "Date"
                 }
         ));
         personalBlanksTable.setColumnSelectionAllowed(true);
@@ -262,7 +261,7 @@ public class TravelAdvisorHub extends javax.swing.JFrame {
         pageTitlePanelLayout.setVerticalGroup(
                 pageTitlePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addGroup(pageTitlePanelLayout.createSequentialGroup()
-                                .addGap(22, 22, 22)
+                                .addGap(26, 26, 26)
                                 .addComponent(welcomeLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(idAndRoleLabel)
@@ -533,10 +532,10 @@ public class TravelAdvisorHub extends javax.swing.JFrame {
         ResultSet rs = null;
         try {
             conn = DBConnection.getConnection();
-            String query = "SELECT * FROM in2018g12.blank " +
-                    "WHERE number = " + findBlankLabel.getText() +
-                    " AND staffID = " + previousPage.getAdvisor().getId();
+            String query = "SELECT * FROM in2018g12.blank WHERE number = ?  AND staffID = ?";
             pstm = conn.prepareStatement(query);
+            pstm.setString(1, findBlankLabel.getText());
+            pstm.setInt(2, previousPage.getAdvisor().getId());
             rs = pstm.executeQuery();
             if (rs.next()){
                 model.setRowCount(0);
@@ -650,7 +649,7 @@ public class TravelAdvisorHub extends javax.swing.JFrame {
     private javax.swing.JButton logoutButton;
     private javax.swing.JComboBox<String> orderDDMenu;
     private javax.swing.JPanel pageTitlePanel;
-    private javax.swing.JButton refreshTableButton;
+    private javax.swing.JButton refreshButton;
     private javax.swing.JButton sellTicketPageButton;
     private javax.swing.JComboBox<String> showDDMenu;
     private javax.swing.JPanel tableFunctionsPanel;
