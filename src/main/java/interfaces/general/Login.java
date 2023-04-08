@@ -192,7 +192,7 @@ public class Login extends javax.swing.JFrame {
             pstm.setString(2, passwordField.getText());
             rs = pstm.executeQuery();
             if (rs.next()) {
-                setVisible(false);
+                dispose();
                 String role = rs.getString("role");
                 if (Objects.equals(role, "Travel Advisor")) {
                     advisor = new TravelAdvisor(rs.getInt("id"), rs.getString("password"), role, rs.getString("forename"), rs.getString("surname"));

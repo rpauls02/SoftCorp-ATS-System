@@ -38,6 +38,7 @@ public class DatabaseManagement extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">
     private void initComponents() {
 
+        databaseManagementPanel = new javax.swing.JPanel();
         buttonsPanel = new javax.swing.JPanel();
         homeButton = new javax.swing.JButton();
         databaseManagementPageButton = new javax.swing.JButton();
@@ -97,7 +98,7 @@ public class DatabaseManagement extends javax.swing.JFrame {
 
         manageStockPageButton.setBackground(new java.awt.Color(54, 198, 238));
         manageStockPageButton.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        manageStockPageButton.setText("Manage Stock");
+        manageStockPageButton.setText("Add Stock");
         manageStockPageButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 manageStockPageButtonActionPerformed(evt);
@@ -166,8 +167,8 @@ public class DatabaseManagement extends javax.swing.JFrame {
 
         panelTitle.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         panelTitle.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        panelTitle.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         panelTitle.setText("Backup Database");
+        panelTitle.setBorder(new javax.swing.border.MatteBorder(null));
 
         backupDatabaseButton.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         backupDatabaseButton.setText("Backup Database");
@@ -367,7 +368,7 @@ public class DatabaseManagement extends javax.swing.JFrame {
         logoPanel.setMinimumSize(new java.awt.Dimension(104, 104));
         logoPanel.setPreferredSize(new java.awt.Dimension(104, 104));
 
-        //logoLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/smallLogo.png"))); // NOI18N
+        //logoLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/data/smallLogo.png"))); // NOI18N
         ImageIcon logo = new ImageIcon("data/smallLogo.png");
         logoLabel.setIcon(logo);
         logoPanel.add(logoLabel);
@@ -394,14 +395,14 @@ public class DatabaseManagement extends javax.swing.JFrame {
                                         .addGap(0, 0, Short.MAX_VALUE)))
         );
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-                layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(layout.createSequentialGroup()
+        javax.swing.GroupLayout databaseManagementPanelLayout = new javax.swing.GroupLayout(databaseManagementPanel);
+        databaseManagementPanel.setLayout(databaseManagementPanelLayout);
+        databaseManagementPanelLayout.setHorizontalGroup(
+                databaseManagementPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(databaseManagementPanelLayout.createSequentialGroup()
                                 .addContainerGap()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addGroup(layout.createSequentialGroup()
+                                .addGroup(databaseManagementPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addGroup(databaseManagementPanelLayout.createSequentialGroup()
                                                 .addComponent(logoPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                                 .addComponent(pageTitlePanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -410,19 +411,40 @@ public class DatabaseManagement extends javax.swing.JFrame {
                                         .addComponent(functionPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
                                 .addContainerGap())
         );
-        layout.setVerticalGroup(
-                layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(layout.createSequentialGroup()
+        databaseManagementPanelLayout.setVerticalGroup(
+                databaseManagementPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(databaseManagementPanelLayout.createSequentialGroup()
                                 .addContainerGap()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(databaseManagementPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                         .addComponent(pageTitlePanel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                         .addComponent(buttonsPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addGroup(layout.createSequentialGroup()
+                                        .addGroup(databaseManagementPanelLayout.createSequentialGroup()
                                                 .addComponent(logoPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                                 .addGap(0, 0, Short.MAX_VALUE)))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(functionPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 679, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addContainerGap())
+        );
+
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
+        getContentPane().setLayout(layout);
+        layout.setHorizontalGroup(
+                layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGap(0, 1204, Short.MAX_VALUE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(layout.createSequentialGroup()
+                                        .addGap(0, 0, Short.MAX_VALUE)
+                                        .addComponent(databaseManagementPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(0, 0, Short.MAX_VALUE)))
+        );
+        layout.setVerticalGroup(
+                layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGap(0, 801, Short.MAX_VALUE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(layout.createSequentialGroup()
+                                        .addGap(0, 0, Short.MAX_VALUE)
+                                        .addComponent(databaseManagementPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(0, 0, Short.MAX_VALUE)))
         );
 
         pack();
@@ -558,10 +580,12 @@ public class DatabaseManagement extends javax.swing.JFrame {
     // Variables declaration - do not modify
     private javax.swing.JPanel backupDBPanel;
     private javax.swing.JButton backupDatabaseButton;
-    private javax.swing.JLabel backupLocationLabel;
+    private javax.swing.JLabel backupFileLabel;
     private javax.swing.JPanel backupInfoPanel;
+    private javax.swing.JLabel backupLocationLabel;
     private javax.swing.JPanel buttonsPanel;
     private javax.swing.JButton databaseManagementPageButton;
+    private javax.swing.JPanel databaseManagementPanel;
     private javax.swing.JPanel functionPanel;
     private javax.swing.JButton homeButton;
     private javax.swing.JLabel infoLabel1;
@@ -577,7 +601,6 @@ public class DatabaseManagement extends javax.swing.JFrame {
     private javax.swing.JLabel panelTitle;
     private javax.swing.JPanel restoreDBPanel;
     private javax.swing.JButton restoreDatabaseButton;
-    private javax.swing.JLabel backupFileLabel;
     private javax.swing.JPanel restoreInfoPanel;
     private javax.swing.JLabel sectionPanel;
     private javax.swing.JButton selectBackupFileButton;

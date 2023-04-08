@@ -39,13 +39,16 @@ public class AddStock extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">
     private void initComponents() {
 
-        buttonsPanel = new javax.swing.JPanel();
-        homeButton = new javax.swing.JButton();
-        databaseManagementButton = new javax.swing.JButton();
-        logoutButton = new javax.swing.JButton();
-        manageStockButton = new javax.swing.JButton();
-        pageTitlePanel = new javax.swing.JPanel();
-        interfaceNameLabel = new javax.swing.JLabel();
+        addStockPanel = new javax.swing.JPanel();
+        logoPanel = new javax.swing.JPanel();
+        logoLabel = new javax.swing.JLabel();
+        functionPanel = new javax.swing.JPanel();
+        tableNameLabel = new javax.swing.JLabel();
+        showDDMenu = new javax.swing.JComboBox<>();
+        orderDDMenu = new javax.swing.JComboBox<>();
+        refreshTableButton = new javax.swing.JButton();
+        blankTableSP = new javax.swing.JScrollPane();
+        blankStockTable = new javax.swing.JTable();
         editStockPanel = new javax.swing.JPanel();
         blankTypeLabel = new javax.swing.JLabel();
         blankTypeDDMenu = new javax.swing.JComboBox<>();
@@ -55,119 +58,130 @@ public class AddStock extends javax.swing.JFrame {
         toBlankField = new javax.swing.JTextField();
         addStockButton = new javax.swing.JButton();
         deleteButton = new javax.swing.JButton();
-        blankTableSP = new javax.swing.JScrollPane();
-        blankStockTable = new javax.swing.JTable();
-        functionPanel = new javax.swing.JPanel();
-        tableNameLabel = new javax.swing.JLabel();
-        showDDMenu = new javax.swing.JComboBox<>();
-        orderDDMenu = new javax.swing.JComboBox<>();
-        refreshTableButton = new javax.swing.JButton();
-        logoPanel = new javax.swing.JPanel();
-        logoLabel = new javax.swing.JLabel();
+        pageTitlePanel = new javax.swing.JPanel();
+        interfaceNameLabel = new javax.swing.JLabel();
+        buttonsPanel = new javax.swing.JPanel();
+        homeButton = new javax.swing.JButton();
+        databaseManagementButton = new javax.swing.JButton();
+        logoutButton = new javax.swing.JButton();
+        manageStockButton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("ATS System | System Admin | Manage Stock");
         setBackground(new java.awt.Color(49, 174, 209));
         setMinimumSize(new java.awt.Dimension(1200, 800));
 
-        buttonsPanel.setBackground(new java.awt.Color(49, 174, 209));
-        buttonsPanel.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        buttonsPanel.setMaximumSize(new java.awt.Dimension(573, 102));
-        buttonsPanel.setMinimumSize(new java.awt.Dimension(573, 102));
-        buttonsPanel.setPreferredSize(new java.awt.Dimension(573, 102));
+        logoPanel.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        logoPanel.setMaximumSize(new java.awt.Dimension(104, 104));
+        logoPanel.setMinimumSize(new java.awt.Dimension(104, 104));
+        logoPanel.setPreferredSize(new java.awt.Dimension(104, 104));
 
-        homeButton.setBackground(new java.awt.Color(54, 198, 238));
-        homeButton.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        homeButton.setText("Home");
-        homeButton.setMaximumSize(new java.awt.Dimension(79, 40));
-        homeButton.setMinimumSize(new java.awt.Dimension(79, 40));
-        homeButton.setPreferredSize(new java.awt.Dimension(79, 40));
-        homeButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                homeButtonActionPerformed(evt);
-            }
-        });
+        //logoLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/data/smallLogo.png"))); // NOI18N
+        ImageIcon logo = new ImageIcon("data/smallLogo.png");
+        logoLabel.setIcon(logo);
+        logoPanel.add(logoLabel);
+        getContentPane().add(logoPanel);
 
-        databaseManagementButton.setBackground(new java.awt.Color(54, 198, 238));
-        databaseManagementButton.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        databaseManagementButton.setText("Database Management");
-        databaseManagementButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                databaseManagementButtonActionPerformed(evt);
-            }
-        });
-
-        logoutButton.setBackground(new java.awt.Color(255, 102, 102));
-        logoutButton.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        logoutButton.setText("Log Out");
-        logoutButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                logoutButtonActionPerformed(evt);
-            }
-        });
-
-        manageStockButton.setBackground(new java.awt.Color(153, 153, 255));
-        manageStockButton.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        manageStockButton.setText("Add Stock");
-        manageStockButton.setMaximumSize(new java.awt.Dimension(151, 40));
-        manageStockButton.setMinimumSize(new java.awt.Dimension(151, 40));
-        manageStockButton.setPreferredSize(new java.awt.Dimension(151, 40));
-
-        javax.swing.GroupLayout buttonsPanelLayout = new javax.swing.GroupLayout(buttonsPanel);
-        buttonsPanel.setLayout(buttonsPanelLayout);
-        buttonsPanelLayout.setHorizontalGroup(
-                buttonsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(buttonsPanelLayout.createSequentialGroup()
-                                .addContainerGap()
-                                .addGroup(buttonsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(manageStockButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addGroup(buttonsPanelLayout.createSequentialGroup()
-                                                .addComponent(homeButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                .addComponent(databaseManagementButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                .addComponent(logoutButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                                .addContainerGap())
+        javax.swing.GroupLayout logoPanelLayout = new javax.swing.GroupLayout(logoPanel);
+        logoPanel.setLayout(logoPanelLayout);
+        logoPanelLayout.setHorizontalGroup(
+                logoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGap(0, 102, Short.MAX_VALUE)
+                        .addGroup(logoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(logoPanelLayout.createSequentialGroup()
+                                        .addGap(0, 0, Short.MAX_VALUE)
+                                        .addComponent(logoLabel)
+                                        .addGap(0, 0, Short.MAX_VALUE)))
         );
-        buttonsPanelLayout.setVerticalGroup(
-                buttonsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(buttonsPanelLayout.createSequentialGroup()
+        logoPanelLayout.setVerticalGroup(
+                logoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addGroup(logoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(logoPanelLayout.createSequentialGroup()
+                                        .addGap(0, 0, Short.MAX_VALUE)
+                                        .addComponent(logoLabel)
+                                        .addGap(0, 0, Short.MAX_VALUE)))
+        );
+
+        functionPanel.setBackground(new java.awt.Color(49, 174, 209));
+        functionPanel.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+
+        tableNameLabel.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        tableNameLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        tableNameLabel.setText("Blank Stock");
+
+        showDDMenu.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        showDDMenu.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Show", "10", "25", "50", "100" }));
+        showDDMenu.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                showDDMenuActionPerformed(evt);
+            }
+        });
+
+        orderDDMenu.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        orderDDMenu.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Order", "By Number", "By Date", "By Status" }));
+        orderDDMenu.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                orderDDMenuActionPerformed(evt);
+            }
+        });
+
+        refreshTableButton.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        refreshTableButton.setText("Refresh");
+        refreshTableButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                refreshTableButtonActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout functionPanelLayout = new javax.swing.GroupLayout(functionPanel);
+        functionPanel.setLayout(functionPanelLayout);
+        functionPanelLayout.setHorizontalGroup(
+                functionPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(functionPanelLayout.createSequentialGroup()
                                 .addContainerGap()
-                                .addGroup(buttonsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                        .addComponent(databaseManagementButton, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(homeButton, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(logoutButton, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(showDDMenu, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(orderDDMenu, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(manageStockButton, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(refreshTableButton)
                                 .addContainerGap())
+                        .addGroup(functionPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, functionPanelLayout.createSequentialGroup()
+                                        .addContainerGap(546, Short.MAX_VALUE)
+                                        .addComponent(tableNameLabel)
+                                        .addContainerGap(547, Short.MAX_VALUE)))
+        );
+        functionPanelLayout.setVerticalGroup(
+                functionPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, functionPanelLayout.createSequentialGroup()
+                                .addContainerGap()
+                                .addGroup(functionPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                        .addComponent(refreshTableButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addGroup(functionPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                                .addComponent(orderDDMenu)
+                                                .addComponent(showDDMenu)))
+                                .addContainerGap())
+                        .addGroup(functionPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(tableNameLabel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 41, Short.MAX_VALUE))
         );
 
-        pageTitlePanel.setBackground(new java.awt.Color(49, 174, 209));
-        pageTitlePanel.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        pageTitlePanel.setMaximumSize(new java.awt.Dimension(501, 40));
-        pageTitlePanel.setMinimumSize(new java.awt.Dimension(501, 40));
-        pageTitlePanel.setPreferredSize(new java.awt.Dimension(501, 40));
+        blankTableSP.setBackground(new java.awt.Color(255, 255, 255));
+        blankTableSP.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
-        interfaceNameLabel.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
-        interfaceNameLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        interfaceNameLabel.setText("Add Stock");
-        interfaceNameLabel.setMaximumSize(new java.awt.Dimension(209, 32));
-        interfaceNameLabel.setMinimumSize(new java.awt.Dimension(209, 32));
-        interfaceNameLabel.setPreferredSize(new java.awt.Dimension(209, 32));
-
-        javax.swing.GroupLayout pageTitlePanelLayout = new javax.swing.GroupLayout(pageTitlePanel);
-        pageTitlePanel.setLayout(pageTitlePanelLayout);
-        pageTitlePanelLayout.setHorizontalGroup(
-                pageTitlePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(interfaceNameLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 503, Short.MAX_VALUE)
-        );
-        pageTitlePanelLayout.setVerticalGroup(
-                pageTitlePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pageTitlePanelLayout.createSequentialGroup()
-                                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(interfaceNameLabel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(35, 35, 35))
-        );
+        blankStockTable.setBackground(new java.awt.Color(49, 174, 209));
+        blankStockTable.setModel(new javax.swing.table.DefaultTableModel(
+                new Object [][] {
+                        {null, null, null, null, null},
+                        {null, null, null, null, null},
+                        {null, null, null, null, null},
+                        {null, null, null, null, null}
+                },
+                new String [] {
+                        "Number", "Staff ID", "Date", "Type", "Status"
+                }
+        ));
+        blankTableSP.setViewportView(blankStockTable);
 
         editStockPanel.setBackground(new java.awt.Color(49, 174, 209));
         editStockPanel.setBorder(javax.swing.BorderFactory.createEtchedBorder());
@@ -255,126 +269,113 @@ public class AddStock extends javax.swing.JFrame {
                                 .addContainerGap())
         );
 
-        blankTableSP.setBackground(new java.awt.Color(255, 255, 255));
-        blankTableSP.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        pageTitlePanel.setBackground(new java.awt.Color(49, 174, 209));
+        pageTitlePanel.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        pageTitlePanel.setMaximumSize(new java.awt.Dimension(501, 40));
+        pageTitlePanel.setMinimumSize(new java.awt.Dimension(501, 40));
+        pageTitlePanel.setPreferredSize(new java.awt.Dimension(501, 40));
 
-        blankStockTable.setBackground(new java.awt.Color(49, 174, 209));
-        blankStockTable.setModel(new javax.swing.table.DefaultTableModel(
-                new Object [][] {
-                        {null, null, null, null, null},
-                        {null, null, null, null, null},
-                        {null, null, null, null, null},
-                        {null, null, null, null, null}
-                },
-                new String [] {
-                        "Number", "Staff ID", "Date", "Type", "Status"
-                }
-        ));
-        blankTableSP.setViewportView(blankStockTable);
+        interfaceNameLabel.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        interfaceNameLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        interfaceNameLabel.setText("Add Stock");
+        interfaceNameLabel.setMaximumSize(new java.awt.Dimension(209, 32));
+        interfaceNameLabel.setMinimumSize(new java.awt.Dimension(209, 32));
+        interfaceNameLabel.setPreferredSize(new java.awt.Dimension(209, 32));
 
-        functionPanel.setBackground(new java.awt.Color(49, 174, 209));
-        functionPanel.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        javax.swing.GroupLayout pageTitlePanelLayout = new javax.swing.GroupLayout(pageTitlePanel);
+        pageTitlePanel.setLayout(pageTitlePanelLayout);
+        pageTitlePanelLayout.setHorizontalGroup(
+                pageTitlePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(interfaceNameLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 503, Short.MAX_VALUE)
+        );
+        pageTitlePanelLayout.setVerticalGroup(
+                pageTitlePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pageTitlePanelLayout.createSequentialGroup()
+                                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(interfaceNameLabel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(35, 35, 35))
+        );
 
-        tableNameLabel.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        tableNameLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        tableNameLabel.setText("Blank Stock");
+        buttonsPanel.setBackground(new java.awt.Color(49, 174, 209));
+        buttonsPanel.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        buttonsPanel.setMaximumSize(new java.awt.Dimension(573, 102));
+        buttonsPanel.setMinimumSize(new java.awt.Dimension(573, 102));
+        buttonsPanel.setPreferredSize(new java.awt.Dimension(573, 102));
 
-        showDDMenu.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        showDDMenu.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Show", "10", "25", "50", "100" }));
-        showDDMenu.addActionListener(new java.awt.event.ActionListener() {
+        homeButton.setBackground(new java.awt.Color(54, 198, 238));
+        homeButton.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        homeButton.setText("Home");
+        homeButton.setMaximumSize(new java.awt.Dimension(79, 40));
+        homeButton.setMinimumSize(new java.awt.Dimension(79, 40));
+        homeButton.setPreferredSize(new java.awt.Dimension(79, 40));
+        homeButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                showDDMenuActionPerformed(evt);
+                homeButtonActionPerformed(evt);
             }
         });
 
-        orderDDMenu.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        orderDDMenu.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Order", "By Number", "By Date", "By Status" }));
-        orderDDMenu.addActionListener(new java.awt.event.ActionListener() {
+        databaseManagementButton.setBackground(new java.awt.Color(54, 198, 238));
+        databaseManagementButton.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        databaseManagementButton.setText("Database Management");
+        databaseManagementButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                orderDDMenuActionPerformed(evt);
+                databaseManagementButtonActionPerformed(evt);
             }
         });
 
-        refreshTableButton.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        refreshTableButton.setText("Refresh");
-        refreshTableButton.addActionListener(new java.awt.event.ActionListener() {
+        logoutButton.setBackground(new java.awt.Color(255, 102, 102));
+        logoutButton.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        logoutButton.setText("Log Out");
+        logoutButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                refreshTableButtonActionPerformed(evt);
+                logoutButtonActionPerformed(evt);
             }
         });
 
-        javax.swing.GroupLayout functionPanelLayout = new javax.swing.GroupLayout(functionPanel);
-        functionPanel.setLayout(functionPanelLayout);
-        functionPanelLayout.setHorizontalGroup(
-                functionPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(functionPanelLayout.createSequentialGroup()
+        manageStockButton.setBackground(new java.awt.Color(153, 153, 255));
+        manageStockButton.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        manageStockButton.setText("Add Stock");
+        manageStockButton.setMaximumSize(new java.awt.Dimension(151, 40));
+        manageStockButton.setMinimumSize(new java.awt.Dimension(151, 40));
+        manageStockButton.setPreferredSize(new java.awt.Dimension(151, 40));
+
+        javax.swing.GroupLayout buttonsPanelLayout = new javax.swing.GroupLayout(buttonsPanel);
+        buttonsPanel.setLayout(buttonsPanelLayout);
+        buttonsPanelLayout.setHorizontalGroup(
+                buttonsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(buttonsPanelLayout.createSequentialGroup()
                                 .addContainerGap()
-                                .addComponent(showDDMenu, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(orderDDMenu, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGroup(buttonsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(manageStockButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addGroup(buttonsPanelLayout.createSequentialGroup()
+                                                .addComponent(homeButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                .addComponent(databaseManagementButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                .addComponent(logoutButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                                .addContainerGap())
+        );
+        buttonsPanelLayout.setVerticalGroup(
+                buttonsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(buttonsPanelLayout.createSequentialGroup()
+                                .addContainerGap()
+                                .addGroup(buttonsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                        .addComponent(databaseManagementButton, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(homeButton, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(logoutButton, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(refreshTableButton)
+                                .addComponent(manageStockButton, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addContainerGap())
-                        .addGroup(functionPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, functionPanelLayout.createSequentialGroup()
-                                        .addContainerGap(546, Short.MAX_VALUE)
-                                        .addComponent(tableNameLabel)
-                                        .addContainerGap(547, Short.MAX_VALUE)))
         );
-        functionPanelLayout.setVerticalGroup(
-                functionPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, functionPanelLayout.createSequentialGroup()
+
+        javax.swing.GroupLayout addStockPanelLayout = new javax.swing.GroupLayout(addStockPanel);
+        addStockPanel.setLayout(addStockPanelLayout);
+        addStockPanelLayout.setHorizontalGroup(
+                addStockPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(addStockPanelLayout.createSequentialGroup()
                                 .addContainerGap()
-                                .addGroup(functionPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                        .addComponent(refreshTableButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addGroup(functionPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                                .addComponent(orderDDMenu)
-                                                .addComponent(showDDMenu)))
-                                .addContainerGap())
-                        .addGroup(functionPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(tableNameLabel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 41, Short.MAX_VALUE))
-        );
-
-        logoPanel.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        logoPanel.setMaximumSize(new java.awt.Dimension(104, 104));
-        logoPanel.setMinimumSize(new java.awt.Dimension(104, 104));
-        logoPanel.setPreferredSize(new java.awt.Dimension(104, 104));
-
-        //logoLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/data/smallLogo.png"))); // NOI18N
-        ImageIcon logo = new ImageIcon("data/smallLogo.png");
-        logoLabel.setIcon(logo);
-        logoPanel.add(logoLabel);
-        getContentPane().add(logoPanel);
-
-        javax.swing.GroupLayout logoPanelLayout = new javax.swing.GroupLayout(logoPanel);
-        logoPanel.setLayout(logoPanelLayout);
-        logoPanelLayout.setHorizontalGroup(
-                logoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGap(0, 102, Short.MAX_VALUE)
-                        .addGroup(logoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addGroup(logoPanelLayout.createSequentialGroup()
-                                        .addGap(0, 0, Short.MAX_VALUE)
-                                        .addComponent(logoLabel)
-                                        .addGap(0, 0, Short.MAX_VALUE)))
-        );
-        logoPanelLayout.setVerticalGroup(
-                logoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addGroup(logoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addGroup(logoPanelLayout.createSequentialGroup()
-                                        .addGap(0, 0, Short.MAX_VALUE)
-                                        .addComponent(logoLabel)
-                                        .addGap(0, 0, Short.MAX_VALUE)))
-        );
-
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-                layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(layout.createSequentialGroup()
-                                .addContainerGap()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addGroup(layout.createSequentialGroup()
+                                .addGroup(addStockPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addGroup(addStockPanelLayout.createSequentialGroup()
                                                 .addComponent(logoPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                                 .addComponent(pageTitlePanel, javax.swing.GroupLayout.DEFAULT_SIZE, 505, Short.MAX_VALUE)
@@ -385,11 +386,11 @@ public class AddStock extends javax.swing.JFrame {
                                         .addComponent(functionPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                                 .addContainerGap())
         );
-        layout.setVerticalGroup(
-                layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(layout.createSequentialGroup()
+        addStockPanelLayout.setVerticalGroup(
+                addStockPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(addStockPanelLayout.createSequentialGroup()
                                 .addContainerGap()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                .addGroup(addStockPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                                         .addComponent(logoPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                         .addComponent(pageTitlePanel, javax.swing.GroupLayout.DEFAULT_SIZE, 104, Short.MAX_VALUE)
                                         .addComponent(buttonsPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 104, Short.MAX_VALUE))
@@ -400,6 +401,27 @@ public class AddStock extends javax.swing.JFrame {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(editStockPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addContainerGap())
+        );
+
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
+        getContentPane().setLayout(layout);
+        layout.setHorizontalGroup(
+                layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGap(0, 1200, Short.MAX_VALUE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(layout.createSequentialGroup()
+                                        .addGap(0, 0, Short.MAX_VALUE)
+                                        .addComponent(addStockPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(0, 0, Short.MAX_VALUE)))
+        );
+        layout.setVerticalGroup(
+                layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGap(0, 800, Short.MAX_VALUE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(layout.createSequentialGroup()
+                                        .addGap(0, 0, Short.MAX_VALUE)
+                                        .addComponent(addStockPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(0, 0, Short.MAX_VALUE)))
         );
 
         pack();
@@ -634,6 +656,7 @@ public class AddStock extends javax.swing.JFrame {
 
     // Variables declaration - do not modify
     private javax.swing.JButton addStockButton;
+    private javax.swing.JPanel addStockPanel;
     private javax.swing.JTable blankStockTable;
     private javax.swing.JScrollPane blankTableSP;
     private javax.swing.JComboBox<String> blankTypeDDMenu;
