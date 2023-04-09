@@ -6,26 +6,26 @@ package interfaces.office_manager;
 
 import interfaces.general.Login;
 import SQL.DBConnection;
-import interfaces.system_administrator.AddStock;
-import interfaces.system_administrator.DatabaseManagement;
-import interfaces.system_administrator.SystemAdminHub;
 
 import javax.swing.*;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
+import java.util.Objects;
 import java.util.Random;
 
 /**
  *
  * @author Abdullah
  */
-public class AddStaffMember extends javax.swing.JFrame {
+public class AddStaffAccount extends javax.swing.JFrame {
 
     /**
      * Creates new form AddStaffMember
      */
-    public AddStaffMember() {
+    public AddStaffAccount() {
         initComponents();
     }
 
@@ -501,9 +501,12 @@ public class AddStaffMember extends javax.swing.JFrame {
         int lower = 200;
         int upper = 300;
         int random_id = rand.nextInt(upper - lower) + lower;
+        idValueLabel.setText(String.valueOf(random_id));
 
         Connection conn = null;
         PreparedStatement pstm = null;
+        StringBuilder passwordHash = null;
+
         try {
             conn = DBConnection.getConnection();
             String query =
@@ -511,19 +514,38 @@ public class AddStaffMember extends javax.swing.JFrame {
                             "VALUES (?, ?, ?, ?, ?, ?, ?)";
             pstm = conn.prepareStatement(query);
             pstm.setInt(1, random_id);
-            pstm.setString(2, passwordField.getText());
-            pstm.setString(3, roleDDMenu.getSelectedItem().toString());
+
+            try {
+            // Create a MessageDigest instance for MD5 hashing algorithm
+            MessageDigest md = MessageDigest.getInstance("MD5");
+
+            // Add password bytes to digest
+            md.update(passwordField.getText().getBytes());
+
+            // Get the hash's bytes
+            byte[] bytes = md.digest();
+
+            // Convert to hexadecimal format
+            passwordHash = new StringBuilder();
+            for (byte aByte : bytes) {
+                passwordHash.append(Integer.toString((aByte & 0xff) + 0x100, 16).substring(1));
+            }
+            } catch (NoSuchAlgorithmException e) { e.printStackTrace(); }
+
+            assert passwordHash != null;
+            pstm.setString(2, passwordHash.toString());
+            pstm.setString(3, Objects.requireNonNull(roleDDMenu.getSelectedItem()).toString());
             pstm.setString(4, forenameField.getText());
             pstm.setString(5, surnameField.getText());
             pstm.setString(6, phoneField.getText());
             pstm.setString(7, emailField.getText());
-            int result = pstm.executeUpdate(query);
+            int result = pstm.executeUpdate();
             if (result > 0){
                 JOptionPane.showMessageDialog(this, "Staff member added. " +
                         "Review using 'Home' menu");
             } else {
                 JOptionPane.showMessageDialog(this, "Could not add staff member. " +
-                        "Review details entered");
+                        "Review details entered or contact system administrator");
             }
         } catch (SQLException sqle) {
             if (conn != null) { try { conn.rollback(); } catch (SQLException e) { throw new RuntimeException(sqle); }}
@@ -550,20 +572,20 @@ public class AddStaffMember extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(AddStaffMember.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(AddStaffAccount.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(AddStaffMember.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(AddStaffAccount.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(AddStaffMember.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(AddStaffAccount.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(AddStaffMember.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(AddStaffAccount.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new AddStaffMember().setVisible(true);
+                new AddStaffAccount().setVisible(true);
             }
         });
     }
