@@ -444,8 +444,8 @@ public class AddStock extends javax.swing.JFrame {
     }
 
     private void addStockButtonActionPerformed(java.awt.event.ActionEvent evt) {
-        String blankNumber = null;
-        String blankType = null;
+        String blankNumber = "";
+        String blankType = "";
         Connection conn = null;
         PreparedStatement pstm = null;
         try {
