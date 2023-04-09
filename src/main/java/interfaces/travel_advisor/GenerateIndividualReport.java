@@ -8,6 +8,7 @@ import SQL.DBConnection;
 import interfaces.general.Login;
 
 import interfaces.general.Login;
+import sale.Commission;
 
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
@@ -168,18 +169,6 @@ public class GenerateIndividualReport extends javax.swing.JFrame {
         );
 
         reportContentsTable.setBackground(new java.awt.Color(49, 174, 209));
-        reportContentsTable.setModel(new javax.swing.table.DefaultTableModel(
-                new Object [][] {
-                        {null, null, null, null, null, null, null, null, null, null},
-                        {null, null, null, null, null, null, null, null, null, null},
-                        {null, null, null, null, null, null, null, null, null, null},
-                        {null, null, null, null, null, null, null, null, null, null}
-                },
-                new String [] {
-                        "Ticket Number", "Issued Blank", "USD Amount", "Converted Amount", "Tax", "Tax - Other", "Total Payable", "Card Number", "Total Paid", "Commissions Used"
-                }
-        ));
-        reportTableSP.setViewportView(reportContentsTable);
 
         infoPanel.setBackground(new java.awt.Color(204, 204, 204));
         infoPanel.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
@@ -439,11 +428,16 @@ public class GenerateIndividualReport extends javax.swing.JFrame {
         Connection conn = null;
         PreparedStatement pstm = null;
         ResultSet rs = null;
+
         try {
             conn = DBConnection.getConnection();
-            conn.setAutoCommit(false);
-            String query1 = "SELECT blankNumber FROM in2018g12.ticket";
-            pstm = conn.prepareStatement(query1);
+            String query = "SELECT s.sellDate, t.blankNumber, s.originalFare, s.exchangeRate, s.convertedFare, s.tax, s.taxOther, s.total, s.payLater, ca.number, s.totalPaid, co.rate " +
+                    "FROM sale s " +
+                    "INNER JOIN staff st ON st.id = s.staffID " +
+                    "INNER JOIN ticket t ON t.saleID = s.id " +
+                    "INNER JOIN card ca ON ca.customerUsername = t.customerUsername " +
+                    "INNER JOIN commission co ON co.blankNumber = t.blankNumber";
+            pstm = conn.prepareStatement(query);
             rs = pstm.executeQuery();
             if (!rs.next()){
                 JOptionPane.showMessageDialog(this, "Could not refresh table data. " +
@@ -452,28 +446,38 @@ public class GenerateIndividualReport extends javax.swing.JFrame {
                 model.setRowCount(0);
                 if(Objects.equals(reportTypeDDMenu.getSelectedItem().toString(), "Interline Sales")) {
                     do {
-                        Object[] row = new Object[15];
-                        row[0] = rs.getString("id");
-                        row[1] = rs.getString("");
-                        row[2] = rs.getString("type");
-                        row[3] = rs.getString("type");
-                        row[4] = rs.getString("status");
+                        Object[] row = new Object[12];
+                        row[0] = rs.getString("date");
+                        row[1] = rs.getString("blankNumber");
+                        row[2] = rs.getString("originalFare");
+                        row[3] = rs.getString("exchangeRate");
+                        row[4] = rs.getString("convertedFare");
+                        row[5] = rs.getString("tax");
+                        row[6] = rs.getString("taxOther");
+                        row[7] = rs.getString("total");
+                        row[8] = rs.getString("number");
+                        row[9] = rs.getString("totalPaid");
+                        row[10] = rs.getString("payLater");
+                        row[11] = rs.getString("rate");
                         model.addRow(row);
                     } while (rs.next());
                 } else if (Objects.equals(reportTypeDDMenu.getSelectedItem().toString(), "Domestic Sales")){
                     do {
-                        Object[] row = new Object[5];
+                        //"Date", "Issued Blank", "Amount", "Tax", "Tax - Other", "Total Payable", "Pay Later?", "Card Number", "Total Paid", "Commission Rate Used"
+                        Object[] row = new Object[9];
                         row[0] = rs.getString("date");
-                        row[1] = rs.getString("number");
-                        row[2] = rs.getString("staffID");
-                        row[3] = rs.getString("type");
-                        row[4] = rs.getString("status");
+                        row[1] = rs.getString("blankNumber");
+                        row[2] = rs.getString("originalFare");
+                        row[3] = rs.getString("tax");
+                        row[4] = rs.getString("taxOther");
+                        row[5] = rs.getString("total");
+                        row[6] = rs.getString("number");
+                        row[7] = rs.getString("totalPaid");
+                        row[8] = rs.getString("rate");
                         model.addRow(row);
                     } while (rs.next());
                 }
             }
-            conn.commit();
-            conn.setAutoCommit(true);
         } catch (SQLException sqle) {
             if (conn != null) { try { conn.rollback(); } catch (SQLException e) { throw new RuntimeException(sqle); }}
         } finally {
@@ -484,51 +488,7 @@ public class GenerateIndividualReport extends javax.swing.JFrame {
     }//GEN-LAST:event_refreshTableButtonActionPerformed
 
     private void reportTypeDDMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_reportTypeDDMenuActionPerformed
-        DefaultTableModel model = (DefaultTableModel)reportContentsTable.getModel();
-        Connection conn = null;
-        PreparedStatement pstm = null;
-        ResultSet rs = null;
-        String query1 = null;
-        String query2 = null;
-        String query3 = null;
 
-        try {
-            conn = DBConnection.getConnection();
-            conn.setAutoCommit(false);
-            if (Objects.equals(reportTypeDDMenu.getSelectedItem().toString(), "Interline Sales")){
-                query1= "SELECT * FROM in2018g12.sale";
-
-            } else if (Objects.equals(reportTypeDDMenu.getSelectedItem().toString(), "Domestic Sales")){
-                query1= "SELECT * FROM in2018g12.sale";
-            }
-            pstm = conn.prepareStatement(query1);
-            rs = pstm.executeQuery();
-            if (!rs.next()) {
-                JOptionPane.showMessageDialog(this, "Could not retrieve sales data. " +
-                        "Try again or contact system administrator");
-            } else {
-                model.setRowCount(0);
-                if (Objects.equals(reportTypeDDMenu.getSelectedItem().toString(), "Interline Sales")) {
-                    do {
-                        Object[] row = new Object[15];
-
-                    } while (rs.next());
-                } else {
-                    do {
-
-                        Object[] row = new Object[15];
-                    } while (rs.next());
-                }
-            }
-            conn.commit();
-            conn.setAutoCommit(true);
-        } catch (SQLException sqle) {
-            if (conn != null) { try { conn.rollback(); } catch (SQLException e) { throw new RuntimeException(sqle); }}
-        } finally {
-            try { if (rs != null) rs.close(); } catch (Exception e) { throw new RuntimeException(e); }
-            try { if (pstm != null) pstm.close(); } catch (Exception e) { throw new RuntimeException(e); }
-            try { if (conn != null) conn.close(); } catch (Exception e) { throw new RuntimeException(e); }
-        }
     }//GEN-LAST:event_reportTypeDDMenuActionPerformed
 
     /**
