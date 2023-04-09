@@ -7,10 +7,13 @@ package interfaces.system_administrator;
 import interfaces.general.Login;
 
 import javax.swing.*;
-import java.io.*;
-import java.util.*;
-
-
+import java.awt.*;
+import java.io.File;
+import java.io.IOException;
+import java.net.URISyntaxException;
+import java.text.SimpleDateFormat;
+import java.time.LocalTime;
+import java.util.Date;
 
 /**
  *
@@ -21,7 +24,7 @@ public class DatabaseManagement extends javax.swing.JFrame {
     /**
      * Creates new form databaseManagementFrame
      */
-    public DatabaseManagement() throws IOException, InterruptedException {
+    public DatabaseManagement() {
         initComponents();
     }
 
@@ -33,8 +36,9 @@ public class DatabaseManagement extends javax.swing.JFrame {
      */
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">
-    private void initComponents() throws IOException, InterruptedException {
+    private void initComponents() {
 
+        databaseManagementPanel = new javax.swing.JPanel();
         buttonsPanel = new javax.swing.JPanel();
         homeButton = new javax.swing.JButton();
         databaseManagementPageButton = new javax.swing.JButton();
@@ -94,7 +98,7 @@ public class DatabaseManagement extends javax.swing.JFrame {
 
         manageStockPageButton.setBackground(new java.awt.Color(54, 198, 238));
         manageStockPageButton.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        manageStockPageButton.setText("Manage Stock");
+        manageStockPageButton.setText("Add Stock");
         manageStockPageButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 manageStockPageButtonActionPerformed(evt);
@@ -171,38 +175,8 @@ public class DatabaseManagement extends javax.swing.JFrame {
         backupDatabaseButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 backupDatabaseButtonActionPerformed(evt);
-
-                String username = "in2018g12_d";
-                String password = "password";
-                String databaseName = "in2018g12";
-                String databaseBackupPath = "backup_path";
-
-
-                try {
-                    Date today = new Date();
-                    String fileName = databaseName + "_" + today.getTime() + ".sql";
-                    String backupFile = databaseBackupPath + "\\" + fileName;
-                    File file = new File(backupFile);
-                    file.createNewFile();
-
-                    String command = "mysqldump -u " + username + " -p" + password + " " + databaseName + " -r " + backupFile;
-                    Process p = Runtime.getRuntime().exec(command);
-                    int backupComplete = p.waitFor();
-
-                    if (backupComplete == 0) {
-                        System.out.println("Backup successfully created");
-                    } else {
-                        System.out.println("Backup failed");
-                    }
-
-                } catch (IOException e) {
-                    e.printStackTrace();
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                }
             }
-                });
-
+        });
 
         backupLocationLabel.setBackground(new java.awt.Color(204, 204, 204));
         backupLocationLabel.setBorder(javax.swing.BorderFactory.createEtchedBorder());
@@ -291,35 +265,9 @@ public class DatabaseManagement extends javax.swing.JFrame {
         restoreDatabaseButton.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         restoreDatabaseButton.setText("Restore Database");
         restoreDatabaseButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {restoreDatabaseButtonActionPerformed(evt);
-
-                String username = "in2018g12_d";
-                String password = "password";
-                String databaseName = "in2018g12";
-
-                String backupFilePath = "path_to_backup_file";
-
-                try {
-                    ProcessBuilder processBuilder = new ProcessBuilder(
-                            "mysql",
-                            "in2018g12_d" + username,
-                            "password" + password,
-                            databaseName);
-                    processBuilder.redirectInput(new File(backupFilePath));
-                    Process process = processBuilder.start();
-                    int restoreComplete = process.waitFor();
-
-                    if (restoreComplete == 0) {
-                        System.out.println("Database restored successfully");
-                    } else {
-                        System.out.println("Database restore failed");
-                    }
-
-                } catch (IOException | InterruptedException e) {
-                    e.printStackTrace();
-                }
-
-                }
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                restoreDatabaseButtonActionPerformed(evt);
+            }
         });
 
         backupFileLabel.setBackground(new java.awt.Color(204, 204, 204));
@@ -420,8 +368,8 @@ public class DatabaseManagement extends javax.swing.JFrame {
         logoPanel.setMinimumSize(new java.awt.Dimension(104, 104));
         logoPanel.setPreferredSize(new java.awt.Dimension(104, 104));
 
-        //logoLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/smallLogo.png"))); // NOI18N
-        ImageIcon logo = new ImageIcon("/data/smallLogo.png");
+        //logoLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/data/smallLogo.png"))); // NOI18N
+        ImageIcon logo = new ImageIcon("data/smallLogo.png");
         logoLabel.setIcon(logo);
         logoPanel.add(logoLabel);
         getContentPane().add(logoPanel);
@@ -447,14 +395,14 @@ public class DatabaseManagement extends javax.swing.JFrame {
                                         .addGap(0, 0, Short.MAX_VALUE)))
         );
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-                layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(layout.createSequentialGroup()
+        javax.swing.GroupLayout databaseManagementPanelLayout = new javax.swing.GroupLayout(databaseManagementPanel);
+        databaseManagementPanel.setLayout(databaseManagementPanelLayout);
+        databaseManagementPanelLayout.setHorizontalGroup(
+                databaseManagementPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(databaseManagementPanelLayout.createSequentialGroup()
                                 .addContainerGap()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addGroup(layout.createSequentialGroup()
+                                .addGroup(databaseManagementPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addGroup(databaseManagementPanelLayout.createSequentialGroup()
                                                 .addComponent(logoPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                                 .addComponent(pageTitlePanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -463,19 +411,40 @@ public class DatabaseManagement extends javax.swing.JFrame {
                                         .addComponent(functionPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
                                 .addContainerGap())
         );
-        layout.setVerticalGroup(
-                layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(layout.createSequentialGroup()
+        databaseManagementPanelLayout.setVerticalGroup(
+                databaseManagementPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(databaseManagementPanelLayout.createSequentialGroup()
                                 .addContainerGap()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(databaseManagementPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                         .addComponent(pageTitlePanel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                         .addComponent(buttonsPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addGroup(layout.createSequentialGroup()
+                                        .addGroup(databaseManagementPanelLayout.createSequentialGroup()
                                                 .addComponent(logoPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                                 .addGap(0, 0, Short.MAX_VALUE)))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(functionPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 679, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addContainerGap())
+        );
+
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
+        getContentPane().setLayout(layout);
+        layout.setHorizontalGroup(
+                layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGap(0, 1204, Short.MAX_VALUE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(layout.createSequentialGroup()
+                                        .addGap(0, 0, Short.MAX_VALUE)
+                                        .addComponent(databaseManagementPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(0, 0, Short.MAX_VALUE)))
+        );
+        layout.setVerticalGroup(
+                layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGap(0, 801, Short.MAX_VALUE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(layout.createSequentialGroup()
+                                        .addGap(0, 0, Short.MAX_VALUE)
+                                        .addComponent(databaseManagementPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(0, 0, Short.MAX_VALUE)))
         );
 
         pack();
@@ -498,34 +467,78 @@ public class DatabaseManagement extends javax.swing.JFrame {
     }
 
     private void selectBackupLocationButtonActionPerformed(java.awt.event.ActionEvent evt) {
-        // TODO add your handling code here:
+        String databaseName = "in2018g12";
+
+        SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy_HH:mm:ss");
+        Date date = new Date();
+        String fileName = databaseName + "_" + sdf.format(date) + ".sql";
+
         JFileChooser fileChooser = new JFileChooser();
+        fileChooser.setDialogTitle("Select Backup Location");
+        fileChooser.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
+        fileChooser.setAcceptAllFileFilterUsed(false);
         int result = fileChooser.showOpenDialog(this);
         if (result == JFileChooser.APPROVE_OPTION) {
-            backupLocationLabel.setText(fileChooser.getSelectedFile() + "\\" + "dbbackup.sql");
+            backupLocationLabel.setText(fileChooser.getSelectedFile() + "\\" + fileName);
         }
     }
 
     private void backupDatabaseButtonActionPerformed(java.awt.event.ActionEvent evt) {
-        // TODO add your handling code here:
-        File file = new File(backupLocationLabel.getText());
+        String dbUsername = "in2018g12_a";
+        String dbPassword = "xNXNI76E";
+        String databaseName = "in2018g12";
 
+        try {
+            String backupFile = backupLocationLabel.getText();
+            String command = "mysqldump -u " + dbUsername + " -p" + dbPassword + "--database" + databaseName + " -r " + backupFile;
+            Process p = Runtime.getRuntime().exec(command);
+            int backupComplete = p.waitFor();
+            if (backupComplete == 0) {
+                File file = new File(backupFile);
+                file.createNewFile();
+                JOptionPane.showMessageDialog(this, "Backup successfully created. Review in folder shown");
+            } else {
+                JOptionPane.showMessageDialog(this, "Could not backup database. Review selection.");
+            }
+
+        } catch (IOException | InterruptedException e) {
+            e.printStackTrace();
+        }
     }
 
     private void selectBackupFileButtonActionPerformed(java.awt.event.ActionEvent evt) {
-        // TODO add your handling code here:
         JFileChooser fileChooser = new JFileChooser();
-        int result = fileChooser.showOpenDialog(null);
+        fileChooser.setDialogTitle("Select Backup File");
+        fileChooser.setAcceptAllFileFilterUsed(false);
+        int result = fileChooser.showOpenDialog(this);
         if (result == JFileChooser.APPROVE_OPTION) {
             backupFileLabel.setText(String.valueOf(fileChooser.getSelectedFile()));
         }
-
-
     }
 
     private void restoreDatabaseButtonActionPerformed(java.awt.event.ActionEvent evt) {
-        // TODO add your handling code here:
+        String dbUsername = "in2018g12_a";
+        String dbPassword = "xNXNI76E";
+        String dbName = "in2018g12";
 
+        String backupFilePath = backupFileLabel.getText();
+
+        try {
+            ProcessBuilder processBuilder = new ProcessBuilder(
+                    "mysql", dbName, "-u" + dbUsername, "-p" + dbPassword, "-e", "source " + backupFilePath);
+            processBuilder.redirectInput(new File(backupFilePath));
+            Process process = processBuilder.start();
+            int restoreComplete = process.waitFor();
+
+            if (restoreComplete == 0) {
+                JOptionPane.showMessageDialog(this, "Database successfully restored. Review by refreshing a table in your interface.");
+            } else {
+                JOptionPane.showMessageDialog(this, "Could not restore database. Review selection.");
+            }
+
+        } catch (IOException | InterruptedException | HeadlessException ex) {
+            ex.printStackTrace();
+        }
     }
 
     /**
@@ -559,13 +572,7 @@ public class DatabaseManagement extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                try {
-                    new DatabaseManagement().setVisible(true);
-                } catch (IOException e) {
-                    throw new RuntimeException(e);
-                } catch (InterruptedException e) {
-                    throw new RuntimeException(e);
-                }
+                new DatabaseManagement().setVisible(true);
             }
         });
     }
@@ -573,10 +580,12 @@ public class DatabaseManagement extends javax.swing.JFrame {
     // Variables declaration - do not modify
     private javax.swing.JPanel backupDBPanel;
     private javax.swing.JButton backupDatabaseButton;
-    private javax.swing.JLabel backupLocationLabel;
+    private javax.swing.JLabel backupFileLabel;
     private javax.swing.JPanel backupInfoPanel;
+    private javax.swing.JLabel backupLocationLabel;
     private javax.swing.JPanel buttonsPanel;
     private javax.swing.JButton databaseManagementPageButton;
+    private javax.swing.JPanel databaseManagementPanel;
     private javax.swing.JPanel functionPanel;
     private javax.swing.JButton homeButton;
     private javax.swing.JLabel infoLabel1;
@@ -592,7 +601,6 @@ public class DatabaseManagement extends javax.swing.JFrame {
     private javax.swing.JLabel panelTitle;
     private javax.swing.JPanel restoreDBPanel;
     private javax.swing.JButton restoreDatabaseButton;
-    private javax.swing.JLabel backupFileLabel;
     private javax.swing.JPanel restoreInfoPanel;
     private javax.swing.JLabel sectionPanel;
     private javax.swing.JButton selectBackupFileButton;

@@ -1,7 +1,6 @@
 import java.util.Date;
 
 public class Alert {
-
 	private final String type;
 	private final String[] description;
 	private Date date;

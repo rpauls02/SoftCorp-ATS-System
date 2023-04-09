@@ -1,7 +1,6 @@
 package ticket;
 
 public class Blank {
-
 	private String number;
 	private String type;
 	private String status;

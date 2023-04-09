@@ -294,7 +294,7 @@
                   <EmptySpace min="-2" pref="297" max="-2" attributes="0"/>
                   <Component id="tableName" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="32767" attributes="0"/>
-                  <Component id="refreshButton" min="-2" max="-2" attributes="0"/>
+                  <Component id="refreshTableButton" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
               </Group>
           </Group>
@@ -305,7 +305,7 @@
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" attributes="0">
                           <EmptySpace min="-2" pref="7" max="-2" attributes="0"/>
-                          <Component id="refreshButton" max="32767" attributes="0"/>
+                          <Component id="refreshTableButton" max="32767" attributes="0"/>
                       </Group>
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace min="-2" pref="8" max="-2" attributes="0"/>
@@ -322,7 +322,7 @@
         </DimensionLayout>
       </Layout>
       <SubComponents>
-        <Component class="javax.swing.JButton" name="refreshButton">
+        <Component class="javax.swing.JButton" name="refreshTableButton">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Segoe UI" size="18" style="0"/>
@@ -569,7 +569,7 @@
         <Component class="javax.swing.JLabel" name="logoLabel">
           <Properties>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="3" name="/data/smallLogo.png"/>
+              <Image iconType="3" name="data/smallLogo.png"/>
             </Property>
           </Properties>
         </Component>
