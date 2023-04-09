@@ -178,7 +178,7 @@ public class AddStock extends javax.swing.JFrame {
                         {null, null, null, null, null}
                 },
                 new String [] {
-                        "Number", "Staff ID", "Date", "Type", "Status"
+                        "Date", "Number", "Staff ID", "Type", "Status"
                 }
         ));
         blankTableSP.setViewportView(blankStockTable);
@@ -444,13 +444,13 @@ public class AddStock extends javax.swing.JFrame {
     }
 
     private void addStockButtonActionPerformed(java.awt.event.ActionEvent evt) {
-        String blankNumber = "";
-        String blankType = "";
+        String blankNumber = " ";
+        String blankType = " ";
         Connection conn = null;
         PreparedStatement pstm = null;
         try {
             conn = DBConnection.getConnection();
-            String query = "INSERT INTO in2018g12.blank (number, date, type, status) VALUES (?, ?, ?, ?)";
+            String query = "INSERT INTO in2018g12.blank (in2018g12.blank.number, in2018g12.blank.date, in2018g12.blank.type, in2018g12.blank.status) VALUES (?, ?, ?, ?)";
             pstm = conn.prepareStatement(query);
 
             for (int i = Integer.parseInt(toBlankField.getText()); i <= Integer.parseInt(fromBlankField.getText()); i++) {
@@ -462,12 +462,16 @@ public class AddStock extends javax.swing.JFrame {
                     //Creates a blank with number xxx00000011
                     blankNumber = blankTypeDDMenu.getSelectedItem().toString().substring(0, 3)
                             + "000000" + toBlankField.getText();
-                } else {
+                } else if (toBlankField.getText().length() == 1){
                     //Creates a blank with number xxx00000001
                     blankNumber = blankTypeDDMenu.getSelectedItem().toString().substring(0, 3)
                             + "0000000" + toBlankField.getText();
                 }
             }
+            pstm.setString(1, String.valueOf(LocalDate.now()));
+
+            pstm.setString(2, blankNumber);
+            pstm.setString(3, "staffID");
 
             if (blankTypeDDMenu.getSelectedItem().toString().startsWith("444")){
                 blankType = "InterlineAuto4Cpn";
@@ -484,10 +488,8 @@ public class AddStock extends javax.swing.JFrame {
             } else if (blankTypeDDMenu.getSelectedItem().toString().startsWith("452")) {
                 blankType = "OtherServices";
             }
-
-            pstm.setString(1, blankNumber);
-            pstm.setString(2, String.valueOf(LocalDate.now()));
             pstm.setString(3, blankType);
+
             pstm.setString(4, "Unassigned");
             int result = pstm.executeUpdate();
             if (result > 0){
@@ -539,29 +541,26 @@ public class AddStock extends javax.swing.JFrame {
 
     private void deleteButtonActionPerformed(java.awt.event.ActionEvent evt) {
         Connection conn = null;
-        Statement stm = null;
-        String query = null;
+        PreparedStatement pstm = null;
         try {
             conn = DBConnection.getConnection();
-            if (blankStockTable.getSelectionModel().isSelectionEmpty()){
-                query = "DELETE FROM blank WHERE number BETWEEN " + fromBlankField.getText() + " AND " + toBlankField.getText(); // SQL statement to delete a range of blanks
-            }
-            stm = conn.createStatement(); // Initialize statement object
-            int result = stm.executeUpdate(query); // execute SQL statement
+            String query = "DELETE FROM blank WHERE number BETWEEN ? AND ?"; // SQL statement to delete a range of blanks
+            pstm = conn.prepareStatement(query); // Initialize statement object
+            pstm.setString(1, fromBlankField.getText());
+            pstm.setString(2, toBlankField.getText());
+            int result = pstm.executeUpdate(); // execute SQL statement
             if (result > 0){ // Check if stock is deleted successfully
                 JOptionPane.showMessageDialog(this, "Blank stock deleted. " +
                         "Review using 'Manage Stock' menu");                                         // Dialog box that informs user that stock has been successfully deleted
             } else {
-                JOptionPane.showMessageDialog(this, "Could not delete stock. " +
+                JOptionPane.showMessageDialog(this, "Could not delete selected stock. " +
                         "Review details entered");
             }
-
-
         } catch (SQLException sqle) {
             if (conn != null) { try { conn.rollback(); } catch (SQLException e) { throw new RuntimeException(sqle); }}
         } finally {
             try { if (conn != null) conn.close(); } catch (Exception e) { throw new RuntimeException(e); };
-            try { if (stm != null) stm.close(); } catch (Exception e) { throw new RuntimeException(e); };
+            try { if (pstm != null) pstm.close(); } catch (Exception e) { throw new RuntimeException(e); };
         }
     }
 
@@ -571,7 +570,6 @@ public class AddStock extends javax.swing.JFrame {
         PreparedStatement pstm = null;
         ResultSet rs = null;
         try {
-            model.setRowCount(0);
             conn = DBConnection.getConnection();
             String query = "SELECT * FROM in2018g12.blank";
             pstm = conn.prepareStatement(query);
