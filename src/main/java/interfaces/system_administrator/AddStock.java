@@ -552,7 +552,7 @@ public class AddStock extends javax.swing.JFrame {
                 JOptionPane.showMessageDialog(this, "Blank stock deleted. " +
                         "Review using 'Manage Stock' menu");                                         // Dialog box that informs user that stock has been successfully deleted
             } else {
-                JOptionPane.showMessageDialog(this, "Could not add customer. " +
+                JOptionPane.showMessageDialog(this, "Could not delete stock. " +
                         "Review details entered");
             }
 
