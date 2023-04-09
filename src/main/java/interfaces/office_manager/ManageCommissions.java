@@ -383,7 +383,7 @@ public class ManageCommissions extends javax.swing.JFrame {
                 }
         ) {
             Class[] types = new Class [] {
-                    java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
+                    java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -567,14 +567,14 @@ public class ManageCommissions extends javax.swing.JFrame {
 
     private void addRateButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addRateButtonActionPerformed
         Connection conn = null;
-        Statement stm = null;
+        PreparedStatement pstm = null;
         try {
             conn = DBConnection.getConnection();
-            stm = conn.createStatement();
             String query =
-                    "INSERT INTO in2018g12.commission (rate) " +
-                            "VALUES ('" + Double.parseDouble(addRateField.getText()) + "')";
-            int result = stm.executeUpdate(query);
+                    "INSERT INTO in2018g12.commission (rate) VALUES (?)";
+            pstm = conn.prepareStatement(query);
+            pstm.setDouble(1, Double.parseDouble(addRateField.getText()));
+            int result = pstm.executeUpdate();
             if (result > 0) {
                 JOptionPane.showMessageDialog(this, "Commission rate added. " +
                         "Review using 'Manage Commission Rates' menu");
@@ -586,7 +586,7 @@ public class ManageCommissions extends javax.swing.JFrame {
             if (conn != null) { try { conn.rollback(); } catch (SQLException e) { throw new RuntimeException(sqle); }}
         } finally {
             try { if (conn != null) conn.close(); } catch (Exception e) { throw new RuntimeException(e); }
-            try { if (stm != null) stm.close(); } catch (Exception e) { throw new RuntimeException(e); }
+            try { if (pstm != null) pstm.close(); } catch (Exception e) { throw new RuntimeException(e); }
         }
     }//GEN-LAST:event_addRateButtonActionPerformed
 
@@ -640,7 +640,7 @@ public class ManageCommissions extends javax.swing.JFrame {
                             "WHERE blankNumber = " + commissionRateTable.getValueAt(0, 0);
             pstm = conn.prepareStatement(query);
             pstm.setString(1, (String) commissionRateTable.getValueAt(commissionRateTable.getSelectedRow(), 1));
-            int result = pstm.executeUpdate(query);
+            int result = pstm.executeUpdate();
             if (result > 0){
                 JOptionPane.showMessageDialog(this, "Customer record updated. " +
                         "Review using 'View Customer Records' menu");
