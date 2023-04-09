@@ -577,53 +577,58 @@ public class ManageCommissions extends javax.swing.JFrame {
 
     private void editRateButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editRateButtonActionPerformed
         // TODO add your handling code here:
+        Connection conn = null;
+        PreparedStatement pstm = null;
+
+        try {
+            conn = DBConnection.getConnection();
+            String query =
+                    "UPDATE in2018g12.commission " +
+                            "SET commission_rate = ?, ticket_id = ?, staff_id = ?" +
+                            "WHERE date = ?";
+            pstm = conn.prepareStatement(query);
+            pstm.setDouble(1, (Double) commissionRateTable.getValueAt(commissionRateTable.getSelectedRow(), 1));
+            pstm.setInt(2, (Integer) commissionRateTable.getValueAt(commissionRateTable.getSelectedRow(), 2));
+            pstm.setInt(3, (Integer) commissionRateTable.getValueAt(commissionRateTable.getSelectedRow(), 3));
+            pstm.setDate(4, (Date) commissionRateTable.getValueAt(commissionRateTable.getSelectedRow(), 0));
+            int result = pstm.executeUpdate();
+            if (result > 0){
+                JOptionPane.showMessageDialog(this, "Commission rate updated. " +
+                        "Review using 'View Sales Records' menu");
+            } else {
+                JOptionPane.showMessageDialog(this, "Could not update commission rate. " +
+                        "Review details entered or contact system administrator");
+            }
+        } catch (SQLException sqle) {
+            if (conn != null) { try { conn.rollback(); } catch (SQLException e) { throw new RuntimeException(sqle); }}
+        } finally {
+            try { if (conn != null) conn.close(); } catch (Exception e) { throw new RuntimeException(e); }
+            try { if (pstm != null) pstm.close(); } catch (Exception e) { throw new RuntimeException(e); }
+        }
     }//GEN-LAST:event_editRateButtonActionPerformed
 
     private void deleteRateButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteRateButtonActionPerformed
-        commissionRateTable.addMouseListener(new MouseAdapter() {
-            @Override
-            public void mouseClicked(MouseEvent e) {
-                if (e.getClickCount() == 1) {
-                    int selectedRow = commissionRateTable.getSelectedRow();
-                    if (selectedRow>=0){
-                        String date = commissionRateTable.getValueAt(selectedRow, 0).toString();
-                        String commissionRate = commissionRateTable.getValueAt(selectedRow, 1).toString();
-                        String ticketID = commissionRateTable.getValueAt(selectedRow, 2).toString();
-                        String staffID = commissionRateTable.getValueAt(selectedRow, 3).toString();
+        Connection conn = null;
+        Statement stm = null;
 
-                        ((DefaultTableModel) commissionRateTable.getModel()).removeRow(selectedRow);
-
-                        try {
-                            // Creating connection to database
-                            Connection conn = DBConnection.getConnection();
-
-                            // Creating DELETE SQL query with parameters
-                            String deleteQuery = "DELETE FROM in2018g12.commission WHERE date = ? AND commissionRate = ? AND ticketID = ? AND staffID = ?";
-                            PreparedStatement preparedStatement = conn.prepareStatement(deleteQuery);
-                            preparedStatement.setString(1, date);
-                            preparedStatement.setString(2, commissionRate);
-                            preparedStatement.setString(3, ticketID);
-                            preparedStatement.setString(4, staffID);
-
-                            // Executing DELETE query
-                            int rowsAffected = preparedStatement.executeUpdate();
-                            if (rowsAffected > 0) {
-                                System.out.println("Row deleted from the database.");
-                            } else {
-                                System.out.println("No rows deleted from the database.");
-                            }
-
-                            // Closing connection and statement
-                            preparedStatement.close();
-                            conn.close();
-
-                        } catch (SQLException ex) {
-                            ex.printStackTrace();
-                        }
-                    }
-                }
+        try {
+            conn = DBConnection.getConnection();
+            stm = conn.createStatement();
+            int selectedRow = commissionRateTable.getSelectedRow();
+            String ticketID = commissionRateTable.getValueAt(selectedRow, 2).toString();
+            String query = "DELETE FROM in2018g12.commission WHERE ticket_id = '" + findRateField + "'";
+            int result = stm.executeUpdate(query);
+            if (result > 0)
+            {
+                JOptionPane.showMessageDialog(this, "Commission rate deleted successfully.");
             }
-        });
+        } catch (SQLException sqle) {
+            if (conn != null) { try { conn.rollback(); } catch (SQLException e) { throw new RuntimeException(sqle); }}
+        } finally {
+            try { if (conn != null) conn.close(); } catch (Exception e) { throw new RuntimeException(e); }
+            try { if (stm != null) stm.close(); } catch (Exception e) { throw new RuntimeException(e); }
+        }
+
 
     }//GEN-LAST:event_deleteRateButtonActionPerformed
 
