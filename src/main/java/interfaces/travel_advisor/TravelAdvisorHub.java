@@ -13,9 +13,7 @@ import javax.swing.table.TableRowSorter;
 import interfaces.general.Login;
 import interfaces.office_manager.OfficeManagerHub;
 import interfaces.system_administrator.SystemAdminHub;
-import staff.OfficeManager;
-import staff.SystemAdministrator;
-import staff.TravelAdvisor;
+import staff.*;
 
 import java.sql.*;
 import java.util.Arrays;
@@ -175,14 +173,6 @@ public class TravelAdvisorHub extends javax.swing.JFrame {
             }
         });
 
-        orderDDMenu.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        orderDDMenu.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Order", "By Number", "By Date", "By Status" }));
-        orderDDMenu.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                orderDDMenuActionPerformed(evt);
-            }
-        });
-
         refreshButton.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         refreshButton.setText("Refresh");
         refreshButton.setAlignmentY(0.0F);
@@ -231,7 +221,7 @@ public class TravelAdvisorHub extends javax.swing.JFrame {
                         {null, null, null, null}
                 },
                 new String [] {
-                        "Number", "Type", "Status", "Date"
+                        "Date", "Number", "Type", "Status"
                 }
         ));
         personalBlanksTable.setColumnSelectionAllowed(true);
@@ -239,17 +229,44 @@ public class TravelAdvisorHub extends javax.swing.JFrame {
         tableScrollPane.setViewportView(personalBlanksTable);
         personalBlanksTable.getColumnModel().getSelectionModel().setSelectionMode(javax.swing.ListSelectionModel.MULTIPLE_INTERVAL_SELECTION);
 
+        Connection conn = null;
+        PreparedStatement pstm = null;
+        ResultSet rs = null;
+        DefaultTableModel model = (DefaultTableModel)personalBlanksTable.getModel();
+        StaffController staffController = new StaffController();
+
+        try{
+            conn = DBConnection.getConnection();
+            String query = "SELECT * FROM blank WHERE staffID = ?";
+            pstm = conn.prepareStatement(query);
+            pstm.setInt(1, staffController.getAdvisor().getId());
+            pstm.executeUpdate();
+            while (rs.next()){
+                Object[] row = new Object[4];
+                row[0] = rs.getString("date");
+                row[1] = rs.getString("number");
+                row[2] = rs.getString("type");
+                row[3] = rs.getString("status");
+                model.addRow(row);
+            }
+        } catch (SQLException sqle){
+        } finally {
+            try { if (conn != null) conn.close(); } catch (Exception e) { throw new RuntimeException(e); }
+            try { if (pstm != null) pstm.close(); } catch (Exception e) { throw new RuntimeException(e); }
+            try { if (rs != null) rs.close(); } catch (Exception e) { throw new RuntimeException(e); }
+        }
+
         pageTitlePanel.setBackground(new java.awt.Color(49, 174, 209));
         pageTitlePanel.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         pageTitlePanel.setPreferredSize(new java.awt.Dimension(500, 83));
 
-        idAndRoleLabel.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        idAndRoleLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        idAndRoleLabel.setText("Staff ID | Travel Advisor");
-
         welcomeLabel.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         welcomeLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         welcomeLabel.setText("Welcome Name");
+
+        idAndRoleLabel.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        idAndRoleLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        idAndRoleLabel.setText("Staff ID | Travel Advisor");
 
         javax.swing.GroupLayout pageTitlePanelLayout = new javax.swing.GroupLayout(pageTitlePanel);
         pageTitlePanel.setLayout(pageTitlePanelLayout);
@@ -442,6 +459,7 @@ public class TravelAdvisorHub extends javax.swing.JFrame {
 
     private void refreshTableButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_refreshTableButtonActionPerformed
         DefaultTableModel model = (DefaultTableModel)personalBlanksTable.getModel();
+        StaffController staffController = new StaffController();
         Connection conn = null;
         PreparedStatement pstm = null;
         ResultSet rs = null;
@@ -449,7 +467,7 @@ public class TravelAdvisorHub extends javax.swing.JFrame {
             conn = DBConnection.getConnection();
             String query = "SELECT * FROM in2018g12.blank WHERE staffID = ?";
             pstm = conn.prepareStatement(query);
-            pstm.setInt(1, previousPage.getAdvisor().getId());
+            pstm.setInt(1, staffController.getAdvisor().getId());
             rs = pstm.executeQuery();
             if (!rs.next()){
                 JOptionPane.showMessageDialog(this, "Could not refresh table data. " +
@@ -507,26 +525,9 @@ public class TravelAdvisorHub extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_showDDMenuActionPerformed
 
-    private void orderDDMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_orderDDMenuActionPerformed
-        DefaultTableModel model = (DefaultTableModel)personalBlanksTable.getModel();
-        TableRowSorter<DefaultTableModel> sorter = new TableRowSorter<>(model);
-        switch ((String) Objects.requireNonNull(orderDDMenu.getSelectedItem())){
-            case "By Date" -> {
-                sorter.setSortKeys(List.of(new RowSorter.SortKey(0, SortOrder.ASCENDING)));
-            }
-            case "By Number" -> {
-                sorter.setSortKeys(List.of(new RowSorter.SortKey(1, SortOrder.ASCENDING)));
-            }
-            case "By Status" -> {
-                sorter.setSortKeys(List.of(new RowSorter.SortKey(3, SortOrder.ASCENDING)));
-            }
-        }
-        personalBlanksTable.setRowSorter(sorter);
-        sorter.sort();
-    }//GEN-LAST:event_orderDDMenuActionPerformed
-
     private void findBlankButtonActionPerformed(java.awt.event.ActionEvent evt) {
         DefaultTableModel model = (DefaultTableModel)personalBlanksTable.getModel();
+        StaffController staffController = new StaffController();
         Connection conn = null;
         PreparedStatement pstm = null;
         ResultSet rs = null;
@@ -535,7 +536,7 @@ public class TravelAdvisorHub extends javax.swing.JFrame {
             String query = "SELECT * FROM in2018g12.blank WHERE number = ?  AND staffID = ?";
             pstm = conn.prepareStatement(query);
             pstm.setString(1, findBlankLabel.getText());
-            pstm.setInt(2, previousPage.getAdvisor().getId());
+            pstm.setInt(2, staffController.getAdvisor().getId());
             rs = pstm.executeQuery();
             if (rs.next()){
                 model.setRowCount(0);
@@ -559,6 +560,7 @@ public class TravelAdvisorHub extends javax.swing.JFrame {
     }
 
     private void voidBlankButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_voidBlankButtonActionPerformed
+        StaffController staffController = new StaffController();
         Connection conn = null;
         PreparedStatement pstm = null;
         try {
@@ -566,8 +568,8 @@ public class TravelAdvisorHub extends javax.swing.JFrame {
             String query = "UPDATE blank SET status = ? WHERE staffID = ?";
             pstm = conn.prepareStatement(query);
             pstm.setString(1, "Void");
-            pstm.setInt(2, previousPage.getAdvisor().getId());
-            int result = pstm.executeUpdate(query);
+            pstm.setInt(2, staffController.getAdvisor().getId());
+            int result = pstm.executeUpdate();
             if (result > 0){
                 JOptionPane.showMessageDialog(this, "Selected blank has been voided. " +
                         "Review using the personal stock information table in this menu");
