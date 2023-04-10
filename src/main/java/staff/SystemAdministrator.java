@@ -2,6 +2,14 @@ package staff;
 
 public class SystemAdministrator extends StaffAccount {
 
+	private int id;
+	private String username;
+	private String forename;
+	private String surname;
+	private String role;
+	private String phone;
+	private String email;
+
 	/**
 	 * @param id       Automatically generated and assigned 3 digit value
 	 * @param role     Role of staff member
@@ -9,63 +17,77 @@ public class SystemAdministrator extends StaffAccount {
 	 * @param surname  Surname(s) of staff member
 	 */
 
-	public SystemAdministrator(int id, String password, String role, String forename, String surname) {
-		super(id, password, role, forename, surname);
+	public SystemAdministrator(int id, String role, String forename, String surname) {
+		super(id, role, forename, surname);
 	}
 
-	/**
-	 * Edit details of a provided staff account
-	 * @param id Staff account to be edited
-	 */
-	public void editStaffAccount(int id) {
-		// TODO - implement SystemAdministrator.editStaffAccount
-		throw new UnsupportedOperationException();
+	@Override
+	public int getId() {
+		return id;
 	}
 
-	/**
-	 * Remove a staff account no longer in use
-	 * @param id ID of account to be removed
-	 */
-	public void removeStaffAccount(int id) {
-		// TODO - implement SystemAdministrator.removeStaffAccount
-		throw new UnsupportedOperationException();
+	@Override
+	public void setId(int id) {
+		this.id = id;
 	}
 
-	/**
-	 * On receiving new stock of blanks from airlines, the travel agency needs to be able to add these to the system
-	 * @param blankNumbers Blanks being added to system
-	 */
-	public void addBlank(String[] blankNumbers) {
-		// TODO - implement SystemAdministrator.addBlank
-		throw new UnsupportedOperationException();
+	@Override
+	public String getUsername() {
+		return username;
 	}
 
-	/**
-	 * For blanks no longer under regulatory archival, they can be removed from the system
-	 * @param blankNumber Blank to be removed
-	 */
-	public void removeBlank(String blankNumber) {
-		// TODO - implement SystemAdministrator.removeBlank
-		throw new UnsupportedOperationException();
+	@Override
+	public void setUsername(String username) {
+		this.username = username;
 	}
 
-	public void backupDatabase() {
-		// TODO - implement SystemAdministrator.backupDatabase
-		throw new UnsupportedOperationException();
+	@Override
+	public String getForename() {
+		return forename;
 	}
 
-	/**
-	 * Restoring a database using a provided database backup file, usually in .db format
-	 * @param backupFile
-	 */
-	public void restoreDatabase(String backupFile) {
-		// TODO - implement SystemAdministrator.restoreDatabase
-		throw new UnsupportedOperationException();
+	@Override
+	public void setForename(String forename) {
+		this.forename = forename;
 	}
 
-	public void editAgencyDetails() {
-		// TODO - implement SystemAdministrator.editAgencyDetails
-		throw new UnsupportedOperationException();
+	@Override
+	public String getSurname() {
+		return surname;
 	}
 
+	@Override
+	public void setSurname(String surname) {
+		this.surname = surname;
+	}
+
+	@Override
+	public String getRole() {
+		return role;
+	}
+
+	@Override
+	public void setRole(String role) {
+		this.role = role;
+	}
+
+	@Override
+	public String getPhone() {
+		return phone;
+	}
+
+	@Override
+	public void setPhone(String phone) {
+		this.phone = phone;
+	}
+
+	@Override
+	public String getEmail() {
+		return email;
+	}
+
+	@Override
+	public void setEmail(String email) {
+		this.email = email;
+	}
 }
