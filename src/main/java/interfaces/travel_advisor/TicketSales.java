@@ -31,6 +31,7 @@ import java.net.URL;
 import java.util.Scanner;
 
 import sale.ExchangeRate;
+import staff.StaffController;
 
 /**
  *
@@ -574,12 +575,13 @@ public class TicketSales extends javax.swing.JFrame {
         PreparedStatement pstm = null;
         ResultSet rs = null;
         DefaultListModel<String> model = new DefaultListModel<>();
+        StaffController staffController = new StaffController();
 
         try{
             conn = DBConnection.getConnection();
             String query = "SELECT * FROM blank WHERE staffID = ?";
             pstm = conn.prepareStatement(query);
-            pstm.setInt(1, previousPage.getAdvisor().getId());
+            pstm.setInt(1, staffController.getAdvisor().getId());
             pstm.executeUpdate();
             while (rs.next()){
                 String blankNumber = rs.getString("number");
@@ -1045,6 +1047,7 @@ public class TicketSales extends javax.swing.JFrame {
         int index = random.nextInt(usernames.length);
         String username = usernames[index];
 
+        StaffController staffController = new StaffController();
         Connection conn = null;
         PreparedStatement pstm1 = null;
         PreparedStatement pstm2 = null;
@@ -1071,7 +1074,7 @@ public class TicketSales extends javax.swing.JFrame {
                 pstm1.setString(5, emailField.getText());
                 pstm1.setString(6, "Regular");
                 regCustomer = new RegularCustomer(username, forenameField.getText(), surnameField.getText(), phoneField.getText(), emailField.getText(), "Regular");
-                pstm1Result = pstm1.executeUpdate(createCustomerQuery);
+                pstm1Result = pstm1.executeUpdate();
 
                 createTicketQuery = "INSERT INTO in2018g12.ticket VALUES (?, ?, ?, ?)";
                 pstm2 = conn.prepareStatement(createTicketQuery);
@@ -1082,30 +1085,30 @@ public class TicketSales extends javax.swing.JFrame {
                     pstm2.setString(4, "Paid");
                 } else
                     pstm2.setString(4, null);
-                pstm2Result = pstm2.executeUpdate(createTicketQuery);
+                pstm2Result = pstm2.executeUpdate();
 
-                createSaleQuery = "INSERT INTO in2018g12.sale VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+                createSaleQuery = "INSERT INTO in2018g12.sale VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
                 pstm3 = conn.prepareStatement(createSaleQuery);
                 pstm3.setString(1, saleID);
-                pstm3.setInt(2, previousPage.getAdvisor().getId());
+                //pstm3.setInt(2, staffController.getAdvisor().getId());
                 pstm3.setString(3, typeOfSaleDDMenu.getSelectedItem().toString());
                 pstm3.setString(4, String.valueOf(LocalDate.now()));
                 pstm3.setString(5, paymentTypeDDMenu.getSelectedItem().toString());
                 pstm3.setBigDecimal(6, BigDecimal.valueOf(Float.parseFloat(usdPayableLabel.getText())));
                 pstm3.setString(7, iataCurrencyCodeDDMenu.getSelectedItem().toString() );
                 pstm3.setString(8, exchangeRateLabel.getText());
-                pstm3.setBigDecimal(9, BigDecimal.valueOf(Float.parseFloat(iataAmtLabel.getText())));
-                pstm3.setBigDecimal(10, BigDecimal.valueOf(Float.parseFloat(taxAmountLabel.getText())));
-                pstm3.setBigDecimal(11, BigDecimal.valueOf(Float.parseFloat(otherAmtLabel.getText())));
-                pstm3.setBigDecimal(12, BigDecimal.valueOf(Float.parseFloat(subtotalAmtLabel.getText())));
-                pstm3.setBigDecimal(13, BigDecimal.valueOf(Float.parseFloat(usdAmtLabel.getText())));
+                pstm3.setBigDecimal(9, BigDecimal.valueOf(Double.parseDouble(iataAmtLabel.getText())));
+                pstm3.setBigDecimal(10, BigDecimal.valueOf(Double.parseDouble(taxAmountLabel.getText())));
+                pstm3.setBigDecimal(11, BigDecimal.valueOf(Double.parseDouble(otherAmtLabel.getText())));
+                pstm3.setBigDecimal(12, BigDecimal.valueOf(Double.parseDouble(subtotalAmtLabel.getText())));
+                pstm3.setBigDecimal(13, BigDecimal.valueOf(Double.parseDouble(usdAmtLabel.getText())));
                 if (plYesCheckbox.isSelected()){
                     pstm3.setString(14, "Yes");
                 } else if (plNoCheckbox.isSelected()){
                     pstm3.setString(14, "No");
                 }
                 pstm3.setString(15, typeOfSaleDDMenu.getSelectedItem().toString());
-                pstm3Result = pstm3.executeUpdate(createSaleQuery);
+                pstm3Result = pstm3.executeUpdate();
 
                 if (pstm1Result > 0 && pstm2Result > 0 && pstm3Result > 0){
                     JOptionPane.showMessageDialog(this,
@@ -1128,7 +1131,7 @@ public class TicketSales extends javax.swing.JFrame {
                     pstm3.setString(4, "Paid");
                 } else
                     pstm3.setString(4, null);
-                pstm3Result = pstm3.executeUpdate(createTicketQuery);
+                pstm3Result = pstm3.executeUpdate();
                 if (pstm3Result > 0){
                     JOptionPane.showMessageDialog(this,
                             """
