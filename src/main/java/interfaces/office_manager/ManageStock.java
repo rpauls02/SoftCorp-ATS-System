@@ -57,7 +57,6 @@ public class ManageStock extends javax.swing.JFrame {
         functionPanel = new javax.swing.JPanel();
         tableNameLabel = new javax.swing.JLabel();
         showDDMenu = new javax.swing.JComboBox<>();
-        orderDDMenu = new javax.swing.JComboBox<>();
         refreshTableButton = new javax.swing.JButton();
         blankTableSP = new javax.swing.JScrollPane();
         blankStockTable = new javax.swing.JTable();
@@ -252,14 +251,6 @@ public class ManageStock extends javax.swing.JFrame {
             }
         });
 
-        orderDDMenu.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        orderDDMenu.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Order", "By Number", "By Date", "By Status" }));
-        orderDDMenu.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                orderDDMenuActionPerformed(evt);
-            }
-        });
-
         refreshTableButton.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         refreshTableButton.setText("Refresh");
         refreshTableButton.addActionListener(new java.awt.event.ActionListener() {
@@ -275,8 +266,6 @@ public class ManageStock extends javax.swing.JFrame {
                         .addGroup(functionPanelLayout.createSequentialGroup()
                                 .addContainerGap()
                                 .addComponent(showDDMenu, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(orderDDMenu, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(refreshTableButton)
                                 .addContainerGap())
@@ -292,12 +281,12 @@ public class ManageStock extends javax.swing.JFrame {
                                 .addContainerGap()
                                 .addGroup(functionPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                         .addComponent(refreshTableButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(orderDDMenu)
                                         .addComponent(showDDMenu))
                                 .addContainerGap())
                         .addGroup(functionPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                 .addComponent(tableNameLabel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 41, Short.MAX_VALUE))
         );
+
 
         blankTableSP.setBackground(new java.awt.Color(255, 255, 255));
         blankTableSP.setBorder(javax.swing.BorderFactory.createEtchedBorder());
@@ -521,24 +510,6 @@ public class ManageStock extends javax.swing.JFrame {
         }
     }
 
-    private void orderDDMenuActionPerformed(java.awt.event.ActionEvent evt) {
-        DefaultTableModel model = (DefaultTableModel)blankStockTable.getModel();
-        TableRowSorter<DefaultTableModel> sorter = new TableRowSorter<>(model);
-        switch ((String) Objects.requireNonNull(orderDDMenu.getSelectedItem())){
-            case "By Date" -> {
-                sorter.setSortKeys(List.of(new RowSorter.SortKey(0, SortOrder.ASCENDING)));
-            }
-            case "By Number" -> {
-                sorter.setSortKeys(List.of(new RowSorter.SortKey(1, SortOrder.ASCENDING)));
-            }
-            case "By Status" -> {
-                sorter.setSortKeys(List.of(new RowSorter.SortKey(3, SortOrder.ASCENDING)));
-            }
-        }
-        blankStockTable.setRowSorter(sorter);
-        sorter.sort();
-    }
-
     private void homeButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_homeButtonActionPerformed
         dispose();
         new OfficeManagerHub().setVisible(true);
@@ -564,7 +535,7 @@ public class ManageStock extends javax.swing.JFrame {
             pstm.setInt(1, Integer.parseInt(staffIDField.getText()));
             pstm.setString(2, "Assigned");
             pstm.setInt(3, Integer.parseInt(staffIDField.getText()));
-            int result = pstm.executeUpdate(query);
+            int result = pstm.executeUpdate();
             if (result > 0){
                 JOptionPane.showMessageDialog(this, "Selected blanks have been assigned. " +
                         "Review using the stock information table in this menu");
@@ -681,7 +652,6 @@ public class ManageStock extends javax.swing.JFrame {
     private javax.swing.JButton manageCommissionsButton;
     private javax.swing.JButton manageStockButton;
     private javax.swing.JPanel manageStockPanel;
-    private javax.swing.JComboBox<String> orderDDMenu;
     private javax.swing.JLabel pageTitleLabel;
     private javax.swing.JPanel pageTitlePanel;
     private javax.swing.JButton reassignButton;

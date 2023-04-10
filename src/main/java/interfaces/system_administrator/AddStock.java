@@ -45,7 +45,6 @@ public class AddStock extends javax.swing.JFrame {
         functionPanel = new javax.swing.JPanel();
         tableNameLabel = new javax.swing.JLabel();
         showDDMenu = new javax.swing.JComboBox<>();
-        orderDDMenu = new javax.swing.JComboBox<>();
         refreshTableButton = new javax.swing.JButton();
         blankTableSP = new javax.swing.JScrollPane();
         blankStockTable = new javax.swing.JTable();
@@ -118,14 +117,6 @@ public class AddStock extends javax.swing.JFrame {
             }
         });
 
-        orderDDMenu.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        orderDDMenu.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Order", "By Number", "By Date", "By Status" }));
-        orderDDMenu.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                orderDDMenuActionPerformed(evt);
-            }
-        });
-
         refreshTableButton.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         refreshTableButton.setText("Refresh");
         refreshTableButton.addActionListener(new java.awt.event.ActionListener() {
@@ -141,8 +132,6 @@ public class AddStock extends javax.swing.JFrame {
                         .addGroup(functionPanelLayout.createSequentialGroup()
                                 .addContainerGap()
                                 .addComponent(showDDMenu, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(orderDDMenu, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(refreshTableButton)
                                 .addContainerGap())
@@ -158,9 +147,7 @@ public class AddStock extends javax.swing.JFrame {
                                 .addContainerGap()
                                 .addGroup(functionPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                         .addComponent(refreshTableButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addGroup(functionPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                                .addComponent(orderDDMenu)
-                                                .addComponent(showDDMenu)))
+                                        .addComponent(showDDMenu, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addContainerGap())
                         .addGroup(functionPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                 .addComponent(tableNameLabel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 41, Short.MAX_VALUE))
@@ -172,10 +159,7 @@ public class AddStock extends javax.swing.JFrame {
         blankStockTable.setBackground(new java.awt.Color(49, 174, 209));
         blankStockTable.setModel(new javax.swing.table.DefaultTableModel(
                 new Object [][] {
-                        {null, null, null, null, null},
-                        {null, null, null, null, null},
-                        {null, null, null, null, null},
-                        {null, null, null, null, null}
+                        {null, null, null, null, null, null,}
                 },
                 new String [] {
                         "Date", "Number", "Staff ID", "Type", "Status"
@@ -444,61 +428,62 @@ public class AddStock extends javax.swing.JFrame {
     }
 
     private void addStockButtonActionPerformed(java.awt.event.ActionEvent evt) {
-        String blankNumber = " ";
         String blankType = " ";
         Connection conn = null;
         PreparedStatement pstm = null;
         try {
             conn = DBConnection.getConnection();
-            String query = "INSERT INTO in2018g12.blank (in2018g12.blank.number, in2018g12.blank.date, in2018g12.blank.type, in2018g12.blank.status) VALUES (?, ?, ?, ?)";
-            pstm = conn.prepareStatement(query);
 
             for (int i = Integer.parseInt(toBlankField.getText()); i <= Integer.parseInt(fromBlankField.getText()); i++) {
-                if (toBlankField.getText().length() == 3){
+                String query = "INSERT INTO in2018g12.blank (in2018g12.blank.number, in2018g12.blank.date, in2018g12.blank.type, in2018g12.blank.status) VALUES (?, ?, ?, ?)";
+                pstm = conn.prepareStatement(query);
+
+                String blankNumber = " ";
+                if (String.valueOf(i).length() == 1) {
                     //Creates a blank with number xxx00000111
                     blankNumber = blankTypeDDMenu.getSelectedItem().toString().substring(0, 3)
-                            + "00000" + toBlankField.getText();
-                } else if (toBlankField.getText().length() == 2){
+                            + "0000000" + i;
+                } else if (String.valueOf(i).length() == 2) {
                     //Creates a blank with number xxx00000011
                     blankNumber = blankTypeDDMenu.getSelectedItem().toString().substring(0, 3)
-                            + "000000" + toBlankField.getText();
-                } else if (toBlankField.getText().length() == 1){
+                            + "000000" + i;
+                } else if (String.valueOf(i).length() == 3) {
                     //Creates a blank with number xxx00000001
                     blankNumber = blankTypeDDMenu.getSelectedItem().toString().substring(0, 3)
-                            + "0000000" + toBlankField.getText();
+                            + "00000" + i;
+                }
+
+                pstm.setString(1, blankNumber);
+                pstm.setString(1, String.valueOf(new java.sql.Date(System.currentTimeMillis())));
+
+                if (blankTypeDDMenu.getSelectedItem().toString().startsWith("444")) {
+                    blankType = "InterlineAuto4Cpn";
+                } else if (blankTypeDDMenu.getSelectedItem().toString().startsWith("440")) {
+                    blankType = "InterlineManual4Cpn";
+                } else if (blankTypeDDMenu.getSelectedItem().toString().startsWith("424")) {
+                    blankType = "InterlineAuto2Cpn";
+                } else if (blankTypeDDMenu.getSelectedItem().toString().startsWith("201")) {
+                    blankType = "AutoDomestic2Cpn";
+                } else if (blankTypeDDMenu.getSelectedItem().toString().startsWith("101")) {
+                    blankType = "AutoDomestic1Cpn";
+                } else if (blankTypeDDMenu.getSelectedItem().toString().startsWith("451")) {
+                    blankType = "ExcessLuggage";
+                } else if (blankTypeDDMenu.getSelectedItem().toString().startsWith("452")) {
+                    blankType = "OtherServices";
+                }
+
+                pstm.setString(3, blankType);
+                pstm.setString(4, "Unassigned");
+
+                int result = pstm.executeUpdate();
+                if (result <= 0) {
+                    JOptionPane.showMessageDialog(this, "Could not add stock. " +
+                            "Review details entered.");
+                    return;
                 }
             }
-            pstm.setString(1, String.valueOf(LocalDate.now()));
-
-            pstm.setString(2, blankNumber);
-            pstm.setString(3, "staffID");
-
-            if (blankTypeDDMenu.getSelectedItem().toString().startsWith("444")){
-                blankType = "InterlineAuto4Cpn";
-            } else if (blankTypeDDMenu.getSelectedItem().toString().startsWith("440")){
-                blankType = "InterlineManual4Cpn";
-            } else if (blankTypeDDMenu.getSelectedItem().toString().startsWith("424")){
-                blankType = "InterlineAuto2Cpn";
-            } else if (blankTypeDDMenu.getSelectedItem().toString().startsWith("201")){
-                blankType = "AutoDomestic2Cpn";
-            } else if (blankTypeDDMenu.getSelectedItem().toString().startsWith("101")){
-                blankType = "AutoDomestic1Cpn";
-            } else if (blankTypeDDMenu.getSelectedItem().toString().startsWith("451")){
-                blankType = "ExcessLuggage";
-            } else if (blankTypeDDMenu.getSelectedItem().toString().startsWith("452")) {
-                blankType = "OtherServices";
-            }
-            pstm.setString(3, blankType);
-
-            pstm.setString(4, "Unassigned");
-            int result = pstm.executeUpdate();
-            if (result > 0){
-                JOptionPane.showMessageDialog(this, "Blank stock added. " +
-                        "Review using the 'Blank Stock' table in this menu");
-            } else {
-                JOptionPane.showMessageDialog(this, "Could not add stock. " +
-                        "Review details entered.");
-            }
+            JOptionPane.showMessageDialog(this, "Blank stock added. " +
+                    "Review using the 'Blank Stock' table in this menu");
         } catch (SQLException sqle) {
             if (conn != null) { try { conn.rollback(); } catch (SQLException e) { throw new RuntimeException(sqle); }}
         } finally {
@@ -544,10 +529,16 @@ public class AddStock extends javax.swing.JFrame {
         PreparedStatement pstm = null;
         try {
             conn = DBConnection.getConnection();
-            String query = "DELETE FROM blank WHERE number BETWEEN ? AND ?"; // SQL statement to delete a range of blanks
-            pstm = conn.prepareStatement(query); // Initialize statement object
-            pstm.setString(1, fromBlankField.getText());
-            pstm.setString(2, toBlankField.getText());
+            if (!blankStockTable.getSelectionModel().isSelectionEmpty()){
+                String query = "DELETE FROM blank WHERE number BETWEEN ? AND ?"; // SQL statement to delete a range of blanks
+                pstm = conn.prepareStatement(query); // Initialize statement object
+                pstm.setString(1, fromBlankField.getText());
+                pstm.setString(2, toBlankField.getText());
+            } else {
+                String query = "DELETE FROM blank WHERE number = ?"; // SQL statement to delete a range of blanks
+                pstm = conn.prepareStatement(query); // Initialize statement object
+                pstm.setString(1, (blankStockTable.getValueAt(blankStockTable.getSelectedRow(), 1)).toString());
+            }
             int result = pstm.executeUpdate(); // execute SQL statement
             if (result > 0){ // Check if stock is deleted successfully
                 JOptionPane.showMessageDialog(this, "Blank stock deleted. " +
@@ -596,24 +587,6 @@ public class AddStock extends javax.swing.JFrame {
             try { if (pstm != null) pstm.close(); } catch (Exception e) { throw new RuntimeException(e); }
             try { if (rs != null) rs.close(); } catch (Exception e) { throw new RuntimeException(e); }
         }
-    }
-
-    private void orderDDMenuActionPerformed(java.awt.event.ActionEvent evt) {
-        DefaultTableModel model = (DefaultTableModel)blankStockTable.getModel();
-        TableRowSorter<DefaultTableModel> sorter = new TableRowSorter<>(model);
-        switch ((String) Objects.requireNonNull(orderDDMenu.getSelectedItem())){
-            case "By Date" -> {
-                sorter.setSortKeys(List.of(new RowSorter.SortKey(0, SortOrder.ASCENDING)));
-            }
-            case "By Number" -> {
-                sorter.setSortKeys(List.of(new RowSorter.SortKey(1, SortOrder.ASCENDING)));
-            }
-            case "By Status" -> {
-                sorter.setSortKeys(List.of(new RowSorter.SortKey(3, SortOrder.ASCENDING)));
-            }
-        }
-        blankStockTable.setRowSorter(sorter);
-        sorter.sort();
     }
 
     /**
@@ -672,7 +645,6 @@ public class AddStock extends javax.swing.JFrame {
     private javax.swing.JPanel logoPanel;
     private javax.swing.JButton logoutButton;
     private javax.swing.JButton manageStockButton;
-    private javax.swing.JComboBox<String> orderDDMenu;
     private javax.swing.JPanel pageTitlePanel;
     private javax.swing.JButton refreshTableButton;
     private javax.swing.JComboBox<String> showDDMenu;
