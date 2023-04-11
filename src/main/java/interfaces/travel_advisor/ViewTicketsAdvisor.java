@@ -384,6 +384,16 @@ public class ViewTicketsAdvisor extends javax.swing.JFrame {
         new TicketSales().setVisible(true);
     }//GEN-LAST:event_sellTicketPageButtonActionPerformed
 
+         /*
+        * User clicking on a drop-down menu
+        1. The method gets the table that shows the customer tickets from the program.
+        2. It counts how many rows are in the table.
+        3. Depending on which item the user selected from the drop-down menu, the method sets a maximum number of rows that can be shown in the table.
+        4. If the number of rows in the table is greater than the maximum number of rows allowed, the method removes the extra rows from the table.
+        5. The method updates the table to show the correct number of rows based on the user's selection from the drop-down menu.
+         *
+        * */
+
     private void showDDMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_showDDMenuActionPerformed
         DefaultTableModel model = (DefaultTableModel) customerTicketsTable.getModel();
         int rowCount = model.getRowCount();
@@ -415,6 +425,18 @@ public class ViewTicketsAdvisor extends javax.swing.JFrame {
             }
         }
     }//GEN-LAST:event_showDDMenuActionPerformed
+
+        /*
+        * Refreshing the table
+        1. Gets a table model that represents the data in the customerTicketsTable.
+        2. Tries to connect to a database using a specific driver.
+        3. Executes a SQL query to retrieve all the data from the ticket table.
+        4. Checks if the query returned any data. If not, it shows an error message.
+        5. If the query returned data, it clears the table model and then adds each row of data to the table model.
+        6. If there is any SQL exception during this process, it will try to rollback the request.
+        7. Finally, it closes all the open resources like the ResultSet, PreparedStatement, and Connection objects to avoid memory leaks.
+        *
+        * */
 
     private void refreshTableButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_refreshTableButtonActionPerformed
         DefaultTableModel model = (DefaultTableModel)customerTicketsTable.getModel();
@@ -449,6 +471,17 @@ public class ViewTicketsAdvisor extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_refreshTableButtonActionPerformed
 
+        /*
+        * Finding the Ticket Button Action
+        1. Establishes a connection to the database and creates a prepared statement to execute a SQL query.
+        2. Executes a SQL query to find all tickets associated with a customer whose surname matches the text in a label named "findTicketLabel".
+        3. If the customer is not found, it displays an error message using a dialog box.
+        4. If the customer is found, it clears the contents of the "model" variable and fills it with the details of all the tickets associated with the customer.
+        5. Catches and handles any exceptions that may occur during the process.
+        6. Closes the database connection, statement, and result set to free up system resources.
+        *
+        * */
+
     private void findTicketButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_findTicketButtonActionPerformed
         DefaultTableModel model = (DefaultTableModel)customerTicketsTable.getModel();
         Connection conn = null;
@@ -481,6 +514,15 @@ public class ViewTicketsAdvisor extends javax.swing.JFrame {
             try { if (rs != null) rs.close(); } catch (Exception e) { throw new RuntimeException(e); }
         }
     }//GEN-LAST:event_findTicketButtonActionPerformed
+
+        /*
+        * Creating a refund of customers ticket and storing it in a txt file
+        1. When the "refund ticket" button is clicked, it connects to a database and prepares a SQL query to update the status of a ticket to "Refunded".
+        2. It then executes the query and records the refund in a file named "refunds.txt".
+        3. If an error occurs during this process, it displays an error message to the user.
+        4. Finally, it closes the database connection, statement, and result set.
+        *
+        * */
 
     private void refundTicketButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_refundTicketButtonActionPerformed
         Connection conn = null;

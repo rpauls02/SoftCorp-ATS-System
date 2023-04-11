@@ -467,6 +467,92 @@ public class GenerateIndividualReport extends javax.swing.JFrame {
 
     private void reportTypeDDMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_reportTypeDDMenuActionPerformed
 
+        // report table for content code
+//    DefaultTableModel model = (DefaultTableModel)reportContentsTable.getModel();
+//    Connection conn = null;
+//    PreparedStatement pstm = null;
+//    ResultSet rs = null;
+//    String query = null;
+//
+//        try {
+//                conn = DBConnection.getConnection();
+//                if (Objects.equals(Objects.requireNonNull(reportTypeDDMenu.getSelectedItem()).toString(), "Interline Sales")){
+//                query = "SELECT s.sellDate, t.blankNumber, s.originalFare, s.exchangeRate, s.convertedFare, s.tax, s.taxOther, s.total, s.payLater, ca.number, s.totalPaid, co.rate " +
+//                "FROM sale s " +
+//                "INNER JOIN staff st ON st.id = s.staffID " +
+//                "INNER JOIN ticket t ON t.saleID = s.id " +
+//                "INNER JOIN card ca ON ca.customerUsername = t.customerUsername " +
+//                "INNER JOIN commission co ON co.blankNumber = t.blankNumber";
+//
+//                } else if (Objects.equals(reportTypeDDMenu.getSelectedItem().toString(), "Domestic Sales")){
+//                query = "SELECT s.sellDate, t.blankNumber, s.originalFare, s.exchangeRate, s.convertedFare, s.tax, s.taxOther, s.total, s.payLater, ca.number, s.totalPaid, co.rate " +
+//                "FROM sale s " +
+//                "INNER JOIN staff st ON st.id = s.staffID " +
+//                "INNER JOIN ticket t ON t.saleID = s.id " +
+//                "INNER JOIN card ca ON ca.customerUsername = t.customerUsername " +
+//                "INNER JOIN commission co ON co.blankNumber = t.blankNumber";
+//                }
+//                pstm = conn.prepareStatement(query);
+//                rs = pstm.executeQuery();
+//                if (!rs.next()) {
+//                JOptionPane.showMessageDialog(this, "Could not retrieve sales data. " +
+//                "Try again or contact system administrator");
+//                } else {
+//                model.setRowCount(0);
+//                if (Objects.equals(reportTypeDDMenu.getSelectedItem().toString(), "Interline Sales")) {
+//                do {
+//                Object[] row = new Object[12];
+//                row[0] = rs.getString("date");
+//                row[1] = rs.getString("blankNumber");
+//                row[2] = rs.getString("originalFare");
+//                row[3] = rs.getString("exchangeRate");
+//                row[4] = rs.getString("convertedFare");
+//                row[5] = rs.getString("tax");
+//                row[6] = rs.getString("taxOther");
+//                row[7] = rs.getString("total");
+//                row[8] = rs.getString("number");
+//                row[9] = rs.getString("totalPaid");
+//                row[10] = rs.getString("payLater");
+//                row[11] = rs.getString("rate");
+//                model.addRow(row);
+//                } while (rs.next());
+//                } else {
+//                reportContentsTable.setModel(new javax.swing.table.DefaultTableModel(
+//                new Object [][] {
+//                {null, null, null, null, null, null, null, null, null, null},
+//                {null, null, null, null, null, null, null, null, null, null},
+//                {null, null, null, null, null, null, null, null, null, null},
+//                },
+//                new String [] {
+//                "Date", "Issued Blank", "Local(USD) Amount", "Tax", "Tax - Other", "Total Payable", "Pay Later?", "Card Number", "Total Paid", " Commission Rate Used"
+//                }
+//                ));
+//                do {
+//                Object[] row = new Object[9];
+//                row[0] = rs.getString("date");
+//                row[1] = rs.getString("blankNumber");
+//                row[2] = rs.getString("originalFare");
+//                row[3] = rs.getString("tax");
+//                row[4] = rs.getString("taxOther");
+//                row[5] = rs.getString("total");
+//                row[6] = rs.getString("number");
+//                row[7] = rs.getString("totalPaid");
+//                row[8] = rs.getString("rate");
+//                model.addRow(row);
+//                } while (rs.next());
+//                }
+//                }
+//                } catch (SQLException sqle) {
+//                if (conn != null) { try { conn.rollback(); } catch (SQLException e) { throw new RuntimeException(sqle); }}
+//                } finally {
+//                try { if (rs != null) rs.close(); } catch (Exception e) { throw new RuntimeException(e); }
+//                try { if (pstm != null) pstm.close(); } catch (Exception e) { throw new RuntimeException(e); }
+//                try { if (conn != null) conn.close(); } catch (Exception e) { throw new RuntimeException(e); }
+//                }
+
+
+
+
     }//GEN-LAST:event_reportTypeDDMenuActionPerformed
 
     /**
@@ -528,3 +614,4 @@ public class GenerateIndividualReport extends javax.swing.JFrame {
     private javax.swing.JButton viewTicketsPageButton;
     // End of variables declaration
 }
+

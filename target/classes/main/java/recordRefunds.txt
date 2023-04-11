@@ -1,0 +1,11 @@
+
+The following is the code to record refunds straight into a txt file, connect the db to the following code:
+
+    import java.io.File;
+    import java.io.FileWriter;
+    import java.io.IOException;
+
+    File refundsFile = new File("refunds.txt");
+    FileWriter writer = new FileWriter(refundsFile);
+    writer.write("Refund ID: 1234, Amount: $50.00, Date: 2023-03-27\n");
+    writer.close();
