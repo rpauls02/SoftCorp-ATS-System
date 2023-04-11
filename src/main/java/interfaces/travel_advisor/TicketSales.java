@@ -172,6 +172,7 @@ public class TicketSales extends javax.swing.JFrame {
         viewTicketsPageButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 viewTicketsPageButtonActionPerformed(evt);
+
             }
         });
 
@@ -890,10 +891,10 @@ public class TicketSales extends javax.swing.JFrame {
         dispose();
         new Login().setVisible(true);
     }//GEN-LAST:event_logoutButtonActionPerformed
-
+    
     private void viewTicketsPageButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_viewTicketsPageButtonActionPerformed
         dispose();
-        //new ViewTickets().setVisible(true);
+        new ViewTicketsAdvisor().setVisible(true);
     }//GEN-LAST:event_viewTicketsPageButtonActionPerformed
 
     private void viewIndSalesButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_viewIndSalesButtonActionPerformed
