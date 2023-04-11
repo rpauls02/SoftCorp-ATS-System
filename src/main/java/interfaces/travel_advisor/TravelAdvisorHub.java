@@ -227,7 +227,7 @@ public class TravelAdvisorHub extends javax.swing.JFrame {
             conn = DBConnection.getConnection();
             String query = "SELECT * FROM blank WHERE staffID = ?";
             pstm = conn.prepareStatement(query);
-            pstm.setInt(1, staffController.getAdvisor().getId());
+//            pstm.setInt(1, staffController.getAdvisor().getId());
             pstm.executeUpdate();
             while (rs.next()){
                 Object[] row = new Object[4];
@@ -299,8 +299,8 @@ public class TravelAdvisorHub extends javax.swing.JFrame {
         logoPanel.setMinimumSize(new java.awt.Dimension(104, 104));
         logoPanel.setPreferredSize(new java.awt.Dimension(104, 104));
 
-        logoLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/data/smallLogo.png"))); // NOI18N
-
+//        logoLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("data/smallLogo.png"))); // NOI18N
+        ImageIcon logo = new ImageIcon("data/smallLogo.png");
         javax.swing.GroupLayout logoPanelLayout = new javax.swing.GroupLayout(logoPanel);
         logoPanel.setLayout(logoPanelLayout);
         logoPanelLayout.setHorizontalGroup(
