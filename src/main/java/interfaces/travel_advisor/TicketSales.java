@@ -581,7 +581,7 @@ public class TicketSales extends javax.swing.JFrame {
             conn = DBConnection.getConnection();
             String query = "SELECT * FROM blank WHERE staffID = ?";
             pstm = conn.prepareStatement(query);
-            pstm.setInt(1, staffController.getAdvisor().getId());
+//            pstm.setInt(1, staffController.getAdvisor().getId());
             pstm.executeUpdate();
             while (rs.next()){
                 String blankNumber = rs.getString("number");
