@@ -1,3 +1,4 @@
+
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
@@ -915,7 +916,20 @@ public class TicketSales extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_typeOfSaleDDActionPerformed
 
-    //new one completed by Mustafa Nadeem
+
+    /*
+    * Finding Customer from the database
+    1. Connection is made to the database.
+    2. There is a search query to find customers by surname.
+    3. The query is executed and gets the results, which are the forename and surname of the customers whose surname matches the one entered by the user.
+    4. The program removes all the items from the customer name dropdown menu (a list of customer names that the user can choose from).
+    5. The program goes through the results of the query one by one.
+    6. For each result, the program gets the forename and surname of the customer.
+    7. The program combines the forename and surname into a single string and adds it to the customer name dropdown menu.
+    8. If there is an error during the search process, such as an incorrect name being entered, the program shows an error message to the user.
+    *
+    * */
+
     private void findCustomerButtonActionPerformed(java.awt.event.ActionEvent evt) {
         Connection conn = null;
         PreparedStatement pstm = null;
@@ -941,6 +955,16 @@ public class TicketSales extends javax.swing.JFrame {
             try { if (rs != null) rs.close(); } catch (Exception e) { throw new RuntimeException(e); }
         }
     }
+
+   /*
+    * Selecting Customer from the Database
+    1. The customer name selected from a dropdown menu is retrieved and split into its first and last name components.
+    2. The method then prepares and executes a query to retrieve the customer's details from the database.
+    3. If the query returns a result, the method retrieves the details of the customer's associated card from the database.
+    4. If the card details are also retrieved successfully, the method creates a new Customer object with the retrieved customer details.
+    5. The retrieved customer and card details are then displayed in text fields on the User Interface.
+    *
+    * */
 
     private void selectCustomerButtonActionPerformed(java.awt.event.ActionEvent evt) {
         Connection conn = null;
@@ -974,7 +998,7 @@ public class TicketSales extends javax.swing.JFrame {
                     String phone = rs1.getString("phone");
                     Customer customer = new Customer
                             (rs1.getString("username"), rs1.getString("forename"), rs1.getString("surname"), rs1.getString("address"),
-                             rs1.getString("postcode"), rs1.getString("phone"), rs1.getString("email"), rs1.getString("status"));
+                                    rs1.getString("postcode"), rs1.getString("phone"), rs1.getString("email"), rs1.getString("status"));
                     // Set retrieved details to the fields below the "Select Existing Customer" section
                     cardNumberField.setText(cardNumber);
                     issueNoField.setText(expiryDate);
@@ -998,6 +1022,18 @@ public class TicketSales extends javax.swing.JFrame {
             try { if (rs2 != null) rs2.close(); } catch (Exception e) { throw new RuntimeException(e); }
         }
     }
+
+        /*
+        * IATA Code to Currency method
+        1. The event handler is triggered when the user selects an item from the IATA currency code dropdown menu.
+        2. The showExchangeRate() method is called to display a pop-up window that shows the exchange rate information based on the selected IATA code.
+        3. If the selected item in the dropdown menu is not "Select IATA Code", the code retrieves the exchange rate information from the openexchangerates.org API using a HTTP GET request.
+        4. The API URL is constructed with a base currency of USD.
+        5. A BufferedReader object is created to read the response from the API, which is in JSON format.
+        6. The JSON response is parsed using the JSONObject class from the org.json library, and the exchange rate is extracted from the "rates" field based on the selected IATA code.
+        7. The exchange rate is displayed in a label component on User Interface.
+        *
+        * */
 
     private void iataCurrencyCodeDDMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_iataCurrencyCodeDDMenuMenuActionPerformed
         // displays exchange rate depending on the selected IATA code
@@ -1031,6 +1067,17 @@ public class TicketSales extends javax.swing.JFrame {
             }
         }
     }//GEN-LAST:event_iataCurrencyCodeDDMenuMenuActionPerformed
+
+        /*
+        * Create Ticket Button
+        1. A random sale ID is produced in between 200 & 300.
+        2. Depending on whether a customer is selected from the dropdown menu or if it is not there then it will lead you to creation of a new customer record in the database before a ticket is produced for them.
+        3. The ticket is then created alongside a sales record inside the database.
+        4. The ticket is then linked with the customer and sale ID.
+        5. The sale record contains information about the sale, including the sale ID, the type of sale, the payment type, the amount payable in USD, and the exchange rate.
+        6. The code then displays a message to the user indication whether the sale was successfully recorded and which menu the user can navigate to view the created ticketm customer record or sale record.
+        *
+        * */
 
     private void createTicketButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_createTicketButtonActionPerformed
         Random rand = new Random();

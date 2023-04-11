@@ -12,6 +12,8 @@ import staff.*;
 
 import javax.swing.*;
 import java.awt.event.KeyEvent;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -178,6 +180,7 @@ public class Login extends javax.swing.JFrame {
         Connection conn = null;
         PreparedStatement pstm = null;
         ResultSet rs = null;
+        String passwordHash = " ";
         try {
             conn = DBConnection.getConnection();
             String query = "SELECT * FROM in2018g12.staff WHERE id = ? AND password = ?";

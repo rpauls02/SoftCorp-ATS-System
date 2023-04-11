@@ -56,9 +56,8 @@ public class ViewAlerts extends javax.swing.JFrame {
         pageTitleLabel = new javax.swing.JLabel();
         functionPanel = new javax.swing.JPanel();
         showDDMenu = new javax.swing.JComboBox<>();
-        orderDDMenu = new javax.swing.JComboBox<>();
         tableName = new javax.swing.JLabel();
-        refreshButton = new javax.swing.JButton();
+        refreshTableButton = new javax.swing.JButton();
         logoPanel = new javax.swing.JPanel();
         logoLabel = new javax.swing.JLabel();
 
@@ -224,21 +223,13 @@ public class ViewAlerts extends javax.swing.JFrame {
             }
         });
 
-        orderDDMenu.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        orderDDMenu.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Order", "By Number", "By Date", "By Status" }));
-        orderDDMenu.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                orderDDMenuActionPerformed(evt);
-            }
-        });
-
         tableName.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         tableName.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         tableName.setText("System Alerts");
 
-        refreshButton.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        refreshButton.setText("Refresh");
-        refreshButton.addActionListener(new java.awt.event.ActionListener() {
+        refreshTableButton.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        refreshTableButton.setText("Refresh");
+        refreshTableButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 refreshTableButtonActionPerformed(evt);
             }
@@ -252,11 +243,10 @@ public class ViewAlerts extends javax.swing.JFrame {
                                 .addContainerGap()
                                 .addComponent(showDDMenu, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)
-                                .addComponent(orderDDMenu, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(282, 282, 282)
                                 .addComponent(tableName)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 456, Short.MAX_VALUE)
-                                .addComponent(refreshButton)
+                                .addComponent(refreshTableButton)
                                 .addContainerGap())
         );
         functionPanelLayout.setVerticalGroup(
@@ -264,10 +254,9 @@ public class ViewAlerts extends javax.swing.JFrame {
                         .addGroup(functionPanelLayout.createSequentialGroup()
                                 .addContainerGap()
                                 .addGroup(functionPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                        .addComponent(orderDDMenu)
                                         .addComponent(showDDMenu, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addComponent(tableName)
-                                        .addComponent(refreshButton))
+                                        .addComponent(refreshTableButton))
                                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -420,24 +409,6 @@ public class ViewAlerts extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_showDDMenuActionPerformed
 
-    private void orderDDMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_orderDDMenuActionPerformed
-        DefaultTableModel model = (DefaultTableModel)systemAlertsTable.getModel();
-        TableRowSorter<DefaultTableModel> sorter = new TableRowSorter<>(model);
-        switch ((String) Objects.requireNonNull(orderDDMenu.getSelectedItem())){
-            case "By Date" -> {
-                sorter.setSortKeys(List.of(new RowSorter.SortKey(0, SortOrder.ASCENDING)));
-            }
-            case "By Number" -> {
-                sorter.setSortKeys(List.of(new RowSorter.SortKey(1, SortOrder.ASCENDING)));
-            }
-            case "By Status" -> {
-                sorter.setSortKeys(List.of(new RowSorter.SortKey(3, SortOrder.ASCENDING)));
-            }
-        }
-        systemAlertsTable.setRowSorter(sorter);
-        sorter.sort();
-    }//GEN-LAST:event_orderDDMenuActionPerformed
-
     private void refreshTableButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_refreshTableButtonActionPerformed
         DefaultTableModel model = (DefaultTableModel)systemAlertsTable.getModel();
         Connection conn = null;
@@ -523,10 +494,9 @@ public class ViewAlerts extends javax.swing.JFrame {
     private javax.swing.JButton logoutButton;
     private javax.swing.JButton manageCommissionsButton;
     private javax.swing.JButton manageStockButton;
-    private javax.swing.JComboBox<String> orderDDMenu;
     private javax.swing.JLabel pageTitleLabel;
     private javax.swing.JPanel pageTitlePanel;
-    private javax.swing.JButton refreshButton;
+    private javax.swing.JButton refreshTableButton;
     private javax.swing.JComboBox<String> showDDMenu;
     private javax.swing.JTable systemAlertsTable;
     private javax.swing.JLabel tableName;

@@ -59,9 +59,8 @@ public class ManageDiscountPlan extends javax.swing.JFrame {
         tableScrollPane = new javax.swing.JScrollPane();
         discountPlanInfoTable = new javax.swing.JTable();
         functionPanel = new javax.swing.JPanel();
-        refreshButton = new javax.swing.JButton();
+        refreshTableButton = new javax.swing.JButton();
         showDDMenu = new javax.swing.JComboBox<>();
-        orderDDMenu = new javax.swing.JComboBox<>();
         tableNameLabel = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -138,7 +137,11 @@ public class ManageDiscountPlan extends javax.swing.JFrame {
         logoPanel.setMaximumSize(new java.awt.Dimension(104, 104));
         logoPanel.setMinimumSize(new java.awt.Dimension(104, 104));
 
-        logoLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/data/smallLogo.png"))); // NOI18N
+        //logoLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/data/smallLogo.png"))); // NOI18N
+        ImageIcon logo = new ImageIcon("data/smallLogo.png");
+        logoLabel.setIcon(logo);
+        logoPanel.add(logoLabel);
+        getContentPane().add(logoPanel);
 
         javax.swing.GroupLayout logoPanelLayout = new javax.swing.GroupLayout(logoPanel);
         logoPanel.setLayout(logoPanelLayout);
@@ -319,11 +322,11 @@ public class ManageDiscountPlan extends javax.swing.JFrame {
         functionPanel.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         functionPanel.setPreferredSize(new java.awt.Dimension(1151, 48));
 
-        refreshButton.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        refreshButton.setText("Refresh");
-        refreshButton.addActionListener(new java.awt.event.ActionListener() {
+        refreshTableButton.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        refreshTableButton.setText("Refresh");
+        refreshTableButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                refreshButtonActionPerformed(evt);
+                refreshTableButtonActionPerformed(evt);
             }
         });
 
@@ -341,38 +344,34 @@ public class ManageDiscountPlan extends javax.swing.JFrame {
         javax.swing.GroupLayout functionPanelLayout = new javax.swing.GroupLayout(functionPanel);
         functionPanel.setLayout(functionPanelLayout);
         functionPanelLayout.setHorizontalGroup(
-            functionPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, functionPanelLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(showDDMenu, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(orderDDMenu, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(refreshButton)
-                .addContainerGap())
-            .addGroup(functionPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(functionPanelLayout.createSequentialGroup()
-                    .addGap(0, 501, Short.MAX_VALUE)
-                    .addComponent(tableNameLabel)
-                    .addGap(0, 502, Short.MAX_VALUE)))
+                functionPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, functionPanelLayout.createSequentialGroup()
+                                .addContainerGap()
+                                .addComponent(showDDMenu, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(refreshTableButton)
+                                .addContainerGap())
+                        .addGroup(functionPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(functionPanelLayout.createSequentialGroup()
+                                        .addGap(0, 501, Short.MAX_VALUE)
+                                        .addComponent(tableNameLabel)
+                                        .addGap(0, 502, Short.MAX_VALUE)))
         );
         functionPanelLayout.setVerticalGroup(
-            functionPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, functionPanelLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(functionPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(refreshButton, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, functionPanelLayout.createSequentialGroup()
-                        .addGroup(functionPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addComponent(orderDDMenu, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(showDDMenu, javax.swing.GroupLayout.Alignment.LEADING))
-                        .addGap(0, 0, Short.MAX_VALUE)))
-                .addContainerGap())
-            .addGroup(functionPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(functionPanelLayout.createSequentialGroup()
-                    .addGap(0, 0, Short.MAX_VALUE)
-                    .addComponent(tableNameLabel)
-                    .addGap(0, 0, Short.MAX_VALUE)))
+                functionPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, functionPanelLayout.createSequentialGroup()
+                                .addContainerGap()
+                                .addGroup(functionPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                        .addComponent(refreshTableButton, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, functionPanelLayout.createSequentialGroup()
+                                                .addComponent(showDDMenu, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addGap(0, 0, Short.MAX_VALUE)))
+                                .addContainerGap())
+                        .addGroup(functionPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(functionPanelLayout.createSequentialGroup()
+                                        .addGap(0, 0, Short.MAX_VALUE)
+                                        .addComponent(tableNameLabel)
+                                        .addGap(0, 0, Short.MAX_VALUE)))
         );
 
         javax.swing.GroupLayout manageDiscountPlanPanelLayout = new javax.swing.GroupLayout(manageDiscountPlanPanel);
@@ -563,7 +562,7 @@ public class ManageDiscountPlan extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_deletePlanButtonActionPerformed
 
-    private void refreshButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_refreshButtonActionPerformed
+    private void refreshTableButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_refreshTableButtonActionPerformed
         DefaultTableModel model = (DefaultTableModel)discountPlanInfoTable.getModel();
         Connection conn = null;
         PreparedStatement pstm = null;
@@ -593,7 +592,7 @@ public class ManageDiscountPlan extends javax.swing.JFrame {
             try { if (pstm != null) pstm.close(); } catch (Exception e) { throw new RuntimeException(e); }
             try { if (conn != null) conn.close(); } catch (Exception e) { throw new RuntimeException(e); }
         }
-    }//GEN-LAST:event_refreshButtonActionPerformed
+    }//GEN-LAST:event_refreshTableButtonActionPerformed
 
     private void showDDMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_showDDMenuActionPerformed
         DefaultTableModel model = (DefaultTableModel) discountPlanInfoTable.getModel();
@@ -678,10 +677,9 @@ public class ManageDiscountPlan extends javax.swing.JFrame {
     private javax.swing.JButton manageCommissionsButton;
     private javax.swing.JPanel manageDiscountPlanPanel;
     private javax.swing.JButton manageStockButton;
-    private javax.swing.JComboBox<String> orderDDMenu;
     private javax.swing.JLabel pageTitleLabel;
     private javax.swing.JPanel pageTitlePanel;
-    private javax.swing.JButton refreshButton;
+    private javax.swing.JButton refreshTableButton;
     private javax.swing.JComboBox<String> showDDMenu;
     private javax.swing.JPanel tableFunctionsPanel;
     private javax.swing.JLabel tableNameLabel;
