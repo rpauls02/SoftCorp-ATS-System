@@ -892,7 +892,7 @@ public class TicketSales extends javax.swing.JFrame {
 
     private void viewTicketsPageButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_viewTicketsPageButtonActionPerformed
         dispose();
-        //new ViewTickets().setVisible(true);
+        new ViewTicketsAdvisor().setVisible(true);
     }//GEN-LAST:event_viewTicketsPageButtonActionPerformed
 
     private void viewIndSalesButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_viewIndSalesButtonActionPerformed
