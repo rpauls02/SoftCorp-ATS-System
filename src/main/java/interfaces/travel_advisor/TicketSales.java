@@ -1038,10 +1038,8 @@ public class TicketSales extends javax.swing.JFrame {
     private void iataCurrencyCodeDDMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_iataCurrencyCodeDDMenuMenuActionPerformed
         if (iataCurrencyCodeDDMenu.getSelectedItem().toString() == "Select IATA Code") {
             showRateLabel.setText(" ");
-            typeOfSaleDDMenu.setSelectedItem("Select Sale Type");
         } else {
             ExchangeRate.showExchangeRate(iataCurrencyCodeDDMenu, showRateLabel);
-            typeOfSaleDDMenu.setSelectedItem("Interline");
         }
     }//GEN-LAST:event_iataCurrencyCodeDDMenuMenuActionPerformed
 
