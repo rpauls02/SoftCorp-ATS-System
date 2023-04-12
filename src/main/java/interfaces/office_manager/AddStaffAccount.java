@@ -469,6 +469,7 @@ public class AddStaffAccount extends javax.swing.JFrame {
 
     private void backButtonActionPerformed(java.awt.event.ActionEvent evt) {
         dispose();
+        new OfficeManagerHub().setVisible(true);
     }
 
     private void viewAlertsButtonActionPerformed(java.awt.event.ActionEvent evt) {

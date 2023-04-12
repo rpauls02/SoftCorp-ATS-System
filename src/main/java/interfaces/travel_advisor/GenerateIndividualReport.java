@@ -95,6 +95,12 @@ public class GenerateIndividualReport extends javax.swing.JFrame {
         homeButton.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         homeButton.setText("Home");
 
+        homeButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                homeButtonActionPerformed(evt);
+            }
+        });
+
         viewIndSalesButton.setBackground(new java.awt.Color(153, 153, 255));
         viewIndSalesButton.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         viewIndSalesButton.setText("View Individual Sales Report");
