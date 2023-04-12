@@ -81,7 +81,7 @@ public class ManageStock extends javax.swing.JFrame {
         pageTitleLabel.setBackground(new java.awt.Color(49, 174, 209));
         pageTitleLabel.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         pageTitleLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        pageTitleLabel.setText("Add Customer");
+        pageTitleLabel.setText("Manage Stock");
 
         javax.swing.GroupLayout pageTitlePanelLayout = new javax.swing.GroupLayout(pageTitlePanel);
         pageTitlePanel.setLayout(pageTitlePanelLayout);
