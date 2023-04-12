@@ -109,8 +109,8 @@ public class ManageStock extends javax.swing.JFrame {
             }
         });
 
-        viewCustomerRecordsButton.setBackground(new java.awt.Color(153, 153, 255));
-        viewCustomerRecordsButton.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        viewCustomerRecordsButton.setBackground(new java.awt.Color(54, 198, 238));
+        viewCustomerRecordsButton.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         viewCustomerRecordsButton.setText("View Customer Records");
         viewCustomerRecordsButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -136,8 +136,8 @@ public class ManageStock extends javax.swing.JFrame {
             }
         });
 
-        manageStockButton.setBackground(new java.awt.Color(54, 198, 238));
-        manageStockButton.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        manageStockButton.setBackground(new java.awt.Color(153, 153, 255));
+        manageStockButton.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         manageStockButton.setText("Manage Stock");
         manageStockButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {

@@ -137,8 +137,7 @@ public class OfficeManagerHub extends javax.swing.JFrame {
         manageStockButton.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         manageStockButton.setText("Manage Stock");
         manageStockButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                manageStockButtonActionPerformed(evt);
+            public void actionPerformed(java.awt.event.ActionEvent evt) {manageStockButtonActionPerformed(evt);
             }
         });
 
