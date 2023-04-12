@@ -149,6 +149,12 @@ public class TicketSales extends javax.swing.JFrame {
             }
         });
 
+        cvvField.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cvvFieldActionPerformed(evt);
+            }
+        });
+
         viewIndSalesButton.setBackground(new java.awt.Color(54, 198, 238));
         viewIndSalesButton.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         viewIndSalesButton.setText("View Individual Sales Report");
@@ -282,7 +288,7 @@ public class TicketSales extends javax.swing.JFrame {
                                                 .addGap(18, 18, 18)
                                                 .addComponent(cvvLabel)
                                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                .addComponent(cvvField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                                .addComponent(cvvField, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)))
                                 .addGap(16, 16, 16))
                         .addComponent(cardDetailsPanelLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
@@ -886,6 +892,9 @@ public class TicketSales extends javax.swing.JFrame {
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>
+
+    private void cvvFieldActionPerformed(ActionEvent evt) {
+    }
 
     private void homeButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_homeButtonActionPerformed
         dispose();
