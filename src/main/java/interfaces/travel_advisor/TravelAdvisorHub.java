@@ -8,16 +8,10 @@ import SQL.DBConnection;
 import interfaces.general.Login;
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
-import javax.swing.table.TableRowSorter;
 
-import interfaces.general.Login;
-import interfaces.office_manager.OfficeManagerHub;
-import interfaces.system_administrator.SystemAdminHub;
 import staff.*;
 
 import java.sql.*;
-import java.util.Arrays;
-import java.util.List;
 import java.util.Objects;
 
 /**
@@ -25,8 +19,6 @@ import java.util.Objects;
  * @author Abdullah
  */
 public class TravelAdvisorHub extends javax.swing.JFrame {
-
-    private final Login previousPage = new Login();
 
     /**
      * Creates new form TravelAdvisorHub
@@ -55,10 +47,9 @@ public class TravelAdvisorHub extends javax.swing.JFrame {
         functionPanel = new javax.swing.JPanel();
         tableName = new javax.swing.JLabel();
         showDDMenu = new javax.swing.JComboBox<>();
-        orderDDMenu = new javax.swing.JComboBox<>();
-        refreshButton = new javax.swing.JButton();
+        refreshTableButton = new javax.swing.JButton();
         tableScrollPane = new javax.swing.JScrollPane();
-        personalBlanksTable = new javax.swing.JTable();
+        personalBlanksTable= new javax.swing.JTable();
         pageTitlePanel = new javax.swing.JPanel();
         idAndRoleLabel = new javax.swing.JLabel();
         welcomeLabel = new javax.swing.JLabel();
@@ -173,10 +164,10 @@ public class TravelAdvisorHub extends javax.swing.JFrame {
             }
         });
 
-        refreshButton.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        refreshButton.setText("Refresh");
-        refreshButton.setAlignmentY(0.0F);
-        refreshButton.addActionListener(new java.awt.event.ActionListener() {
+        refreshTableButton.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        refreshTableButton.setText("Refresh");
+        refreshTableButton.setAlignmentY(0.0F);
+        refreshTableButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 refreshTableButtonActionPerformed(evt);
             }
@@ -189,12 +180,10 @@ public class TravelAdvisorHub extends javax.swing.JFrame {
                         .addGroup(functionPanelLayout.createSequentialGroup()
                                 .addContainerGap()
                                 .addComponent(showDDMenu, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(orderDDMenu, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(258, 258, 258)
+                                .addGap(382, 382, 382)
                                 .addComponent(tableName, javax.swing.GroupLayout.PREFERRED_SIZE, 194, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 420, Short.MAX_VALUE)
-                                .addComponent(refreshButton)
+                                .addComponent(refreshTableButton)
                                 .addContainerGap())
         );
         functionPanelLayout.setVerticalGroup(
@@ -202,10 +191,9 @@ public class TravelAdvisorHub extends javax.swing.JFrame {
                         .addGroup(functionPanelLayout.createSequentialGroup()
                                 .addContainerGap()
                                 .addGroup(functionPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                        .addComponent(orderDDMenu, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addComponent(showDDMenu, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addComponent(tableName, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(refreshButton))
+                                        .addComponent(refreshTableButton))
                                 .addGap(0, 5, Short.MAX_VALUE))
         );
 
@@ -239,7 +227,7 @@ public class TravelAdvisorHub extends javax.swing.JFrame {
             conn = DBConnection.getConnection();
             String query = "SELECT * FROM blank WHERE staffID = ?";
             pstm = conn.prepareStatement(query);
-            pstm.setInt(1, staffController.getAdvisor().getId());
+//            pstm.setInt(1, staffController.getAdvisor().getId());
             pstm.executeUpdate();
             while (rs.next()){
                 Object[] row = new Object[4];
@@ -260,13 +248,13 @@ public class TravelAdvisorHub extends javax.swing.JFrame {
         pageTitlePanel.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         pageTitlePanel.setPreferredSize(new java.awt.Dimension(500, 83));
 
-        welcomeLabel.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        welcomeLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        welcomeLabel.setText("Welcome Name");
-
         idAndRoleLabel.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         idAndRoleLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         idAndRoleLabel.setText("Staff ID | Travel Advisor");
+
+        welcomeLabel.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        welcomeLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        welcomeLabel.setText("Welcome <name>");
 
         javax.swing.GroupLayout pageTitlePanelLayout = new javax.swing.GroupLayout(pageTitlePanel);
         pageTitlePanel.setLayout(pageTitlePanelLayout);
@@ -311,12 +299,10 @@ public class TravelAdvisorHub extends javax.swing.JFrame {
         logoPanel.setMinimumSize(new java.awt.Dimension(104, 104));
         logoPanel.setPreferredSize(new java.awt.Dimension(104, 104));
 
-        //logoLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/data/smallLogo.png"))); // NOI18N
+//        logoLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("data/smallLogo.png"))); // NOI18N
         ImageIcon logo = new ImageIcon("data/smallLogo.png");
         logoLabel.setIcon(logo);
         logoPanel.add(logoLabel);
-        getContentPane().add(logoPanel);
-
         javax.swing.GroupLayout logoPanelLayout = new javax.swing.GroupLayout(logoPanel);
         logoPanel.setLayout(logoPanelLayout);
         logoPanelLayout.setHorizontalGroup(
@@ -444,7 +430,7 @@ public class TravelAdvisorHub extends javax.swing.JFrame {
 
     private void viewTicketsPageButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_refundTicketButtonActionPerformed
         dispose();
-        new ViewTickets().setVisible(true);
+        new ViewTicketsAdvisor().setVisible(true);
     }//GEN-LAST:event_refundTicketButtonActionPerformed
 
     private void logoutButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_logoutButtonActionPerformed
@@ -649,9 +635,8 @@ public class TravelAdvisorHub extends javax.swing.JFrame {
     private javax.swing.JLabel logoLabel;
     private javax.swing.JPanel logoPanel;
     private javax.swing.JButton logoutButton;
-    private javax.swing.JComboBox<String> orderDDMenu;
     private javax.swing.JPanel pageTitlePanel;
-    private javax.swing.JButton refreshButton;
+    private javax.swing.JButton refreshTableButton;
     private javax.swing.JButton sellTicketPageButton;
     private javax.swing.JComboBox<String> showDDMenu;
     private javax.swing.JPanel tableFunctionsPanel;

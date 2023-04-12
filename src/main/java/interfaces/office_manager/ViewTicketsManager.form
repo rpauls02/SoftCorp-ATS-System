@@ -244,7 +244,7 @@
                       <EmptySpace min="-2" pref="258" max="-2" attributes="0"/>
                       <Component id="tableName" min="-2" pref="194" max="-2" attributes="0"/>
                       <EmptySpace pref="420" max="32767" attributes="0"/>
-                      <Component id="refreshButton" min="-2" max="-2" attributes="0"/>
+                      <Component id="refreshTableButton" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                   </Group>
               </Group>
@@ -257,7 +257,7 @@
                           <Component id="orderDDMenu" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="showDDMenu" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="tableName" alignment="3" min="-2" pref="31" max="-2" attributes="0"/>
-                          <Component id="refreshButton" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="refreshTableButton" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace min="0" pref="5" max="32767" attributes="0"/>
                   </Group>
@@ -317,7 +317,7 @@
                 <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
               </AuxValues>
             </Component>
-            <Component class="javax.swing.JButton" name="refreshButton">
+            <Component class="javax.swing.JButton" name="refreshTableButton">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Segoe UI" size="18" style="0"/>
@@ -326,7 +326,7 @@
                 <Property name="alignmentY" type="float" value="0.0"/>
               </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="refreshButtonActionPerformed"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="refreshTableButtonActionPerformed"/>
               </Events>
             </Component>
           </SubComponents>

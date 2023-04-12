@@ -1,3 +1,4 @@
+
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
@@ -15,6 +16,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.KeyAdapter;
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.math.BigDecimal;
@@ -171,6 +173,7 @@ public class TicketSales extends javax.swing.JFrame {
         viewTicketsPageButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 viewTicketsPageButtonActionPerformed(evt);
+
             }
         });
 
@@ -581,7 +584,7 @@ public class TicketSales extends javax.swing.JFrame {
             conn = DBConnection.getConnection();
             String query = "SELECT * FROM blank WHERE staffID = ?";
             pstm = conn.prepareStatement(query);
-            pstm.setInt(1, staffController.getAdvisor().getId());
+//            pstm.setInt(1, staffController.getAdvisor().getId());
             pstm.executeUpdate();
             while (rs.next()){
                 String blankNumber = rs.getString("number");
@@ -889,10 +892,10 @@ public class TicketSales extends javax.swing.JFrame {
         dispose();
         new Login().setVisible(true);
     }//GEN-LAST:event_logoutButtonActionPerformed
-
+    
     private void viewTicketsPageButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_viewTicketsPageButtonActionPerformed
         dispose();
-        //new ViewTickets().setVisible(true);
+        new ViewTicketsAdvisor().setVisible(true);
     }//GEN-LAST:event_viewTicketsPageButtonActionPerformed
 
     private void viewIndSalesButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_viewIndSalesButtonActionPerformed
@@ -915,7 +918,20 @@ public class TicketSales extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_typeOfSaleDDActionPerformed
 
-    //new one completed by Mustafa Nadeem
+
+    /*
+    * Finding Customer from the database
+    1. Connection is made to the database.
+    2. There is a search query to find customers by surname.
+    3. The query is executed and gets the results, which are the forename and surname of the customers whose surname matches the one entered by the user.
+    4. The program removes all the items from the customer name dropdown menu (a list of customer names that the user can choose from).
+    5. The program goes through the results of the query one by one.
+    6. For each result, the program gets the forename and surname of the customer.
+    7. The program combines the forename and surname into a single string and adds it to the customer name dropdown menu.
+    8. If there is an error during the search process, such as an incorrect name being entered, the program shows an error message to the user.
+    *
+    * */
+
     private void findCustomerButtonActionPerformed(java.awt.event.ActionEvent evt) {
         Connection conn = null;
         PreparedStatement pstm = null;
@@ -941,6 +957,16 @@ public class TicketSales extends javax.swing.JFrame {
             try { if (rs != null) rs.close(); } catch (Exception e) { throw new RuntimeException(e); }
         }
     }
+
+   /*
+    * Selecting Customer from the Database
+    1. The customer name selected from a dropdown menu is retrieved and split into its first and last name components.
+    2. The method then prepares and executes a query to retrieve the customer's details from the database.
+    3. If the query returns a result, the method retrieves the details of the customer's associated card from the database.
+    4. If the card details are also retrieved successfully, the method creates a new Customer object with the retrieved customer details.
+    5. The retrieved customer and card details are then displayed in text fields on the User Interface.
+    *
+    * */
 
     private void selectCustomerButtonActionPerformed(java.awt.event.ActionEvent evt) {
         Connection conn = null;
@@ -974,7 +1000,7 @@ public class TicketSales extends javax.swing.JFrame {
                     String phone = rs1.getString("phone");
                     Customer customer = new Customer
                             (rs1.getString("username"), rs1.getString("forename"), rs1.getString("surname"), rs1.getString("address"),
-                             rs1.getString("postcode"), rs1.getString("phone"), rs1.getString("email"), rs1.getString("status"));
+                                    rs1.getString("postcode"), rs1.getString("phone"), rs1.getString("email"), rs1.getString("status"));
                     // Set retrieved details to the fields below the "Select Existing Customer" section
                     cardNumberField.setText(cardNumber);
                     issueNoField.setText(expiryDate);
@@ -999,39 +1025,33 @@ public class TicketSales extends javax.swing.JFrame {
         }
     }
 
+        /*
+        * IATA Code to Currency method
+        1. The event handler is triggered when the user selects an item from the IATA currency code dropdown menu.
+        2. The showExchangeRate() method is called to display a pop-up window that shows the exchange rate information based on the selected IATA code.
+        3. If the selected item in the dropdown menu is not "Select IATA Code", the code retrieves the exchange rate information from the openexchangerates.org API using a HTTP GET request.
+        4. The API URL is constructed with a base currency of USD.
+        5. A BufferedReader object is created to read the response from the API, which is in JSON format.
+        6. The JSON response is parsed using the JSONObject class from the org.json library, and the exchange rate is extracted from the "rates" field based on the selected IATA code.
+        7. The exchange rate is displayed in a label component on User Interface.
+        * */
     private void iataCurrencyCodeDDMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_iataCurrencyCodeDDMenuMenuActionPerformed
-        // displays exchange rate depending on the selected IATA code
-
-        ExchangeRate.showExchangeRate(iataCurrencyCodeDDMenu, showRateLabel);
-        if (iataCurrencyCodeDDMenu.getSelectedItem().toString().equals("Select IATA Code")) {
+        if (iataCurrencyCodeDDMenu.getSelectedItem().toString() == "Select IATA Code") {
             showRateLabel.setText(" ");
         } else {
-            String apiURL = "https://openexchangerates.org/api/latest.json?app_id=c8d2619d67494c45b9fb6d1833872198&base=USD";
-
-            try {
-                URL url = new URL(apiURL);
-                HttpURLConnection connection = (HttpURLConnection) url.openConnection();
-                connection.setRequestMethod("GET");
-
-                BufferedReader br = new BufferedReader(new InputStreamReader((connection.getInputStream())));
-                String inputLine;
-                StringBuilder sb = new StringBuilder();
-                while ((inputLine = br.readLine()) != null) {
-                    sb.append(inputLine);
-                }
-                br.close();
-
-                JSONObject json = new JSONObject(sb.toString());
-                JSONObject rates = json.getJSONObject("rates");
-                double exchangeRate = rates.getDouble(iataCurrencyCodeDDMenu.getSelectedItem().toString());
-
-                showRateLabel.setText(Double.toString(exchangeRate));
-            } catch (Exception e) {
-                throw new RuntimeException(e);
-            }
+            ExchangeRate.showExchangeRate(iataCurrencyCodeDDMenu, showRateLabel);
         }
     }//GEN-LAST:event_iataCurrencyCodeDDMenuMenuActionPerformed
 
+        /*
+        * Create Ticket Button
+        1. A random sale ID is produced in between 200 & 300.
+        2. Depending on whether a customer is selected from the dropdown menu or if it is not there then it will lead you to creation of a new customer record in the database before a ticket is produced for them.
+        3. The ticket is then created alongside a sales record inside the database.
+        4. The ticket is then linked with the customer and sale ID.
+        5. The sale record contains information about the sale, including the sale ID, the type of sale, the payment type, the amount payable in USD, and the exchange rate.
+        6. The code then displays a message to the user indication whether the sale was successfully recorded and which menu the user can navigate to view the created ticketm customer record or sale record.
+        * */
     private void createTicketButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_createTicketButtonActionPerformed
         Random rand = new Random();
         int lower = 200;
@@ -1049,99 +1069,82 @@ public class TicketSales extends javax.swing.JFrame {
 
         StaffController staffController = new StaffController();
         Connection conn = null;
-        PreparedStatement pstm1 = null;
-        PreparedStatement pstm2 = null;
-        PreparedStatement pstm3 = null;
-        String createTicketQuery = null;
-        String createSaleQuery = null;
-        String createCustomerQuery = null;
-        int pstm1Result = 0;
-        int pstm2Result = 0;
-        int pstm3Result = 0;
-        Scanner scanner = new Scanner(System.in);
-        RegularCustomer regCustomer;
+        PreparedStatement pstmCustomer = null;
+        PreparedStatement pstmSale = null;
+        PreparedStatement pstmTicket = null;
+        String createTicketQuery;
+        String createSaleQuery;
+        String createCustomerQuery;
+        String findCustomerQuery;
+        int pstmCustomerResult = 0;
+        int pstmTicketResult = 0;
+        int pstmSaleResult = 0;
+        RegularCustomer customer;
         try {
             conn = DBConnection.getConnection();
             conn.setAutoCommit(false);
 
             if (customerNameDDMenu.getSelectedItem() == null && !(forenameField.getText().isEmpty())){
-                createCustomerQuery = "INSERT INTO in2018g12.customer VALUES (?, ?, ?, ?, ?, ?)";
-                pstm1 = conn.prepareStatement(createCustomerQuery);
-                pstm1.setString(1, username);
-                pstm1.setString(2, forenameField.getText());
-                pstm1.setString(3, surnameField.getText());
-                pstm1.setString(4, phoneField.getText());
-                pstm1.setString(5, emailField.getText());
-                pstm1.setString(6, "Regular");
-                regCustomer = new RegularCustomer(username, forenameField.getText(), surnameField.getText(), phoneField.getText(), emailField.getText(), "Regular");
-                pstm1Result = pstm1.executeUpdate();
+                createCustomerQuery = "INSERT INTO in2018g12.customer(username, forename, surname, phone, email, in2018g12.customer.status) VALUES (?, ?, ?, ?, ?, ?)";
+                pstmCustomer = conn.prepareStatement(createCustomerQuery);
+                pstmCustomer.setString(1, username);
+                pstmCustomer.setString(2, forenameField.getText());
+                pstmCustomer.setString(3, surnameField.getText());
+                pstmCustomer.setString(4, phoneField.getText());
+                pstmCustomer.setString(5, emailField.getText());
+                pstmCustomer.setString(6, "Regular");
+                customer = new RegularCustomer(username, forenameField.getText(), surnameField.getText(), phoneField.getText(), emailField.getText(), "Regular");
+                pstmCustomerResult = pstmCustomer.executeUpdate();
 
                 createTicketQuery = "INSERT INTO in2018g12.ticket VALUES (?, ?, ?, ?)";
-                pstm2 = conn.prepareStatement(createTicketQuery);
-                pstm2.setString(1, blankList.getSelectedValue());
-                pstm2.setString(2, regCustomer.getUsername());
-                pstm2.setString(3, saleID);
-                if (plNoCheckbox.isSelected()){
-                    pstm2.setString(4, "Paid");
-                } else
-                    pstm2.setString(4, null);
-                pstm2Result = pstm2.executeUpdate();
-
-                createSaleQuery = "INSERT INTO in2018g12.sale VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
-                pstm3 = conn.prepareStatement(createSaleQuery);
-                pstm3.setString(1, saleID);
-                //pstm3.setInt(2, staffController.getAdvisor().getId());
-                pstm3.setString(3, typeOfSaleDDMenu.getSelectedItem().toString());
-                pstm3.setString(4, String.valueOf(LocalDate.now()));
-                pstm3.setString(5, paymentTypeDDMenu.getSelectedItem().toString());
-                pstm3.setBigDecimal(6, BigDecimal.valueOf(Float.parseFloat(usdPayableLabel.getText())));
-                pstm3.setString(7, iataCurrencyCodeDDMenu.getSelectedItem().toString() );
-                pstm3.setString(8, exchangeRateLabel.getText());
-                pstm3.setBigDecimal(9, BigDecimal.valueOf(Double.parseDouble(iataAmtLabel.getText())));
-                pstm3.setBigDecimal(10, BigDecimal.valueOf(Double.parseDouble(taxAmountLabel.getText())));
-                pstm3.setBigDecimal(11, BigDecimal.valueOf(Double.parseDouble(otherAmtLabel.getText())));
-                pstm3.setBigDecimal(12, BigDecimal.valueOf(Double.parseDouble(subtotalAmtLabel.getText())));
-                pstm3.setBigDecimal(13, BigDecimal.valueOf(Double.parseDouble(usdAmtLabel.getText())));
-                if (plYesCheckbox.isSelected()){
-                    pstm3.setString(14, "Yes");
-                } else if (plNoCheckbox.isSelected()){
-                    pstm3.setString(14, "No");
-                }
-                pstm3.setString(15, typeOfSaleDDMenu.getSelectedItem().toString());
-                pstm3Result = pstm3.executeUpdate();
-
-                if (pstm1Result > 0 && pstm2Result > 0 && pstm3Result > 0){
-                    JOptionPane.showMessageDialog(this,
-                            """
-                            Sale has been recorded. To review, go to the 'View Individual Sales' menu
-                            A new customer record has been created. To view, go to the 'View Customer Records' menu.
-                            To review the created ticket, go to the 'View Tickets' menu.""");
-                } else {
-                    JOptionPane.showMessageDialog(this, "Could not create sale. " +
-                            "Review details entered or contact system administrator");
-                }
+                pstmTicket = conn.prepareStatement(createTicketQuery);
+                pstmTicket.setString(1, blankList.getSelectedValue());
+                pstmTicket.setString(2, customer.getUsername());
+                pstmTicket.setString(3, saleID);
             } else {
-                pstm3 = conn.prepareStatement(createTicketQuery);
                 createTicketQuery = "INSERT INTO in2018g12.ticket VALUES (?, ?, ?, ?)";
-                pstm3 = conn.prepareStatement(createTicketQuery);
-                pstm3.setString(1, customerNameDDMenu.getSelectedItem().toString());
-                pstm3.setString(2, saleID);
-                pstm3.setString(3, blankList.getSelectedValue());
-                if (plNoCheckbox.isSelected()){
-                    pstm3.setString(4, "Paid");
-                } else
-                    pstm3.setString(4, null);
-                pstm3Result = pstm3.executeUpdate();
-                if (pstm3Result > 0){
-                    JOptionPane.showMessageDialog(this,
-                            """
-                                    Sale has been recorded.
-                                    To review the created ticket, go to the 'View Tickets' menu.
-                                    To review your sale(s), go to the 'View Individual Sales' menu.""");
-                } else {
-                    JOptionPane.showMessageDialog(this, "Could not create sale. " +
-                            "Review details entered or contact system administrator");
-                }
+                pstmTicket = conn.prepareStatement(createTicketQuery);
+                pstmTicket.setString(1, customerNameDDMenu.getSelectedItem().toString());
+                pstmTicket.setString(2, saleID);
+                pstmTicket.setString(3, blankList.getSelectedValue());
+            }
+            if (plNoCheckbox.isSelected()){
+                pstmTicket.setString(4, "Paid");
+            } else
+                pstmTicket.setString(4, null);
+            pstmTicketResult = pstmTicket.executeUpdate();
+
+            createSaleQuery = "INSERT INTO in2018g12.sale(id, type, sellDate, paymentMethod, originalFare, iataCode, exchangeRate, convertedFare, tax, taxOther, subTotal, total, payLater) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+            pstmSale = conn.prepareStatement(createSaleQuery);
+            pstmSale.setString(1, saleID);
+            pstmSale.setString(2, Objects.requireNonNull(typeOfSaleDDMenu.getSelectedItem()).toString());
+            pstmSale.setString(3, String.valueOf(LocalDate.now()));
+            pstmSale.setString(4, Objects.requireNonNull(paymentTypeDDMenu.getSelectedItem()).toString());
+            pstmSale.setBigDecimal(5, BigDecimal.valueOf(Float.parseFloat(usdPayableLabel.getText())));
+            pstmSale.setString(6, Objects.requireNonNull(iataCurrencyCodeDDMenu.getSelectedItem()).toString());
+            pstmSale.setString(7, exchangeRateLabel.getText());
+            pstmSale.setBigDecimal(8, BigDecimal.valueOf(Double.parseDouble(iataAmtLabel.getText())));
+            pstmSale.setBigDecimal(9, BigDecimal.valueOf(Double.parseDouble(taxAmountLabel.getText())));
+            pstmSale.setBigDecimal(10, BigDecimal.valueOf(Double.parseDouble(otherAmtLabel.getText())));
+            pstmSale.setBigDecimal(11, BigDecimal.valueOf(Double.parseDouble(subtotalAmtLabel.getText())));
+            pstmSale.setBigDecimal(12, BigDecimal.valueOf(Double.parseDouble(usdAmtLabel.getText())));
+            if (plYesCheckbox.isSelected()){
+                pstmSale.setString(13, "Yes");
+            } else if (plNoCheckbox.isSelected()){
+                pstmSale.setString(13, "No");
+            }
+            pstmSaleResult = pstmSale.executeUpdate();
+            if (pstmCustomerResult > 0 && pstmTicketResult > 0 && pstmSaleResult > 0){
+                JOptionPane.showMessageDialog(this,
+                        """
+                        Sale has been recorded. To review, go to the 'View Individual Sales' menu
+                        A new customer record has been created. To view, go to the 'View Customer Records' menu.
+                        To review the created ticket, go to the 'View Tickets' menu.""");
+                System.out.println("test");
+            } else {
+                JOptionPane.showMessageDialog(this, "Could not create sale. " +
+                        "Review details entered or contact system administrator");
+                System.out.println("test");
             }
             conn.commit();
             conn.setAutoCommit(true);
@@ -1149,9 +1152,9 @@ public class TicketSales extends javax.swing.JFrame {
             if (conn != null) { try { conn.rollback(); } catch (SQLException e) { throw new RuntimeException(sqle); }}
         } finally {
             try { if (conn != null) conn.close(); } catch (Exception e) { throw new RuntimeException(e); }
-            try { if (pstm1 != null) pstm1.close(); } catch (Exception e) { throw new RuntimeException(e); }
-            try { if (pstm2 != null) pstm2.close(); } catch (Exception e) { throw new RuntimeException(e); }
-            try { if (pstm3 != null) pstm3.close(); } catch (Exception e) { throw new RuntimeException(e); }
+            try { if (pstmSale != null) pstmSale.close(); } catch (Exception e) { throw new RuntimeException(e); }
+            try { if (pstmTicket != null) pstmTicket.close(); } catch (Exception e) { throw new RuntimeException(e); }
+            try { if (pstmCustomer != null) pstmCustomer.close(); } catch (Exception e) { throw new RuntimeException(e); }
         }
 
     }//GEN-LAST:event_createTicketButtonActionPerformed

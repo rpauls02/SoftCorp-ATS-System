@@ -121,11 +121,11 @@ public class SystemAdminHub extends javax.swing.JFrame {
 
         idAndRoleLabel.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         idAndRoleLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-//        idAndRoleLabel.setText(previousPage.getAdmin().getId() + " | " + "Office Manager");
+        idAndRoleLabel.setText("<Staff ID> | System Administrator");
 
         welcomeLabel.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         welcomeLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-//        welcomeLabel.setText("Welcome " + previousPage.getAdmin().getForename());
+        welcomeLabel.setText("Welcome <name>");
 
         javax.swing.GroupLayout pageTitlePanelLayout = new javax.swing.GroupLayout(pageTitlePanel);
         pageTitlePanel.setLayout(pageTitlePanelLayout);
@@ -147,13 +147,6 @@ public class SystemAdminHub extends javax.swing.JFrame {
         homePagePanel.setBackground(new java.awt.Color(49, 174, 209));
         homePagePanel.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
-        addStaffButton.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        addStaffButton.setText("Add Staff Member");
-        addStaffButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                addStaffButtonActionPerformed(evt);
-            }
-        });
 
         javax.swing.GroupLayout homePagePanelLayout = new javax.swing.GroupLayout(homePagePanel);
         homePagePanel.setLayout(homePagePanelLayout);
@@ -253,6 +246,7 @@ public class SystemAdminHub extends javax.swing.JFrame {
     private void addStaffButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addStaffButtonActionPerformed
         new AddStaffAccount().setVisible(true);
     }//GEN-LAST:event_addStaffButtonActionPerformed
+
 
     /**
      * @param args the command line arguments

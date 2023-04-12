@@ -7,19 +7,12 @@ package interfaces.travel_advisor;
 import SQL.DBConnection;
 import interfaces.general.Login;
 
-import interfaces.general.Login;
-import sale.Commission;
-
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
-import javax.swing.table.TableRowSorter;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.List;
 import java.util.Objects;
 
 /**
@@ -46,8 +39,8 @@ public class GenerateIndividualReport extends javax.swing.JFrame {
     private void initComponents() {
 
         individualSalesReportPanel = new javax.swing.JPanel();
-        pageTitlePanel3 = new javax.swing.JPanel();
-        pageTitleLabel3 = new javax.swing.JLabel();
+        pageTitlePanel = new javax.swing.JPanel();
+        pageTitleLabel = new javax.swing.JLabel();
         buttonsPanel = new javax.swing.JPanel();
         homeButton = new javax.swing.JButton();
         viewIndSalesButton = new javax.swing.JButton();
@@ -62,35 +55,34 @@ public class GenerateIndividualReport extends javax.swing.JFrame {
         logoLabel = new javax.swing.JLabel();
         functionPanel = new javax.swing.JPanel();
         reportTypeDDMenu = new javax.swing.JComboBox<>();
-        refreshButton = new javax.swing.JButton();
+        refreshTableButton = new javax.swing.JButton();
         showDDMenu = new javax.swing.JComboBox<>();
-        orderDDMenu = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("ATS System | Travel Advisor | View Individual Sales Report");
         setMinimumSize(new java.awt.Dimension(1200, 800));
         setResizable(false);
 
-        pageTitlePanel3.setBackground(new java.awt.Color(49, 174, 209));
-        pageTitlePanel3.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        pageTitlePanel3.setPreferredSize(new java.awt.Dimension(500, 83));
+        pageTitlePanel.setBackground(new java.awt.Color(49, 174, 209));
+        pageTitlePanel.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        pageTitlePanel.setPreferredSize(new java.awt.Dimension(500, 83));
 
-        pageTitleLabel3.setBackground(new java.awt.Color(153, 204, 255));
-        pageTitleLabel3.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
-        pageTitleLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        pageTitleLabel3.setText("View Individual Sales");
+        pageTitleLabel.setBackground(new java.awt.Color(153, 204, 255));
+        pageTitleLabel.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        pageTitleLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        pageTitleLabel.setText("View Individual Sales");
 
-        javax.swing.GroupLayout pageTitlePanel3Layout = new javax.swing.GroupLayout(pageTitlePanel3);
-        pageTitlePanel3.setLayout(pageTitlePanel3Layout);
-        pageTitlePanel3Layout.setHorizontalGroup(
-                pageTitlePanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(pageTitleLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, 498, Short.MAX_VALUE)
+        javax.swing.GroupLayout pageTitlePanelLayout = new javax.swing.GroupLayout(pageTitlePanel);
+        pageTitlePanel.setLayout(pageTitlePanelLayout);
+        pageTitlePanelLayout.setHorizontalGroup(
+                pageTitlePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(pageTitleLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 498, Short.MAX_VALUE)
         );
-        pageTitlePanel3Layout.setVerticalGroup(
-                pageTitlePanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pageTitlePanel3Layout.createSequentialGroup()
+        pageTitlePanelLayout.setVerticalGroup(
+                pageTitlePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pageTitlePanelLayout.createSequentialGroup()
                                 .addContainerGap(35, Short.MAX_VALUE)
-                                .addComponent(pageTitleLabel3)
+                                .addComponent(pageTitleLabel)
                                 .addGap(35, 35, 35))
         );
 
@@ -102,6 +94,12 @@ public class GenerateIndividualReport extends javax.swing.JFrame {
         homeButton.setBackground(new java.awt.Color(54, 198, 238));
         homeButton.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         homeButton.setText("Home");
+
+        homeButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                homeButtonActionPerformed(evt);
+            }
+        });
 
         viewIndSalesButton.setBackground(new java.awt.Color(153, 153, 255));
         viewIndSalesButton.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
@@ -169,6 +167,21 @@ public class GenerateIndividualReport extends javax.swing.JFrame {
         );
 
         reportContentsTable.setBackground(new java.awt.Color(49, 174, 209));
+        reportContentsTable.setModel(new javax.swing.table.DefaultTableModel(
+                new Object [][] {
+                        {null, null, null, null, null, null, null, null, null, null},
+                        {null, null, null, null, null, null, null, null, null, null},
+                        {null, null, null, null, null, null, null, null, null, null},
+                        {null, null, null, null, null, null, null, null, null, null}
+                },
+                new String [] {
+                        "Date", "Issued Blank", "USD Amount", "Converted Amount", "Tax", "Tax - Other", "Total Payable", "Card Number", "Total Paid", "Commissions Used"
+                }
+        ));
+        reportContentsTable.setColumnSelectionAllowed(true);
+        reportContentsTable.getTableHeader().setReorderingAllowed(false);
+        reportTableSP.setViewportView(reportContentsTable);
+        reportContentsTable.getColumnModel().getSelectionModel().setSelectionMode(javax.swing.ListSelectionModel.MULTIPLE_INTERVAL_SELECTION);
 
         infoPanel.setBackground(new java.awt.Color(204, 204, 204));
         infoPanel.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
@@ -241,9 +254,9 @@ public class GenerateIndividualReport extends javax.swing.JFrame {
             }
         });
 
-        refreshButton.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        refreshButton.setText("Refresh");
-        refreshButton.addActionListener(new java.awt.event.ActionListener() {
+        refreshTableButton.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        refreshTableButton.setText("Refresh");
+        refreshTableButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 refreshTableButtonActionPerformed(evt);
             }
@@ -257,14 +270,6 @@ public class GenerateIndividualReport extends javax.swing.JFrame {
             }
         });
 
-        orderDDMenu.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        orderDDMenu.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Order", "By Number", "By Date", "By Status" }));
-        orderDDMenu.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                orderDDMenuActionPerformed(evt);
-            }
-        });
-
         javax.swing.GroupLayout functionPanelLayout = new javax.swing.GroupLayout(functionPanel);
         functionPanel.setLayout(functionPanelLayout);
         functionPanelLayout.setHorizontalGroup(
@@ -272,12 +277,10 @@ public class GenerateIndividualReport extends javax.swing.JFrame {
                         .addGroup(functionPanelLayout.createSequentialGroup()
                                 .addContainerGap()
                                 .addComponent(showDDMenu, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(orderDDMenu, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(271, 271, 271)
+                                .addGap(409, 409, 409)
                                 .addComponent(reportTypeDDMenu, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(refreshButton)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 424, Short.MAX_VALUE)
+                                .addComponent(refreshTableButton)
                                 .addContainerGap())
         );
         functionPanelLayout.setVerticalGroup(
@@ -286,9 +289,8 @@ public class GenerateIndividualReport extends javax.swing.JFrame {
                                 .addContainerGap()
                                 .addGroup(functionPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                         .addComponent(reportTypeDDMenu)
-                                        .addComponent(orderDDMenu, javax.swing.GroupLayout.Alignment.LEADING)
                                         .addComponent(showDDMenu, javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(refreshButton, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 33, Short.MAX_VALUE))
+                                        .addComponent(refreshTableButton, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 33, Short.MAX_VALUE))
                                 .addContainerGap())
         );
 
@@ -302,7 +304,7 @@ public class GenerateIndividualReport extends javax.swing.JFrame {
                                         .addGroup(individualSalesReportPanelLayout.createSequentialGroup()
                                                 .addComponent(logoPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                .addComponent(pageTitlePanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addComponent(pageTitlePanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                                 .addComponent(buttonsPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                                         .addComponent(infoPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 1188, Short.MAX_VALUE)
@@ -318,7 +320,7 @@ public class GenerateIndividualReport extends javax.swing.JFrame {
                                         .addComponent(logoPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addGroup(individualSalesReportPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                                 .addComponent(buttonsPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                                .addComponent(pageTitlePanel3, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                                .addComponent(pageTitlePanel, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(infoPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -365,31 +367,13 @@ public class GenerateIndividualReport extends javax.swing.JFrame {
 
     private void viewTicketsPageButtonActionPerformed(java.awt.event.ActionEvent evt) {
         dispose();
-        new ViewTickets().setVisible(true);
+        new ViewTicketsAdvisor().setVisible(true);
     }                                                       
 
     private void sellTicketPageButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sellTicketPageButtonActionPerformed
         dispose();
         new TicketSales().setVisible(true);
     }//GEN-LAST:event_sellTicketPageButtonActionPerformed
-
-    private void orderDDMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_orderDDMenuActionPerformed
-        DefaultTableModel model = (DefaultTableModel)reportContentsTable.getModel();
-        TableRowSorter<DefaultTableModel> sorter = new TableRowSorter<>(model);
-        switch ((String) Objects.requireNonNull(orderDDMenu.getSelectedItem())){
-            case "By Date" -> {
-                sorter.setSortKeys(List.of(new RowSorter.SortKey(0, SortOrder.ASCENDING)));
-            }
-            case "By Number" -> {
-                sorter.setSortKeys(List.of(new RowSorter.SortKey(1, SortOrder.ASCENDING)));
-            }
-            case "By Status" -> {
-                sorter.setSortKeys(List.of(new RowSorter.SortKey(3, SortOrder.ASCENDING)));
-            }
-        }
-        reportContentsTable.setRowSorter(sorter);
-        sorter.sort();
-    }//GEN-LAST:event_orderDDMenuActionPerformed
 
     private void showDDMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_showDDMenuActionPerformed
         DefaultTableModel model = (DefaultTableModel) reportContentsTable.getModel();
@@ -489,6 +473,92 @@ public class GenerateIndividualReport extends javax.swing.JFrame {
 
     private void reportTypeDDMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_reportTypeDDMenuActionPerformed
 
+        // report table for content code
+//    DefaultTableModel model = (DefaultTableModel)reportContentsTable.getModel();
+//    Connection conn = null;
+//    PreparedStatement pstm = null;
+//    ResultSet rs = null;
+//    String query = null;
+//
+//        try {
+//                conn = DBConnection.getConnection();
+//                if (Objects.equals(Objects.requireNonNull(reportTypeDDMenu.getSelectedItem()).toString(), "Interline Sales")){
+//                query = "SELECT s.sellDate, t.blankNumber, s.originalFare, s.exchangeRate, s.convertedFare, s.tax, s.taxOther, s.total, s.payLater, ca.number, s.totalPaid, co.rate " +
+//                "FROM sale s " +
+//                "INNER JOIN staff st ON st.id = s.staffID " +
+//                "INNER JOIN ticket t ON t.saleID = s.id " +
+//                "INNER JOIN card ca ON ca.customerUsername = t.customerUsername " +
+//                "INNER JOIN commission co ON co.blankNumber = t.blankNumber";
+//
+//                } else if (Objects.equals(reportTypeDDMenu.getSelectedItem().toString(), "Domestic Sales")){
+//                query = "SELECT s.sellDate, t.blankNumber, s.originalFare, s.exchangeRate, s.convertedFare, s.tax, s.taxOther, s.total, s.payLater, ca.number, s.totalPaid, co.rate " +
+//                "FROM sale s " +
+//                "INNER JOIN staff st ON st.id = s.staffID " +
+//                "INNER JOIN ticket t ON t.saleID = s.id " +
+//                "INNER JOIN card ca ON ca.customerUsername = t.customerUsername " +
+//                "INNER JOIN commission co ON co.blankNumber = t.blankNumber";
+//                }
+//                pstm = conn.prepareStatement(query);
+//                rs = pstm.executeQuery();
+//                if (!rs.next()) {
+//                JOptionPane.showMessageDialog(this, "Could not retrieve sales data. " +
+//                "Try again or contact system administrator");
+//                } else {
+//                model.setRowCount(0);
+//                if (Objects.equals(reportTypeDDMenu.getSelectedItem().toString(), "Interline Sales")) {
+//                do {
+//                Object[] row = new Object[12];
+//                row[0] = rs.getString("date");
+//                row[1] = rs.getString("blankNumber");
+//                row[2] = rs.getString("originalFare");
+//                row[3] = rs.getString("exchangeRate");
+//                row[4] = rs.getString("convertedFare");
+//                row[5] = rs.getString("tax");
+//                row[6] = rs.getString("taxOther");
+//                row[7] = rs.getString("total");
+//                row[8] = rs.getString("number");
+//                row[9] = rs.getString("totalPaid");
+//                row[10] = rs.getString("payLater");
+//                row[11] = rs.getString("rate");
+//                model.addRow(row);
+//                } while (rs.next());
+//                } else {
+//                reportContentsTable.setModel(new javax.swing.table.DefaultTableModel(
+//                new Object [][] {
+//                {null, null, null, null, null, null, null, null, null, null},
+//                {null, null, null, null, null, null, null, null, null, null},
+//                {null, null, null, null, null, null, null, null, null, null},
+//                },
+//                new String [] {
+//                "Date", "Issued Blank", "Local(USD) Amount", "Tax", "Tax - Other", "Total Payable", "Pay Later?", "Card Number", "Total Paid", " Commission Rate Used"
+//                }
+//                ));
+//                do {
+//                Object[] row = new Object[9];
+//                row[0] = rs.getString("date");
+//                row[1] = rs.getString("blankNumber");
+//                row[2] = rs.getString("originalFare");
+//                row[3] = rs.getString("tax");
+//                row[4] = rs.getString("taxOther");
+//                row[5] = rs.getString("total");
+//                row[6] = rs.getString("number");
+//                row[7] = rs.getString("totalPaid");
+//                row[8] = rs.getString("rate");
+//                model.addRow(row);
+//                } while (rs.next());
+//                }
+//                }
+//                } catch (SQLException sqle) {
+//                if (conn != null) { try { conn.rollback(); } catch (SQLException e) { throw new RuntimeException(sqle); }}
+//                } finally {
+//                try { if (rs != null) rs.close(); } catch (Exception e) { throw new RuntimeException(e); }
+//                try { if (pstm != null) pstm.close(); } catch (Exception e) { throw new RuntimeException(e); }
+//                try { if (conn != null) conn.close(); } catch (Exception e) { throw new RuntimeException(e); }
+//                }
+
+
+
+
     }//GEN-LAST:event_reportTypeDDMenuActionPerformed
 
     /**
@@ -538,10 +608,9 @@ public class GenerateIndividualReport extends javax.swing.JFrame {
     private javax.swing.JLabel logoLabel;
     private javax.swing.JPanel logoPanel;
     private javax.swing.JButton logoutButton;
-    private javax.swing.JComboBox<String> orderDDMenu;
-    private javax.swing.JLabel pageTitleLabel3;
-    private javax.swing.JPanel pageTitlePanel3;
-    private javax.swing.JButton refreshButton;
+    private javax.swing.JLabel pageTitleLabel;
+    private javax.swing.JPanel pageTitlePanel;
+    private javax.swing.JButton refreshTableButton;
     private javax.swing.JTable reportContentsTable;
     private javax.swing.JScrollPane reportTableSP;
     private javax.swing.JComboBox<String> reportTypeDDMenu;
@@ -551,3 +620,4 @@ public class GenerateIndividualReport extends javax.swing.JFrame {
     private javax.swing.JButton viewTicketsPageButton;
     // End of variables declaration
 }
+

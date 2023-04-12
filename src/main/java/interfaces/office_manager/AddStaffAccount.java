@@ -469,6 +469,7 @@ public class AddStaffAccount extends javax.swing.JFrame {
 
     private void backButtonActionPerformed(java.awt.event.ActionEvent evt) {
         dispose();
+        new OfficeManagerHub().setVisible(true);
     }
 
     private void viewAlertsButtonActionPerformed(java.awt.event.ActionEvent evt) {
@@ -510,8 +511,8 @@ public class AddStaffAccount extends javax.swing.JFrame {
         try {
             conn = DBConnection.getConnection();
             String query =
-                    "INSERT INTO in2018g12.staff (id, password, role, forename, surname, phone, email)" +
-                            "VALUES (?, ?, ?, ?, ?, ?, ?)";
+                    "INSERT INTO in2018g12.staff (id, password, role, forename, surname)" +
+                            "VALUES (?, ?, ?, ?, ?)";
             pstm = conn.prepareStatement(query);
             pstm.setInt(1, random_id);
 
@@ -537,8 +538,6 @@ public class AddStaffAccount extends javax.swing.JFrame {
             pstm.setString(3, Objects.requireNonNull(roleDDMenu.getSelectedItem()).toString());
             pstm.setString(4, forenameField.getText());
             pstm.setString(5, surnameField.getText());
-            pstm.setString(6, phoneField.getText());
-            pstm.setString(7, emailField.getText());
             int result = pstm.executeUpdate();
             if (result > 0){
                 JOptionPane.showMessageDialog(this, "Staff member added. " +

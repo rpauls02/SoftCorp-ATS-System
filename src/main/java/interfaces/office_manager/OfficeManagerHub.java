@@ -9,8 +9,6 @@ import interfaces.general.Login;
 
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.sql.*;
 
 
@@ -50,9 +48,8 @@ public class OfficeManagerHub extends javax.swing.JFrame {
         viewReportButton = new javax.swing.JButton();
         manageCommissionsButton = new javax.swing.JButton();
         functionPanel = new javax.swing.JPanel();
-        refreshButton = new javax.swing.JButton();
+        refreshTableButton = new javax.swing.JButton();
         tableName = new javax.swing.JLabel();
-        orderDDMenu = new javax.swing.JComboBox<>();
         showDDMenu = new javax.swing.JComboBox<>();
         tableScrollPane = new javax.swing.JScrollPane();
         advisorInformationTable = new javax.swing.JTable();
@@ -78,7 +75,7 @@ public class OfficeManagerHub extends javax.swing.JFrame {
 
         welcomeLabel.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         welcomeLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        welcomeLabel.setText("Welcome Name");
+        welcomeLabel.setText("Welcome <name>");
 
         javax.swing.GroupLayout pageTitlePanelLayout = new javax.swing.GroupLayout(pageTitlePanel);
         pageTitlePanel.setLayout(pageTitlePanelLayout);
@@ -140,8 +137,7 @@ public class OfficeManagerHub extends javax.swing.JFrame {
         manageStockButton.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         manageStockButton.setText("Manage Stock");
         manageStockButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                manageStockButtonActionPerformed(evt);
+            public void actionPerformed(java.awt.event.ActionEvent evt) {manageStockButtonActionPerformed(evt);
             }
         });
 
@@ -210,15 +206,17 @@ public class OfficeManagerHub extends javax.swing.JFrame {
         functionPanel.setMinimumSize(new java.awt.Dimension(779, 48));
         functionPanel.setPreferredSize(new java.awt.Dimension(779, 48));
 
-        refreshButton.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        refreshButton.setText("Refresh");
+        refreshTableButton.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        refreshTableButton.setText("Refresh");
+        refreshTableButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                refreshTableButtonActionPerformed(evt);
+            }
+        });
 
         tableName.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         tableName.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         tableName.setText("Advisor Information");
-
-        orderDDMenu.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        orderDDMenu.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Order", "By Number", "By Date", "By Status" }));
 
         showDDMenu.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         showDDMenu.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Show", "10", "25", "50", "100" }));
@@ -230,12 +228,10 @@ public class OfficeManagerHub extends javax.swing.JFrame {
                         .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, functionPanelLayout.createSequentialGroup()
                                 .addContainerGap()
                                 .addComponent(showDDMenu, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(orderDDMenu, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(298, 298, 298)
+                                .addGap(422, 422, 422)
                                 .addComponent(tableName)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(refreshButton)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 414, Short.MAX_VALUE)
+                                .addComponent(refreshTableButton)
                                 .addContainerGap())
         );
         functionPanelLayout.setVerticalGroup(
@@ -247,30 +243,26 @@ public class OfficeManagerHub extends javax.swing.JFrame {
                                                 .addComponent(showDDMenu, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                                         .addGroup(functionPanelLayout.createSequentialGroup()
-                                                .addGroup(functionPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, functionPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                                                .addComponent(orderDDMenu, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                                .addComponent(tableName, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                                                        .addComponent(refreshButton, javax.swing.GroupLayout.Alignment.LEADING))
+                                                .addGroup(functionPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                                        .addComponent(refreshTableButton)
+                                                        .addComponent(tableName))
                                                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
+
 
         tableScrollPane.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
         advisorInformationTable.setBackground(new java.awt.Color(49, 174, 209));
         advisorInformationTable.setModel(new javax.swing.table.DefaultTableModel(
                 new Object [][] {
-                        {null, null, null, null, null},
-                        {null, null, null, null, null},
-                        {null, null, null, null, null},
-                        {null, null, null, null, null}
+                        {null, null, null, null, null, null}
                 },
                 new String [] {
-                        "ID", "Role", "Forename(s)", "Surname", "Email"
+                        "ID", "Password", "Role", "Forename", "Surname"
                 }
         ) {
             Class[] types = new Class [] {
-                    java.lang.Integer.class, java.lang.Object.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
+                    java.lang.Integer.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -485,10 +477,10 @@ public class OfficeManagerHub extends javax.swing.JFrame {
                 do {
                     Object[] row = new Object[5];
                     row[0] = rs.getString("id");
-                    row[1] = rs.getString("role");
-                    row[2] = rs.getString("forename");
-                    row[3] = rs.getString("surname");
-                    row[4] = rs.getString("email");
+                    row[1] = rs.getString("password");
+                    row[2] = rs.getString("role");
+                    row[3] = rs.getString("forename");
+                    row[4] = rs.getString("surname");
                     model.addRow(row);
                 } while (rs.next());
             }
@@ -502,19 +494,94 @@ public class OfficeManagerHub extends javax.swing.JFrame {
     }
 
     private void findStaffAccountButtonActionPerformed(java.awt.event.ActionEvent evt){
-        
+        DefaultTableModel model = (DefaultTableModel)advisorInformationTable.getModel();
+        Connection conn = null;
+        PreparedStatement pstm = null;
+        ResultSet rs = null;
+        try {
+            conn = DBConnection.getConnection();
+            String query = "SELECT * FROM staff WHERE id = ?";
+            pstm = conn.prepareStatement(query);
+            pstm.setString(1, findStaffAccountField.getText());
+            rs = pstm.executeQuery();
+            if (!rs.next()){
+                JOptionPane.showMessageDialog(this, "Customer not found. " +
+                        "Review entered details or contact system administrator");
+            } else {
+                model.setRowCount(0);
+                do {
+                    Object[] row = new Object[4];
+                    row[0] = rs.getString("id");
+                    row[1] = rs.getString("role");
+                    row[2] = rs.getString("forename");
+                    row[3] = rs.getString("surname");
+                    model.addRow(row);
+                } while (rs.next());
+            }
+        } catch (SQLException sqle) {
+            if (conn != null) { try { conn.rollback(); } catch (SQLException e) { throw new RuntimeException(sqle); }}
+        } finally {
+            try { if (conn != null) conn.close(); } catch (Exception e) { throw new RuntimeException(e); }
+            try { if (pstm != null) pstm.close(); } catch (Exception e) { throw new RuntimeException(e); }
+            try { if (rs != null) rs.close(); } catch (Exception e) { throw new RuntimeException(e); }
+        }
     }
 
     private void addStaffAccountButtonActionPerformed(java.awt.event.ActionEvent evt){
-
+        new AddStaffAccount().setVisible(true);
     }
 
     private void deleteStaffAccountButtonActionPerformed(java.awt.event.ActionEvent evt){
-
+        Connection conn = null;
+        PreparedStatement pstm = null;
+        try {
+            conn = DBConnection.getConnection();
+            String query = "DELETE FROM in2018g12.staff WHERE surname = ?";
+            pstm = conn.prepareStatement(query);
+            pstm.setString(1, findStaffAccountField.getText());
+            int result = pstm.executeUpdate();
+            if (result > 0)
+            {
+                JOptionPane.showMessageDialog(this, "Customer deleted successfully.");
+            } else {
+                JOptionPane.showMessageDialog(this, "Could not delete customer record. " +
+                        "Review selection or contact system administrator");
+            }
+        } catch (SQLException sqle) {
+            if (conn != null) { try { conn.rollback(); } catch (SQLException e) { throw new RuntimeException(sqle); }}
+        } finally {
+            try { if (conn != null) conn.close(); } catch (Exception e) { throw new RuntimeException(e); }
+            try { if (pstm != null) pstm.close(); } catch (Exception e) { throw new RuntimeException(e); }
+        }
     }
 
     private void editStaffAccountButtonActionPerformed(java.awt.event.ActionEvent evt){
-
+        Connection conn = null;
+        PreparedStatement pstm = null;
+        try {
+            conn = DBConnection.getConnection();
+            String query =
+                    "UPDATE in2018g12.staff SET password = ?, role = ?, forename = ?, surname = ? WHERE id = ?";
+            pstm = conn.prepareStatement(query);
+            pstm.setString(1, (String) advisorInformationTable.getValueAt(advisorInformationTable.getSelectedRow(), 1));
+            pstm.setString(2, (String) advisorInformationTable.getValueAt(advisorInformationTable.getSelectedRow(), 2));
+            pstm.setString(3, (String) advisorInformationTable.getValueAt(advisorInformationTable.getSelectedRow(), 3));
+            pstm.setString(4, (String) advisorInformationTable.getValueAt(advisorInformationTable.getSelectedRow(), 4));
+            pstm.setString(5, (String) advisorInformationTable.getValueAt(advisorInformationTable.getSelectedRow(), 0));
+            int result = pstm.executeUpdate();
+            if (result > 0){
+                JOptionPane.showMessageDialog(this, "Customer record updated. " +
+                        "Review using 'View Customer Records' menu");
+            } else {
+                JOptionPane.showMessageDialog(this, "Could not update customer record. " +
+                        "Review changes entered or contact system administrator");
+            }
+        } catch (SQLException sqle) {
+            if (conn != null) { try { conn.rollback(); } catch (SQLException e) { throw new RuntimeException(sqle); }}
+        } finally {
+            try { if (conn != null) conn.close(); } catch (Exception e) { throw new RuntimeException(e); }
+            try { if (pstm != null) pstm.close(); } catch (Exception e) { throw new RuntimeException(e); }
+        }
     }
 
 
@@ -570,9 +637,8 @@ public class OfficeManagerHub extends javax.swing.JFrame {
     private javax.swing.JButton logoutButton;
     private javax.swing.JButton manageCommissionsButton;
     private javax.swing.JButton manageStockButton;
-    private javax.swing.JComboBox<String> orderDDMenu;
     private javax.swing.JPanel pageTitlePanel;
-    private javax.swing.JButton refreshButton;
+    private javax.swing.JButton refreshTableButton;
     private javax.swing.JComboBox<String> showDDMenu;
     private javax.swing.JPanel tableFunctionsPanel;
     private javax.swing.JLabel tableName;
