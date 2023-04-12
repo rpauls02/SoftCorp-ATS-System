@@ -1034,39 +1034,12 @@ public class TicketSales extends javax.swing.JFrame {
         5. A BufferedReader object is created to read the response from the API, which is in JSON format.
         6. The JSON response is parsed using the JSONObject class from the org.json library, and the exchange rate is extracted from the "rates" field based on the selected IATA code.
         7. The exchange rate is displayed in a label component on User Interface.
-        *
         * */
-
     private void iataCurrencyCodeDDMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_iataCurrencyCodeDDMenuMenuActionPerformed
-        // displays exchange rate depending on the selected IATA code
-
-        ExchangeRate.showExchangeRate(iataCurrencyCodeDDMenu, showRateLabel);
-        if (iataCurrencyCodeDDMenu.getSelectedItem().toString().equals("Select IATA Code")) {
+        if (iataCurrencyCodeDDMenu.getSelectedItem().toString() == "Select IATA Code") {
             showRateLabel.setText(" ");
         } else {
-            String apiURL = "https://openexchangerates.org/api/latest.json?app_id=c8d2619d67494c45b9fb6d1833872198&base=USD";
-
-            try {
-                URL url = new URL(apiURL);
-                HttpURLConnection connection = (HttpURLConnection) url.openConnection();
-                connection.setRequestMethod("GET");
-
-                BufferedReader br = new BufferedReader(new InputStreamReader((connection.getInputStream())));
-                String inputLine;
-                StringBuilder sb = new StringBuilder();
-                while ((inputLine = br.readLine()) != null) {
-                    sb.append(inputLine);
-                }
-                br.close();
-
-                JSONObject json = new JSONObject(sb.toString());
-                JSONObject rates = json.getJSONObject("rates");
-                double exchangeRate = rates.getDouble(iataCurrencyCodeDDMenu.getSelectedItem().toString());
-
-                showRateLabel.setText(Double.toString(exchangeRate));
-            } catch (Exception e) {
-                throw new RuntimeException(e);
-            }
+            ExchangeRate.showExchangeRate(iataCurrencyCodeDDMenu, showRateLabel);
         }
     }//GEN-LAST:event_iataCurrencyCodeDDMenuMenuActionPerformed
 
@@ -1078,9 +1051,7 @@ public class TicketSales extends javax.swing.JFrame {
         4. The ticket is then linked with the customer and sale ID.
         5. The sale record contains information about the sale, including the sale ID, the type of sale, the payment type, the amount payable in USD, and the exchange rate.
         6. The code then displays a message to the user indication whether the sale was successfully recorded and which menu the user can navigate to view the created ticketm customer record or sale record.
-        *
         * */
-
     private void createTicketButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_createTicketButtonActionPerformed
         Random rand = new Random();
         int lower = 200;
