@@ -16,6 +16,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.KeyAdapter;
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.math.BigDecimal;
@@ -1096,99 +1097,82 @@ public class TicketSales extends javax.swing.JFrame {
 
         StaffController staffController = new StaffController();
         Connection conn = null;
-        PreparedStatement pstm1 = null;
-        PreparedStatement pstm2 = null;
-        PreparedStatement pstm3 = null;
-        String createTicketQuery = null;
-        String createSaleQuery = null;
-        String createCustomerQuery = null;
-        int pstm1Result = 0;
-        int pstm2Result = 0;
-        int pstm3Result = 0;
-        Scanner scanner = new Scanner(System.in);
-        RegularCustomer regCustomer;
+        PreparedStatement pstmCustomer = null;
+        PreparedStatement pstmSale = null;
+        PreparedStatement pstmTicket = null;
+        String createTicketQuery;
+        String createSaleQuery;
+        String createCustomerQuery;
+        String findCustomerQuery;
+        int pstmCustomerResult = 0;
+        int pstmTicketResult = 0;
+        int pstmSaleResult = 0;
+        RegularCustomer customer;
         try {
             conn = DBConnection.getConnection();
             conn.setAutoCommit(false);
 
             if (customerNameDDMenu.getSelectedItem() == null && !(forenameField.getText().isEmpty())){
-                createCustomerQuery = "INSERT INTO in2018g12.customer VALUES (?, ?, ?, ?, ?, ?)";
-                pstm1 = conn.prepareStatement(createCustomerQuery);
-                pstm1.setString(1, username);
-                pstm1.setString(2, forenameField.getText());
-                pstm1.setString(3, surnameField.getText());
-                pstm1.setString(4, phoneField.getText());
-                pstm1.setString(5, emailField.getText());
-                pstm1.setString(6, "Regular");
-                regCustomer = new RegularCustomer(username, forenameField.getText(), surnameField.getText(), phoneField.getText(), emailField.getText(), "Regular");
-                pstm1Result = pstm1.executeUpdate();
+                createCustomerQuery = "INSERT INTO in2018g12.customer(username, forename, surname, phone, email, in2018g12.customer.status) VALUES (?, ?, ?, ?, ?, ?)";
+                pstmCustomer = conn.prepareStatement(createCustomerQuery);
+                pstmCustomer.setString(1, username);
+                pstmCustomer.setString(2, forenameField.getText());
+                pstmCustomer.setString(3, surnameField.getText());
+                pstmCustomer.setString(4, phoneField.getText());
+                pstmCustomer.setString(5, emailField.getText());
+                pstmCustomer.setString(6, "Regular");
+                customer = new RegularCustomer(username, forenameField.getText(), surnameField.getText(), phoneField.getText(), emailField.getText(), "Regular");
+                pstmCustomerResult = pstmCustomer.executeUpdate();
 
                 createTicketQuery = "INSERT INTO in2018g12.ticket VALUES (?, ?, ?, ?)";
-                pstm2 = conn.prepareStatement(createTicketQuery);
-                pstm2.setString(1, blankList.getSelectedValue());
-                pstm2.setString(2, regCustomer.getUsername());
-                pstm2.setString(3, saleID);
-                if (plNoCheckbox.isSelected()){
-                    pstm2.setString(4, "Paid");
-                } else
-                    pstm2.setString(4, null);
-                pstm2Result = pstm2.executeUpdate();
-
-                createSaleQuery = "INSERT INTO in2018g12.sale VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
-                pstm3 = conn.prepareStatement(createSaleQuery);
-                pstm3.setString(1, saleID);
-                //pstm3.setInt(2, staffController.getAdvisor().getId());
-                pstm3.setString(3, typeOfSaleDDMenu.getSelectedItem().toString());
-                pstm3.setString(4, String.valueOf(LocalDate.now()));
-                pstm3.setString(5, paymentTypeDDMenu.getSelectedItem().toString());
-                pstm3.setBigDecimal(6, BigDecimal.valueOf(Float.parseFloat(usdPayableLabel.getText())));
-                pstm3.setString(7, iataCurrencyCodeDDMenu.getSelectedItem().toString() );
-                pstm3.setString(8, exchangeRateLabel.getText());
-                pstm3.setBigDecimal(9, BigDecimal.valueOf(Double.parseDouble(iataAmtLabel.getText())));
-                pstm3.setBigDecimal(10, BigDecimal.valueOf(Double.parseDouble(taxAmountLabel.getText())));
-                pstm3.setBigDecimal(11, BigDecimal.valueOf(Double.parseDouble(otherAmtLabel.getText())));
-                pstm3.setBigDecimal(12, BigDecimal.valueOf(Double.parseDouble(subtotalAmtLabel.getText())));
-                pstm3.setBigDecimal(13, BigDecimal.valueOf(Double.parseDouble(usdAmtLabel.getText())));
-                if (plYesCheckbox.isSelected()){
-                    pstm3.setString(14, "Yes");
-                } else if (plNoCheckbox.isSelected()){
-                    pstm3.setString(14, "No");
-                }
-                pstm3.setString(15, typeOfSaleDDMenu.getSelectedItem().toString());
-                pstm3Result = pstm3.executeUpdate();
-
-                if (pstm1Result > 0 && pstm2Result > 0 && pstm3Result > 0){
-                    JOptionPane.showMessageDialog(this,
-                            """
-                            Sale has been recorded. To review, go to the 'View Individual Sales' menu
-                            A new customer record has been created. To view, go to the 'View Customer Records' menu.
-                            To review the created ticket, go to the 'View Tickets' menu.""");
-                } else {
-                    JOptionPane.showMessageDialog(this, "Could not create sale. " +
-                            "Review details entered or contact system administrator");
-                }
+                pstmTicket = conn.prepareStatement(createTicketQuery);
+                pstmTicket.setString(1, blankList.getSelectedValue());
+                pstmTicket.setString(2, customer.getUsername());
+                pstmTicket.setString(3, saleID);
             } else {
-                pstm3 = conn.prepareStatement(createTicketQuery);
                 createTicketQuery = "INSERT INTO in2018g12.ticket VALUES (?, ?, ?, ?)";
-                pstm3 = conn.prepareStatement(createTicketQuery);
-                pstm3.setString(1, customerNameDDMenu.getSelectedItem().toString());
-                pstm3.setString(2, saleID);
-                pstm3.setString(3, blankList.getSelectedValue());
-                if (plNoCheckbox.isSelected()){
-                    pstm3.setString(4, "Paid");
-                } else
-                    pstm3.setString(4, null);
-                pstm3Result = pstm3.executeUpdate();
-                if (pstm3Result > 0){
-                    JOptionPane.showMessageDialog(this,
-                            """
-                                    Sale has been recorded.
-                                    To review the created ticket, go to the 'View Tickets' menu.
-                                    To review your sale(s), go to the 'View Individual Sales' menu.""");
-                } else {
-                    JOptionPane.showMessageDialog(this, "Could not create sale. " +
-                            "Review details entered or contact system administrator");
-                }
+                pstmTicket = conn.prepareStatement(createTicketQuery);
+                pstmTicket.setString(1, customerNameDDMenu.getSelectedItem().toString());
+                pstmTicket.setString(2, saleID);
+                pstmTicket.setString(3, blankList.getSelectedValue());
+            }
+            if (plNoCheckbox.isSelected()){
+                pstmTicket.setString(4, "Paid");
+            } else
+                pstmTicket.setString(4, null);
+            pstmTicketResult = pstmTicket.executeUpdate();
+
+            createSaleQuery = "INSERT INTO in2018g12.sale(id, type, sellDate, paymentMethod, originalFare, iataCode, exchangeRate, convertedFare, tax, taxOther, subTotal, total, payLater) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+            pstmSale = conn.prepareStatement(createSaleQuery);
+            pstmSale.setString(1, saleID);
+            pstmSale.setString(2, Objects.requireNonNull(typeOfSaleDDMenu.getSelectedItem()).toString());
+            pstmSale.setString(3, String.valueOf(LocalDate.now()));
+            pstmSale.setString(4, Objects.requireNonNull(paymentTypeDDMenu.getSelectedItem()).toString());
+            pstmSale.setBigDecimal(5, BigDecimal.valueOf(Float.parseFloat(usdPayableLabel.getText())));
+            pstmSale.setString(6, Objects.requireNonNull(iataCurrencyCodeDDMenu.getSelectedItem()).toString());
+            pstmSale.setString(7, exchangeRateLabel.getText());
+            pstmSale.setBigDecimal(8, BigDecimal.valueOf(Double.parseDouble(iataAmtLabel.getText())));
+            pstmSale.setBigDecimal(9, BigDecimal.valueOf(Double.parseDouble(taxAmountLabel.getText())));
+            pstmSale.setBigDecimal(10, BigDecimal.valueOf(Double.parseDouble(otherAmtLabel.getText())));
+            pstmSale.setBigDecimal(11, BigDecimal.valueOf(Double.parseDouble(subtotalAmtLabel.getText())));
+            pstmSale.setBigDecimal(12, BigDecimal.valueOf(Double.parseDouble(usdAmtLabel.getText())));
+            if (plYesCheckbox.isSelected()){
+                pstmSale.setString(13, "Yes");
+            } else if (plNoCheckbox.isSelected()){
+                pstmSale.setString(13, "No");
+            }
+            pstmSaleResult = pstmSale.executeUpdate();
+            if (pstmCustomerResult > 0 && pstmTicketResult > 0 && pstmSaleResult > 0){
+                JOptionPane.showMessageDialog(this,
+                        """
+                        Sale has been recorded. To review, go to the 'View Individual Sales' menu
+                        A new customer record has been created. To view, go to the 'View Customer Records' menu.
+                        To review the created ticket, go to the 'View Tickets' menu.""");
+                System.out.println("test");
+            } else {
+                JOptionPane.showMessageDialog(this, "Could not create sale. " +
+                        "Review details entered or contact system administrator");
+                System.out.println("test");
             }
             conn.commit();
             conn.setAutoCommit(true);
@@ -1196,9 +1180,9 @@ public class TicketSales extends javax.swing.JFrame {
             if (conn != null) { try { conn.rollback(); } catch (SQLException e) { throw new RuntimeException(sqle); }}
         } finally {
             try { if (conn != null) conn.close(); } catch (Exception e) { throw new RuntimeException(e); }
-            try { if (pstm1 != null) pstm1.close(); } catch (Exception e) { throw new RuntimeException(e); }
-            try { if (pstm2 != null) pstm2.close(); } catch (Exception e) { throw new RuntimeException(e); }
-            try { if (pstm3 != null) pstm3.close(); } catch (Exception e) { throw new RuntimeException(e); }
+            try { if (pstmSale != null) pstmSale.close(); } catch (Exception e) { throw new RuntimeException(e); }
+            try { if (pstmTicket != null) pstmTicket.close(); } catch (Exception e) { throw new RuntimeException(e); }
+            try { if (pstmCustomer != null) pstmCustomer.close(); } catch (Exception e) { throw new RuntimeException(e); }
         }
 
     }//GEN-LAST:event_createTicketButtonActionPerformed
