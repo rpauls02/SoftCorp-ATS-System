@@ -173,7 +173,6 @@ public class TicketSales extends javax.swing.JFrame {
         viewTicketsPageButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 viewTicketsPageButtonActionPerformed(evt);
-
             }
         });
 
@@ -510,6 +509,11 @@ public class TicketSales extends javax.swing.JFrame {
 
         typeOfSaleDDMenu.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         typeOfSaleDDMenu.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Select Sale Type", "Interline", "Domestic" }));
+        typeOfSaleDDMenu.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                typeOfSaleDDMenuActionPerformed(evt);
+            }
+        });
 
         convertedAmountPanel.setBackground(new java.awt.Color(49, 174, 209));
         convertedAmountPanel.setBorder(javax.swing.BorderFactory.createEtchedBorder());
