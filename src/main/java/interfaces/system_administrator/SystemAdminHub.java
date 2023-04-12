@@ -5,6 +5,7 @@
 package interfaces.system_administrator;
 
 import interfaces.general.Login;
+import interfaces.office_manager.AddStaffAccount;
 
 import javax.swing.*;
 
@@ -120,11 +121,11 @@ public class SystemAdminHub extends javax.swing.JFrame {
 
         idAndRoleLabel.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         idAndRoleLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        idAndRoleLabel.setText(previousPage.getAdmin().getId() + " | " + "Office Manager");
+//        idAndRoleLabel.setText(previousPage.getAdmin().getId() + " | " + "Office Manager");
 
         welcomeLabel.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         welcomeLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        welcomeLabel.setText("Welcome " + previousPage.getAdmin().getForename());
+//        welcomeLabel.setText("Welcome " + previousPage.getAdmin().getForename());
 
         javax.swing.GroupLayout pageTitlePanelLayout = new javax.swing.GroupLayout(pageTitlePanel);
         pageTitlePanel.setLayout(pageTitlePanelLayout);
@@ -250,7 +251,7 @@ public class SystemAdminHub extends javax.swing.JFrame {
     }//GEN-LAST:event_databaseManagementButtonActionPerformed
 
     private void addStaffButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addStaffButtonActionPerformed
-        new AddStaffMember().setVisible(true);
+        new AddStaffAccount().setVisible(true);
     }//GEN-LAST:event_addStaffButtonActionPerformed
 
     /**

@@ -50,7 +50,7 @@ public class OfficeManagerHub extends javax.swing.JFrame {
         viewReportButton = new javax.swing.JButton();
         manageCommissionsButton = new javax.swing.JButton();
         functionPanel = new javax.swing.JPanel();
-        refreshTableButton = new javax.swing.JButton();
+        refreshButton = new javax.swing.JButton();
         tableName = new javax.swing.JLabel();
         orderDDMenu = new javax.swing.JComboBox<>();
         showDDMenu = new javax.swing.JComboBox<>();
@@ -58,6 +58,12 @@ public class OfficeManagerHub extends javax.swing.JFrame {
         advisorInformationTable = new javax.swing.JTable();
         logoPanel = new javax.swing.JPanel();
         logoLabel = new javax.swing.JLabel();
+        tableFunctionsPanel = new javax.swing.JPanel();
+        findStaffAccountField = new javax.swing.JTextField();
+        findStaffAccountButton = new javax.swing.JButton();
+        deleteStaffAccountButton = new javax.swing.JButton();
+        addStaffAccountButton = new javax.swing.JButton();
+        editStaffAccountButton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("ATS System | Office Manager | Home");
@@ -65,13 +71,14 @@ public class OfficeManagerHub extends javax.swing.JFrame {
         pageTitlePanel.setBackground(new java.awt.Color(49, 174, 209));
         pageTitlePanel.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
+        idAndRoleLabel.setBackground(new java.awt.Color(49, 174, 209));
         idAndRoleLabel.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         idAndRoleLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        //idAndRoleLabel.setText(previousPage.getManager().getId() + " | " + "Office Manager");
+        idAndRoleLabel.setText("Staff ID | Office Manager");
 
         welcomeLabel.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         welcomeLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        //welcomeLabel.setText("Welcome " + previousPage.getManager().getForename());
+        welcomeLabel.setText("Welcome Name");
 
         javax.swing.GroupLayout pageTitlePanelLayout = new javax.swing.GroupLayout(pageTitlePanel);
         pageTitlePanel.setLayout(pageTitlePanelLayout);
@@ -203,14 +210,8 @@ public class OfficeManagerHub extends javax.swing.JFrame {
         functionPanel.setMinimumSize(new java.awt.Dimension(779, 48));
         functionPanel.setPreferredSize(new java.awt.Dimension(779, 48));
 
-        refreshTableButton.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        refreshTableButton.setText("Refresh");
-        refreshTableButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                refreshTableButtonActionPerformed(evt);
-            }
-        });
+        refreshButton.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        refreshButton.setText("Refresh");
 
         tableName.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         tableName.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -234,7 +235,7 @@ public class OfficeManagerHub extends javax.swing.JFrame {
                                 .addGap(298, 298, 298)
                                 .addComponent(tableName)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(refreshTableButton)
+                                .addComponent(refreshButton)
                                 .addContainerGap())
         );
         functionPanelLayout.setVerticalGroup(
@@ -250,7 +251,7 @@ public class OfficeManagerHub extends javax.swing.JFrame {
                                                         .addGroup(javax.swing.GroupLayout.Alignment.LEADING, functionPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                                                 .addComponent(orderDDMenu, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                                                 .addComponent(tableName, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                                                        .addComponent(refreshTableButton, javax.swing.GroupLayout.Alignment.LEADING))
+                                                        .addComponent(refreshButton, javax.swing.GroupLayout.Alignment.LEADING))
                                                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
 
@@ -265,7 +266,7 @@ public class OfficeManagerHub extends javax.swing.JFrame {
                         {null, null, null, null, null}
                 },
                 new String [] {
-                        "ID", "Role", "Forename", "Surname", "Email"
+                        "ID", "Role", "Forename(s)", "Surname", "Email"
                 }
         ) {
             Class[] types = new Class [] {
@@ -281,7 +282,7 @@ public class OfficeManagerHub extends javax.swing.JFrame {
         logoPanel.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         logoPanel.setPreferredSize(new java.awt.Dimension(104, 104));
 
-        //logoLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("data/smallLogo.png"))); // NOI18N
+        //logoLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/data/smallLogo.png"))); // NOI18N
         ImageIcon logo = new ImageIcon("data/smallLogo.png");
         logoLabel.setIcon(logo);
         logoPanel.add(logoLabel);
@@ -308,6 +309,90 @@ public class OfficeManagerHub extends javax.swing.JFrame {
                                         .addGap(0, 51, Short.MAX_VALUE)))
         );
 
+        tableFunctionsPanel.setBackground(new java.awt.Color(49, 174, 209));
+        tableFunctionsPanel.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        tableFunctionsPanel.setForeground(new java.awt.Color(255, 255, 255));
+
+        findStaffAccountField.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+
+        findStaffAccountButton.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        findStaffAccountButton.setText("Find");
+        findStaffAccountButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                findStaffAccountButtonActionPerformed(evt);
+            }
+        });
+
+        deleteStaffAccountButton.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        deleteStaffAccountButton.setText("Delete Account");
+        deleteStaffAccountButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                deleteStaffAccountButtonActionPerformed(evt);
+            }
+        });
+
+        addStaffAccountButton.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        addStaffAccountButton.setText("Add Staff Member");
+        addStaffAccountButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                addStaffAccountButtonActionPerformed(evt);
+            }
+        });
+
+        editStaffAccountButton.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        editStaffAccountButton.setText("Edit Account");
+        editStaffAccountButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                editStaffAccountButtonActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout tableFunctionsPanelLayout = new javax.swing.GroupLayout(tableFunctionsPanel);
+        tableFunctionsPanel.setLayout(tableFunctionsPanelLayout);
+        tableFunctionsPanelLayout.setHorizontalGroup(
+                tableFunctionsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(tableFunctionsPanelLayout.createSequentialGroup()
+                                .addContainerGap()
+                                .addComponent(findStaffAccountField, javax.swing.GroupLayout.PREFERRED_SIZE, 178, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(findStaffAccountButton)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(deleteStaffAccountButton)
+                                .addContainerGap())
+                        .addGroup(tableFunctionsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, tableFunctionsPanelLayout.createSequentialGroup()
+                                        .addContainerGap(710, Short.MAX_VALUE)
+                                        .addComponent(addStaffAccountButton)
+                                        .addContainerGap(296, Short.MAX_VALUE)))
+                        .addGroup(tableFunctionsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, tableFunctionsPanelLayout.createSequentialGroup()
+                                        .addContainerGap(893, Short.MAX_VALUE)
+                                        .addComponent(editStaffAccountButton)
+                                        .addGap(161, 161, 161)))
+        );
+        tableFunctionsPanelLayout.setVerticalGroup(
+                tableFunctionsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, tableFunctionsPanelLayout.createSequentialGroup()
+                                .addContainerGap()
+                                .addGroup(tableFunctionsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                        .addComponent(findStaffAccountField)
+                                        .addComponent(deleteStaffAccountButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addGroup(tableFunctionsPanelLayout.createSequentialGroup()
+                                                .addComponent(findStaffAccountButton, javax.swing.GroupLayout.DEFAULT_SIZE, 34, Short.MAX_VALUE)
+                                                .addGap(1, 1, 1)))
+                                .addContainerGap())
+                        .addGroup(tableFunctionsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(tableFunctionsPanelLayout.createSequentialGroup()
+                                        .addContainerGap()
+                                        .addComponent(addStaffAccountButton, javax.swing.GroupLayout.DEFAULT_SIZE, 35, Short.MAX_VALUE)
+                                        .addContainerGap()))
+                        .addGroup(tableFunctionsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(tableFunctionsPanelLayout.createSequentialGroup()
+                                        .addContainerGap()
+                                        .addComponent(editStaffAccountButton, javax.swing.GroupLayout.DEFAULT_SIZE, 35, Short.MAX_VALUE)
+                                        .addContainerGap()))
+        );
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -322,7 +407,8 @@ public class OfficeManagerHub extends javax.swing.JFrame {
                                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                                 .addComponent(pageTitlePanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                .addComponent(buttonsPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                                                .addComponent(buttonsPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                        .addComponent(tableFunctionsPanel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -336,7 +422,9 @@ public class OfficeManagerHub extends javax.swing.JFrame {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(functionPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(tableScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 624, Short.MAX_VALUE)
+                                .addComponent(tableScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 567, Short.MAX_VALUE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(tableFunctionsPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addContainerGap())
         );
 
@@ -386,8 +474,9 @@ public class OfficeManagerHub extends javax.swing.JFrame {
         ResultSet rs = null;
         try {
             conn = DBConnection.getConnection();
-            String query = "SELECT * FROM in2018g12.customer";
+            String query = "SELECT * FROM in2018g12.staff WHERE role = ?";
             pstm = conn.prepareStatement(query);
+            pstm.setString(1, "Travel Advisor");
             rs = pstm.executeQuery();
             if (!rs.next()){
                 JOptionPane.showMessageDialog(this, "Could not refresh table data. Try again or contact system administrator");
@@ -410,6 +499,22 @@ public class OfficeManagerHub extends javax.swing.JFrame {
             try { if (pstm != null) pstm.close(); } catch (Exception e) { throw new RuntimeException(e); }
             try { if (conn != null) conn.close(); } catch (Exception e) { throw new RuntimeException(e); }
         }
+    }
+
+    private void findStaffAccountButtonActionPerformed(java.awt.event.ActionEvent evt){
+        
+    }
+
+    private void addStaffAccountButtonActionPerformed(java.awt.event.ActionEvent evt){
+
+    }
+
+    private void deleteStaffAccountButtonActionPerformed(java.awt.event.ActionEvent evt){
+
+    }
+
+    private void editStaffAccountButtonActionPerformed(java.awt.event.ActionEvent evt){
+
     }
 
 
@@ -450,8 +555,13 @@ public class OfficeManagerHub extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify
+    private javax.swing.JButton addStaffAccountButton;
     private javax.swing.JTable advisorInformationTable;
     private javax.swing.JPanel buttonsPanel;
+    private javax.swing.JButton editStaffAccountButton;
+    private javax.swing.JButton findStaffAccountButton;
+    private javax.swing.JButton deleteStaffAccountButton;
+    private javax.swing.JTextField findStaffAccountField;
     private javax.swing.JPanel functionPanel;
     private javax.swing.JButton homeButton;
     private javax.swing.JLabel idAndRoleLabel;
@@ -462,8 +572,9 @@ public class OfficeManagerHub extends javax.swing.JFrame {
     private javax.swing.JButton manageStockButton;
     private javax.swing.JComboBox<String> orderDDMenu;
     private javax.swing.JPanel pageTitlePanel;
-    private javax.swing.JButton refreshTableButton;
+    private javax.swing.JButton refreshButton;
     private javax.swing.JComboBox<String> showDDMenu;
+    private javax.swing.JPanel tableFunctionsPanel;
     private javax.swing.JLabel tableName;
     private javax.swing.JScrollPane tableScrollPane;
     private javax.swing.JButton viewAlertsButton;

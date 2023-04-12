@@ -8,10 +8,7 @@ import SQL.DBConnection;
 import interfaces.office_manager.OfficeManagerHub;
 import interfaces.system_administrator.SystemAdminHub;
 import interfaces.travel_advisor.TravelAdvisorHub;
-import staff.OfficeManager;
-import staff.StaffAccount;
-import staff.SystemAdministrator;
-import staff.TravelAdvisor;
+import staff.*;
 
 import javax.swing.*;
 import java.awt.event.KeyEvent;
@@ -26,10 +23,6 @@ import java.util.Objects;
  * @author Abdullah
  */
 public class Login extends javax.swing.JFrame {
-
-    private TravelAdvisor advisor = null;
-    private OfficeManager manager = null;
-    private SystemAdministrator admin = null;
 
     /**
      * Creates new form loginFrame
@@ -181,6 +174,7 @@ public class Login extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void loginButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginButtonActionPerformed
+        StaffController staffController = new StaffController();
         Connection conn = null;
         PreparedStatement pstm = null;
         ResultSet rs = null;
@@ -192,17 +186,20 @@ public class Login extends javax.swing.JFrame {
             pstm.setString(2, passwordField.getText());
             rs = pstm.executeQuery();
             if (rs.next()) {
-                setVisible(false);
+                dispose();
                 String role = rs.getString("role");
                 if (Objects.equals(role, "Travel Advisor")) {
-                    advisor = new TravelAdvisor(rs.getInt("id"), rs.getString("password"), role, rs.getString("forename"), rs.getString("surname"));
+                    TravelAdvisor advisor = new TravelAdvisor(rs.getInt("id"), role, rs.getString("forename"), rs.getString("surname"));
+                    staffController.setAdvisor(advisor);
                     new TravelAdvisorHub().setVisible(true);
                 } else if (Objects.equals(role, "Manager")) {
-                    manager = new OfficeManager(rs.getInt("id"), rs.getString("password"), role, rs.getString("forename"), rs.getString("surname"));
-                    new OfficeManagerHub().setVisible(true);
+                    OfficeManager manager = new OfficeManager(rs.getInt("id"), role, rs.getString("forename"), rs.getString("surname"));
+                    staffController.setManager(manager);
+                    new TravelAdvisorHub().setVisible(true);
                 } else if (Objects.equals(role, "Administrator")) {
-                    admin = new SystemAdministrator(rs.getInt("id"), rs.getString("password"), role, rs.getString("forename"), rs.getString("surname"));
-                    new SystemAdminHub().setVisible(true);
+                    SystemAdministrator admin = new SystemAdministrator(rs.getInt("id"), role, rs.getString("forename"), rs.getString("surname"));
+                    staffController.setAdmin(admin);
+                    new TravelAdvisorHub().setVisible(true);
                 }
             } else {
                 JOptionPane.showMessageDialog(this, "Incorrect details entered. " +
@@ -216,18 +213,6 @@ public class Login extends javax.swing.JFrame {
             try { if (conn != null) conn.close(); } catch (Exception e) { throw new RuntimeException(e); }
         }
     }//GEN-LAST:event_loginButtonActionPerformed
-
-    public TravelAdvisor getAdvisor() {
-        return advisor;
-    }
-
-    public OfficeManager getManager() {
-        return manager;
-    }
-
-    public SystemAdministrator getAdmin() {
-        return admin;
-    }
 
     /**
      * @param args the command line arguments

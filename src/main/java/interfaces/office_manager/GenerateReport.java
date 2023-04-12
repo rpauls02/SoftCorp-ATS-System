@@ -32,23 +32,7 @@ public class GenerateReport extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">
     private void initComponents() {
 
-        pageTitlePanel = new javax.swing.JPanel();
-        pageTitleLabel = new javax.swing.JLabel();
-        infoPanel = new javax.swing.JPanel();
-        infoLine1Label = new javax.swing.JLabel();
-        infoLine2Label = new javax.swing.JLabel();
-        infoLine3Label = new javax.swing.JLabel();
-        viewFolderButtonPanel = new javax.swing.JPanel();
-        viewPDFFolderButton = new javax.swing.JButton();
-        functionPanel = new javax.swing.JPanel();
-        reportTypesPanel = new javax.swing.JPanel();
-        reportTypesLabel = new javax.swing.JLabel();
-        stockTurnoverReport = new javax.swing.JButton();
-        domesticSalesReportButton = new javax.swing.JButton();
-        interlineSalesReportButton = new javax.swing.JButton();
-        individualSalesReportButton = new javax.swing.JButton();
-        logoPanel = new javax.swing.JPanel();
-        logoLabel = new javax.swing.JLabel();
+        generateReportPanel = new javax.swing.JPanel();
         buttonsPanel = new javax.swing.JPanel();
         homeButton = new javax.swing.JButton();
         viewCustomerRecordsButton = new javax.swing.JButton();
@@ -57,215 +41,26 @@ public class GenerateReport extends javax.swing.JFrame {
         manageStockButton = new javax.swing.JButton();
         viewReportButton = new javax.swing.JButton();
         manageCommissionsButton = new javax.swing.JButton();
+        logoPanel = new javax.swing.JPanel();
+        logoLabel = new javax.swing.JLabel();
+        functionPanel = new javax.swing.JPanel();
+        reportTypesPanel = new javax.swing.JPanel();
+        reportTypesLabel = new javax.swing.JLabel();
+        stockTurnoverReport = new javax.swing.JButton();
+        domesticSalesReportButton = new javax.swing.JButton();
+        interlineSalesReportButton = new javax.swing.JButton();
+        individualSalesReportButton = new javax.swing.JButton();
+        viewFolderButtonPanel = new javax.swing.JPanel();
+        viewPDFFolderButton = new javax.swing.JButton();
+        infoPanel = new javax.swing.JPanel();
+        infoLine1Label = new javax.swing.JLabel();
+        infoLine2Label = new javax.swing.JLabel();
+        infoLine3Label = new javax.swing.JLabel();
+        pageTitlePanel = new javax.swing.JPanel();
+        pageTitleLabel = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("ATS System | Office Manager | View Report");
-
-        pageTitlePanel.setBackground(new java.awt.Color(49, 174, 209));
-        pageTitlePanel.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-
-        pageTitleLabel.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
-        pageTitleLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        pageTitleLabel.setText("Generate/View Report");
-
-        javax.swing.GroupLayout pageTitlePanelLayout = new javax.swing.GroupLayout(pageTitlePanel);
-        pageTitlePanel.setLayout(pageTitlePanelLayout);
-        pageTitlePanelLayout.setHorizontalGroup(
-                pageTitlePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(pageTitleLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 398, Short.MAX_VALUE)
-        );
-        pageTitlePanelLayout.setVerticalGroup(
-                pageTitlePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(pageTitlePanelLayout.createSequentialGroup()
-                                .addGap(35, 35, 35)
-                                .addComponent(pageTitleLabel)
-                                .addContainerGap(33, Short.MAX_VALUE))
-        );
-
-        infoPanel.setBackground(new java.awt.Color(49, 174, 209));
-        infoPanel.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-
-        infoLine1Label.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        infoLine1Label.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        infoLine1Label.setText("Select report to generate. A PDF will be generated with the necessary information.");
-
-        infoLine2Label.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        infoLine2Label.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        infoLine2Label.setText("You may also view the PDF within its folder using the \"View PDF Folder\" button on the right.");
-
-        infoLine3Label.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        infoLine3Label.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        infoLine3Label.setText("To view Individual Sales Reports, select \"Individual Sales Reports\" and enter staff ID of user.");
-
-        javax.swing.GroupLayout infoPanelLayout = new javax.swing.GroupLayout(infoPanel);
-        infoPanel.setLayout(infoPanelLayout);
-        infoPanelLayout.setHorizontalGroup(
-                infoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, infoPanelLayout.createSequentialGroup()
-                                .addGap(205, 205, 205)
-                                .addGroup(infoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(infoLine2Label, javax.swing.GroupLayout.DEFAULT_SIZE, 603, Short.MAX_VALUE)
-                                        .addComponent(infoLine3Label, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(infoLine1Label, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                                .addGap(149, 149, 149))
-        );
-        infoPanelLayout.setVerticalGroup(
-                infoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(infoPanelLayout.createSequentialGroup()
-                                .addGap(14, 14, 14)
-                                .addComponent(infoLine1Label)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(infoLine2Label)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(infoLine3Label)
-                                .addContainerGap(14, Short.MAX_VALUE))
-        );
-
-        viewFolderButtonPanel.setBackground(new java.awt.Color(49, 174, 209));
-        viewFolderButtonPanel.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-
-        viewPDFFolderButton.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        viewPDFFolderButton.setText("View PDF Folder");
-        viewPDFFolderButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                viewPDFFolderButtonActionPerformed(evt);
-            }
-        });
-
-        javax.swing.GroupLayout viewFolderButtonPanelLayout = new javax.swing.GroupLayout(viewFolderButtonPanel);
-        viewFolderButtonPanel.setLayout(viewFolderButtonPanelLayout);
-        viewFolderButtonPanelLayout.setHorizontalGroup(
-                viewFolderButtonPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, viewFolderButtonPanelLayout.createSequentialGroup()
-                                .addContainerGap(32, Short.MAX_VALUE)
-                                .addComponent(viewPDFFolderButton)
-                                .addGap(26, 26, 26))
-        );
-        viewFolderButtonPanelLayout.setVerticalGroup(
-                viewFolderButtonPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(viewFolderButtonPanelLayout.createSequentialGroup()
-                                .addGap(27, 27, 27)
-                                .addComponent(viewPDFFolderButton, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-
-        functionPanel.setBackground(new java.awt.Color(49, 174, 209));
-        functionPanel.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-
-        reportTypesPanel.setBackground(new java.awt.Color(49, 174, 209));
-        reportTypesPanel.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-
-        reportTypesLabel.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        reportTypesLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        reportTypesLabel.setText("Report Types:");
-
-        stockTurnoverReport.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        stockTurnoverReport.setText("Stock Turnover Report");
-        stockTurnoverReport.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                stockTurnoverReportActionPerformed(evt);
-            }
-        });
-
-        domesticSalesReportButton.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        domesticSalesReportButton.setText("Domestic Sales Report");
-        domesticSalesReportButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                domesticSalesReportButtonActionPerformed(evt);
-            }
-        });
-
-        interlineSalesReportButton.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        interlineSalesReportButton.setText("Interline Sales Report");
-        interlineSalesReportButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                interlineSalesReportButtonActionPerformed(evt);
-            }
-        });
-
-        individualSalesReportButton.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        individualSalesReportButton.setText("Individual Sales Report");
-        individualSalesReportButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                individualSalesReportButtonActionPerformed(evt);
-            }
-        });
-
-        javax.swing.GroupLayout reportTypesPanelLayout = new javax.swing.GroupLayout(reportTypesPanel);
-        reportTypesPanel.setLayout(reportTypesPanelLayout);
-        reportTypesPanelLayout.setHorizontalGroup(
-                reportTypesPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(reportTypesPanelLayout.createSequentialGroup()
-                                .addContainerGap()
-                                .addComponent(reportTypesLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(stockTurnoverReport)
-                                .addGap(18, 18, 18)
-                                .addComponent(domesticSalesReportButton)
-                                .addGap(18, 18, 18)
-                                .addComponent(interlineSalesReportButton)
-                                .addGap(18, 18, 18)
-                                .addComponent(individualSalesReportButton)
-                                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-        reportTypesPanelLayout.setVerticalGroup(
-                reportTypesPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(reportTypesPanelLayout.createSequentialGroup()
-                                .addContainerGap()
-                                .addGroup(reportTypesPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                        .addComponent(reportTypesLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(stockTurnoverReport, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(domesticSalesReportButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(interlineSalesReportButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(individualSalesReportButton))
-                                .addContainerGap())
-        );
-
-        javax.swing.GroupLayout functionPanelLayout = new javax.swing.GroupLayout(functionPanel);
-        functionPanel.setLayout(functionPanelLayout);
-        functionPanelLayout.setHorizontalGroup(
-                functionPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, functionPanelLayout.createSequentialGroup()
-                                .addContainerGap()
-                                .addComponent(reportTypesPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addContainerGap())
-        );
-        functionPanelLayout.setVerticalGroup(
-                functionPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(functionPanelLayout.createSequentialGroup()
-                                .addContainerGap()
-                                .addComponent(reportTypesPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addContainerGap(522, Short.MAX_VALUE))
-        );
-
-        logoPanel.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-
-        //logoLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("data/smallLogo.png"))); // NOI18N
-        ImageIcon logo = new ImageIcon("data/smallLogo.png");
-        logoLabel.setIcon(logo);
-        logoPanel.add(logoLabel);
-        getContentPane().add(logoPanel);
-
-        javax.swing.GroupLayout logoPanelLayout = new javax.swing.GroupLayout(logoPanel);
-        logoPanel.setLayout(logoPanelLayout);
-        logoPanelLayout.setHorizontalGroup(
-                logoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGap(0, 102, Short.MAX_VALUE)
-                        .addGroup(logoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addGroup(logoPanelLayout.createSequentialGroup()
-                                        .addGap(0, 0, Short.MAX_VALUE)
-                                        .addComponent(logoLabel)
-                                        .addGap(0, 0, Short.MAX_VALUE)))
-        );
-        logoPanelLayout.setVerticalGroup(
-                logoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGap(0, 102  , Short.MAX_VALUE)
-                        .addGroup(logoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addGroup(logoPanelLayout.createSequentialGroup()
-                                        .addGap(0, 0, Short.MAX_VALUE)
-                                        .addComponent(logoLabel)
-                                        .addGap(0, 0, Short.MAX_VALUE)))
-        );
 
         buttonsPanel.setBackground(new java.awt.Color(49, 174, 209));
         buttonsPanel.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
@@ -375,19 +170,225 @@ public class GenerateReport extends javax.swing.JFrame {
                                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-                layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+        logoPanel.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+
+        //logoLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/data/smallLogo.png"))); // NOI18N
+        ImageIcon logo = new ImageIcon("data/smallLogo.png");
+        logoLabel.setIcon(logo);
+        logoPanel.add(logoLabel);
+        getContentPane().add(logoPanel);
+
+        javax.swing.GroupLayout logoPanelLayout = new javax.swing.GroupLayout(logoPanel);
+        logoPanel.setLayout(logoPanelLayout);
+        logoPanelLayout.setHorizontalGroup(
+                logoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGap(0, 102, Short.MAX_VALUE)
+                        .addGroup(logoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(logoPanelLayout.createSequentialGroup()
+                                        .addGap(0, 0, Short.MAX_VALUE)
+                                        .addComponent(logoLabel)
+                                        .addGap(0, 0, Short.MAX_VALUE)))
+        );
+        logoPanelLayout.setVerticalGroup(
+                logoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addGroup(logoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(logoPanelLayout.createSequentialGroup()
+                                        .addGap(0, 0, Short.MAX_VALUE)
+                                        .addComponent(logoLabel)
+                                        .addGap(0, 0, Short.MAX_VALUE)))
+        );
+
+        functionPanel.setBackground(new java.awt.Color(49, 174, 209));
+        functionPanel.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+
+        reportTypesPanel.setBackground(new java.awt.Color(49, 174, 209));
+        reportTypesPanel.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+
+        reportTypesLabel.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        reportTypesLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        reportTypesLabel.setText("Report Types:");
+
+        stockTurnoverReport.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        stockTurnoverReport.setText("Stock Turnover Report");
+        stockTurnoverReport.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                stockTurnoverReportActionPerformed(evt);
+            }
+        });
+
+        domesticSalesReportButton.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        domesticSalesReportButton.setText("Domestic Sales Report");
+        domesticSalesReportButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                domesticSalesReportButtonActionPerformed(evt);
+            }
+        });
+
+        interlineSalesReportButton.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        interlineSalesReportButton.setText("Interline Sales Report");
+        interlineSalesReportButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                interlineSalesReportButtonActionPerformed(evt);
+            }
+        });
+
+        individualSalesReportButton.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        individualSalesReportButton.setText("Individual Sales Report");
+        individualSalesReportButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                individualSalesReportButtonActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout reportTypesPanelLayout = new javax.swing.GroupLayout(reportTypesPanel);
+        reportTypesPanel.setLayout(reportTypesPanelLayout);
+        reportTypesPanelLayout.setHorizontalGroup(
+                reportTypesPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(reportTypesPanelLayout.createSequentialGroup()
                                 .addContainerGap()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addComponent(reportTypesLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(stockTurnoverReport)
+                                .addGap(18, 18, 18)
+                                .addComponent(domesticSalesReportButton)
+                                .addGap(18, 18, 18)
+                                .addComponent(interlineSalesReportButton)
+                                .addGap(18, 18, 18)
+                                .addComponent(individualSalesReportButton)
+                                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        reportTypesPanelLayout.setVerticalGroup(
+                reportTypesPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(reportTypesPanelLayout.createSequentialGroup()
+                                .addContainerGap()
+                                .addGroup(reportTypesPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                        .addComponent(reportTypesLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(stockTurnoverReport, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(domesticSalesReportButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(interlineSalesReportButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(individualSalesReportButton))
+                                .addContainerGap())
+        );
+
+        javax.swing.GroupLayout functionPanelLayout = new javax.swing.GroupLayout(functionPanel);
+        functionPanel.setLayout(functionPanelLayout);
+        functionPanelLayout.setHorizontalGroup(
+                functionPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, functionPanelLayout.createSequentialGroup()
+                                .addContainerGap()
+                                .addComponent(reportTypesPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addContainerGap())
+        );
+        functionPanelLayout.setVerticalGroup(
+                functionPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(functionPanelLayout.createSequentialGroup()
+                                .addContainerGap()
+                                .addComponent(reportTypesPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addContainerGap(522, Short.MAX_VALUE))
+        );
+
+        viewFolderButtonPanel.setBackground(new java.awt.Color(49, 174, 209));
+        viewFolderButtonPanel.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+
+        viewPDFFolderButton.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        viewPDFFolderButton.setText("View PDF Folder");
+        viewPDFFolderButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                viewPDFFolderButtonActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout viewFolderButtonPanelLayout = new javax.swing.GroupLayout(viewFolderButtonPanel);
+        viewFolderButtonPanel.setLayout(viewFolderButtonPanelLayout);
+        viewFolderButtonPanelLayout.setHorizontalGroup(
+                viewFolderButtonPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, viewFolderButtonPanelLayout.createSequentialGroup()
+                                .addContainerGap(32, Short.MAX_VALUE)
+                                .addComponent(viewPDFFolderButton)
+                                .addGap(26, 26, 26))
+        );
+        viewFolderButtonPanelLayout.setVerticalGroup(
+                viewFolderButtonPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(viewFolderButtonPanelLayout.createSequentialGroup()
+                                .addGap(27, 27, 27)
+                                .addComponent(viewPDFFolderButton, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        infoPanel.setBackground(new java.awt.Color(49, 174, 209));
+        infoPanel.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+
+        infoLine1Label.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        infoLine1Label.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        infoLine1Label.setText("Select report to generate. A PDF will be generated with the necessary information.");
+
+        infoLine2Label.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        infoLine2Label.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        infoLine2Label.setText("You may also view the PDF within its folder using the \"View PDF Folder\" button on the right.");
+
+        infoLine3Label.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        infoLine3Label.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        infoLine3Label.setText("To view Individual Sales Reports, select \"Individual Sales Reports\" and enter staff ID of user.");
+
+        javax.swing.GroupLayout infoPanelLayout = new javax.swing.GroupLayout(infoPanel);
+        infoPanel.setLayout(infoPanelLayout);
+        infoPanelLayout.setHorizontalGroup(
+                infoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, infoPanelLayout.createSequentialGroup()
+                                .addGap(205, 205, 205)
+                                .addGroup(infoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(infoLine2Label, javax.swing.GroupLayout.DEFAULT_SIZE, 603, Short.MAX_VALUE)
+                                        .addComponent(infoLine3Label, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(infoLine1Label, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addGap(149, 149, 149))
+        );
+        infoPanelLayout.setVerticalGroup(
+                infoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(infoPanelLayout.createSequentialGroup()
+                                .addGap(14, 14, 14)
+                                .addComponent(infoLine1Label)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(infoLine2Label)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(infoLine3Label)
+                                .addContainerGap(14, Short.MAX_VALUE))
+        );
+
+        pageTitlePanel.setBackground(new java.awt.Color(49, 174, 209));
+        pageTitlePanel.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+
+        pageTitleLabel.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        pageTitleLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        pageTitleLabel.setText("Generate/View Report");
+
+        javax.swing.GroupLayout pageTitlePanelLayout = new javax.swing.GroupLayout(pageTitlePanel);
+        pageTitlePanel.setLayout(pageTitlePanelLayout);
+        pageTitlePanelLayout.setHorizontalGroup(
+                pageTitlePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(pageTitleLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 398, Short.MAX_VALUE)
+        );
+        pageTitlePanelLayout.setVerticalGroup(
+                pageTitlePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(pageTitlePanelLayout.createSequentialGroup()
+                                .addGap(35, 35, 35)
+                                .addComponent(pageTitleLabel)
+                                .addContainerGap(33, Short.MAX_VALUE))
+        );
+
+        javax.swing.GroupLayout generateReportPanelLayout = new javax.swing.GroupLayout(generateReportPanel);
+        generateReportPanel.setLayout(generateReportPanelLayout);
+        generateReportPanelLayout.setHorizontalGroup(
+                generateReportPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, generateReportPanelLayout.createSequentialGroup()
+                                .addContainerGap()
+                                .addGroup(generateReportPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                         .addComponent(functionPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, generateReportPanelLayout.createSequentialGroup()
                                                 .addComponent(infoPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                                 .addComponent(viewFolderButtonPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, generateReportPanelLayout.createSequentialGroup()
                                                 .addComponent(logoPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                                 .addComponent(pageTitlePanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -395,22 +396,43 @@ public class GenerateReport extends javax.swing.JFrame {
                                                 .addComponent(buttonsPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                                 .addContainerGap())
         );
-        layout.setVerticalGroup(
-                layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(layout.createSequentialGroup()
+        generateReportPanelLayout.setVerticalGroup(
+                generateReportPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(generateReportPanelLayout.createSequentialGroup()
                                 .addContainerGap()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addGroup(generateReportPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                        .addGroup(generateReportPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                                 .addComponent(pageTitlePanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                                 .addComponent(logoPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                                         .addComponent(buttonsPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addGroup(generateReportPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                         .addComponent(infoPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                         .addComponent(viewFolderButtonPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(functionPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addContainerGap())
+        );
+
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
+        getContentPane().setLayout(layout);
+        layout.setHorizontalGroup(
+                layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGap(0, 1200, Short.MAX_VALUE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(layout.createSequentialGroup()
+                                        .addGap(0, 0, Short.MAX_VALUE)
+                                        .addComponent(generateReportPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(0, 0, Short.MAX_VALUE)))
+        );
+        layout.setVerticalGroup(
+                layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGap(0, 800, Short.MAX_VALUE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(layout.createSequentialGroup()
+                                        .addGap(0, 0, Short.MAX_VALUE)
+                                        .addComponent(generateReportPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(0, 0, Short.MAX_VALUE)))
         );
 
         pack();
@@ -517,6 +539,7 @@ public class GenerateReport extends javax.swing.JFrame {
     private javax.swing.JPanel buttonsPanel;
     private javax.swing.JButton domesticSalesReportButton;
     private javax.swing.JPanel functionPanel;
+    private javax.swing.JPanel generateReportPanel;
     private javax.swing.JButton homeButton;
     private javax.swing.JButton individualSalesReportButton;
     private javax.swing.JLabel infoLine1Label;
